@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Datatable;
+
+use App\Models\Batch\Batch;
+use Illuminate\Database\Eloquent\Builder;
+
+class DummyClass extends BaseDatatable
+{
+
+    public function __construct()
+    {
+        parent::__construct(Test::class, [
+            'id' => 'ID',
+            'customer.full_info' => 'A.S.A',
+            'amount' => 'Miqdar',
+            'total_bonus' => 'Toplam bonus',
+            'bonus_type.key' => 'Bonus tipi',
+            'created_at' => 'Qeydiyyat tarixi'
+        ], [
+            'actions' => [
+                'title' => 'Actions',
+                'view' => ''
+            ]
+        ]);
+    }
+
+    protected function query(): Builder
+    {
+        $query = $this->baseQueryScope();
+
+        if (isset($_GET['filters'])) {
+            $filters = $_GET['filters'];
+            foreach ($filters as $filter) {
+                $filter = explode('--', $filter);
+                $query->where($filter[0], $filter[1]);
+            }
+        }
+
+        if ($this->getSearchInput()) {
+            $query->where('test', 'LIKE', '%' . $this->getSearchInput() . '%');
+        }
+
+        return $query;
+    }
+}

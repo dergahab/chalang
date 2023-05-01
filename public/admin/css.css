@@ -1,0 +1,40 @@
+.dataTables_filter{
+    position: absolute;
+    right: 0px;
+}
+
+.btn {
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
+
+.c-badge {
+    background-color: #35b69f;
+    color: white;
+    height: 20px;
+    font-size: 11px;
+    width: 92px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px
+}
+
+.comment-text {
+    font-size: 13px
+}
+
+.wish {
+    color: #35b69f
+}
+
+.user-feed {
+    font-size: 14px;
+    margin-top: 12px
+}
+
+.show-deatil{
+    cursor: pointer;
+}

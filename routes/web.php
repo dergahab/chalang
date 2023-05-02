@@ -19,7 +19,7 @@ Auth::routes();
 Auth::routes(['register' => false]);
 Route::get('/', function () {
     // return view('auth.login');
-    return view('front.index');
+    return view('coming-soon');
 })->name('/');
 
 Route::get('blogs', function () {

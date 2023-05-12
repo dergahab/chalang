@@ -17,7 +17,7 @@
             <div class="card-body">
                 
                 @include('admin.inc.dynamic_datatable', [
-                    '__datatableName' => 'portfolio',
+                    '__datatableName' => 'spcontent',
                     '__datatableId' => 'portfolio',
                 ])
             </div>

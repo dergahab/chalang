@@ -16,7 +16,7 @@ class SpcontentController extends Controller
     protected $langs;
     public function __construct(){
         $this->langs = Lang::all();
-        view()->share('services', Service::all());
+        view()->share('services', Service::where('parent_id',0)->get());
         view()->share('portfolios', Portfolio::all());
     }
     public function index()

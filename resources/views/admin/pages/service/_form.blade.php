@@ -33,6 +33,10 @@
                     placeholder="Kateqoriya adı "
                     @if($loop->first) required @endif >
             </div>
+            <div class="form-group">
+                <label for="content-{{$lang->lang}}">Məzmun</label>
+                <textarea name="content[{{$lang->lang}}]" id="" cols="5" class="form-control" rows="4">{{old('content',$item->translate($lang->lang)?->content)}}</textarea>
+            </div>
         </div>
         @endforeach
 </div>
@@ -40,10 +44,11 @@
 
 <div class="col-md-6 mt-2">
 <div class="form-group">
-    <label for="file" class="form-label ">Icon <span class="text-danger" required>610x460</span></label>
+    <label for="file" class="form-label ">Icon <span class="text-danger" required>100x90</span></label>
     <input name="icon" class="form-control filestyle file" type="file"
-        data-buttonname="btn-secondary">
+        data-buttonname="btn-secondary" @if(request()->routeIs('admin.service.create')) required @endif>
 </div>
+<img src="{{asset(Storage::url($item->icon))}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
 </div>
 
 <div class="col-md-6 mt-2">

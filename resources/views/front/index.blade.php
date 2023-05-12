@@ -49,19 +49,24 @@
                         blandit rutrum eget vulputate augue sed eu imperdiet.</p>
                 </div>
                 <div class="row">
+                    @foreach ($main_services as $service)
                     <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid active">
                             <div class="thumbnail">
-                                <img src="assets/media/icon/icon-1.png" alt="icon">
+                                {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}
+                                <img src="{{asset(Storage::url($service->icon))}}" alt="icon">
                             </div>
                             <div class="content">
-                                <h5 class="title"> <a href="service-design.html">Design</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
+                                <h5 class="title"> <a href="service-design.html">{{$service->name}}</a></h5>
+                                <p>{{$service->content}}</p>
                                 <a href="service-design.html" class="more-btn">Find out more</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
+                    @endforeach
+                    
+                   
+                    {{-- <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
                         <div class="services-grid">
                             <div class="thumbnail">
                                 <img src="assets/media/icon/icon-2.png" alt="icon">
@@ -120,7 +125,7 @@
                                 <a href="service-content-strategy.html" class="more-btn">Find out more</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <ul class="list-unstyled shape-group-10">

@@ -17,8 +17,10 @@ class CreateServicesTable extends Migration
             $table->id();
             $table->integer('parent_id')->default(0);
             $table->integer('position')->default(0);
+            $table->integer('in_main')->default(0);
             $table->string('icon');
             $table->string('image')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

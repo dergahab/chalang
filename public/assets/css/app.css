@@ -82,7 +82,7 @@ STYLESHEET INDEXING
     --color-rose: #C75C6F;
     --color-chart1: #896BA7;
     --color-chart2: #BADEFF;
-    --color-body: #525260;
+    --color-body: #d4d4da;
     --color-gray-1: #757589;
     --color-gray-2: #999FAE;
     --color-gray-3: #999AB8;
@@ -2272,7 +2272,7 @@ Pagination
     position: fixed;
     top: 200px;
     left: 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-rose);
     border-radius: 0 30px 30px 0;
     padding: 10px;
     z-index: 5;

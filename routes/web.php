@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\DatatableController;
 use App\Http\Controllers\Api\MainController;
+use App\Http\Controllers\Front\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,11 @@ Auth::routes(['register' => false]);
 Route::get('/', function () {
     // return view('auth.login');
     return view('coming-soon');
+});
+
+Route::get('index', function () {
+    return view('front.index');
+    // return view('coming-soon');
 })->name('/');
 
 Route::get('blogs', function () {
@@ -37,10 +43,8 @@ Route::get('cuntuct-us', function () {
     return view('front.contuct-us');
 })->name('cuntuct-us');
 
-Route::get('services', function () {
-    // return view('auth.login');
-    return view('front.services');
-})->name('services');
+Route::get('services',[ServiceController::class,'index'])->name('services');
+Route::get('service-deatail/{service:slug}',[ServiceController::class,'details'])->name('service.single');
 
 
 

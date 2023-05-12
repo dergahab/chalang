@@ -11,9 +11,9 @@ class Service extends Model implements TranslatableContract
 {
     use HasFactory,Translatable,SoftDeletes;
 
-    public $translatedAttributes = ['name', 'slug'];
+    public $translatedAttributes = ['name', 'content'];
 
-    protected $fillable = ['parent_id', 'icon', 'image'];
+    protected $fillable = ['parent_id', 'icon', 'slug', 'image'];
     
     public function childs(){
         return $this->hasMany(self::class,'parent_id');

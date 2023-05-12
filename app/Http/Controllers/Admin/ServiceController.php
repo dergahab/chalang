@@ -60,7 +60,7 @@ class ServiceController extends Controller
             $image = $this->upload($request ,name:'icon',dir:'services');
             $data['icon'] = $image ;
         }
-
+        $data['slug'] = Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
            
@@ -68,8 +68,8 @@ class ServiceController extends Controller
             foreach($this->langs as $lang){
                 if($request->post('name')[$lang->lang]){
                     ServiceTranslation::insert([
-                        'name' =>$request->post('name')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+                        'name'    => $request->post('name')[$lang->lang],
+                        'content' => $request->post('content')[$lang->lang],
                         'locale' => $lang->lang,
                         'service_id' => $service->id,
                     ]);
@@ -131,6 +131,7 @@ class ServiceController extends Controller
             $image = $this->upload($request ,name:'icon',dir:'services');
             $data['icon'] = $image ;
         }
+        $data['slug'] = Str::slug($request->post('name')['az']);
 
         DB::beginTransaction();
         try {
@@ -146,6 +147,7 @@ class ServiceController extends Controller
                         $translation->locale = $lang->lang;
                     }
                     $translation->name = $request->post('name')[$lang->lang] ?? $translation->name;
+                    $translation->content = $request->post('content')[$lang->lang] ?? $translation->content;
                     $translation->slug = Str::slug($request->post('name')[$lang->lang]) ?? $translation->slug;
                     $translation->save();
                 }

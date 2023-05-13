@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/vendor/green-audio-player.min.css')}}">
 
     <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/app.css?v='.time())}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
 

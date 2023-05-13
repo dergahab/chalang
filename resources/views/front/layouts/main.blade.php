@@ -101,17 +101,19 @@
                                     </li>
                                     <li class="">
                                         <a href="{{route('about-us')}}">
-                                            <i class="fa-sharp fa-solid fa-circle-info"></i>
+                                            <i class="fa fa-users"></i>
                                             About us</a>
                                        
                                     </li>
                                     <li class="">
                                         <a href="{{route('blogs')}}">
-                                            <i class="fas fa-typewriter"></i>
+                                            <i class="fas fa-pen-nib"></i>
                                             Blog</a>
                                         
                                     </li>
-                                    <li><a href="{{route('cuntuct-us')}}">Contact</a></li>
+                                    <li><a href="{{route('cuntuct-us')}}">
+                                        <i class="fas fa-phone"></i>
+                                        Contact</a></li>
                                 </ul>
                             </nav>
                             <!-- End Mainmanu Nav -->

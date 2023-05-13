@@ -72,9 +72,9 @@
                 </div>
             </div>
             <ul class="list-unstyled shape-group-12">
-                <li class="shape shape-1"><img src="assets/media/others/bubble-2.png" alt="Bubble"></li>
-                <li class="shape shape-2"><img src="assets/media/others/bubble-1.png" alt="Bubble"></li>
-                <li class="shape shape-3"><img src="assets/media/others/circle-3.png" alt="Circle"></li>
+                <li class="shape shape-1"><img src="{{asset('assets/media/others/bubble-2.png')}}" alt="Bubble"></li>
+                <li class="shape shape-2"><img src="{{asset('assets/media/others/bubble-1.png')}}" alt="Bubble"></li>
+                <li class="shape shape-3"><img src="{{asset('assets/media/others/circle-3.png')}}" alt="Circle"></li>
             </ul>
         </section>
 
@@ -102,7 +102,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="office-location">
                             <div class="thumbnail">
-                                <img src="assets/media/others/location-2.png" alt="Office">
+                                <img src="{{asset('assets/media/others/location-2.png')}}" alt="Office">
                             </div>
                             <div class="content">
                                 <h4 class="title">Nevada</h4>
@@ -113,7 +113,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="office-location">
                             <div class="thumbnail">
-                                <img src="assets/media/others/location-3.png" alt="Office">
+                                <img src="{{asset('assets/media/others/location-3.png')}}" alt="Office">
                             </div>
                             <div class="content">
                                 <h4 class="title">Columbia</h4>
@@ -124,7 +124,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="office-location">
                             <div class="thumbnail">
-                                <img src="assets/media/others/location-4.png" alt="Office">
+                                <img src="{{asset('assets/media/others/location-4.png')}}" alt="Office">
                             </div>
                             <div class="content">
                                 <h4 class="title">New Mexico</h4>
@@ -135,8 +135,8 @@
                 </div>
             </div>
             <ul class="shape-group-11 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/line-6.png" alt="line"></li>
-                <li class="shape shape-2"><img src="assets/media/others/circle-3.png" alt="line"></li>
+                <li class="shape shape-1"><img src="{{asset('assets/media/others/line-6.png')}}" alt="line"></li>
+                <li class="shape shape-2"><img src="{{asset('assets/media/others/circle-3.png')}}" alt="line"></li>
             </ul>
         </section>
 @endsection

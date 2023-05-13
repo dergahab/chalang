@@ -49,9 +49,14 @@ class BlogController extends Controller
         $data = [];
         $data['user_id'] = Auth::user()->id;
         if($request->image){
-            $image = $this->upload($request ,name:'image',dir:'company');
+            $image = $this->upload($request ,name:'image',dir:'blog');
             $data['image'] = $image ;
         }
+        if($request->big_image){
+            $big_image = $this->upload($request ,name:'big_image',dir:'blog');
+            $data['big_image'] = $big_image ;
+        }
+        $data['slug'] =  Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
            
@@ -114,9 +119,14 @@ class BlogController extends Controller
        // return $request->all();
         $data = [];
         if($request->image){
-            $image = $this->upload($request ,name:'image',dir:'company');
+            $image = $this->upload($request ,name:'image',dir:'blog');
             $data['image'] = $image ;
         }
+        if($request->big_image){
+            $big_image = $this->upload($request ,name:'big_image',dir:'blog');
+            $data['big_image'] = $big_image ;
+        }
+        $data['slug'] =  Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
            

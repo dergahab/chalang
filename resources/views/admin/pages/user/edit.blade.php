@@ -3,7 +3,7 @@
 @section('heading_title', 'User')
 
 @section('heading_breadcrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Əməkdaşlar</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Əməkdaşlar</a></li>
     <li class="breadcrumb-item active">Əməkdaş: {{ $item->full_name }}</li>
 @endsection
 
@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Əməkdaş</h4>
-                    <form class="" action="{{ route('user.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.user.update', $item) }}" method="POST">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.user.__form')

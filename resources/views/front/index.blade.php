@@ -51,7 +51,7 @@
                 <div class="row">
                     @foreach ($main_services as $service)
                     <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
-                        <div class="services-grid active">
+                        <div class="services-grid ">
                             <div class="thumbnail">
                                 {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}
                                 <img src="{{asset(Storage::url($service->icon))}}" alt="icon">

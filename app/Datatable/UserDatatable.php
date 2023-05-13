@@ -12,7 +12,7 @@ class UserDatatable extends BaseDatatable
     {
         parent::__construct(User::class, [
             'id' => 'ID',
-            'full_name' => 'A.S.',
+            'name' => 'A.S.',
             'email' => 'Email',
             'created_at' => 'Qeydiyyat tarixi'
         ], [

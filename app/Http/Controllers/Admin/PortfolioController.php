@@ -56,6 +56,8 @@ class PortfolioController extends Controller
             $image = $this->upload($request ,name:'image',dir:'company');
             $data['image'] = $image ;
         }
+        $data['slug'] = Str::slug($request->post('name')['az']); 
+
         DB::beginTransaction();
         try {
            
@@ -122,6 +124,8 @@ class PortfolioController extends Controller
             $image = $this->upload($request ,name:'image',dir:'company');
             $data['image'] = $image ;
         }
+        $data['slug'] = Str::slug($request->post('name')['az']); 
+
         DB::beginTransaction();
         try {
            
@@ -133,7 +137,6 @@ class PortfolioController extends Controller
                     PortfolioTranslation::where('portfolio_id',$id)->where('locale',$lang->lang)->update([
                         'title' =>$request->post('name')[$lang->lang],
                         'description' =>$request->post('description')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
                         'locale' => $lang->lang,
                         'portfolio_id' => $portfolio->id,
                     ]);

@@ -11,7 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/media/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.css"')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/sal.css')}}">
@@ -73,8 +73,8 @@
                                     <div class="mobile-nav-header">
                                         <div class="mobile-nav-logo">
                                             <a href="index-1.html">
-                                                <img class="light-mode" src="assets/media/logo-2.svg" alt="Site Logo">
-                                                <img class="dark-mode" src="assets/media/logo-3.svg" alt="Site Logo">
+                                                <img class="light-mode" src="{{asset('assets/media/logo-2.svg')}}" alt="Site Logo">
+                                                <img class="dark-mode" src="{{asset('assets/media/logo-3.svg')}}" alt="Site Logo">
                                             </a>
                                         </div>
                                         <button class="mobile-menu-close" data-bs-dismiss="offcanvas"><i class="fas fa-times"></i></button>

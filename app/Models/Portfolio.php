@@ -10,8 +10,8 @@ class Portfolio extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
 
-    public $translatedAttributes = ['title', 'description', 'slug'];
-    protected $fillable = ['image'];
+    public $translatedAttributes = ['title', 'description'];
+    protected $fillable = ['image', 'slug', 'in_main'];
     protected $appends = ['category_ids'];
  
     public function pcategories(){

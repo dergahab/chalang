@@ -13,7 +13,7 @@ class Pcategory extends Model implements TranslatableContract
     public $translatedAttributes = ['name', 'slug'];
 
     public function portfolios(){
-        return $this->hasMany(Portfolio::class);
+        return $this->belongsToMany(Portfolio::class, 'pcategory_portfolio');
     }
 }
 

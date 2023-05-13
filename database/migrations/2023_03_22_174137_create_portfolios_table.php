@@ -19,6 +19,7 @@ class CreatePortfoliosTable extends Migration
             $table->boolean('in_main')->default(0);
             $table->integer('posotion')->default(0);
             $table->string('image');
+            $table->string('slug');
             $table->timestamps();
             $table->softDeletes();
         });

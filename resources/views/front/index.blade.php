@@ -64,68 +64,6 @@
                         </div>
                     </div>
                     @endforeach
-                    
-                   
-                    {{-- <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
-                        <div class="services-grid">
-                            <div class="thumbnail">
-                                <img src="assets/media/icon/icon-2.png" alt="icon">
-                            </div>
-                            <div class="content">
-                                <h5 class="title"> <a href="service-development.html">Development</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                <a href="service-development.html" class="more-btn">Find out more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="300">
-                        <div class="services-grid">
-                            <div class="thumbnail">
-                                <img src="assets/media/icon/icon-3.png" alt="icon">
-                            </div>
-                            <div class="content">
-                                <h5 class="title"> <a href="service-marketing.html">Online marketing</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                <a href="service-marketing.html" class="more-btn">Find out more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
-                        <div class="services-grid">
-                            <div class="thumbnail">
-                                <img src="assets/media/icon/icon-4.png" alt="icon">
-                            </div>
-                            <div class="content">
-                                <h5 class="title"> <a href="service-business.html">Business</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                <a href="service-business.html" class="more-btn">Find out more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200">
-                        <div class="services-grid">
-                            <div class="thumbnail">
-                                <img src="assets/media/icon/icon-5.png" alt="icon">
-                            </div>
-                            <div class="content">
-                                <h5 class="title"> <a href="service-technology.html">Technology</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                <a href="service-technology.html" class="more-btn">Find out more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800" data-sal-delay="300">
-                        <div class="services-grid">
-                            <div class="thumbnail">
-                                <img src="assets/media/icon/icon-6.png" alt="icon">
-                            </div>
-                            <div class="content">
-                                <h5 class="title"> <a href="service-content-strategy.html">Content strategy</a></h5>
-                                <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                <a href="service-content-strategy.html" class="more-btn">Find out more</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
             <ul class="list-unstyled shape-group-10">
@@ -180,9 +118,9 @@
                 </div>
             </div>
             <ul class="shape-group-6 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/bubble-7.png" alt="Bubble"></li>
-                <li class="shape shape-2"><img src="assets/media/others/line-4.png" alt="line"></li>
-                <li class="shape shape-3"><img src="assets/media/others/line-5.png" alt="line"></li>
+                <li class="shape shape-1"><img src="{{asset('assets/media/others/bubble-7.png')}}" alt="Bubble"></li>
+                <li class="shape shape-2"><img src="{{asset('assets/media/others/line-4.png')}}" alt="line"></li>
+                <li class="shape shape-3"><img src="{{asset('assets/media/others/line-5.png')}}" alt="line"></li>
             </ul>
         </section>
         <!--=====================================-->
@@ -196,100 +134,44 @@
                 </div>
                 <div class="axil-isotope-wrapper">
                     <div class="isotope-button isotope-project-btn">
-                        <button data-filter="*" class="is-checked"><span class="filter-text">All Works</span></button>
-                        <button data-filter=".branding"><span class="filter-text">Branding</span></button>
-                        <button data-filter=".mobile"><span class="filter-text">Mobile</span></button>
+                        <button data-filter="*" class="is-checked"><span class="filter-text">All Works</span></button>               
+                        @foreach ($portfolio_categories as $pcategory)
+                            <button data-filter=".{{$pcategory->name}}"><span class="filter-text">{{$pcategory->name}}</span></button>
+                        @endforeach
                     </div>
                     <div class="row row-35 isotope-list">
-                        <div class="col-md-6 project branding">
+                       @foreach ($portfolios as $portfolio)
+                       <div class="col-md-4 @foreach ($portfolio->pcategories as $subtitle) {{$subtitle->name}}   @endforeach">
                             <div class="project-grid">
                                 <div class="thumbnail">
                                     <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-1.png" alt="project">
+                                        <img src="{{asset(Storage::url($portfolio->image))}}" alt="project">
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Creative Agency</a></h4>
-                                    <span class="subtitle">Full Branding, Website, App</span>
+                                    <h4 class="title"><a href="single-portfolio.html">{{$portfolio->title}}</a></h4>
+                                    <span class="subtitle">
+                                        @foreach ($portfolio->pcategories as $subtitle)
+                                            {{$subtitle->name}} 
+                                             @if (! $loop->last)
+                                            ,
+                                        @endif
+                                        @endforeach
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 project mobile">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-2.png" alt="project">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Digital Marketing</a></h4>
-                                    <span class="subtitle">Logo, Website & Mobile App</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 project branding">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-3.png" alt="project">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Digital Agency</a></h4>
-                                    <span class="subtitle">Website, UI/UX</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 project mobile">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-4.png" alt="project">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Plan Management</a></h4>
-                                    <span class="subtitle">Branding, Website, IOS App</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 project branding">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-5.png" alt="project">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Social Engagement</a></h4>
-                                    <span class="subtitle">Design, Development</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 project mobile">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="single-portfolio.html">
-                                        <img src="assets/media/project/project-6.png" alt="project">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-portfolio.html">Web Application</a></h4>
-                                    <span class="subtitle">Logo, Webapp, App</span>
-                                </div>
-                            </div>
-                        </div>
-                        
+                       @endforeach
                     </div>
                     <div class="more-project-btn portfolio-btn">
-                        <a href="portfolio.html" class="axil-btn btn-fill-white">Discover More Projects</a>
+                        <a href="{{route('portfolio')}}" class="axil-btn btn-fill-white">Discover More Projects</a>
                     </div>
                 </div>
             </div>
             <ul class="shape-group-7 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/circle-2.png" alt="circle"></li>
-                <li class="shape shape-2"><img src="assets/media/others/bubble-2.png" alt="Line"></li>
-                <li class="shape shape-3"><img src="assets/media/others/bubble-1.png" alt="Line"></li>
+                <li class="shape shape-1"><img src="{{asset('assets/media/others/circle-2.png')}}" alt="circle"></li>
+                <li class="shape shape-2"><img src="{{asset('assets/media/others/bubble-2.png')}}" alt="Line"></li>
+                <li class="shape shape-3"><img src="{{asset('assets/media/others/bubble-1.png')}}" alt="Line"></li>
             </ul>
         </section>
     
@@ -304,46 +186,13 @@
                     <p>Design anything from simple icons to fully featured websites and applications.</p>
                 </div>
                 <div class="row">
+                    @foreach ($companies as $company)
                     <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500">
                         <div class="brand-grid active">
-                            <img src="assets/media/brand/brand-1.png" alt="Brand">
+                            <img src="{{$company->image}}" alt="{{$company->name}}">
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-2.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="200">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-3.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-4.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="400">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-5.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="500">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-6.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="600">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-7.png" alt="Brand">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500" data-sal-delay="700">
-                        <div class="brand-grid">
-                            <img src="assets/media/brand/brand-8.png" alt="Brand">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <ul class="shape-group-2 list-unstyled">
@@ -352,9 +201,7 @@
                 <li class="shape shape-3"><img src="assets/media/others/bubble-3.png" alt="circle"></li>
             </ul>
         </section>
-        <!--=====================================-->
-        <!--=        Blog Area Start       	    =-->
-        <!--=====================================-->
+ 
         <section class="section section-padding-equal">
             <div class="container">
                 <div class="section-heading">
@@ -420,9 +267,7 @@
             </ul>
 
         </section>
-        <!--=====================================-->
-        <!--=     Call To Action Area Start     =-->
-        <!--=====================================-->
+      
         <section class="section call-to-action-area">
             <div class="container">
                 <div class="call-to-action">

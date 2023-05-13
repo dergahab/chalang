@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\DatatableController;
 use App\Http\Controllers\Api\MainController;
+use App\Http\Controllers\Front\MainController as FrontMainController;
+use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,10 +25,7 @@ Route::get('/', function () {
     return view('coming-soon');
 });
 
-Route::get('index', function () {
-    return view('front.index');
-    // return view('coming-soon');
-})->name('/');
+Route::get('index',[FrontMainController::class, 'index'])->name('/');
 
 Route::get('blogs', function () {
     // return view('auth.login');
@@ -48,7 +47,4 @@ Route::get('service-deatail/{service:slug}',[ServiceController::class,'details']
 
 
 
-Route::get('portfolio', function () {
-    // return view('auth.login');
-    return view('front.portfolio');
-})->name('portfolio');
+Route::get('portfolio',[PortfolioController::class,'index'])->name('portfolio');

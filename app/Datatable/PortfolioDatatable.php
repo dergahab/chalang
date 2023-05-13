@@ -14,6 +14,10 @@ class PortfolioDatatable  extends BaseDatatable
             'id' => 'ID',
             'title' => 'Basliq',
         ], [
+            'main' => [
+                'title' => 'Əasas səhifədə',
+                'view' => 'admin.pages.portfolio.in_main'
+            ],
             'actions' => [
                 'title' => 'Actions',
                 'view' => 'admin.pages.portfolio.table_actions'

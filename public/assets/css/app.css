@@ -653,7 +653,7 @@ input {
     width: 50px;
     height: 50px;
     line-height: 50px;
-    background: var(--color-primary);
+    background: var(--color-rose);
     color: #fff;
     text-align: center;
     text-decoration: none;
@@ -6483,7 +6483,7 @@ Pagination
 }
 
 .axil-header.header-style-3 .header-action .sidemenu-btn .btn-wrap {
-    background-color: var(--color-light);
+    background-color: var(--color-rose);
 }
 
 @media only screen and (max-width: 1299px) {
@@ -8638,7 +8638,7 @@ Pagination
     --dark-body-text: #D3D3D4;
     --dark-title-light: #D3D3D4;
     --dark-solid-btn: var(--color-ghost);
-    --dark-border-gray: var(--color-body);
+    --dark-border-gray: var(--color-rose);
 }
 
 .active-dark-mode body {

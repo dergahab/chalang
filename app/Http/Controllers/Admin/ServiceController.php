@@ -175,4 +175,11 @@ class ServiceController extends Controller
         Service::find($id)->delete();
         return response()->json(['code' => 200]);
     }
+
+
+    public function in_main(Request $request){
+        $item = Service::find($request->id);
+        $item->in_main = !$item->in_main;
+        $item->save();
+    }
 }

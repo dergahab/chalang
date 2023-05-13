@@ -166,4 +166,10 @@ class PortfolioController extends Controller
 
         return redirect()->route('admin.portfolio.index');
     }
+
+    public function in_main(Request $request){
+        $item = Portfolio::find($request->id);
+        $item->in_main = !$item->in_main;
+        $item->save();
+    }
 }

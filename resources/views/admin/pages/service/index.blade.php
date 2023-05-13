@@ -26,6 +26,7 @@
                             @if( !Request::get('parent'))
                                 <th scope="col">Alt xidmət</th>
                             @endif
+                            <th>Əsas Səhifədə</th>
                             <th scope="col">Əməliyyat</th>
                           </tr>
                         </thead>
@@ -38,6 +39,7 @@
                                 @if( !Request::get('parent'))
                                 <td><a class="btn btn-sm btn-info" href="?parent={{$item->id}}">Alt servis ({{$item->childs()->count()}})</a></td>
                                 @endif
+                                <td>@include('admin.pages.service.in_main')</td>
                                 <td>@include('admin.pages.service.table_actions')</td>
                               </tr>
                             
@@ -79,10 +81,16 @@
               }
           });
       });
-
-   
     </script>
-
-    
+    <script>
+        $(document).on('change','.in_main',function(){
+            let id = $(this).data('id');
+            
+            $.get("{{route('admin.service.in_main')}}", {id:id},
+                function (data) {
+                    
+                });
+        })
+    </script>
 @endpush
 

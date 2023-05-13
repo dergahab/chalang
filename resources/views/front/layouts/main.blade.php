@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/sal.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css?v='.time())}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/green-audio-player.min.css')}}">
 
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
 
 </head>
 
@@ -328,7 +330,11 @@
     <script src="{{asset('assets/js/vendor/tilt.js')}}"></script>
     <script src="{{asset('assets/js/vendor/green-audio-player.min.js')}}"></script>
     <script src="{{asset('assets/js/vendor/jquery.nav.js')}}"></script>
-
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    
+    <script src="{{asset('assets/js/custom.js?v='.time())}}"></script>
     <!-- Site Scripts -->
     <script src="{{asset('assets/js/app.js')}}"></script>
 </body>

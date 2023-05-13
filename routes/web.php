@@ -34,7 +34,7 @@ Route::get('blogs', function () {
 
 Route::get('about-us', function () {
     // return view('auth.login');
-    return view('front.blog');
+    return view('front.about');
 })->name('about-us');
 
 Route::get('cuntuct-us', function () {

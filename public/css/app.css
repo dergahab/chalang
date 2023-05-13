@@ -12515,4 +12515,8 @@ fieldset:disabled .btn {
     }
 }
 
+.blog-bg{
+    background-color: var( --bs-info-rgb);
+}
+
 /*# sourceMappingURL=app.css.map*/

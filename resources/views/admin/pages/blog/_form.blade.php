@@ -41,8 +41,9 @@
 </div>
 
 <div class="form-group">
-    <label for="file" class="form-label ">Şəkil <span class="text-danger">610x460</span></label>
+    <label for="file" class="form-label ">Şəkil <span class="text-danger">300x240</span></label>
     <input name="image" class="form-control filestyle file" type="file"
         data-buttonname="btn-secondary">
+        <img src="{{asset(Storage::url($item->image))}}" width="300px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
 </div>
 </div>

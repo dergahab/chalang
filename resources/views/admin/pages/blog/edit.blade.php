@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Kateqoriya</h4>
-                    <form class="" action="{{ route('admin.blog.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.blog.update', $item) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.blog._form')

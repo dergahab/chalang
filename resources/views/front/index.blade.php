@@ -202,72 +202,32 @@
             </ul>
         </section>
  
-        <section class="section section-padding-equal">
+        <section class="section section-padding-equal pt-0 related-blog-area">
             <div class="container">
-                <div class="section-heading">
-                    <span class="subtitle">What's Going On</span>
-                    <h2 class="title">Blogs</h2>
-                    <p>News From Abstrak And Around The World Of Web Design And Complete Solution of Online Digital Marketing </p>
+                <div class="section-heading heading-left">
+                    <h3 class="title">Related Post</h3>
                 </div>
-                <div class="row g-0">
-                    <div class="slick-slider recent-post-slide" data-slick='{"infinite": true, "autoplay": true, "arrows": false, "dots": false, "slidesToShow": 2,
-                    "responsive": [
-                        {
-                            "breakpoint": 1199,
-                            "settings": {
-                                "slidesToShow": 1
-                            }
-                        }
-                    ]
-                    }'>
-                                <div class="slick-slide">
-                                    <div class="blog-list">
-                                        <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="assets/media/blog/blog-1.png" alt="Blog Post"></a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="title"><a href="single-blog-2.html">How To Use a Remarketing Strategy To Get More</a></h5>
-                                            <p>Demand generation is a constant struggle for any business. Each marketing strategy you employ has...</p>
-                                            <a href="single-blog-2.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
-                                        </div>
-                                    </div>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($blogs as $blog)
+                        <div class="swiper-slide">
+                            <div class="blog-list blog-bg">
+                                <div class="post-thumbnail">
+                                    <a href="single-blog.html" tabindex="-1"><img src="{{asset(Storage::url($blog->image))}}" alt="{{$blog->title}}"></a>
                                 </div>
-                                <div class="slick-slide">
-                                    <div class="blog-list">
-                                        <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="assets/media/blog/blog-2.png" alt="Blog Post"></a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="title"><a href="single-blog-3.html">SEO Statistics You Should Know in 2021</a></h5>
-                                            <p>Organic search has the potential to capture more than 40 percent of your gross revenue...</p>
-                                            <a href="single-blog-3.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slick-slide">
-                                    <div class="blog-list">
-                                        <div class="post-thumbnail">
-                                            <a href="single-blog.html"><img src="assets/media/blog/blog-1.png" alt="Blog Post"></a>
-                                        </div>
-                                        <div class="post-content">
-                                            <h5 class="title"><a href="single-blog-2.html">How To Use a Remarketing Strategy To Get More</a></h5>
-                                            <p>Demand generation is a constant struggle for any business. Each marketing strategy you employ has...</p>
-                                            <a href="single-blog-2.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
-                                        </div>
-                                    </div>
+                                <div class="post-content">
+                                    <h5 class="title"><a href="single-blog-3.html" tabindex="-1">{{$blog->title}}</a></h5>
+                                    <p>{{ Illuminate\Support\Str::limit($blog->content, $limit = 100, $end = '...')}}</p>
+                                    <a href="single-blog-3.html" class="more-btn" tabindex="-1">Learn more<i class="far fa-angle-right"></i></a>
                                 </div>
                             </div>
-                </div>
+                          </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
             </div>
-            <ul class="shape-group-1 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/bubble-1.png" alt="bubble"></li>
-                <li class="shape shape-2"><img src="assets/media/others/line-1.png" alt="bubble"></li>
-                <li class="shape shape-3"><img src="assets/media/others/line-2.png" alt="bubble"></li>
-                <li class="shape shape-4"><img src="assets/media/others/bubble-2.png" alt="bubble"></li>
-            </ul>
-
         </section>
-      
         <section class="section call-to-action-area">
             <div class="container">
                 <div class="call-to-action">

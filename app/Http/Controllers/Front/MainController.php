@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Company;
 use App\Models\Pcategory;
 use App\Models\Portfolio;
@@ -21,7 +22,7 @@ class MainController extends Controller
         })->get();
 
         $companies = Company::all();
-
-        return view('front.index' ,compact('main_services', 'portfolio_categories', 'portfolios', 'companies'));
+        $blogs = Blog::all();
+        return view('front.index' ,compact('main_services', 'portfolio_categories', 'portfolios', 'companies','blogs'));
     }
 }

@@ -9558,6 +9558,7 @@ Pagination
 
 .active-dark-mode .onepage-screen-area.coming-soon-area .site-logo .logo-dark {
     display: block;
+    fill: #000000;
 }
 
 .active-dark-mode .splash-main-banner {

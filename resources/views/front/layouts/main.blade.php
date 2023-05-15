@@ -65,7 +65,7 @@
                     <div class="header-navbar">
                         <div class="header-logo">
                             <a href="{{route('/')}}"><img class="light-version-logo" src="{{asset('assets/media/logo.svg')}}" alt="logo"></a>
-                            <a href="{{route('/')}}"><img class="dark-version-logo" src="{{asset('assets/media/logo-3.svg')}}" alt="logo"></a>
+                            <a href="{{route('/')}}"><img class="dark-version-logo" style="width: 28% !important;" src="{{asset('assets/media/logo-3.svg')}}" alt="logo"></a>
                             <a href="{{route('/')}}"><img class="sticky-logo" src="{{asset('assets/media/logo-2.svg')}}" alt="logo"></a>
                         </div>
                         <div class="header-main-nav">

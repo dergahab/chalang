@@ -18,6 +18,21 @@
 //   }
 
 
+
+//Ckeditor
+window.editors = {};
+
+
+window.editors = {};
+
+document.querySelectorAll( '.editor' ).forEach( ( node, index ) => {
+    ClassicEditor
+        .create( node, {} )
+        .then( newEditor => {
+            window.editors[ index ] = newEditor 
+        } );
+} );
+
 var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 const axiosInstance = axios.create({
@@ -118,3 +133,4 @@ function dTReload(){
     window.dTable.ajax.reload();
 
 }
+

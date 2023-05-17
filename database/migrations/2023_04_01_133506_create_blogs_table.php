@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('image');
             $table->string('big_image');
+            $table->string('slug');
             $table->integer('viewed')->default(0);
             $table->timestamps();
         });

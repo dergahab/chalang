@@ -37,7 +37,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <p>{{$item->content}}</p>
+                        {!!$item->content!!}
                         {{-- <div class="blog-grid blog-without-thumb mt--80">
                             <blockquote>
                                 <h5 class="title"><a href="single-blog.html">“ Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. ”</a></h5>

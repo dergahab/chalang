@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="post-content">
                                     <h5 class="title"><a href="single-blog-3.html" tabindex="-1">{{$blog->title}}</a></h5>
-                                    <p>{{ Illuminate\Support\Str::limit($blog->content, $limit = 100, $end = '...')}}</p>
+                                    {!! Illuminate\Support\Str::limit($blog->content, $limit = 100, $end = '...')!!}</>
                                     <a href="single-blog-3.html" class="more-btn" tabindex="-1">Learn more<i class="far fa-angle-right"></i></a>
                                 </div>
                             </div>

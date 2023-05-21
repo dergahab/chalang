@@ -20,18 +20,11 @@
 
 
 //Ckeditor
-window.editors = {};
-
-
-window.editors = {};
-
-document.querySelectorAll( '.editor' ).forEach( ( node, index ) => {
-    ClassicEditor
-        .create( node, {} )
-        .then( newEditor => {
-            window.editors[ index ] = newEditor 
-        } );
-} );
+ClassicEditor
+.create(document.querySelector('.editor'))
+.catch(error => {
+    console.error(error);
+});
 
 var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 

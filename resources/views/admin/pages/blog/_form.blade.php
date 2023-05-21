@@ -25,7 +25,9 @@
                 </div>
                 <div class="form-group mt-3 ">
                     <label for="name">Məzmun ({{ $lang->lang }}) </label>
-                        <textarea class="form-control editor" name="content[{{ $lang->lang }}]"  id="" cols="30" rows="10"   @if($loop->first) required @endif >{{old("content",$item->translate($lang->lang)?->content)}}{{$item->translate($lang->lang)?->description}}</textarea>
+                        <textarea class="form-control editor" name="content[{{ $lang->lang }}]"  
+                            id="" cols="30" rows="10"  
+                           novalidate>{{old("content",$item->translate($lang->lang)?->content)}}</textarea>
                 </div>
             </div>
             @endforeach

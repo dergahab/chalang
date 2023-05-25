@@ -6,23 +6,23 @@ Author: Axilthemes
 Author URL: https://axilthemes.com/
 Version: 1.0.0
 
-===============================================   
+===============================================
 STYLESHEET INDEXING
 |
 |___ Default Styles
 |	|___ Variables
 |	|___ Reset Styels
 |	|___ Typography
-|	|___ Forms Styles 
-|	|___ Helper Classes 
+|	|___ Forms Styles
+|	|___ Helper Classes
 |
 |___ Elements Styles
 |	|___ Back To Top
 |	|___ Breadcrumb
 |	|___ Button
-|	|___ Pagination 
+|	|___ Pagination
 |	|___ Section Heading
-|	|___ Slick 
+|	|___ Slick
 |
 |___Template Styles
 |	|___ About Us
@@ -79,7 +79,7 @@ STYLESHEET INDEXING
     --color-fog: #DBDEFF;
     --color-pink-shade: #FFD3DB;
     --color-peach: #FFEDDC;
-    --color-rose: #C75C6F;
+    --color-rose: #4b0082;
     --color-chart1: #896BA7;
     --color-chart2: #BADEFF;
     --color-body: #d4d4da;
@@ -643,7 +643,7 @@ input {
 2. Elements Styles
 =========================================================================*/
 /*-------------------------
-    Back To Top  
+    Back To Top
 --------------------------*/
 .back-to-top {
     position: fixed;
@@ -1104,7 +1104,7 @@ input {
 }
 
 /* -----------------------
-Pagination 
+Pagination
 --------------------------*/
 .pagination {
     margin-top: 80px;
@@ -2330,7 +2330,7 @@ Pagination
 }
 
 /*-------------------------
-    Slick 
+    Slick
 -------------------------*/
 .slick-list {
     margin: 0 -15px;
@@ -6352,7 +6352,7 @@ Pagination
 }
 
 /*=======================================================================
-4.Blocks Styles 
+4.Blocks Styles
 =========================================================================*/
 /*-------------------------
    Header Styles
@@ -8626,7 +8626,7 @@ Pagination
 }
 
 /*=======================================================================
-5. Dark Style 
+5. Dark Style
 =========================================================================*/
 /*-------------------------
     Dark Style
@@ -9612,7 +9612,7 @@ Pagination
 }
 
 /*=======================================================================
-6. Spacing 
+6. Spacing
 =========================================================================*/
 /*-------------------------
     Section Space
@@ -9835,4 +9835,9 @@ Pagination
     .pb_sm--0 {
         padding-bottom: 0;
     }
+}
+
+
+.logo-img{
+    width: 170px ;
 }

@@ -45,6 +45,7 @@ Route::resource('service','ServiceController');
 Route::resource('social-media','SocialmediaController');
 Route::resource('sp-content','SpcontentController');
 
+Route::resource('contanct', ContactController::class);
 
 Route::get('service-in-main',[ServiceController::class,'in_main'])->name('service.in_main');
 Route::get('portfolio-in-main',[PortfolioController::class,'in_main'])->name('portfolio.in_main');

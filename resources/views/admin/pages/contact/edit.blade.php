@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Əlaqə məlumatları</h4>
-                    <form class="" action="{{ route('admin.portfolio.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.portfolio.update', 1) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        @include('admin.pages.portfolio._form')
+                        @include('admin.pages.contact._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
                                 <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Düzənlə</button>

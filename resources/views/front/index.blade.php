@@ -132,11 +132,11 @@
                     <span class="subtitle">Our Project</span>
                     <h2 class="title">Our Project</h2>
                 </div>
-                <div class="axil-isotope-wrapper">
+                {{-- <div class="axil-isotope-wrapper">
                     <div class="isotope-button isotope-project-btn">
-                        <button data-filter="*" class="is-checked"><span class="filter-text">All Works</span></button>               
+                        <button data-filter="*" class=""><span class="filter-text">All Works</span></button>               
                         @foreach ($portfolio_categories as $pcategory)
-                            <button data-filter=".{{$pcategory->name}}"><span class="filter-text">{{$pcategory->name}}</span></button>
+                            <button data-filter=".{{$pcategory->name}}" class=""><span class="filter-text">{{$pcategory->name}}</span></button>
                         @endforeach
                     </div>
                     <div class="row row-35 isotope-list">
@@ -165,6 +165,94 @@
                     </div>
                     <div class="more-project-btn portfolio-btn">
                         <a href="{{route('portfolio')}}" class="axil-btn btn-fill-white">Discover More Projects</a>
+                    </div>
+                </div> --}}
+
+                <div class="axil-isotope-wrapper">
+                    <div class="isotope-button isotope-project-btn">
+                        <button data-filter="*" class=""><span class="filter-text">All Works</span></button>
+                        <button data-filter=".branding" class=""><span class="filter-text">Branding</span></button>
+                        <button data-filter=".mobile" class="is-checked"><span class="filter-text">Mobile</span></button>
+                    </div>
+                    <div class="row row-35 isotope-list" style="position: relative; height: 1063.47px;">
+                        <div class="col-md-6 project branding" style="position: absolute; left: 0%; top: 0px; display: none;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-1.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Creative Agency</a></h4>
+                                    <span class="subtitle">Full Branding, Website, App</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 project mobile" style="position: absolute; left: 0%; top: 0px;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-2.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Digital Marketing</a></h4>
+                                    <span class="subtitle">Logo, Website &amp; Mobile App</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 project branding" style="position: absolute; left: 50%; top: 0px; display: none;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-3.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Digital Agency</a></h4>
+                                    <span class="subtitle">Website, UI/UX</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 project mobile" style="position: absolute; left: 50%; top: 0px;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-4.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Plan Management</a></h4>
+                                    <span class="subtitle">Branding, Website, IOS App</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 project branding" style="position: absolute; left: 0%; top: 652.391px; display: none;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-5.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Social Engagement</a></h4>
+                                    <span class="subtitle">Design, Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 project mobile" style="position: absolute; left: 0%; top: 531.734px;">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="assets/media/project/project-6.png" alt="project">
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h4 class="title"><a href="single-portfolio.html">Web Application</a></h4>
+                                    <span class="subtitle">Logo, Webapp, App</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

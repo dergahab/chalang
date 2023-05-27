@@ -255,13 +255,6 @@
                 </div>
             </div>
         </footer>
-
-
-
-
-        <!--=====================================-->
-        <!--=       Offcanvas Menu Area       	=-->
-        <!--=====================================-->
         <div class="offcanvas offcanvas-end header-offcanvasmenu" tabindex="-1" id="offcanvasMenuRight">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

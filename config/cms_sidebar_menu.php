@@ -32,6 +32,12 @@ return [
                 'icon'  => '<i class=" ri-auction-fill"></i>',
                 'can' => 'İzazə siyahı'
             ],
+            [
+                'title' => 'Əsas aşlıqlar',
+                'route' => 'admin.role.index',
+                'icon'  => '<i class=" ri-auction-fill"></i>',
+                'can' => 'İzazə siyahı'
+            ],
          
     ],
     ],
@@ -107,7 +113,7 @@ return [
             ],
             [
                 'title' => 'Əlaqə',
-                'route' => 'admin.blog.index',
+                'route' => 'admin.contanct.index',
                 'icon'  => '<i class=" ri-briefcase-line "></i>',
                 'can' => 'blog.index'
             ],

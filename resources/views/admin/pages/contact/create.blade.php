@@ -4,10 +4,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">Əlaqə məlumatları</h4>
-                    <form class="" action="{{ route('admin.portfolio.update', $item) }}" method="POST">
+                    <h4 class="mt-0 header-title">Portfolio</h4>
+                    <form class="" action="{{ route('admin.portfolio.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         @include('admin.pages.portfolio._form')
                         <div class="form-group mb-0 mt-3">
                             <div>

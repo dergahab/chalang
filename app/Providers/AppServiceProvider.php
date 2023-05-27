@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\CmsSidebar;
+use App\Models\Contact;
 use App\Models\Lang;
 use App\Models\Service;
 use App\Models\User;
@@ -38,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
         }
         if (Schema::hasTable('langs')) {
             view()->share('langs', Lang::all());
+        }
+        if (Schema::hasTable('contacts')) {
+            view()->share('contact', Contact::first());
         }
         
     }

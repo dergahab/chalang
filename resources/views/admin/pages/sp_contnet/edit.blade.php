@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Kateqoriya</h4>
-                    <form class="" action="{{ route('admin.portfolio.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.sp-content.update', $item) }}" method="POST">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.portfolio._form')

@@ -90,9 +90,9 @@ class User extends Authenticatable
     public function getImageAttribute($key)
     {
         $image = asset('images/default-profile.jpg');
-        if(isset($key)){
-           $image = asset( Storage::url($key));
-        }
+        // if(isset($key)){
+        //    $image = asset( Storage::url($key));
+        // }
         return  $image;
     }
 }

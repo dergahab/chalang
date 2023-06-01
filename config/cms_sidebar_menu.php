@@ -34,7 +34,7 @@ return [
             ],
             [
                 'title' => 'Əsas aşlıqlar',
-                'route' => 'admin.role.index',
+            'route' => 'admin.content-text.index',
                 'icon'  => '<i class=" ri-auction-fill"></i>',
                 'can' => 'İzazə siyahı'
             ],

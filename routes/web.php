@@ -36,7 +36,7 @@ Route::get('about-us', function () {
     return view('front.about');
 })->name('about-us');
 
-Route::get('cuntuct-us', function () {
+Route::get('contact', function () {
     // return view('auth.login');
     return view('front.contuct-us');
 })->name('cuntuct-us');

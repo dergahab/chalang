@@ -1,147 +1,75 @@
 @extends('front.layouts.main')
-@section('content')
- <!--=====================================-->
-        <!--=       Why Choose Area Start       =-->
-        <!--=====================================-->
-        <section class="section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="why-choose-us">
-                            <div class="section-heading heading-left">
-                                <span class="subtitle">About Us</span>
-                                <h3 class="title">Why branding matters?</h3>
-                                <p>Ut condimentum enim nec diam convallis mollis. Sed felis quam, semper dapibus purus sed, rhoncus ullamcorper lacus.</p>
-                            </div>
-                            <div class="accordion" id="choose-accordion">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <i class="far fa-compress"></i> Strategy
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#choose-accordion">
-                                        <div class="accordion-body">
-                                            Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                        </div>
-                                    </div>
+@section('content') 
+<div class="breadcrum-area breadcrumb-banner">
+    <div class="container">
+        <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
+            <h1 class="title h2">Our projects</h1>
+            <p>A quick view of industry specific problems solved with design by the awesome team at Abstrak.</p>
+        </div>
+        <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
+            <img class="paralax-image" src="assets/media/banner/banner-thumb-1.png" alt="Illustration">
+        </div>
+    </div>
+    <ul class="shape-group-8 list-unstyled">
+        <li class="shape shape-1" data-sal="slide-right" data-sal-duration="500" data-sal-delay="100">
+            <img src="assets/media/others/bubble-9.png" alt="Bubble">
+        </li>
+        <li class="shape shape-2" data-sal="slide-left" data-sal-duration="500" data-sal-delay="200">
+            <img src="assets/media/others/bubble-20.png" alt="Bubble">
+        </li>
+        <li class="shape shape-3" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300">
+            <img src="assets/media/others/line-4.png" alt="Line">
+        </li>
+    </ul>
+</div>     
+    <section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">    
+    <div class="container">
+                <div class="section-heading heading-left">
+                    <span class="subtitle">Our Project</span>
+                    <h2 class="title">Some of our finest <br> work.</h2>
+                </div>
+                <div class="axil-isotope-wrapper">
+                    <div class="isotope-button isotope-project-btn">
+                        <button data-filter="all" class="is-checked filter-button" class="filter-button"><span class="filter-text">All Works</span></button>
+                       
+                        @foreach ($portfolio_categories as $pcategory)
+                            <button data-filter="{{$pcategory->name}}" class="filter-button"><span class="filter-text">{{$pcategory->name}}</span></button>
+                        @endforeach
+                    </div>
+                    <div class="row isotope-list">
+                        @foreach ($portfolios as $portfolio)
+                        <div class="col-xl-3 col-lg-4 col-md-6 filter @foreach ($portfolio->pcategories as $subtitle) {{$subtitle->name}}   @endforeach">
+                            <div class="project-grid">
+                                <div class="thumbnail">
+                                    <a href="single-portfolio.html">
+                                        <img src="{{asset(Storage::url($portfolio->image))}}" alt="project">
+                                    </a>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="far fa-code"></i>Design
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#choose-accordion">
-                                        <div class="accordion-body">
-                                            Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            <i class="fal fa-globe"></i>Development
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#choose-accordion">
-                                        <div class="accordion-body">
-                                            Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                        </div>
-                                    </div>
+                                <div class="content">
+                                    <h5 class="title"><a href="single-portfolio.html">{{$portfolio->title}}</a></h5>
+                                    <span class="subtitle">
+                                        @foreach ($portfolio->pcategories as $subtitle)
+                                        {{$subtitle->name}} 
+                                         @if (! $loop->last)
+                                        ,
+                                    @endif
+                                    @endforeach
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="col-xl-5 col-lg-6 offset-xl-1">
-                        <div class="contact-form-box shadow-box mb--30">
-                            <h3 class="title">Get a free Keystroke quote now</h3>
-                            <form>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="John Smith">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" name="name" placeholder="example@mail.com">
-                                </div>
-                                <div class="form-group mb--40">
-                                    <label>Phone</label>
-                                    <input type="tel" class="form-control" name="Phone" placeholder="+123456789">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="axil-btn btn-fill-primary btn-fluid" name="submit-btn">Get Pricing Now</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="more-project-btn">
+                        <a href="#" class="axil-btn btn-fill-primary">Discover More Projects</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="section section-padding-equal bg-color-light pb--70">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="subtitle">What's Going On</span>
-                    <h2 class="title">benzer servisler</h2>
-                    <p>News From Abstrak And Around The World Of Web Design And Complete Solution of Online Digital Marketing </p>
-                </div>
-                <div class="row g-0">
-                    <div class="slick-slider recent-post-slide" data-slick='{"infinite": true, "autoplay": true, "arrows": false, "dots": false, "slidesToShow": 2,
-                    "responsive": [
-                        {
-                            "breakpoint": 1199,
-                            "settings": {
-                                "slidesToShow": 1
-                            }
-                        }
-                    ]
-                    }'>
-                                <div class="slick-slide">
-                                    <div class="services-grid active">
-                                        <div class="thumbnail">
-                                            <img src="assets/media/icon/icon-1.png" alt="icon">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"> <a href="service-design.html">Design</a></h5>
-                                            <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                            <a href="service-design.html" class="more-btn">Find out more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slick-slide">
-                                    <div class="services-grid active">
-                                        <div class="thumbnail">
-                                            <img src="assets/media/icon/icon-1.png" alt="icon">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"> <a href="service-design.html">Design</a></h5>
-                                            <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                            <a href="service-design.html" class="more-btn">Find out more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slick-slide">
-                                    <div class="services-grid active">
-                                        <div class="thumbnail">
-                                            <img src="assets/media/icon/icon-1.png" alt="icon">
-                                        </div>
-                                        <div class="content">
-                                            <h5 class="title"> <a href="service-design.html">Design</a></h5>
-                                            <p>Simply drag and drop photos and videos into your workspace to automatically add them to your Collab Cloud library.</p>
-                                            <a href="service-design.html" class="more-btn">Find out more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                </div>
-            </div>
-            <ul class="shape-group-1 list-unstyled">
-                <li class="shape shape-1"><img src="{{asset('assets/media/others/bubble-1.png')}}" alt="bubble"></li>
-                <li class="shape shape-2"><img src="{{asset('assets/media/others/line-1.png')}}" alt="bubble"></li>
-                <li class="shape shape-3"><img src="{{asset('assets/media/others/line-2.png')}}" alt="bubble"></li>
-                <li class="shape shape-4"><img src="assets/media/others/bubble-2.png" alt="bubble"></li>
+            <ul class="shape-group-7 list-unstyled">
+                <li class="shape shape-1"><img src="assets/media/others/circle-2.png" alt="circle"></li>
+                <li class="shape shape-2"><img src="assets/media/others/bubble-2.png" alt="Line"></li>
+                <li class="shape shape-3"><img src="assets/media/others/bubble-1.png" alt="Line"></li>
             </ul>
-
         </section>
         @include('front.inc.worck_togather')
 @endsection

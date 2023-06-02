@@ -157,7 +157,6 @@
     </div> --}}
 
 
-
     <!-- JAVASCRIPT -->
     <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
@@ -204,6 +203,9 @@
 
     <!--taks-kanban-->
     <script src="{{ asset('admin/assets/js/pages/tasks-kanban.init.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/chart.js/chart.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/pages/chartjs.init.js') }}"></script>
+
 
     <!-- list.js min js -->
     <script src="{{ asset('admin/assets/libs/list.js/list.min.js') }}"></script>
@@ -211,14 +213,18 @@
     <!--list pagination js-->
     <script src="{{ asset('admin/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
-    <!-- titcket init js -->
-    {{-- <script src="{{ asset('admin/assets/js/pages/tasks-list.init.js') }}"></script> --}}
+    <!-- form mask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
+    <!-- titcket init js -->
+    <script src="{{ asset('admin/assets/js/pages/tasks-list.init.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
     {{-- <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script> --}}
 
-    <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <script src="{{ asset('admin/js/custom.js?v='.time()) }}"></script>
     <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 
     {{-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -227,52 +233,23 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
-        $(document).ready(function() {
-            $(document).find("#preloader").show();
-
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            });
-
-            $(document).on('click', '.delete-button', function(event) {
-                let form = $('#' + event.target.dataset.deleteId);
-            swalWithBootstrapButtons.fire({
-                    title: 'Silinmə',
-                    text: "Sİlmək istədiyinizə əminsiniz ? bu məlumat geri qaytarılmaya bilər !",
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonText: 'Bəli silinsin!',
-                    cancelButtonText: 'Xeyr!',
-                    reverseButtons: true
-                }).then((result) => {
-                    if (result.value) {
-                        swalWithBootstrapButtons.fire(
-                            'Silindi!',
-                            'yenilənir...',
-                            'success'
-                        )
-
-                        form.submit();
-                    }
-                })
-            });
-        });
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script>
         $(".select2").select2();
     </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+      integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
+
 
     <script src="{{ asset('admin/assets/js/main.js?v=' . time()) }}"></script>
-    {{-- <script src="{{ asset('admin/assets/js/pages/select2.init.js') }}"></script> --}}
-    @stack('js_stack')
-</body>
+    // <script src="{{ asset('admin/assets/js/pages/select2.init.js') }}"></script>
+
+    @stack('js_stack')</body>
 
 </html>

@@ -14,25 +14,25 @@ display=swap);
 @font-face{
     font-family:hkgrotesk;
     src:url(../fonts/hkgrotesk-regular.eot);
-    src:local("hkgrotesk regular"),url(../fonts/hkgrotesk-regular.woff) format("woff");
+    src:local("hkgrotesk regular"),url(../fonts/remixicondf6d.woff) format("woff");
     font-weight:400
 }
 @font-face{
     font-family:hkgrotesk;
     src:url(../fonts/hkgrotesk-medium.eot);
-    src:local("hkgrotesk medium"),url(../fonts/hkgrotesk-medium.woff) format("woff");
+    src:local("hkgrotesk medium"),url(../fonts/remixicondf6d.woff) format("woff");
     font-weight:500
 }
 @font-face{
     font-family:hkgrotesk;
     src:url(../fonts/hkgrotesk-semibold.eot);
-    src:local("hkgrotesk semibold"),url(../fonts/hkgrotesk-semibold.woff) format("woff");
+    src:local("hkgrotesk semibold"),url(../fonts/remixicondf6d.woff) format("woff");
     font-weight:600
 }
 @font-face{
     font-family:hkgrotesk;
     src:url(../fonts/hkgrotesk-bold.eot);
-    src:local("hkgrotesk bold"),url(../fonts/hkgrotesk-bold.woff) format("woff");
+    src:local("hkgrotesk bold"),url(../fonts/remixicondf6d.woff) format("woff");
     font-weight:700
 }
 :root{

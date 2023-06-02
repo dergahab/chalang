@@ -6,6 +6,7 @@ use App\Helpers\CmsSidebar;
 use App\Models\Contact;
 use App\Models\Lang;
 use App\Models\Service;
+use App\Models\Socialmedia;
 use App\Models\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -42,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
         }
         if (Schema::hasTable('contacts')) {
             view()->share('contact', Contact::first());
+        }
+        if (Schema::hasTable('socialmedia')) {
+            view()->share('socialmedia', Socialmedia::all());
         }
         
     }

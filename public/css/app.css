@@ -4615,7 +4615,7 @@ Pagination
     font-weight: 500;
     color: var(--color-body);
     font-family: var(--font-primary);
-    margin-right: 100px;
+    margin-right: 30px !important;
     padding: 8px 0;
     position: relative;
 }

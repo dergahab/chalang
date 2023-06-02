@@ -10,19 +10,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/media/favicon.png')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/bootstrap.min.css?v=').time()}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/font-awesome.css?v=').time()}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/vendor/sal.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/custom.css?v='.time())}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendor/green-audio-player.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/custom.css?v=').time()}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/magnific-popup.css?v=').time()}}">
+    <link rel="stylesheet" href="{{asset('assets/css/vendor/green-audio-player.min.css?v=').time()}}">
 
     <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="{{asset('assets/css/app.css?v='.time())}}">
+    <link rel="stylesheet" href="{{asset('assets/css/app.css?v=').time()}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -163,14 +165,11 @@
                 <div class="footer-top">
                     <div class="footer-social-link">
                         <ul class="list-unstyled">
-                            <li><a href="../../../index.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="../../../index-1.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="200"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="../../../index-2.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="300"><i class="fab fa-pinterest-p"></i></a></li>
-                            <li><a href="../../../index-3.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="400"><i class="fab fa-linkedin-in"></i></a></li>
-                            <li><a href="../../../index-4.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="500"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="../../../index-5.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="600"><i class="fab fa-vimeo-v"></i></a></li>
-                            <li><a href="../../../index-6.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="700"><i class="fab fa-dribbble"></i></a></li>
-                            <li><a href="../../../index-7.htm" data-sal="slide-up" data-sal-duration="500" data-sal-delay="800"><i class="fab fa-behance"></i></a></li>
+                            @foreach ($socialmedia as $media)
+                                <li><a href="{{$media->link}}" target="_blnck" data-sal="slide-up" data-sal-duration="500" data-sal-delay="100">
+                                    <i class="{{$media->icon}}"></i></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -310,28 +309,30 @@
     </div>
 
     <!-- Jquery Js -->
-    <script src="{{asset('assets/js/vendor/isotope.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/imagesloaded.pkgd.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/waypoints.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/counterup.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/slick.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/sal.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/js.cookie.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery.style.switcher.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery.countdown.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/tilt.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/green-audio-player.min.js')}}"></script>
-    <script src="{{asset('assets/js/vendor/jquery.nav.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js"></script>
+
+    <script src="{{asset('assets/js/vendor/isotope.pkgd.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/imagesloaded.pkgd.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/bootstrap.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery-3.6.0.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/waypoints.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/counterup.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/slick.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/sal.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.magnific-popup.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/js.cookie.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.style.switcher.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.countdown.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/tilt.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/green-audio-player.min.js?v=').time()}}"></script>
+    <script src="{{asset('assets/js/vendor/jquery.nav.js?v=').time()}}"></script>
     
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     
-    <script src="{{asset('assets/js/custom.js?v='.time())}}"></script>
+    <script src="{{asset('assets/js/custom.js?v=').time()}}"></script>
     <!-- Site Scripts -->
-    <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{asset('assets/js/app.js?v=').time()}}"></script>
 </body>
 
 </html>

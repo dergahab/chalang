@@ -14,6 +14,7 @@ class MainController extends Controller
 {
     public function index(){
         $main_services  = Service::where('in_main',1)->where('parent_id',0)->get();
+       
         $portfolios = Portfolio::where('in_main',1)->with('pcategories')->get();
 
         $pcategory = $portfolios->pluck('id')->toArray();

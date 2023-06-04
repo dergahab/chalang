@@ -19,4 +19,10 @@ class PortfolioController extends Controller
     })->get();
     return view('front.portfolio.portfolio', compact('portfolio_categories', 'portfolios'));
     }
+
+
+    public function details($slug)
+    {
+        return view('front.portfolio.single');
+    }
 }

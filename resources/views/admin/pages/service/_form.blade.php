@@ -34,6 +34,10 @@
                     @if($loop->first) required @endif >
             </div>
             <div class="form-group">
+                <label for="content-{{$lang->lang}}">Məzmun (Kicik)</label>
+                <textarea name="description[{{$lang->lang}}]" id="" cols="5" class="form-control" rows="4">{{old('description',$item->translate($lang->lang)?->description)}}</textarea>
+            </div>
+            <div class="form-group">
                 <label for="content-{{$lang->lang}}">Məzmun</label>
                 <textarea name="content[{{$lang->lang}}]" id="" cols="5" class="form-control" rows="4">{{old('content',$item->translate($lang->lang)?->content)}}</textarea>
             </div>
@@ -52,11 +56,12 @@
 </div>
 
 <div class="col-md-6 mt-2">
-<div class="form-group">
-    <label for="file" class="form-label ">Şəkil <span class="text-danger">610x460</span></label>
-    <input name="image" class="form-control filestyle file" type="file"
+    <div class="form-group">
+        <label for="file" class="form-label ">Şəkil <span class="text-danger">610x460</span></label>
+        <input name="image" class="form-control filestyle file" type="file"
         data-buttonname="btn-secondary">
-</div>
+    </div>
+    <img src="{{asset(Storage::url($item->image))}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
 </div>
 
 </div>

@@ -20,7 +20,7 @@ class PsService{
         
     }
     public static function save(Request $request){
-        // return $request->all(); 
+        return $request->all(); 
         $langs = Lang::all();
         $data = [];
    

@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
        User::create([
         'name' => "Dergah",
-        'email' => 'admin@chanalg.com',
+        'email' => 'admin@chalang.com',
         'email_verified_at' => now(),
         'type' => 'admin',
         'password' => '$2y$10$Kxz7EBy7kTkDSQhdzK6ZKuq1xJfJ2Gt3f1ItOmWUpVum0LCh4wBMK', // 123123

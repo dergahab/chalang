@@ -43,7 +43,7 @@ class SpcontentController extends Controller
      */
     public function store(Request $request)
     {
-         ( PsService::save($request));
+      return   ( PsService::save($request));
         return redirect()->route('admin.sp-content.index');
     }
 

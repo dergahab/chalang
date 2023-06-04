@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Servis</h4>
-                    <form class="" action="{{ route('admin.service.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.service.update', $item) }}" method="POST"  enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.service._form')

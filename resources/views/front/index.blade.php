@@ -58,7 +58,7 @@
                             </div>
                             <div class="content">
                                 <h5 class="title"> <a href="service-design.html">{{$service->name}}</a></h5>
-                                <p>{{$service->content}}</p>
+                                <p>{{$service->description}}</p>
                                 <a href="service-design.html" class="more-btn">Find out more</a>
                             </div>
                         </div>
@@ -145,12 +145,12 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 filter @foreach ($portfolio->pcategories as $subtitle) {{$subtitle->name}}   @endforeach">
                             <div class="project-grid">
                                 <div class="thumbnail">
-                                    <a href="single-portfolio.html">
+                                    <a href="{{route('portfolio.single',$portfolio->slug)}}">
                                         <img src="{{asset(Storage::url($portfolio->image))}}" alt="project">
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <h5 class="title"><a href="single-portfolio.html">{{$portfolio->title}}</a></h5>
+                                    <h5 class="title"><a href="{{route('portfolio.single',$portfolio->slug)}}">{{$portfolio->title}}</a></h5>
                                     <span class="subtitle">
                                         @foreach ($portfolio->pcategories as $subtitle)
                                         {{$subtitle->name}} 

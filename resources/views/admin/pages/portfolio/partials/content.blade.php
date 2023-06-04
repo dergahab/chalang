@@ -24,7 +24,7 @@
     <div class="col-md-12">
         <div class="form-group ">
             <label for="name">Icon </label>
-            <input type="file" name="subimage" id="company" class="form-control" >
+            <input type="file" name="subimage[]" id="company" class="form-control" >
         </div>
     </div>
     <div class="col-12 mt-2">

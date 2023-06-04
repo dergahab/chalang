@@ -19,6 +19,7 @@ $(document).ready(function() {
     } else {
       $('.filter:not(.' + value + ')').hide('3000');
       $('.filter.' + value).show('3000');
+      
     }
 
    // Add/remove active class

@@ -40,3 +40,13 @@
   .swiper-slide:nth-child(3n) {
     width: 40%;
   }
+
+
+.isal-animate {
+    perspective: 1000px;
+}
+
+.sal-animate:hover img {
+    will-change: transform;
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}

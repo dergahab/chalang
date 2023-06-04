@@ -44,6 +44,5 @@ Route::get('contact', function () {
 Route::get('services',[ServiceController::class,'index'])->name('services');
 Route::get('service-deatail/{service:slug}',[ServiceController::class,'details'])->name('service.single');
 
-
-
 Route::get('portfolio',[PortfolioController::class,'index'])->name('portfolio');
+Route::get('portfolio-deatail/{portfolio:slug}',[PortfolioController::class,'details'])->name('portfolio.single');

@@ -71,6 +71,12 @@ return [
                 'icon'  => '<i class=" ri-briefcase-line "></i>',
                 'can' => 'customer_type.index'
             ],
+            [
+                'title' => 'Portfolio ',
+                'route' => 'admin.portfolio.index',
+                'icon'  => '<i class=" ri-briefcase-line "></i>',
+                'can' => 'customer_type.index'
+            ],
          
          ],
     ],

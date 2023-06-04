@@ -70,6 +70,7 @@ class ServiceController extends Controller
                     ServiceTranslation::insert([
                         'name'    => $request->post('name')[$lang->lang],
                         'content' => $request->post('content')[$lang->lang],
+                        'description' => $request->post('description')[$lang->lang],
                         'locale' => $lang->lang,
                         'service_id' => $service->id,
                     ]);
@@ -148,6 +149,7 @@ class ServiceController extends Controller
                     }
                     $translation->name = $request->post('name')[$lang->lang] ?? $translation->name;
                     $translation->content = $request->post('content')[$lang->lang] ?? $translation->content;
+                    $translation->description = $request->post('description')[$lang->lang] ?? $translation->description;
                     $translation->slug = Str::slug($request->post('name')[$lang->lang]) ?? $translation->slug;
                     $translation->save();
                 }

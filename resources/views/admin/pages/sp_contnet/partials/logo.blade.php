@@ -1,1 +1,0 @@
-<img src="{{$item->image}}" alt="" class="rounded avatar-lg">

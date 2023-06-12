@@ -82,11 +82,11 @@ STYLESHEET INDEXING
     --color-rose: #C75C6F;
     --color-chart1: #896BA7;
     --color-chart2: #BADEFF;
-    --color-body: #525260;
-    --color-gray-1: #757589;
+    --color-body: #00000f;
+    --color-gray-1: #04048a;
     --color-gray-2: #999FAE;
-    --color-gray-3: #999AB8;
-    --color-gray-4: #99A1AA;
+    --color-gray-3: #080a41;
+    --color-gray-4: #08458a;
     --color-ship-gray: #42424A;
     --color-ghost: #C7C7D5;
     --color-mercury: #E5E5E5;
@@ -6391,7 +6391,7 @@ Pagination
 
 @media only screen and (max-width: 991px) {
     .axil-header .header-navbar .header-logo img {
-        width: 150px;
+        width: 50%;
     }
 }
 

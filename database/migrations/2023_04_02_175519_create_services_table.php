@@ -20,7 +20,6 @@ class CreateServicesTable extends Migration
             $table->integer('in_main')->default(0);
             $table->string('icon');
             $table->string('image')->nullable();
-            $table->string('slug')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

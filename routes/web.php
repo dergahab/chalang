@@ -19,14 +19,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 Auth::routes(['register' => false]);
-Route::get('/', function () {
-    // return view('auth.login');
-    return view('coming-soon');
-});
 
-Route::get('index',[FrontMainController::class, 'index'])->name('/');
+if (env('APP_ENV') == 'local'){
+    Route::get('/',[FrontMainController::class, 'index'])->name('/');
+}else{
+    Route::get('/', function () {
+        // return view('auth.login');
+        return view('coming-soon');
+    });
+    
+    Route::get('index',[FrontMainController::class, 'index'])->name('/');
+}
+
 
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('blog/{blog:slug}', [BlogController::class, 'single'])->name('blog.single');

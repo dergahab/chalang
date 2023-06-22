@@ -147,48 +147,48 @@
             });
         },
 
-        axilMasonary: function () {
-            $('.axil-isotope-wrapper').imagesLoaded(function () {
-                // filter items on button click
-                $('.isotope-button').on('click', 'button', function () {
-                    var filterValue = $(this).attr('data-filter');
-                    $grid.isotope({
-                        filter: filterValue
-                    });
-                });
+        // axilMasonary: function () {
+        //     $('.axil-isotope-wrapper').imagesLoaded(function () {
+        //         // filter items on button click
+        //         $('.isotope-button').on('click', 'button', function () {
+        //             var filterValue = $(this).attr('data-filter');
+        //             $grid.isotope({
+        //                 filter: filterValue
+        //             });
+        //         });
                 
-                // init Isotope
-                var $grid = $('.isotope-list').isotope({
-                    itemSelector: '.project',
-                    percentPosition: true,
-                    transitionDuration: '0.7s',
-                    layoutMode: 'fitRows',
-                    masonry: {
-                        // use outer width of grid-sizer for columnWidth
-                        columnWidth: 1,
-                    }
-                });
-            });
+        //         // init Isotope
+        //         var $grid = $('.isotope-list').isotope({
+        //             itemSelector: '.project',
+        //             percentPosition: true,
+        //             transitionDuration: '0.7s',
+        //             layoutMode: 'fitRows',
+        //             masonry: {
+        //                 // use outer width of grid-sizer for columnWidth
+        //                 columnWidth: 1,
+        //             }
+        //         });
+        //     });
         
-            $('.isotope-button button').on('click', function (event) {
-                $(this).siblings('.is-checked').removeClass('is-checked');
-                $(this).addClass('is-checked');
-                event.preventDefault();
-            });
+        //     $('.isotope-button button').on('click', function (event) {
+        //         $(this).siblings('.is-checked').removeClass('is-checked');
+        //         $(this).addClass('is-checked');
+        //         event.preventDefault();
+        //     });
 
-            // Masonry
-            var galleryIsoContainer = $('#no-equal-gallery');
-            if (galleryIsoContainer.length) {
-                var blogGallerIso = galleryIsoContainer.imagesLoaded(function () {
-                    blogGallerIso.isotope({
-                        itemSelector: '.no-equal-item',
-                        masonry: {
-                            columnWidth: '.no-equal-item'
-                        }
-                    });
-                });
-            }
-        },
+        //     // Masonry
+        //     var galleryIsoContainer = $('#no-equal-gallery');
+        //     if (galleryIsoContainer.length) {
+        //         var blogGallerIso = galleryIsoContainer.imagesLoaded(function () {
+        //             blogGallerIso.isotope({
+        //                 itemSelector: '.no-equal-item',
+        //                 masonry: {
+        //                     columnWidth: '.no-equal-item'
+        //                 }
+        //             });
+        //         });
+        //     }
+        // },
 
         counterUp: function () {
 			var _counter = $('.count');

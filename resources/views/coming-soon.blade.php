@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li title="Dark Mode">
-                <a href="javascript:void(0)" class="setColor dark" data-theme="dark">
+                <a href="javascript:void(0)" class="setColor dark"  data-theme="dark">
                     <i class="fas fa-moon"></i>
                 </a>
             </li>
@@ -57,8 +57,8 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12">
                         <div class="site-logo">
-                            <a href="/" class="logo-light"><img src="{{asset('assets/media/logo-2.svg')}}" alt="Logo"></a>
-                            <a href="/" class="logo-dark"><img src="{{asset('assets/media/logo-3.svg')}}" alt="Logo"></a>
+                            <a href="/" class="logo-light"><img src="{{asset('assets/media/logo-2.svg')}}" style="width: 50%" alt="Logo"></a>
+                            <a href="/" class="logo-dark"><img src="{{asset('assets/media/logo-2.svg')}}" style="width: 50%" alt="Logo"></a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-8">

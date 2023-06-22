@@ -1,0 +1,1 @@
+<a class="btn btn-warning" href="{{route('admin.category.index',['parent' => $item->id ])}}">Alt category ({{ $item->child_count}}) </a>

@@ -230,7 +230,7 @@ body {
     font-family: var(--font-secondary);
     font-size: var(--font-body-2);
     line-height: var(--line-height-b1);
-    color: var(--color-body);
+    color: var(00000f);
     font-weight: 400;
     height: 100%;
     vertical-align: baseline;
@@ -2269,7 +2269,7 @@ Pagination
 }
 
 .my_switcher {
-    position: fixed;
+    position: absolute !important;
     top: 200px;
     left: 0;
     background-color: var(--color-primary);
@@ -2826,7 +2826,7 @@ Pagination
     flex: 1;
     height: 1px;
     width: 100%;
-    background-color: var(--color-body);
+    background-color: var(00000f);
     margin-right: 30px;
 }
 
@@ -2859,7 +2859,7 @@ Pagination
 }
 
 .banner .banner-social .social-icon li a {
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .banner .banner-social .social-icon li a i {
@@ -3908,7 +3908,7 @@ Pagination
 }
 
 .counterup-progress.counterup-style-2 .title {
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .counterup-progress.counterup-style-2:hover, .counterup-progress.counterup-style-2.active {
@@ -4206,7 +4206,7 @@ Pagination
 }
 
 .pricing-billing-duration ul .nav-link {
-    color: var(--color-body);
+    color: var(00000f);
     font-weight: 500;
     background-color: transparent;
     border: none;
@@ -4613,7 +4613,7 @@ Pagination
     background-color: transparent;
     font-size: 20px;
     font-weight: 500;
-    color: var(--color-body);
+    color: var(00000f);
     font-family: var(--font-primary);
     margin-right: 30px !important;
     padding: 8px 0;
@@ -4791,7 +4791,7 @@ Pagination
 }
 
 .services-grid.service-style-2 .content p {
-    color: var(--color-body);
+    color: var(00000f);
     opacity: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4801,7 +4801,7 @@ Pagination
 }
 
 .services-grid.service-style-2 .content .more-btn {
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .services-grid.service-style-2:hover, .services-grid.service-style-2.active {
@@ -5281,7 +5281,7 @@ Pagination
 }
 
 .why-choose-us .accordion-item .accordion-button.collapsed {
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .why-choose-us .accordion-item .accordion-body {
@@ -6129,7 +6129,7 @@ Pagination
 }
 
 .support-box p {
-    color: var(--color-body);
+    color: var(00000f);
     margin-bottom: 16px;
     -webkit-transition: var(--transition);
     transition: var(--transition);
@@ -6306,7 +6306,7 @@ Pagination
     text-align: center;
     background-color: var(--color-light);
     border-radius: 50%;
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .splash-footer .footer-social li a:hover {
@@ -6348,7 +6348,7 @@ Pagination
 
 .splash-footer .footer-bottom-link ul li a {
     font-size: 16px;
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 /*=======================================================================
@@ -6602,7 +6602,7 @@ Pagination
 }
 
 .axil-mainmenu.axil-sticky .header-action .sidemenu-btn .btn-wrap {
-    background-color: var(--color-body);
+    background-color: var(00000f);
 }
 
 .axil-mainmenu.axil-sticky .header-action .sidemenu-btn .btn-wrap span {
@@ -6649,7 +6649,7 @@ Pagination
 }
 
 .mainmenu > li > a {
-    color: var(--color-body);
+    color: var(00000f);
     font-weight: 500;
     font-size: var(--font-body-2);
     font-family: var(--font-primary);
@@ -6744,7 +6744,7 @@ Pagination
     position: relative;
     font-size: 14px;
     text-transform: capitalize;
-    color: var(--color-body);
+    color: var(00000f);
     font-weight: 500;
     padding: 7px 15px;
     border-radius: 4px;
@@ -6949,7 +6949,7 @@ Pagination
 }
 
 .header-action .sidemenu-btn .btn-wrap.btn-dark {
-    background-color: var(--color-body);
+    background-color: var(00000f);
 }
 
 .header-action .sidemenu-btn .btn-wrap.btn-dark span {
@@ -6983,7 +6983,7 @@ Pagination
 
 .header-action .social-icon-list li a {
     font-size: 20px;
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 @media only screen and (max-width: 991px) {
@@ -7278,7 +7278,7 @@ Pagination
 }
 
 .header-offcanvasmenu .offcanvas-body .contact-inner .address a {
-    color: var(--color-body);
+    color: var(00000f);
     display: block;
     margin-bottom: 10px;
 }
@@ -7993,7 +7993,7 @@ Pagination
 
 .blog-author .author .social-share li a {
     font-size: var(--font-body-1);
-    color: var(--color-body);
+    color: var(00000f);
     padding: 0 10px;
 }
 
@@ -8237,7 +8237,7 @@ Pagination
     padding: 0;
     background-color: transparent;
     font-weight: 500;
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .widget.widget-search .blog-search .search-button:before {
@@ -8260,7 +8260,7 @@ Pagination
 .widget.widget-categories .category-list a {
     display: block;
     font-size: var(--font-body-1);
-    color: var(--color-body);
+    color: var(00000f);
     border-bottom: var(--border-lighter);
     padding: 18px 0;
     position: relative;
@@ -8506,7 +8506,7 @@ Pagination
 }
 
 .footer-menu-link li a {
-    color: var(--color-body);
+    color: var(00000f);
     padding: 8px 0;
     font-size: 18px;
     line-height: 1.5;
@@ -8598,7 +8598,7 @@ Pagination
 }
 
 .footer-dark .footer-bottom {
-    border-top-color: var(--color-body);
+    border-top-color: var(00000f);
 }
 
 .footer-dark .footer-copyright .copyright-text {
@@ -8638,7 +8638,7 @@ Pagination
     --dark-body-text: #D3D3D4;
     --dark-title-light: #D3D3D4;
     --dark-solid-btn: var(--color-ghost);
-    --dark-border-gray: var(--color-body);
+    --dark-border-gray: var(00000f);
 }
 
 .active-dark-mode body {
@@ -9024,7 +9024,7 @@ Pagination
 }
 
 .active-dark-mode .header-action .sidemenu-btn .btn-wrap {
-    background-color: var(--color-body);
+    background-color: var(00000f);
 }
 
 .active-dark-mode .header-action .sidemenu-btn .btn-wrap span {
@@ -9156,7 +9156,7 @@ Pagination
 }
 
 .active-dark-mode .project-grid.project-style-2 .content .subtitle {
-    color: var(--color-body);
+    color: var(00000f);
 }
 
 .active-dark-mode .project-grid.project-style-2 .content .title {

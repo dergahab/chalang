@@ -21,16 +21,16 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes(['register' => false]);
 
-if (env('APP_ENV') == 'local'){
-    Route::get('/',[FrontMainController::class, 'index'])->name('/');
-}else{
+// if (env('APP_ENV') == 'local'){
+//     Route::get('/',[FrontMainController::class, 'index'])->name('/');
+// }else{
     Route::get('/', function () {
         // return view('auth.login');
         return view('coming-soon');
     });
     
     Route::get('index',[FrontMainController::class, 'index'])->name('/');
-}
+// }
 
 
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs');

@@ -77,8 +77,8 @@
                                     <div class="mobile-nav-header">
                                         <div class="mobile-nav-logo">
                                             <a href="index-1.html">
-                                                <img class="light-mode" src="{{asset('assets/media/logo-2.svg')}}" alt="Site Logo">
-                                                <img class="dark-mode" src="{{asset('assets/media/logo-3.svg')}}" alt="Site Logo">
+                                                <img class="light-mode" width="50%" src="{{asset('assets/media/logo-2.svg')}}" alt="Site Logo">
+                                                <img class="dark-mode" width="50%" src="{{asset('assets/media/logo-3.svg')}}" alt="Site Logo">
                                             </a>
                                         </div>
                                         <button class="mobile-menu-close" data-bs-dismiss="offcanvas"><i class="fas fa-times"></i></button>

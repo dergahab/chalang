@@ -5,7 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContenttextTranslatrion extends Model
+class ContenttextTranslation extends Model
 {
     use HasFactory;
+
+    public $fillable = ['title', 'content','locale','contenttext_id'];
+
 }

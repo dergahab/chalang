@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contenttext;
+use App\Services\ContentTextService;
 use Illuminate\Http\Request;
 
 class ContenttextCortoller extends Controller
 {
+    protected $contenttextserive;
+
+    public function __construct()
+    {
+        $this->contenttextserive = new ContentTextService();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,17 +22,18 @@ class ContenttextCortoller extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.content_text.index');
     }
 
-    /**
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $item = new ContentText();
+        return view('admin.pages.content_text.create',compact('item'));
     }
 
     /**
@@ -35,7 +44,13 @@ class ContenttextCortoller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $response = $this->contenttextserive->translate($request);
+        if($response != 'success'){
+            return redirect()->back()->with('error', 'Translation failed');
+        }else{
+            return redirect()->back();
+        }
+
     }
 
     /**
@@ -46,7 +61,8 @@ class ContenttextCortoller extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Contenttext::find($id);
+        return view('admin.pages.content_text.edit', compact('item'));
     }
 
     /**
@@ -55,9 +71,12 @@ class ContenttextCortoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contenttext $contentText)
     {
-        //
+         $item = $contentText;
+    //    $item = ContentText::find($id);
+       
+       return view('admin.pages.content_text.edit',compact('item'));
     }
 
     /**
@@ -69,8 +88,14 @@ class ContenttextCortoller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $response = $this->contenttextserive->update($request, $id);
+        if($response != 'success'){
+            return redirect()->back()->with('error', 'Translation failed');
+        }else{
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

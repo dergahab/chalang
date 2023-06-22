@@ -28,7 +28,7 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   	<![endif]-->
     <a href="#main-wrapper" id="backto-top" class="back-to-top">
-        <i class="far fa-angle-double-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </a>
 
     <!-- Preloader Start Here -->

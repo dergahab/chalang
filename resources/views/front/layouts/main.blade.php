@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/vendor/green-audio-player.min.css?v=').time()}}">
 
     <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="{{asset('assets/css/app.css?v=').time()}}">
+    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -33,7 +33,7 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   	<![endif]-->
     <a href="#main-wrapper" id="backto-top" class="back-to-top">
-        <i class="far fa-angle-double-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </a>
 
     <!-- Preloader Start Here -->

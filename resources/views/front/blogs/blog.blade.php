@@ -45,7 +45,7 @@
                         <div class="post-thumbnail">
                             <a href="{{route('blog.single',$blog->slug)}}"><img src="{{asset(Storage::url($blog->big_image))}}" alt="Blog"></a>
                         </div>
-                        <p>Want to know the one thing that every successful digital marketer does first to ensure they get the biggest return on their marketing budget? It’s simple: goal-setting. This is an absolutely essential practice for any digital marketer who knows how to execute their campaigns</p>
+                        <p>{{ Illuminate\Support\Str::limit($blog->content, 200) }}</p>
                         <a href="{{route('blog.single',$blog->slug)}}" class="axil-btn btn-borderd btn-large">Read More</a>
                     </div>
                        @endforeach                    

@@ -47,6 +47,7 @@ Route::resource('social-media','SocialmediaController');
 Route::resource('sp-content','SpcontentController');
 
 Route::resource('contanct', ContactController::class);
+Route::resource('tag', TagController::class);
 Route::resource('content-text', ContenttextCortoller::class);
 
 Route::get('service-in-main',[ServiceController::class,'in_main'])->name('service.in_main');

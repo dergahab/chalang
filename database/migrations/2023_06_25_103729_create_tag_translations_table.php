@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContenttextTranslationsTable extends Migration
+class CreateTagTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateContenttextTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contenttext_translations', function (Blueprint $table) {
+        Schema::create('tag_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contenttext_id')->constrained();
-            $table->string('title');
-            $table->text('content');
+            $table->foreignId('tag_id')->constrained();
             $table->string('locale');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateContenttextTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contenttext_translations');
+        Schema::dropIfExists('tag_translations');
     }
 }

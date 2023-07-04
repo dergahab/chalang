@@ -18,6 +18,7 @@ class CreatePortfoliosTable extends Migration
             $table->boolean('is_published')->default(1);
             $table->boolean('in_main')->default(0);
             $table->integer('posotion')->default(0);
+            $table->foreignId('company_id')->constrained();
             $table->string('image');
             $table->string('slug');
             $table->timestamps();

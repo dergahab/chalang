@@ -53,6 +53,12 @@ return [
         'route' => 'admin.company.index',
         'can'   => 'company.index'
     ],
+    [
+        'icon'  => '<i class="ri-building-2-fill"></i>',
+        'title' => 'Tags',
+        'route' => 'admin.tag.index',
+        'can'   => 'company.index'
+    ],
 
     [
         'icon' => '<i class="ri-briefcase-line"></i>',

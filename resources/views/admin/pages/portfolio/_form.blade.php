@@ -39,6 +39,14 @@
     @endforeach
    </select>
 </div>
+<div class="form-group mt-3 ">
+    <label for="name">Kategoriya  </label>
+   <select name="company_id" id="" class="form-control select2" >
+    @foreach ($companies as $company)
+        <option @if($company->id = $company->id) selected @endif value="{{$company->id}}">{{$company->name}}</option>
+    @endforeach
+   </select>
+</div>
 
 <div class="form-group">
     <label for="file" class="form-label ">Şəkil <span class="text-danger">610x460</span></label>

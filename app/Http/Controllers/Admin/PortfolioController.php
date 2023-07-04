@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Lang;
 use App\Models\Pcategory;
 use App\Models\Portfolio;
+use App\Models\Company;
 use App\Models\PortfolioTranslation;
 use App\Traits\FileUploader;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +20,7 @@ class PortfolioController extends Controller
     protected $langs;
     public function __construct(){
         view()->share('categories', Pcategory::all());
+        view()->share('companies', Company::all() );
         $this->langs = Lang::all();
     }
     /**
@@ -57,6 +60,7 @@ class PortfolioController extends Controller
             $data['image'] = $image ;
         }
         $data['slug'] = Str::slug($request->post('name')['az']); 
+        $data['company_id'] = $request->post('company_id');
 
         DB::beginTransaction();
         try {
@@ -77,10 +81,11 @@ class PortfolioController extends Controller
             DB::commit();
         } catch (\Exception $e) {
            DB::rollback();
+        //    throw  $e;
            return response()->json([
                 'code' => 401,
-                'error' => $e->getMessage()
-            ]);
+                'error' =>  $e->getMessage()    
+             ]);
         }
 
         return redirect()->route('admin.portfolio.index');

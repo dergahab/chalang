@@ -19,7 +19,7 @@ Class PortfolioSerice  implements  BaseService{
         if($data['image']){
             $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
             $data['image']->storeAs('uploads', $filename);
-            Storage::disk('public')->putFileAs('images', $data['image'], $filename);
+            Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
             $model->image = 'portfolio/' . $filename;
         }
 

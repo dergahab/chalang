@@ -4,7 +4,7 @@
 // use App\Http\Controllers\Admin\ContenttextCortoller;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
-use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\DatatableController;
@@ -49,6 +49,12 @@ Route::resource('sp-content','SpcontentController');
 Route::resource('contanct', ContactController::class);
 Route::resource('tag', TagController::class);
 Route::resource('content-text', ContenttextCortoller::class);
+
+
+Route::resource('file','FileController')->except(['create', 'index', 'update']);;
+Route::post('order','FileController@order')->name('image.order');
+
+
 
 Route::get('service-in-main',[ServiceController::class,'in_main'])->name('service.in_main');
 Route::get('portfolio-in-main',[PortfolioController::class,'in_main'])->name('portfolio.in_main');

@@ -25,7 +25,7 @@
             </div>
             <div class="form-group mt-3 ">
                 <label for="name">Məzmun ({{ $lang->lang }}) </label>
-                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="10"   @if($loop->first) required @endif >{{old("description",$item->translate($lang->lang)?->description)}}{{$item->translate($lang->lang)?->description}}</textarea>
+                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="10"   @if($loop->first) required @endif >{{old('description',$item->translate($lang->lang)?->description)}}</textarea>
             </div>
         </div>
         @endforeach
@@ -49,7 +49,7 @@
 </div>
 
 <div class="form-group">
-    <label for="file" class="form-label ">Şəkil <span class="text-danger">610x460</span></label>
+    <label for="file" class="form-label ">Şəkil <span class="text-danger">1000x700</span></label>
     <input name="image" class="form-control filestyle file" type="file"
         data-buttonname="btn-secondary">
 </div>

@@ -123,37 +123,42 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // return $request->all();
+    //    return $request->all();
+    $portfolio = Portfolio::find($id);
+    
         $data = [];
         if($request->image){
-            $image = $this->upload($request ,name:'image',dir:'company');
-            $data['image'] = $image ;
-        }
-        $data['slug'] = Str::slug($request->post('name')['az']); 
 
+            $portfolio->image = $this->uploadImage($request);
+        }
+        $portfolio->slug = Str::slug($request->post('name')['az']); 
+        $portfolio->save();
         DB::beginTransaction();
         try {
            
-            $portfolio = Portfolio::find($id);
-            $portfolio->update($data);
-            $portfolio->pcategories()->sync($request->pcategory_id);
+            // $portfolio = Portfolio::where('id', $id)->update($data);
+            $portfolio->syncCategories($request->pcategory_id);
             foreach($this->langs as $lang){
                 if($request->post('name')[$lang->lang]){
-                    PortfolioTranslation::where('portfolio_id',$id)->where('locale',$lang->lang)->update([
+                    PortfolioTranslation::updateOrCreate(
+                        [
+                            'portfolio_id' => $id,
+                            'locale' => $lang->lang
+                        ],[
                         'title' =>$request->post('name')[$lang->lang],
                         'description' =>$request->post('description')[$lang->lang],
-                        'locale' => $lang->lang,
-                        'portfolio_id' => $portfolio->id,
+                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
                     ]);
                 }
             }
             DB::commit();
         } catch (\Exception $e) {
            DB::rollback();
-           return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage()
-            ]);
+        //    throw  $e;
+        //    return response()->json([
+        //         'code' => 401,
+        //         'error' =>  $e->getMessage()    
+        //      ]);
         }
 
         return redirect()->route('admin.portfolio.index');
@@ -176,5 +181,19 @@ class PortfolioController extends Controller
         $item = Portfolio::find($request->id);
         $item->in_main = !$item->in_main;
         $item->save();
+    }
+
+    public function uploadImage(Request $request)
+    {
+    $this->validate($request, [
+        'image' => 'required|image',
+    ]);
+
+    $file = $request->file('image');
+    $filename = $file->store('uploads');
+    $filename = $file->storePubliclyAs('images', $filename, 'public');
+    
+    return  'images/' . $filename;
+    
     }
 }

@@ -28,4 +28,8 @@ class Portfolio extends Model implements TranslatableContract
     {
         return array_column($this->pcategories->toArray(), 'id');
     }
+
+    public function images() {
+        return $this->morphMany(Image::class, 'parentable')->orderBy('position','asc');
+    }
 }

@@ -1,0 +1,1 @@
+<a href="{{route('admin.file.show', $item )}}" class="btn btn-success"><i class="fas fa-image"></i></a>

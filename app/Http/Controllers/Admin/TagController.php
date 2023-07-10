@@ -46,7 +46,7 @@ class TagController extends Controller
     {
         $response = $this->tagService->create($request);
         if($response){
-            return redirect()->route('admin.tags.index');
+            return redirect()->route('admin.tag.index');
         }
     }
 

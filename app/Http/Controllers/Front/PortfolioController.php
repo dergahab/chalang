@@ -21,8 +21,9 @@ class PortfolioController extends Controller
     }
 
 
-    public function details($slug)
+    public function details(Portfolio $portfolio)
     {
-        return view('front.portfolio.single');
+        $images = $portfolio->images;
+        return view('front.portfolio.single', compact('images', 'portfolio'));
     }
 }

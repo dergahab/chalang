@@ -18,10 +18,14 @@ class PortfolioDatatable  extends BaseDatatable
                 'title' => 'Əasas səhifədə',
                 'view' => 'admin.pages.portfolio.in_main'
             ],
+            'gallery' => [
+                'title' => 'Qalereya',
+                'view' => 'admin.pages.portfolio.partials.gallery_btn'
+            ],
             'actions' => [
                 'title' => 'Actions',
                 'view' => 'admin.pages.portfolio.table_actions'
-            ]
+            ],
         ]);
     }
 

@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class Image extends Model
 {
     use HasFactory;
-    protected $fillable  = ['type_id','type', 'name'];
+
+    protected $fillable = ['url', 'parentable_id', 'image_type', 'parentable_type'];
 }

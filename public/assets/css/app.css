@@ -4749,8 +4749,8 @@ Pagination
 }
 
 .services-grid:hover:after, .services-grid.active:after {
-    visibility: visible;
-    opacity: 1;
+    /* visibility: visible;
+    opacity: 1; */
 }
 
 .services-grid:hover .thumbnail::after, .services-grid.active .thumbnail::after {

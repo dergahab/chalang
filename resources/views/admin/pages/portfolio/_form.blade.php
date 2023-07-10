@@ -1,4 +1,15 @@
 <div class="row">
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     @foreach($langs as $lang)
         <li class="nav-item" role="presentation">
@@ -25,7 +36,11 @@
             </div>
             <div class="form-group mt-3 ">
                 <label for="name">Məzmun ({{ $lang->lang }}) </label>
-                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="10"   @if($loop->first) required @endif >{{old('description',$item->translate($lang->lang)?->description)}}</textarea>
+                <textarea class="form-control" 
+                name="description[{{ $lang->lang }}]" 
+                id="" cols="30" rows="10" 
+                @if($loop->first) required @endif>{{ old('description.' . $lang->lang, $item->translate($lang->lang)?->description) }}</textarea>
+                
             </div>
         </div>
         @endforeach
@@ -40,7 +55,7 @@
    </select>
 </div>
 <div class="form-group mt-3 ">
-    <label for="name">Kategoriya  </label>
+    <label for="name">Şirkət  </label>
    <select name="company_id" id="" class="form-control select2" >
     @foreach ($companies as $company)
         <option @if($company->id = $company->id) selected @endif value="{{$company->id}}">{{$company->name}}</option>
@@ -48,9 +63,23 @@
    </select>
 </div>
 
-<div class="form-group">
-    <label for="file" class="form-label ">Şəkil <span class="text-danger">1000x700</span></label>
-    <input name="image" class="form-control filestyle file" type="file"
-        data-buttonname="btn-secondary">
+<div class="col-md-12">
+    <div class="row">
+        <div class="@if($item->image) col-md-6 @else col-md-12 @endif">
+            <div class="form-group">
+                <label for="file" class="form-label ">Şəkil <span class="text-danger">1000x700</span></label>
+                <input name="image" class="form-control filestyle file" type="file"
+                    data-buttonname="btn-secondary">       
+            </div>
+        </div>
+        @if($item->image)
+
+        <div class="col-md-6 pt-3">
+                <img src="{{asset('storage/' . $item->image)}}" width="200px" height="200PX" srcset="">
+        </div>
+        @endif  
+
+    </div>
 </div>
+
 </div>

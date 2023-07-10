@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PortfolioUpdate;
 use App\Models\Lang;
 use App\Models\Pcategory;
 use App\Models\Portfolio;
 use App\Models\Company;
 use App\Models\PortfolioTranslation;
+use App\Services\PortfolioSerice;
 use App\Traits\FileUploader;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
@@ -18,10 +20,12 @@ class PortfolioController extends Controller
 {
     use FileUploader;
     protected $langs;
+    protected $portfolioService;
     public function __construct(){
         view()->share('categories', Pcategory::all());
         view()->share('companies', Company::all() );
         $this->langs = Lang::all();
+        $this->portfolioService = new PortfolioSerice();
     }
     /**
      * Display a listing of the resource.
@@ -53,6 +57,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
+       
         // return $request->all();
         $data = [];
         if($request->image){
@@ -121,47 +126,11 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PortfolioUpdate $request, Portfolio $portfolio)
     {
-    //    return $request->all();
-    $portfolio = Portfolio::find($id);
-    
-        $data = [];
-        if($request->image){
 
-            $portfolio->image = $this->uploadImage($request);
-        }
-        $portfolio->slug = Str::slug($request->post('name')['az']); 
-        $portfolio->save();
-        DB::beginTransaction();
-        try {
-           
-            // $portfolio = Portfolio::where('id', $id)->update($data);
-            $portfolio->syncCategories($request->pcategory_id);
-            foreach($this->langs as $lang){
-                if($request->post('name')[$lang->lang]){
-                    PortfolioTranslation::updateOrCreate(
-                        [
-                            'portfolio_id' => $id,
-                            'locale' => $lang->lang
-                        ],[
-                        'title' =>$request->post('name')[$lang->lang],
-                        'description' =>$request->post('description')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
-                    ]);
-                }
-            }
-            DB::commit();
-        } catch (\Exception $e) {
-           DB::rollback();
-        //    throw  $e;
-        //    return response()->json([
-        //         'code' => 401,
-        //         'error' =>  $e->getMessage()    
-        //      ]);
-        }
-
-        return redirect()->route('admin.portfolio.index');
+        $this->portfolioService->update($request->validated(), $portfolio);
+       return back();
     }
 
     /**

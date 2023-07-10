@@ -63,36 +63,14 @@
     </div>
     <!-- Begin page -->
     <div id="layout-wrapper">
-
-
-
         @include('admin.inc.header')
-
         @include('admin.inc.left_sidebar')
-
         <div class="sidebar-background"></div>
-
         <div class="vertical-overlay"></div>
         <div class="main-content">
 
             <div class="page-content">
                 <div class="container-fluid">
-                    {{-- <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <h4 class="page-title"></h4>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route('home') }}">Əsas səhifə</a>
-                                </li>
-                                @yield('heading_breadcrumbs')
-                            </ol>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="float-right  d-flex justify-content-end">
-                                @yield('heading_buttons')
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -198,14 +176,6 @@
     <!-- dragula init js -->
     <script src="{{ asset('admin/assets/libs/dragula/dragula.min.js') }}"></script>
 
-    <!-- dom autoscroll -->
-    <script src="{{ asset('admin/assets/libs/dom-autoscroller/dom-autoscroller.min.js') }}"></script>
-
-    <!--taks-kanban-->
-    <script src="{{ asset('admin/assets/js/pages/tasks-kanban.init.js') }}"></script>
-    <script src="{{ asset('admin/assets/libs/chart.js/chart.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/pages/chartjs.init.js') }}"></script>
-
 
     <!-- list.js min js -->
     <script src="{{ asset('admin/assets/libs/list.js/list.min.js') }}"></script>
@@ -214,12 +184,7 @@
     <script src="{{ asset('admin/assets/libs/list.pagination.js/list.pagination.min.js') }}"></script>
 
     <!-- form mask -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
-    <!-- titcket init js -->
-    <script src="{{ asset('admin/assets/js/pages/tasks-list.init.js') }}"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
 
     {{-- <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script> --}}

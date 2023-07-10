@@ -26,7 +26,7 @@ class PortfolioUpdate extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'sometimes|image|mimes:jpg',
+            'image' => 'sometimes|image|mimes:jpg,png',
             'pcategory_id' => 'required|array',
             'company_id' => 'required'
         ];

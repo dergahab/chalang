@@ -9,6 +9,5 @@ class ContenttextTranslation extends Model
 {
     use HasFactory;
 
-    public $fillable = ['title', 'content','locale','contenttext_id'];
-
+    public $fillable = ['title', 'content', 'locale', 'contenttext_id'];
 }

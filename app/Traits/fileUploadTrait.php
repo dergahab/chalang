@@ -18,9 +18,6 @@ trait fileUploadTrait
      */
     protected $uploadPath = 'uploads';
 
-    /**
-     * @var
-     */
     public $folderName;
 
     /**
@@ -28,16 +25,13 @@ trait fileUploadTrait
      */
     public $rule = 'image|max:2000';
 
-    /**
-     * @return bool
-     */
     private function createUploadFolder(): bool
     {
-        if (!file_exists(config('filesystems.disks.public.root') . '/' . $this->uploadPath . '/' . $this->folderName)) {
-            $attachmentPath = config('filesystems.disks.public.root') . '/' . $this->uploadPath . '/' . $this->folderName;
+        if (! file_exists(config('filesystems.disks.public.root').'/'.$this->uploadPath.'/'.$this->folderName)) {
+            $attachmentPath = config('filesystems.disks.public.root').'/'.$this->uploadPath.'/'.$this->folderName;
             mkdir($attachmentPath, 0777);
 
-            Storage::put('public/' . $this->uploadPath . '/' . $this->folderName . '/index.html', 'Silent Is Golden');
+            Storage::put('public/'.$this->uploadPath.'/'.$this->folderName.'/index.html', 'Silent Is Golden');
 
             return true;
         }
@@ -49,14 +43,13 @@ trait fileUploadTrait
     /**
      * For handle validation file action
      *
-     * @param $file
      * @return fileUploadTrait|\Illuminate\Http\RedirectResponse
      */
     private function validateFileAction($file)
     {
 
-        $rules = array('fileupload' => $this->rule);
-        $file  = array('fileupload' => $file);
+        $rules = ['fileupload' => $this->rule];
+        $file = ['fileupload' => $file];
 
         $fileValidator = Validator::make($file, $rules);
 
@@ -73,7 +66,6 @@ trait fileUploadTrait
     /**
      * For Handle validation file
      *
-     * @param $files
      * @return fileUploadTrait|\Illuminate\Http\RedirectResponse
      */
     private function validateFile($files)
@@ -91,16 +83,15 @@ trait fileUploadTrait
     /**
      * For Handle Put File
      *
-     * @param $file
      * @return bool|string
      */
     private function putFile($file)
     {
-        $fileName = preg_replace('/\s+/', '_', time() . ' ' . $file->getClientOriginalName());
-        $path     = $this->uploadPath . '/' . $this->folderName . '/';
+        $fileName = preg_replace('/\s+/', '_', time().' '.$file->getClientOriginalName());
+        $path = $this->uploadPath.'/'.$this->folderName.'/';
 
-        if (Storage::putFileAs('public/' . $path, $file, $fileName)) {
-            return $path . $fileName;
+        if (Storage::putFileAs('public/'.$path, $file, $fileName)) {
+            return $path.$fileName;
         }
 
         return false;
@@ -109,14 +100,13 @@ trait fileUploadTrait
     /**
      * For Handle Save File Process
      *
-     * @param $files
      * @return array
      */
     public function saveFiles($files)
     {
         $data = [];
 
-        if($files != null){
+        if ($files != null) {
 
             $this->validateFile($files);
 

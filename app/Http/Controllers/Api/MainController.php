@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -17,16 +16,16 @@ class MainController extends Controller
             $class = $request->classPath;
 
             $model = $class::find($cmid);
-            $model->status = !$model->status;
+            $model->status = ! $model->status;
             $model->save();
 
             return response()->json([
-                'status' => 200
+                'status' => 200,
             ]);
         } catch (Exception $e) {
             return response()->json([
-                'status'    => 204,
-                'message'   => $e->getMessage()
+                'status' => 204,
+                'message' => $e->getMessage(),
             ]);
         }
     }

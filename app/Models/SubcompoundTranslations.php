@@ -9,6 +9,5 @@ class SubcompoundTranslations extends Model
 {
     use HasFactory;
 
-    
     protected $fillable = ['name', 'content', 'locale', 'subcompound_id'];
 }

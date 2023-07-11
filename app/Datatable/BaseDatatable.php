@@ -1,22 +1,16 @@
 <?php
 
-
 namespace App\Datatable;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
-use Illuminate\Http\Request;
-
-
 
 abstract class BaseDatatable
 {
-
     /**
      * @var array
      */
@@ -31,6 +25,7 @@ abstract class BaseDatatable
      * @var Model
      */
     private $baseModel;
+
     /**
      * @var mixed
      */
@@ -41,21 +36,23 @@ abstract class BaseDatatable
      */
     protected $preDefinedDateColumns = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function __construct($baseModel, $tableColumns, $actionBladeView)
     {
         $this->baseModel = $baseModel;
         $this->tableColumns = $tableColumns;
-        if (!is_array($actionBladeView)) {
+        if (! is_array($actionBladeView)) {
             $this->actionBladeView = [
                 'action' => [
                     'title' => 'Action',
-                    'view' => $actionBladeView
-                ]
+                    'view' => $actionBladeView,
+                ],
             ];
-        } else $this->actionBladeView = $actionBladeView;
+        } else {
+            $this->actionBladeView = $actionBladeView;
+        }
     }
 
     protected function setTableColumns($table)
@@ -63,10 +60,7 @@ abstract class BaseDatatable
         $this->tableColumns = $table;
     }
 
-    /**
-     * @return Builder
-     */
-    protected abstract function query(): Builder;
+    abstract protected function query(): Builder;
 
     protected function baseQueryScope(): Builder
     {
@@ -76,20 +70,22 @@ abstract class BaseDatatable
     public function datatable(): JsonResponse
     {
 
-        if ($this->isRequestColumns()) return $this->columns();
+        if ($this->isRequestColumns()) {
+            return $this->columns();
+        }
         $requestQuery = $this->getRequestQuery();
 
         $allRecordsCount = $this->baseQueryScope()->count();
         $filteredRecordsCount = $this->query()->count();
-        $mainQuery          = $this->query();
-        $mainQueryCustom    =  $mainQuery;
+        $mainQuery = $this->query();
+        $mainQueryCustom = $mainQuery;
 
         $response = [];
 
         if (request()->has('sumTotal')) {
-            $total                      = getCacshTotal();
-            $response['sumTotal']       = (float)$total['try_amount'];
-            $response['sumTotalAzn']    = (float)$total['azn_amount'];
+            $total = getCacshTotal();
+            $response['sumTotal'] = (float) $total['try_amount'];
+            $response['sumTotalAzn'] = (float) $total['azn_amount'];
         }
 
         if ($requestQuery['perPage'] != '-1') {
@@ -97,11 +93,11 @@ abstract class BaseDatatable
             $mainQuery->take($requestQuery['perPage']);
         }
 
-        $mainQuery->orderBy($mainQuery->getModel()->getTable() . "." . $requestQuery['columnName'], $requestQuery['columnSort']);
+        $mainQuery->orderBy($mainQuery->getModel()->getTable().'.'.$requestQuery['columnName'], $requestQuery['columnSort']);
 
         if ($requestQuery['request']->has('sumFiltered')) {
-            $response['sumfiltered'] = $mainQuery->take($requestQuery['perPage'])->get()->sum("amount");
-            $response['sumfilteredAzn'] = $mainQuery->take($requestQuery['perPage'])->get()->sum("azn");
+            $response['sumfiltered'] = $mainQuery->take($requestQuery['perPage'])->get()->sum('amount');
+            $response['sumfilteredAzn'] = $mainQuery->take($requestQuery['perPage'])->get()->sum('azn');
         }
 
         if (request()->has('dumpsql')) {
@@ -109,10 +105,10 @@ abstract class BaseDatatable
             $mainQuery->get();
             dd(\DB::getQueryLog());
         }
-        $response["draw"] = $requestQuery['draw'];
-        $response["recordsTotal"] = $allRecordsCount;
-        $response["recordsFiltered"] = $filteredRecordsCount;
-        $response["data"] = $this->processRecords($mainQuery->get());
+        $response['draw'] = $requestQuery['draw'];
+        $response['recordsTotal'] = $allRecordsCount;
+        $response['recordsFiltered'] = $filteredRecordsCount;
+        $response['data'] = $this->processRecords($mainQuery->get());
 
         // dd($response);
 
@@ -123,6 +119,7 @@ abstract class BaseDatatable
     {
 
         $iterator = ($_GET['start'] ?? 0) + 1;
+
         return $records->map(function ($item) use (&$iterator) {
             $item['order_number'] = $iterator++;
             $data = [];
@@ -132,7 +129,7 @@ abstract class BaseDatatable
 
             if (count($this->actionBladeView)) {
                 foreach ($this->actionBladeView as $key => $view) {
-                    if (array_key_exists("view", $view)) {
+                    if (array_key_exists('view', $view)) {
                         $data[$key] = View::make($view['view'], compact('item'))->render();
                     } else {
                         $data[$key] = $view['text'];
@@ -178,7 +175,7 @@ abstract class BaseDatatable
             'columnSort' => $order_arr[0]['dir'],
             'searchInput' => $this->searchInput,
             'whereForDate' => json_decode(request('where', '{}'), true),
-            'global_where' => json_decode(request('global_where', '{}'), true)
+            'global_where' => json_decode(request('global_where', '{}'), true),
         ];
     }
 
@@ -210,7 +207,7 @@ abstract class BaseDatatable
             $columns[] = [
                 'data' => $this->sanitizeColumn($column),
                 'title' => $title,
-                'orderable' => $isOrderable
+                'orderable' => $isOrderable,
             ];
         }
 
@@ -219,7 +216,7 @@ abstract class BaseDatatable
                 $columns[] = [
                     'data' => $key,
                     'title' => $item['title'],
-                    'orderable' => false
+                    'orderable' => false,
                 ];
             }
         }

@@ -7,19 +7,18 @@ use Illuminate\Database\Eloquent\Builder;
 
 class UserDatatable extends BaseDatatable
 {
-
     public function __construct()
     {
         parent::__construct(User::class, [
             'id' => 'ID',
             'name' => 'A.S.',
             'email' => 'Email',
-            'created_at' => 'Qeydiyyat tarixi'
+            'created_at' => 'Qeydiyyat tarixi',
         ], [
             'actions' => [
                 'title' => 'Actions',
-                'view' => 'admin.pages.user.table_actions'
-            ]
+                'view' => 'admin.pages.user.table_actions',
+            ],
         ]);
     }
 
@@ -37,7 +36,7 @@ class UserDatatable extends BaseDatatable
         }
 
         if ($this->getSearchInput()) {
-            $query->where('name', 'LIKE', '%' . $this->getSearchInput() . '%');
+            $query->where('name', 'LIKE', '%'.$this->getSearchInput().'%');
         }
 
         return $query;

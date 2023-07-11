@@ -14,12 +14,12 @@ class LangSeeder extends Seeder
      */
     public function run()
     {
-        $langs = ['az' => 'Azərbaycan', "en" => 'English'];
+        $langs = ['az' => 'Azərbaycan', 'en' => 'English'];
 
-        foreach($langs as $lang => $country){
+        foreach ($langs as $lang => $country) {
             Lang::create([
-                'lang'    => $lang,
-                'country' => $country
+                'lang' => $lang,
+                'country' => $country,
             ]);
         }
     }

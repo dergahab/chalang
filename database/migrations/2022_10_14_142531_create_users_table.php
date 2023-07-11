@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->default('/images/profile-icon.webp')->nullable();
-            $table->enum('type',['admin','worker'])->default('worker');
+            $table->enum('type', ['admin', 'worker'])->default('worker');
             $table->rememberToken();
             $table->timestamps();
             $table->SoftDeletes();

@@ -9,5 +9,5 @@ class CompoundTranslation extends Model
 {
     use HasFactory;
 
-    public $fillable = ['title', 'content','locale','compound_id'];
+    public $fillable = ['title', 'content', 'locale', 'compound_id'];
 }

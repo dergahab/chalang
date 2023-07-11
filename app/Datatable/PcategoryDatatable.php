@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PcategoryDatatable extends BaseDatatable
 {
-
     public function __construct()
     {
         parent::__construct(Pcategory::class, [
@@ -16,8 +15,8 @@ class PcategoryDatatable extends BaseDatatable
         ], [
             'actions' => [
                 'title' => 'Actions',
-                'view' => 'admin.pages.pcategory.table_actions'
-            ]
+                'view' => 'admin.pages.pcategory.table_actions',
+            ],
         ]);
     }
 

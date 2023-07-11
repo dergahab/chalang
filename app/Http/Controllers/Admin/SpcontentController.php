@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Compound;
-use App\Models\Content;
 use App\Models\Lang;
 use App\Models\Portfolio;
 use App\Models\Service;
@@ -14,11 +13,14 @@ use Illuminate\Http\Request;
 class SpcontentController extends Controller
 {
     protected $langs;
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->langs = Lang::all();
-        view()->share('services', Service::where('parent_id',0)->get());
+        view()->share('services', Service::where('parent_id', 0)->get());
         view()->share('portfolios', Portfolio::all());
     }
+
     public function index()
     {
         return view('admin.pages.sp_contnet.index');
@@ -31,19 +33,20 @@ class SpcontentController extends Controller
      */
     public function create()
     {
-      $item = new Compound();
-      return view('admin.pages.sp_contnet.create',compact('item'));
+        $item = new Compound();
+
+        return view('admin.pages.sp_contnet.create', compact('item'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-      return   ( PsService::save($request));
+        return  PsService::save($request);
+
         return redirect()->route('admin.sp-content.index');
     }
 
@@ -72,7 +75,6 @@ class SpcontentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

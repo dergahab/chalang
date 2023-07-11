@@ -2,7 +2,7 @@
 
 return [
 
-  'previous' => '&laquo; Əvvəl',
-  'next' => 'Sonra &raquo;',
+    'previous' => '&laquo; Əvvəl',
+    'next' => 'Sonra &raquo;',
 
 ];

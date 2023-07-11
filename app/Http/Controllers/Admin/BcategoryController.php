@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Bcategory;
 use App\Models\BcategoryTranslation;
-use App\Models\BcategoryTranslations;
 use App\Models\Lang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +12,10 @@ use Illuminate\Support\Str;
 
 class BcategoryController extends Controller
 {
-    
     protected $langs;
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->langs = Lang::all();
     }
 
@@ -24,25 +24,23 @@ class BcategoryController extends Controller
         return view('admin.pages.bcategory.index');
     }
 
-
     public function create()
     {
         //
     }
 
-
     public function store(Request $request)
     {
-  
+
         DB::beginTransaction();
         try {
             $bcategory = Bcategory::create();
 
-            foreach($this->langs as $lang){
-                if($request->post('name')[$lang->lang]){
+            foreach ($this->langs as $lang) {
+                if ($request->post('name')[$lang->lang]) {
                     BcategoryTranslation::insert([
-                        'name' =>$request->post('name')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+                        'name' => $request->post('name')[$lang->lang],
+                        'slug' => Str::slug($request->post('name')[$lang->lang]),
                         'locale' => $lang->lang,
                         'bcategory_id' => $bcategory->id,
                     ]);
@@ -50,19 +48,18 @@ class BcategoryController extends Controller
             }
             DB::commit();
         } catch (\Exception $e) {
-           DB::rollback();
+            DB::rollback();
 
-           return response()->json([
+            return response()->json([
                 'code' => 401,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
-
 
         return response()->json([
             'code' => 200,
         ]);
-       
+
     }
 
     /**
@@ -85,23 +82,23 @@ class BcategoryController extends Controller
     public function edit($id)
     {
         $item = Bcategory::find($id);
-        return view('admin.pages.pcategory.edit',compact('item'));
+
+        return view('admin.pages.pcategory.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        foreach($this->langs as $lang){
-            if($request->post('name')[$lang->lang]){
-                BcategoryTranslation::where('bcategory_id',$id)->where('locale',$lang->lang)->update([
-                    'name'   =>  $request->post('name')[$lang->lang],
-                    'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+        foreach ($this->langs as $lang) {
+            if ($request->post('name')[$lang->lang]) {
+                BcategoryTranslation::where('bcategory_id', $id)->where('locale', $lang->lang)->update([
+                    'name' => $request->post('name')[$lang->lang],
+                    'slug' => Str::slug($request->post('name')[$lang->lang]),
                 ]);
             }
         }
@@ -117,10 +114,10 @@ class BcategoryController extends Controller
      */
     public function destroy($id)
     {
-        Bcategory::where('id',$id)->delete();
+        Bcategory::where('id', $id)->delete();
 
         return response()->json([
-            'code' =>200
+            'code' => 200,
         ]);
     }
 }

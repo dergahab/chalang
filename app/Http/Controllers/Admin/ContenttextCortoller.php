@@ -15,6 +15,7 @@ class ContenttextCortoller extends Controller
     {
         $this->contenttextserive = new ContentTextService();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,7 @@ class ContenttextCortoller extends Controller
         return view('admin.pages.content_text.index');
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -33,21 +34,21 @@ class ContenttextCortoller extends Controller
     public function create()
     {
         $item = new ContentText();
-        return view('admin.pages.content_text.create',compact('item'));
+
+        return view('admin.pages.content_text.create', compact('item'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $response = $this->contenttextserive->translate($request);
-        if($response != 'success'){
+        if ($response != 'success') {
             return redirect()->back()->with('error', 'Translation failed');
-        }else{
+        } else {
             return redirect()->back();
         }
 
@@ -62,6 +63,7 @@ class ContenttextCortoller extends Controller
     public function show($id)
     {
         $item = Contenttext::find($id);
+
         return view('admin.pages.content_text.edit', compact('item'));
     }
 
@@ -73,29 +75,27 @@ class ContenttextCortoller extends Controller
      */
     public function edit(Contenttext $contentText)
     {
-         $item = $contentText;
-    //    $item = ContentText::find($id);
-       
-       return view('admin.pages.content_text.edit',compact('item'));
+        $item = $contentText;
+        //    $item = ContentText::find($id);
+
+        return view('admin.pages.content_text.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $response = $this->contenttextserive->update($request, $id);
-        if($response != 'success'){
+        if ($response != 'success') {
             return redirect()->back()->with('error', 'Translation failed');
-        }else{
+        } else {
             return redirect()->back();
         }
     }
-
 
     /**
      * Remove the specified resource from storage.

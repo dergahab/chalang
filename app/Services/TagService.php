@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Services;
-use App\Models\TagTranslation;
-use App\Models\Tag;
+
 use App\Models\Lang;
+use App\Models\Tag;
+use App\Models\TagTranslation;
 use Illuminate\Support\Facades\DB;
-Class TagService
+
+class TagService
 {
     protected $langs;
 
@@ -12,36 +15,39 @@ Class TagService
     {
         $this->langs = Lang::all();
     }
+
     public function create($data)
     {
         $tag = Tag::create();
 
-       return  $this->createOrUpdate($tag, $data);
+        return $this->createOrUpdate($tag, $data);
     }
 
     public function createOrUpdate($tag, $data)
     {
         DB::beginTransaction();
         try {
-            foreach($this->langs as $lang){
-                if($data['name'][$lang->lang]){
+            foreach ($this->langs as $lang) {
+                if ($data['name'][$lang->lang]) {
                     TagTranslation::updateOrCreate(
                         [
                             'tag_id' => $tag->id,
-                            'locale' => $lang->lang
+                            'locale' => $lang->lang,
                         ],
                         [
-                            'name' => $data['name'][$lang->lang]
+                            'name' => $data['name'][$lang->lang],
                         ]
                     );
                 }
             }
             DB::commit();
+
             return true;
         } catch (\Exception $e) {
-           DB::rollback();
-         return $e->getMessage();
+            DB::rollback();
+
+            return $e->getMessage();
         }
- 
+
     }
-} 
+}

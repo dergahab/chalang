@@ -45,7 +45,7 @@ class CreateDatatableCommand extends Command
         if (str_contains($name, '/')) {
             $parts = explode('/', $name);
             $name = array_pop($parts);
-            $namespace .= '\\' . implode('\\', $parts);
+            $namespace .= '\\'.implode('\\', $parts);
         }
 
         $convertNamespace = str_replace('\\', '/', $namespace);
@@ -53,20 +53,21 @@ class CreateDatatableCommand extends Command
 
         if (file_exists($path)) {
             $this->error('Datatable already exists');
+
             return;
         }
 
         // Check if the directory for the file exists, and create it if it doesn't
-        if (!file_exists(dirname($path))) {
+        if (! file_exists(dirname($path))) {
             mkdir(dirname($path), 0777, true);
         }
 
-        $stub = file_get_contents(__DIR__ . '/Stubs/datatable.stub');
+        $stub = file_get_contents(__DIR__.'/Stubs/datatable.stub');
 
         $stub = str_replace($defaultNamespace, $namespace, $stub);
         $stub = str_replace('DummyClass', $name, $stub);
         $modelName = rtrim($name, 'Datatable');
-        $stub = str_replace('Test::class', $modelName . '::class', $stub);
+        $stub = str_replace('Test::class', $modelName.'::class', $stub);
 
         file_put_contents($path, $stub);
 

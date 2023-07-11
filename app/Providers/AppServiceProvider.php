@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Helpers\CmsSidebar;
 use App\Models\Contact;
 use App\Models\Lang;
-use App\Models\Service;
 use App\Models\Socialmedia;
 use App\Models\User;
 use Illuminate\Support\Facades\Schema;
@@ -47,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('socialmedia')) {
             view()->share('socialmedia', Socialmedia::all());
         }
-        
+
     }
 
     public function generateCmsSidebar()

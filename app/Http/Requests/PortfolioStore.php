@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PortfolioUpdate extends FormRequest
+class PortfolioStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class PortfolioUpdate extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
-            'image' => 'sometimes|image|mimes:jpg,png',
+            'image' => 'image|mimes:jpg,png',
             'pcategory_id' => 'required|array',
             'company_id' => 'required',
         ];

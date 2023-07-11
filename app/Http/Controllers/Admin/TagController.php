@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\TagService;
-use Illuminate\Http\Request;
 use App\Models\Lang;
 use App\Models\Tag;
+use App\Services\TagService;
+use Illuminate\Http\Request;
+
 class TagController extends Controller
 {
     protected $tagService;
+
     public function __construct()
     {
         view()->share('langs', Lang::all());
 
         $this->tagService = new TagService();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,13 +42,12 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $response = $this->tagService->create($request);
-        if($response){
+        if ($response) {
             return redirect()->route('admin.tag.index');
         }
     }
@@ -69,14 +71,14 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        $view = view('admin.pages.tags.render',compact('tag'))->render();
-        return response()->json($view,200);
+        $view = view('admin.pages.tags.render', compact('tag'))->render();
+
+        return response()->json($view, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

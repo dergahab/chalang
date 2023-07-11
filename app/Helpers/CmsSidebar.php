@@ -1,16 +1,12 @@
 <?php
 
-
 namespace App\Helpers;
-
 
 use Illuminate\Support\Collection;
 
 class CmsSidebar extends Singleton
 {
-
     /**
-     *
      * @var Collection
      */
     private $list;
@@ -30,7 +26,6 @@ class CmsSidebar extends Singleton
     }
 
     /**
-     * @param array $item
      * @throws \Exception
      */
     public function addItem(array $item): void
@@ -41,7 +36,6 @@ class CmsSidebar extends Singleton
     }
 
     /**
-     * @param array $items
      * @throws \Exception
      */
     public function addItems(array $items): void
@@ -52,10 +46,8 @@ class CmsSidebar extends Singleton
     }
 
     /**
+     * @param  bool  $isRoot
      *
-     * @param array $item
-     * @param bool $isRoot
-     * @return Collection
      * @throws \Exception
      */
     private function validateInputItems(array $item, $isRoot = true): Collection
@@ -68,7 +60,7 @@ class CmsSidebar extends Singleton
                 'params' => array_key_exists('params', $item) ? $item['params'] : null,
                 'can' => array_key_exists('can', $item) ? $item['can'] : '*',
                 'inner' => array_key_exists('inner', $item) ? $item['inner'] : null,
-                'is_active_route' => array_key_exists('route', $item) && request()->routeIs($item['route'])
+                'is_active_route' => array_key_exists('route', $item) && request()->routeIs($item['route']),
             ]);
 
             $menuItem->put('showFlag', $menuItem['can'] == '*' ? true : '*');

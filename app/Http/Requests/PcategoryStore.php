@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
 
 class PcategoryStore extends FormRequest
 {
@@ -26,26 +26,24 @@ class PcategoryStore extends FormRequest
     public function rules()
     {
         return [
-            'name.az' => 'required'
+            'name.az' => 'required',
         ];
     }
-
 
     public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
-
-            'success'   => false,
-            'data'      => $validator->errors()->first()
+            'success' => false,
+            'data' => $validator->errors()->first(),
 
         ]));
 
     }
 
-
-    public function messages(){
-       return [
-        'name.az.required' => "Kateqoriya  Az mutleqdi!" 
-       ];
+    public function messages()
+    {
+        return [
+            'name.az.required' => 'Kateqoriya  Az mutleqdi!',
+        ];
     }
 }

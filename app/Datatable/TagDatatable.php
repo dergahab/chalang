@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class TagDatatable extends BaseDatatable
 {
-
     public function __construct()
     {
         parent::__construct(Tag::class, [
@@ -16,8 +15,8 @@ class TagDatatable extends BaseDatatable
         ], [
             'actions' => [
                 'title' => 'Actions',
-                'view' => 'admin.pages.tags.table_actions'
-            ]
+                'view' => 'admin.pages.tags.table_actions',
+            ],
         ]);
     }
 
@@ -26,7 +25,7 @@ class TagDatatable extends BaseDatatable
         $query = $this->baseQueryScope();
 
         if ($this->getSearchInput()) {
-            $query->where('name', 'LIKE', '%' . $this->getSearchInput() . '%');
+            $query->where('name', 'LIKE', '%'.$this->getSearchInput().'%');
         }
 
         return $query;

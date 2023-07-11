@@ -9,20 +9,20 @@ use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class PersonalController extends Controller
 {
     public function __construct()
     {
-        $postions = Position::orderBy('name','asc')->get();
-        $departments  = Department::orderBy('name','asc')->get();
-        $roles = Role::whereNotIn('id',[1,2])->get();
-        view()->share('postions' ,$postions);
-        view()->share('departments' ,$departments);
-        view()->share('roles' ,$roles);
+        $postions = Position::orderBy('name', 'asc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+        $roles = Role::whereNotIn('id', [1, 2])->get();
+        view()->share('postions', $postions);
+        view()->share('departments', $departments);
+        view()->share('roles', $roles);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,18 +30,22 @@ class PersonalController extends Controller
      */
     public function index()
     {
-       $this->canOrAbort('personal.index');
-       return view('admin.pages.personal.index');
+        $this->canOrAbort('personal.index');
+
+        return view('admin.pages.personal.index');
     }
 
-    public function list(){
-        $items = User::where('type','worker')->with(['department','position'])
-        ->get();
+    public function list()
+    {
+        $items = User::where('type', 'worker')->with(['department', 'position'])
+            ->get();
+
         return response()->json([
             'code' => 200,
-            'data' => $items
+            'data' => $items,
         ]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -61,21 +65,21 @@ class PersonalController extends Controller
     public function store(PersonalStore $request)
     {
         // dd($request->all());
-        $user  = new User();
+        $user = new User();
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->email = $request->email;
         $user->position_id = $request->position_id;
         $user->department_id = $request->department_id;
-        $user->password =  Hash::make($request->post('password'));
+        $user->password = Hash::make($request->post('password'));
 
-       $user->save();
-       $user->syncRoles($request->role_id);
+        $user->save();
+        $user->syncRoles($request->role_id);
 
-       return response()->json([
-        'code' => 200,
-        'data' => $request->validated()
-       ]);
+        return response()->json([
+            'code' => 200,
+            'data' => $request->validated(),
+        ]);
     }
 
     /**
@@ -97,41 +101,41 @@ class PersonalController extends Controller
      */
     public function edit($id)
     {
-        $item = User::where('id',$id)->first();
+        $item = User::where('id', $id)->first();
 
         return response()->json([
             'code' => 200,
-            'data' => $item
+            'data' => $item,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $data = [
-            'name'          => $request->post('name'),
-            'surname'       => $request->post('surname'),
-            'password'      => Hash::make($request->post('password')),
-            'email'         => $request->post('email'),
-            'position_id'   => $request->post('position_id'),
+            'name' => $request->post('name'),
+            'surname' => $request->post('surname'),
+            'password' => Hash::make($request->post('password')),
+            'email' => $request->post('email'),
+            'position_id' => $request->post('position_id'),
             'department_id' => $request->post('department_id'),
             // 'role_id' => $request->post('role_id'),
-           ];
-    
-           User::where('id',$id )->update($data);
+        ];
 
-           $user = User::where('id',$id)->first();
-           $user->syncRoles($request->role_id);
-           return response()->json([
+        User::where('id', $id)->update($data);
+
+        $user = User::where('id', $id)->first();
+        $user->syncRoles($request->role_id);
+
+        return response()->json([
             'code' => 200,
-           
-           ]);
+
+        ]);
     }
 
     /**
@@ -142,7 +146,8 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id',$id)->delete();
+        User::where('id', $id)->delete();
+
         return response()->json([
             'code' => 200,
         ]);

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             RollesAllSeeder::class,
             LangSeeder::class,
             ContactSeeder::class,
-          
+
         ]);
     }
 }

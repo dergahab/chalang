@@ -4,12 +4,12 @@ namespace App\Helpers;
 
 use App\Models\Task;
 
-if (!function_exists('task_count_by_status')) {
+if (! function_exists('task_count_by_status')) {
     function task_count_by_status($status = 0)
     {
         $count = new Task();
 
-        if (!$status) {
+        if (! $status) {
             $count = $count->wher('status_id', $status);
         }
 
@@ -21,6 +21,7 @@ if (!function_exists('task_count_by_status')) {
                     ->orWhere('user_id', '=', auth()->user()->id);
             });
         }
+
         return $count->count();
     }
 }

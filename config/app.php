@@ -86,7 +86,7 @@ return [
         'az',
         'en',
         'ru',
-       
+
     ],
     /*
     |--------------------------------------------------------------------------
@@ -241,7 +241,6 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
         // 'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-
 
     ],
 

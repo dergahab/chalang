@@ -11,10 +11,10 @@ class Company extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name','image','slug'];
+    protected $fillable = ['name', 'image', 'slug'];
 
-    public function getImageAttribute($key){
-      return  isset($key) ? asset(Storage::url($key)) : null;
+    public function getImageAttribute($key)
+    {
+        return isset($key) ? asset(Storage::url($key)) : null;
     }
-
 }

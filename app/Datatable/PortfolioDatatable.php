@@ -5,9 +5,8 @@ namespace App\Datatable;
 use App\Models\Portfolio;
 use Illuminate\Database\Eloquent\Builder;
 
-class PortfolioDatatable  extends BaseDatatable
+class PortfolioDatatable extends BaseDatatable
 {
-
     public function __construct()
     {
         parent::__construct(Portfolio::class, [
@@ -16,15 +15,15 @@ class PortfolioDatatable  extends BaseDatatable
         ], [
             'main' => [
                 'title' => 'Əasas səhifədə',
-                'view' => 'admin.pages.portfolio.in_main'
+                'view' => 'admin.pages.portfolio.in_main',
             ],
             'gallery' => [
                 'title' => 'Qalereya',
-                'view' => 'admin.pages.portfolio.partials.gallery_btn'
+                'view' => 'admin.pages.portfolio.partials.gallery_btn',
             ],
             'actions' => [
                 'title' => 'Actions',
-                'view' => 'admin.pages.portfolio.table_actions'
+                'view' => 'admin.pages.portfolio.table_actions',
             ],
         ]);
     }

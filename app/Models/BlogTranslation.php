@@ -9,6 +9,5 @@ class BlogTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'slug', 'locale' ,'blog_id'];
-
+    protected $fillable = ['title', 'content', 'slug', 'locale', 'blog_id'];
 }

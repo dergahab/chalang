@@ -10,21 +10,24 @@ use App\Models\Lang;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
     use FileUploader;
+
     protected $langs;
-    public function __construct(){
+
+    public function __construct()
+    {
         view()->share('categories', Bcategory::all());
         $this->langs = Lang::all();
     }
+
     public function index()
     {
-      return view('admin.pages.blog.index');  
+        return view('admin.pages.blog.index');
     }
 
     /**
@@ -35,38 +38,38 @@ class BlogController extends Controller
     public function create()
     {
         $item = new Blog();
-        return view('admin.pages.blog.create',compact('item'));
+
+        return view('admin.pages.blog.create', compact('item'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $data = [];
         $data['user_id'] = Auth::user()->id;
-        if($request->image){
-            $image = $this->upload($request ,name:'image',dir:'blog');
-            $data['image'] = $image ;
+        if ($request->image) {
+            $image = $this->upload($request, name: 'image', dir: 'blog');
+            $data['image'] = $image;
         }
-        if($request->big_image){
-            $big_image = $this->upload($request ,name:'big_image',dir:'blog');
-            $data['big_image'] = $big_image ;
+        if ($request->big_image) {
+            $big_image = $this->upload($request, name: 'big_image', dir: 'blog');
+            $data['big_image'] = $big_image;
         }
-        $data['slug'] =  Str::slug($request->post('name')['az']);
+        $data['slug'] = Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
-           
+
             $blog = Blog::create($data);
-            foreach($this->langs as $lang){
-                if($request->post('name')[$lang->lang]){
+            foreach ($this->langs as $lang) {
+                if ($request->post('name')[$lang->lang]) {
                     BlogTranslation::insert([
-                        'title' =>$request->post('name')[$lang->lang],
-                        'content' =>$request->post('content')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+                        'title' => $request->post('name')[$lang->lang],
+                        'content' => $request->post('content')[$lang->lang],
+                        'slug' => Str::slug($request->post('name')[$lang->lang]),
                         'locale' => $lang->lang,
                         'blog_id' => $blog->id,
                     ]);
@@ -74,10 +77,11 @@ class BlogController extends Controller
             }
             DB::commit();
         } catch (\Exception $e) {
-           DB::rollback();
-           return response()->json([
+            DB::rollback();
+
+            return response()->json([
                 'code' => 401,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
 
@@ -104,38 +108,38 @@ class BlogController extends Controller
     public function edit($id)
     {
         $item = Blog::find($id);
+
         return view('admin.pages.blog.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-       // return $request->all();
+        // return $request->all();
         $data = [];
-        if($request->image){
-            $image = $this->upload($request ,name:'image',dir:'blog');
-            $data['image'] = $image ;
+        if ($request->image) {
+            $image = $this->upload($request, name: 'image', dir: 'blog');
+            $data['image'] = $image;
         }
-        if($request->big_image){
-            $big_image = $this->upload($request ,name:'big_image',dir:'blog');
-            $data['big_image'] = $big_image ;
+        if ($request->big_image) {
+            $big_image = $this->upload($request, name: 'big_image', dir: 'blog');
+            $data['big_image'] = $big_image;
         }
-        $data['slug'] =  Str::slug($request->post('name')['az']);
+        $data['slug'] = Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
-           
+
             $portfolio = Blog::find($id);
             $portfolio->update($data);
-            foreach($this->langs as $lang){
-                if($request->post('name')[$lang->lang]){
+            foreach ($this->langs as $lang) {
+                if ($request->post('name')[$lang->lang]) {
                     $translation = BlogTranslation::where('blog_id', $id)->where('locale', $lang->lang)->first();
-                    if(!$translation){
+                    if (! $translation) {
                         $translation = new BlogTranslation();
                         $translation->blog_id = $portfolio->id;
                         $translation->locale = $lang->lang;
@@ -148,15 +152,16 @@ class BlogController extends Controller
             }
             DB::commit();
         } catch (\Exception $e) {
-           DB::rollback();
-           return response()->json([
+            DB::rollback();
+
+            return response()->json([
                 'code' => 401,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
 
         return redirect()->route('admin.blog.index');
-    
+
     }
 
     /**
@@ -167,7 +172,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::where('id',$id)->delete();
+        Blog::where('id', $id)->delete();
 
         return redirect()->route('admin.blog.index');
     }

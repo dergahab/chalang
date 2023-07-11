@@ -15,7 +15,8 @@ class SocialmediaController extends Controller
      */
     public function index()
     {
-        $items = Socialmedia::where('is_published',1)->get();
+        $items = Socialmedia::where('is_published', 1)->get();
+
         return view('admin.pages.social-media.index', compact('items'));
     }
 
@@ -27,13 +28,13 @@ class SocialmediaController extends Controller
     public function create()
     {
         $item = new Socialmedia();
+
         return view('admin.pages.social-media.create', compact('item'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,6 +44,7 @@ class SocialmediaController extends Controller
             'name' => $request->name,
             'link' => $request->link,
         ]);
+
         return redirect()->route('admin.social-media.index');
     }
 
@@ -66,13 +68,13 @@ class SocialmediaController extends Controller
     public function edit($id)
     {
         $item = Socialmedia::find($id);
+
         return view('admin.pages.social-media.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

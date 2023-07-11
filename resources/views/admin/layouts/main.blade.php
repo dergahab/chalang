@@ -68,21 +68,18 @@
         <div class="sidebar-background"></div>
         <div class="vertical-overlay"></div>
         <div class="main-content">
-
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">@yield('heading_title')</h4>
-            
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"> <a href="#">Əsas səhifə</a></li>
                                         <li class="breadcrumb-item active">Analytics</li>
                                     </ol>
                                 </div>
-            
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -92,10 +89,8 @@
                         </div>
                     </div>
                     @yield('content')
-
                 </div>
             </div>
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row">
@@ -115,26 +110,11 @@
         </div>
 
     </div>
-
-
-
     <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
     <!--end back-to-top-->
-
-    <!--preloader-->
-
-
-    {{-- <div class="customizer-setting d-none d-md-block">
-        <div class="btn-info btn-rounded shadow-lg btn btn-icon btn-lg p-2" data-bs-toggle="offcanvas"
-            data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas">
-            <i class='mdi mdi-spin mdi-cog-outline fs-22'></i>
-        </div>
-    </div> --}}
-
-
     <!-- JAVASCRIPT -->
     <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
@@ -143,19 +123,8 @@
     {{-- <script src="{{ asset('admin/assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script> --}}
     <script src="{{ asset('js/ajax.js') }}"></script>
     <script src="{{ asset('admin/plugins/axios/axios.js') }}"></script>
-
     <script src="{{ asset('admin/assets/js/plugins.js') }}"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
-    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script> --}}
-    {{-- <script type="text/javascript"
-        src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js">
-    </script>
-     --}}
-
-
     <!-- Required datatable js -->
     <script src="{{ asset('admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>

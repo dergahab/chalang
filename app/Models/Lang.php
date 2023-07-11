@@ -10,5 +10,5 @@ class Lang extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected  $fillable = ['lang', 'contry'];
+    protected $fillable = ['lang', 'contry'];
 }

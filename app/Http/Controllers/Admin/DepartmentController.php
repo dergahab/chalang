@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DeparatementStore;
 use App\Http\Requests\DepartmantUdate;
 use App\Models\Department;
-use Illuminate\Http\Request;
-use Kamaln7\Toastr\Facades\Toastr;
 use Nette\Utils\Json;
 
 class DepartmentController extends Controller
@@ -32,7 +30,6 @@ class DepartmentController extends Controller
         ]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,9 +49,10 @@ class DepartmentController extends Controller
     public function store(DeparatementStore $request)
     {
         Department::create($request->validated());
+
         return response()->json([
-            'code' =>  200,
-            'item' => $request->all()
+            'code' => 200,
+            'item' => $request->all(),
         ]);
     }
 
@@ -78,9 +76,10 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $item = Department::find($id);
+
         return response()->json([
             'code' => 200,
-            'data' => $item
+            'data' => $item,
         ]);
     }
 
@@ -109,6 +108,7 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         Department::where('id', $id)->delete();
+
         return response()->json([
             'code' => 200,
         ]);
@@ -118,6 +118,7 @@ class DepartmentController extends Controller
     {
         try {
             $department = Department::findOrFail($id);
+
             return Json::encode($department->users);
         } catch (\Exception $e) {
             return response(['status' => 0, 'message' => $e->getMessage()]);

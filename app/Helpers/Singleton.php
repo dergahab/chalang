@@ -1,10 +1,9 @@
 <?php
 
-
 namespace App\Helpers;
 
-
-class Singleton {
+class Singleton
+{
     /**
      * Реальный экземпляр одиночки почти всегда находится внутри статического
      * поля. В этом случае статическое поле является массивом, где каждый
@@ -16,16 +15,20 @@ class Singleton {
      * Конструктор Одиночки не должен быть публичным. Однако он не может быть
      * приватным, если мы хотим разрешить создание подклассов.
      */
-    protected function __construct() { }
+    protected function __construct()
+    {
+    }
 
     /**
      * Клонирование и десериализация не разрешены для одиночек.
      */
-    protected function __clone() { }
+    protected function __clone()
+    {
+    }
 
     public function __wakeup()
     {
-        throw new \Exception("Cannot unserialize singleton");
+        throw new \Exception('Cannot unserialize singleton');
     }
 
     /**
@@ -34,7 +37,7 @@ class Singleton {
     public static function getInstance()
     {
         $subclass = static::class;
-        if (!isset(self::$instances[$subclass])) {
+        if (! isset(self::$instances[$subclass])) {
             // Обратите внимание, что здесь мы используем ключевое слово
             // "static"  вместо фактического имени класса. В этом контексте
             // ключевое слово "static" означает «имя текущего класса». Эта
@@ -44,6 +47,7 @@ class Singleton {
 
             self::$instances[$subclass] = new static();
         }
+
         return self::$instances[$subclass];
     }
 }

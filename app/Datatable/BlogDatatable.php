@@ -5,9 +5,8 @@ namespace App\Datatable;
 use App\Models\Blog;
 use Illuminate\Database\Eloquent\Builder;
 
-class BlogDatatable  extends BaseDatatable
+class BlogDatatable extends BaseDatatable
 {
-
     public function __construct()
     {
         parent::__construct(Blog::class, [
@@ -16,8 +15,8 @@ class BlogDatatable  extends BaseDatatable
         ], [
             'actions' => [
                 'title' => 'Actions',
-                'view' => 'admin.pages.blog.table_actions'
-            ]
+                'view' => 'admin.pages.blog.table_actions',
+            ],
         ]);
     }
 

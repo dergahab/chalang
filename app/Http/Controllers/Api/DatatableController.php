@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Str;
 
-class DatatableController extends Controller {
+class DatatableController extends Controller
+{
     private $namespace = 'App\\Datatable';
 
-    public function handle($datasource) {
-        $class = $this->namespace . '\\' .Str::ucfirst($datasource) . 'Datatable';
+    public function handle($datasource)
+    {
+        $class = $this->namespace.'\\'.Str::ucfirst($datasource).'Datatable';
 
         try {
             return (new $class)->datatable();
@@ -18,7 +20,7 @@ class DatatableController extends Controller {
             dd($exception);
         } catch (\Exception $exception) {
             dd($exception);
-            throw new \Exception('Datatable class `' . $class . '` not found!');
+            throw new \Exception('Datatable class `'.$class.'` not found!');
         }
     }
 }

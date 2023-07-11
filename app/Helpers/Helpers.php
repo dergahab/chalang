@@ -1,10 +1,12 @@
-<?php 
+<?php
+
 namespace App\Helpers;
 
 use App\Models\Task;
 
- Class Helpers {
- public static function task_count_by_status($status = 0)
+class Helpers
+{
+    public static function task_count_by_status($status = 0)
     {
         $count = new Task();
 
@@ -20,6 +22,7 @@ use App\Models\Task;
                     ->orWhere('user_id', '=', auth()->user()->id);
             });
         }
+
         return $count->count();
     }
- }
+}

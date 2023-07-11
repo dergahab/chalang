@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-
     public function index()
     {
         // $this->canOrAbort('users.index');
@@ -25,7 +23,6 @@ class UserController extends Controller
 
         $item = new User();
         $roles = Role::all();
-    
 
         return view('admin.pages.users.create', compact('item', 'roles'));
     }
@@ -46,8 +43,10 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->email = $request->email;
-        $user->person_type ='admin';
-        if ($request->password) $user->password = bcrypt($request->password);
+        $user->person_type = 'admin';
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         $user->syncRoles($request->user_role);
@@ -62,7 +61,7 @@ class UserController extends Controller
 
         $item = $user;
         $roles = Role::all();
-      
+
         return view('admin.pages.user.edit', compact('item', 'roles'));
     }
 
@@ -79,7 +78,9 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->surname = $request->surname;
-        if ($request->password) $user->password = bcrypt($request->password);
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
 
         $user->syncRoles($request->user_role);
@@ -96,34 +97,35 @@ class UserController extends Controller
         $user->delete();
 
         $this->flashAlert('User deleted!');
+
         return redirect()->route('user.index');
     }
 
     public function getUsers(Request $request)
     {
         $users = User::query()
-            ->where('name', 'LIKE', '%' . $request->q . '%')
-            ->orWhere('username', 'LIKE', '%' . $request->q . '%')
-            ->orWhere('email', 'LIKE', '%' . $request->q . '%')
+            ->where('name', 'LIKE', '%'.$request->q.'%')
+            ->orWhere('username', 'LIKE', '%'.$request->q.'%')
+            ->orWhere('email', 'LIKE', '%'.$request->q.'%')
             ->paginate();
 
         $users->getCollection()->transform(function ($item) {
             return [
                 'id' => $item->id,
-                'text' => $item->name
+                'text' => $item->name,
             ];
         });
 
         return response()->json([
             'results' => $users->items(),
             'pagination' => [
-                'more' => $users->hasPages()
-            ]
+                'more' => $users->hasPages(),
+            ],
         ]);
     }
 
-
-    public function account($id = null){
-        return "account";
+    public function account($id = null)
+    {
+        return 'account';
     }
 }

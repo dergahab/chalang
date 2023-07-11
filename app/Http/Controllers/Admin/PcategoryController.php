@@ -14,9 +14,12 @@ use Illuminate\Support\Str;
 class PcategoryController extends Controller
 {
     protected $langs;
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->langs = Lang::all();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,17 +47,17 @@ class PcategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(PcategoryStore $request)
-    {     
-        
+    {
+
         DB::beginTransaction();
         try {
             $pcategory = Pcategory::create();
 
-            foreach($this->langs as $lang){
-                if($request->post('name')[$lang->lang]){
+            foreach ($this->langs as $lang) {
+                if ($request->post('name')[$lang->lang]) {
                     PcategoryTranslation::insert([
-                        'name' =>$request->post('name')[$lang->lang],
-                        'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+                        'name' => $request->post('name')[$lang->lang],
+                        'slug' => Str::slug($request->post('name')[$lang->lang]),
                         'locale' => $lang->lang,
                         'pcategory_id' => $pcategory->id,
                     ]);
@@ -62,19 +65,18 @@ class PcategoryController extends Controller
             }
             DB::commit();
         } catch (\Exception $e) {
-           DB::rollback();
+            DB::rollback();
 
-           return response()->json([
+            return response()->json([
                 'code' => 401,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ]);
         }
-
 
         return response()->json([
             'code' => 200,
         ]);
-       
+
     }
 
     /**
@@ -97,23 +99,23 @@ class PcategoryController extends Controller
     public function edit($id)
     {
         $item = Pcategory::find($id);
-        return view('admin.pages.pcategory.edit',compact('item'));
+
+        return view('admin.pages.pcategory.edit', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        foreach($this->langs as $lang){
-            if($request->post('name')[$lang->lang]){
-                PcategoryTranslation::where('bcategory_id',$id)->where('locale',$lang->lang)->update([
-                    'name'   =>  $request->post('name')[$lang->lang],
-                    'slug'   =>  Str::slug($request->post('name')[$lang->lang]),
+        foreach ($this->langs as $lang) {
+            if ($request->post('name')[$lang->lang]) {
+                PcategoryTranslation::where('bcategory_id', $id)->where('locale', $lang->lang)->update([
+                    'name' => $request->post('name')[$lang->lang],
+                    'slug' => Str::slug($request->post('name')[$lang->lang]),
                 ]);
             }
         }
@@ -129,10 +131,10 @@ class PcategoryController extends Controller
      */
     public function destroy($id)
     {
-        Pcategory::where('id',$id)->delete();
+        Pcategory::where('id', $id)->delete();
 
         return response()->json([
-            'code' =>200
+            'code' => 200,
         ]);
     }
 }

@@ -2,19 +2,16 @@
 
 namespace App\Models;
 
-use App\Scopes\HasActiveScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Scope;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable ,HasRoles ,SoftDeletes;
@@ -24,13 +21,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = ['full_name','role'];
+    protected $appends = ['full_name', 'role'];
 
     protected $fillable = [
         'name', 'surname',
         'email', 'image',
         'password',
-        'department_id', 'position_id','user_id'
+        'department_id', 'position_id', 'user_id',
     ];
 
     /**
@@ -41,9 +38,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'type'
+        'type',
     ];
-
 
     public function getRoleAttribute()
     {
@@ -64,16 +60,14 @@ class User extends Authenticatable
         return $this->roles->first()->name;
     }
 
-
     public function getFuLLNameAttribute()
     {
-        return $this->name . ' ' . $this->surname;
+        return $this->name.' '.$this->surname;
     }
 
-  
     public function position(): BelongsTo
     {
-        return $this->belongsTo(Position::class,'position_id');
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
     public function department(): BelongsTo
@@ -81,11 +75,10 @@ class User extends Authenticatable
         return $this->belongsTo(Department::class);
     }
 
-    public function task() :BelongsToMany
+    public function task(): BelongsToMany
     {
-        return $this->belongsToMany(Task::class,'user_assign_tasks',  'task_id', 'user_id');
+        return $this->belongsToMany(Task::class, 'user_assign_tasks', 'task_id', 'user_id');
     }
-
 
     public function getImageAttribute($key)
     {
@@ -93,6 +86,6 @@ class User extends Authenticatable
         // if(isset($key)){
         //    $image = asset( Storage::url($key));
         // }
-        return  $image;
+        return $image;
     }
 }

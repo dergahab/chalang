@@ -146,7 +146,7 @@
                             <div class="project-grid">
                                 <div class="thumbnail">
                                     <a href="{{route('portfolio.single',$portfolio->slug)}}">
-                                        <img src="{{asset('storage/'.$portfolio->images()->first()->url)}}" class="image" alt="project">
+                                        <img src="{{asset('storage/'.$portfolio->images()->first()?->url)}}" class="image" alt="project">
                                         <div class="middle">
                                             <i class="fas fa-eaye"></i>
                                           </div>
@@ -157,8 +157,8 @@
                                     <span class="subtitle">
                                         @foreach ($portfolio->pcategories as $subtitle)
                                         {{$subtitle->name}} 
-                                         @if (! $loop->last)
-                                        ,
+                                         @if (! $loop->last) ,
+                                        
                                     @endif
                                     @endforeach
                                     </span>

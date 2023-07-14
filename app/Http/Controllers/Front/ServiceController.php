@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use Illuminate\Database\Query\Builder;
 
 class ServiceController extends Controller
 {
@@ -16,7 +17,7 @@ class ServiceController extends Controller
 
     public function details($slug)
     {
-        $item = Service::where('slug', $slug)->first();
+        $item = Service::orWhereTranslationLike('slug', '%' . $slug . '%')->first();
 
         return view('front.services.single', compact('item'));
     }

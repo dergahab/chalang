@@ -63,7 +63,7 @@ class ServiceController extends Controller
             $image = $this->upload($request, name: 'icon', dir: 'services');
             $data['icon'] = $image;
         }
-        $data['slug'] = Str::slug($request->post('name')['az']);
+        // $data['slug'] = Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
 
@@ -76,6 +76,7 @@ class ServiceController extends Controller
                         'description' => $request->post('description')[$lang->lang],
                         'locale' => $lang->lang,
                         'service_id' => $service->id,
+                        'slug' => Str::slug($request->post('name')['az'])
                     ]);
                 }
             }

@@ -8,7 +8,7 @@
                     <form class="" action="{{ route('admin.sp-content.update', $item) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        @include('admin.pages.portfolio._form')
+                        @include('admin.pages.sp_contnet._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
                                 <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Düzənlə</button>

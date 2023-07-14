@@ -1,31 +1,21 @@
 <div class="row">
-    <div class="col-md-5">
+    @if ($errors->has('name'))
+    <div class="alert alert-danger">
+        {{ $errors->first('name') }}
+    </div>
+@endif
+    <div class="col-md-12">
         <div class="form-group">
           <label for="">Servis</label>
-          <select name="service" id="" class="form-control">
+          <select name="service_id" id="" class="form-control">
               <option value="">Seуçin...</option>
             @foreach ($services as $service)
-                 <option value="{{$service->id}}">{{$service->name}}</option>
+                 <option @if ($item->service_id == $service->id) selected @endif value="{{$service->id}}">{{$service->name}}</option>
             @endforeach
           </select>
         </div>
     </div>
-    <div class="col-md-2 d-flex justify-content-center">
-        <label for="">VƏYA</label>
-    </div>
-    <div class="col-md-5">
-        <div class="form-group">
-            <label for="">Portfolio</label>
-            <select name="portfolio" id="" class="form-control">
-                <option value="">Seуçin...</option>
-              @foreach ($portfolios as $portfolio)
-                  <option value="{{$portfolio->id}}">{{$portfolio->title}}</option>
-              @endforeach
-            </select>
-          </div>
-    </div>
 </div>
-
 <div class="row mt-3">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
     @foreach($langs as $lang)
@@ -45,15 +35,16 @@
             aria-labelledby="{{ $lang->country }}-tab">
             <div class="form-group ">
                 <label for="name">Başlıq ({{ $lang->lang }}) </label>
-                <input type="text" value="{{old('title')}}"
+                <input type="text"
                     name="name[{{ $lang->lang }}]" 
                     id="company" class="form-control"
                     placeholder="Kateqoriya adı "
+                    value="{{old('name['.$lang->lang.']', $item->translate($lang->lang)?->title)}}"
                     @if($loop->first) required @endif >
             </div>
             <div class="form-group mt-3 ">
                 <label for="name">Məzmun ({{ $lang->lang }}) </label>
-                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="4"   @if($loop->first) required @endif >{{old("description")}}</textarea>
+                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="4"   @if($loop->first) required @endif >{{old('description['.$lang->lang.']', $item->translate($lang->lang)?->content)}}</textarea>
             </div>
             <hr>
           
@@ -61,7 +52,7 @@
     @endforeach
 </div>
 <div class="col-12">
-    <div class="contents row border border-danger">
+    <div class="contents row">
            
     </div>
     <button type="button" class="btn btn-primary mt-1 float-end " id="add-btn"><i class="fas fa-plus" title="Əlavə et"></i></button>
@@ -72,7 +63,6 @@
    <script>
 		$(document).ready(function() {
 			$('#add-btn').click(function() {
-              
 			    $('.contents').append(`@include('admin.pages.sp_contnet.partials.content')`);
 			});
 
@@ -81,4 +71,10 @@
 			});
 		});
 	</script>
+    <script>
+        $('.trash').click(function (e) { 
+            e.preventDefault();
+            $(this).parent().remove()
+        });
+    </script>
 @endpush

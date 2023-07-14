@@ -3,22 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ServiceContentRequest;
 use App\Models\Compound;
 use App\Models\Lang;
 use App\Models\Portfolio;
 use App\Models\Service;
-use App\Services\PsService;
+use App\Models\ServisContent;
+use App\Services\ServiceContentService;
 use Illuminate\Http\Request;
 
 class SpcontentController extends Controller
 {
     protected $langs;
-
+    protected $serviscontent;
     public function __construct()
     {
         $this->langs = Lang::all();
+        $this->serviscontent = new ServiceContentService();
         view()->share('services', Service::where('parent_id', 0)->get());
         view()->share('portfolios', Portfolio::all());
+        
     }
 
     public function index()
@@ -45,9 +49,9 @@ class SpcontentController extends Controller
      */
     public function store(Request $request)
     {
-        return  PsService::save($request);
-
-        return redirect()->route('admin.sp-content.index');
+        // return $request->all();
+        $this->serviscontent->store($request->except('_token'));
+        return back();
     }
 
     /**
@@ -69,7 +73,8 @@ class SpcontentController extends Controller
      */
     public function edit($id)
     {
-        return Compound::with('subcompund')->find($id);
+      $item = ServisContent::find($id);
+      return view('admin.pages.sp_contnet.edit',compact('item'));
     }
 
     /**
@@ -78,9 +83,15 @@ class SpcontentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiceContentRequest $request, $id)
     {
-        //
+        try {
+            $this->serviscontent->update($request->except('_method','_token'),$id);
+        } catch (\Exception $th) {
+           return  $th->getMessage();
+        }
+
+        return back();
     }
 
     /**

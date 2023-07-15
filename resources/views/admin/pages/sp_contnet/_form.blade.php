@@ -44,19 +44,19 @@
             </div>
             <div class="form-group mt-3 ">
                 <label for="name">Məzmun ({{ $lang->lang }}) </label>
-                    <textarea class="form-control" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="4"   @if($loop->first) required @endif >{{old('description['.$lang->lang.']', $item->translate($lang->lang)?->content)}}</textarea>
+                    <textarea class="form-control editor" name="description[{{ $lang->lang }}]"  id="" cols="30" rows="4"   @if($loop->first) required @endif >{{old('description['.$lang->lang.']', $item->translate($lang->lang)?->content)}}</textarea>
             </div>
             <hr>
           
         </div>
     @endforeach
 </div>
-<div class="col-12">
+{{-- <div class="col-12">
     <div class="contents row">
            
     </div>
     <button type="button" class="btn btn-primary mt-1 float-end " id="add-btn"><i class="fas fa-plus" title="Əlavə et"></i></button>
-</div>
+</div> --}}
 </div>
 
 @push('js_stack')

@@ -20,4 +20,10 @@ class Service extends Model implements TranslatableContract
     {
         return $this->hasMany(self::class, 'parent_id');
     }
+
+
+    public function content()
+    {
+        return $this->hasOne(ServisContent::class);
+    }
 }

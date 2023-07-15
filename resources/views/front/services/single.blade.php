@@ -50,47 +50,11 @@
             <div class="col-lg-6 offset-xl-1">
                 <div class="why-choose-us">
                     <div class="section-heading heading-left">
-                        <h3 class="title">We delivered</h3>
-                        <p>Digital technology has made our world more transparent and interconnected, posing new challenges and opportunities for every business.</p>
+                        <h3 class="title">{{$content->title}}</h3>
+                        <p>{!!$content->content!!}</p>
                     </div>
-                    <div class="accordion" id="choose-accordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <i class="fa fa-compress"></i> Strategy
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#choose-accordion" style="">
-                                <div class="accordion-body">
-                                    Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="fa fa-code"></i>Design
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#choose-accordion">
-                                <div class="accordion-body">
-                                    Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <i class="fal fa-globe"></i>Development
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#choose-accordion">
-                                <div class="accordion-body">
-                                    Aenean hendrerit laoreet vehicula. Nullam convallis augue at enim gravida pellentesque.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
+                   
                 </div>
             </div>
         </div>

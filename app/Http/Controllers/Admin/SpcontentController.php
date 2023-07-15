@@ -20,8 +20,7 @@ class SpcontentController extends Controller
     {
         $this->langs = Lang::all();
         $this->serviscontent = new ServiceContentService();
-        view()->share('services', Service::where('parent_id', 0)->get());
-        view()->share('portfolios', Portfolio::all());
+        view()->share('services', Service::where('parent_id','<>', 0)->get());
         
     }
 
@@ -37,8 +36,7 @@ class SpcontentController extends Controller
      */
     public function create()
     {
-        $item = new Compound();
-
+        $item = new ServisContent();
         return view('admin.pages.sp_contnet.create', compact('item'));
     }
 
@@ -85,6 +83,8 @@ class SpcontentController extends Controller
      */
     public function update(ServiceContentRequest $request, $id)
     {
+                // return $request->all();
+
         try {
             $this->serviscontent->update($request->except('_method','_token'),$id);
         } catch (\Exception $th) {

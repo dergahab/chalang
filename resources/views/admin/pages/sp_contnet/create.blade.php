@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">Portfolio</h4>
+                    <h4 class="mt-0 header-title">Servis kontent</h4>
                     <form class="" action="{{ route('admin.sp-content.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @include('admin.pages.sp_contnet._form')

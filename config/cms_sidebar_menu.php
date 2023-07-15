@@ -44,8 +44,21 @@ return [
     [
         'icon' => '<i class="ri-building-2-fill"></i>',
         'title' => 'Xidmətlər',
-        'route' => 'admin.service.index',
         'can' => 'service.index',
+        'inner' => [
+            [
+                'icon' => '<i class="ri-building-2-fill"></i>',
+                'title' => 'Xidmətlər',
+                'route' => 'admin.service.index',
+                'can' => 'service.index',
+            ],
+            [
+                'icon' => '<i class="ri-building-2-fill"></i>',
+                'title' => 'Servis content',
+                'route' => 'admin.sp-content.index',
+                'can' => 'service.index',
+            ],
+        ]
     ],
     [
         'icon' => '<i class="ri-building-2-fill"></i>',
@@ -79,12 +92,7 @@ return [
             ],
         ],
     ],
-    [
-        'icon' => '<i class="ri-building-2-fill"></i>',
-        'title' => 'Service/Portfolio content',
-        'route' => 'admin.sp-content.index',
-        'can' => 'service.index',
-    ],
+    
     [
         'icon' => '<i class="ri-briefcase-line"></i>',
         'title' => 'Blog',

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lang;
+use App\Models\ServiceContentOption;
 use App\Models\ServisContent;
 use App\Models\ServisContentTranslation;
 use Illuminate\Support\Facades\DB;
@@ -10,24 +11,27 @@ use Illuminate\Support\Facades\DB;
 class ServiceContentService implements BaseService {
 
     public $langs;
-
+    public $servicecontentoption;
     public function __construct()
     {
         $this->langs = Lang::all();
+        $this->servicecontentoption = new ServiceContentOptionService();
     }
     public function store($data){
             $item = ServisContent::create([
                 'service_id' => $data['service_id']
             ]);
             $this->saveTranslatable($data, $item->id);
+
+            $this->servicecontentoption->store($data, $item->id);
     }
 
     public function update(array $data , $model ){
-      ServisContent::where('id', $model)->update([
+     $item = ServisContent::where('id', $model)->update([
         'service_id' => $data['service_id']
       ]);
       $this->saveTranslatable($data, $model);
-    }
+     }
 
     public function saveTranslatable($data, $id ){
         DB::beginTransaction();

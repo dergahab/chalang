@@ -4,20 +4,20 @@
             <div class="col-md-12 pt-3">
                 <div class="form-group">
                     <label for="">Basliq [{{$l->lang}}]</label>
-                    <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    <input type="text" name="option_title[]" id="" class="form-control" placeholder="" aria-describedby="helpId">
                 </div>
             </div>
             <div class="col-md-12 pt-1">
                 <div class="form-group">
                     <label for="">Mezmun [{{$l->lang}}]</label>
-                    <textarea name="" class="form-control" cols="30" rows="3"></textarea>
+                    <textarea name="option_content[]" class="form-control" cols="30" rows="3"></textarea>
                 </div>
             </div>
         @endforeach
         <div class="col-md-12 p-3">
             <div class="form-group">
             <label for="">Icon</label>
-            <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            <input type="text" name="option_icon[]" id="" class="form-control" placeholder="" aria-describedby="helpId">
             </div>
         </div>
     </div>

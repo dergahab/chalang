@@ -11,6 +11,12 @@ return [
         'can' => 'dashbord.index',
     ],
     [
+        'icon' => '<i class=" ri-home-5-fill"></i>',
+        'title' => 'Haqqimizda',
+        'route' => 'admin.about.index',
+        'can' => 'dashbord.index',
+    ],
+    [
         'title' => 'Tənzimləmələr',
         'icon' => '<i class=" ri-settings-5-line"></i>',
         'inner' => [

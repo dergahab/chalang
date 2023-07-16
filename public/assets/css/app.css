@@ -2281,7 +2281,7 @@ Pagination
 @media only screen and (max-width: 991px) {
     .my_switcher {
         position: initial;
-        display: none;
+        display: block;
     }
 }
 

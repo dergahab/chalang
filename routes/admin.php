@@ -52,4 +52,7 @@ Route::get('service-in-main', [ServiceController::class, 'in_main'])->name('serv
 Route::get('portfolio-in-main', [PortfolioController::class, 'in_main'])->name('portfolio.in_main');
 //Admin routes
 
+Route::get('index','AboutController@index')->name('about.index');
+Route::put('udate/{id}','AboutController@update')->name('about.update');
+
 Route::resource('company', CompanyController::class);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\MainController as FrontMainController;
 use App\Http\Controllers\Front\PortfolioController;
@@ -32,10 +33,7 @@ Route::group(['middleware' => 'language'], function () {
 Route::get('index', [FrontMainController::class, 'index'])->name('/');
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('blog/{blog:slug}', [BlogController::class, 'single'])->name('blog.single');
-Route::get('about-us', function () {
-    // return view('auth.login');
-    return view('front.about');
-})->name('about-us');
+Route::get('about-us', AboutController::class)->name('about-us');
 Route::get('contact', function () {
     // return view('auth.login');
     return view('front.contuct-us');

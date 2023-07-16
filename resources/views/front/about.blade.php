@@ -33,17 +33,16 @@
                 <div class="row">
                     <div class="col-xl-7 col-lg-6">
                         <div class="case-study-featured-thumb text-start">
-                            <img src="assets/media/others/case-study-4.png" alt="travel">
+                            <img src="{{asset('storage/'. $item->image)}}" alt="travel">
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-6">
                         <div class="case-study-featured">
                             <div class="section-heading heading-left">
                                 <span class="subtitle">Who we are</span>
-                                <h2 class="title">Building software for world changers</h2>
-                                <p>Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales, et placerat orci lobortis.</p>
-                                <p>Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.</p>
-                                <a href="contact.html" class="axil-btn btn-fill-primary btn-large">Contact</a>
+                                <h2 class="title">{{$item->title}}</h2>
+                                {!! $item->description!!}
+                                <a href="{{route('cuntuct-us')}}" class="axil-btn btn-fill-primary btn-large">Contact</a>
                             </div>
                             <div class="case-study-counterup">
                                 <div class="single-counterup">
@@ -53,13 +52,13 @@
                                     </h2>
                                     <span class="counter-title">Years on the market</span>
                                 </div>
-                                <div class="single-counterup">
+                                {{-- <div class="single-counterup">
                                     <h2 class="count-number">
                                         <span class="number count">1500</span>
                                         <span class="symbol">+</span>
                                     </h2>
                                     <span class="counter-title">Projects delivered so far</span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

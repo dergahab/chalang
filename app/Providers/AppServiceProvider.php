@@ -38,6 +38,9 @@ class AppServiceProvider extends ServiceProvider
             view()->share('users', User::all());
         }
         if (Schema::hasTable('langs')) {
+            view()->share('languages', Lang::all());
+        }
+        if (Schema::hasTable('langs')) {
             view()->share('langs', Lang::all());
         }
         if (Schema::hasTable('contacts')) {

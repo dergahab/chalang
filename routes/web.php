@@ -4,6 +4,7 @@ use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\MainController as FrontMainController;
 use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\ServiceController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,17 +27,15 @@ Route::get('/', function () {
     return view('coming-soon');
 });
 
-Route::get('index', [FrontMainController::class, 'index'])->name('/');
-// }
+Route::group(['middleware' => 'language'], function () {
 
+Route::get('index', [FrontMainController::class, 'index'])->name('/');
 Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('blog/{blog:slug}', [BlogController::class, 'single'])->name('blog.single');
-
 Route::get('about-us', function () {
     // return view('auth.login');
     return view('front.about');
 })->name('about-us');
-
 Route::get('contact', function () {
     // return view('auth.login');
     return view('front.contuct-us');
@@ -47,3 +46,6 @@ Route::get('service-deatail/{service:slug}', [ServiceController::class, 'details
 
 Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('portfolio-deatail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
+});
+
+Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('lang.change');

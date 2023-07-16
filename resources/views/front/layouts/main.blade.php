@@ -93,7 +93,7 @@
                                 </div>
                                 <ul class="mainmenu     justify-content-center">
                                     <li class="">
-                                        <a href="{{route('/')}}"><i class="fas fa-home"></i> Home</a>
+                                        <a href="{{route('/')}}"><i class="fas fa-home"></i> {{__('static.home')}}</a>
                                   
                                     </li>
                                     <li >
@@ -129,6 +129,9 @@
                         </div>
                         <div class="header-action">
                             <ul class="list-unstyled">
+                                <li class=" d-lg-block d-none">
+                                  <button value="{{$languages->where('lang' ,'<>', app()->getLocale())->first()->lang}}" class="lang-btn">{{ strtoupper($languages->where('lang' ,'<>', app()->getLocale())->first()->lang) }}</button>
+                                </li>
                                 <li class="sidemenu-btn d-lg-block d-none">
                                     <button class="btn-wrap" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuRight">
                                         <span></span>
@@ -333,7 +336,27 @@
     <script src="{{asset('assets/js/vendor/tilt.js?v=').time()}}"></script>
     <script src="{{asset('assets/js/vendor/green-audio-player.min.js?v=').time()}}"></script>
     <script src="{{asset('assets/js/vendor/jquery.nav.js?v=').time()}}"></script>
-    
+    <script>
+       $(".lang-btn").click(function (e) {
+        e.preventDefault();
+        var lang = $(this).attr('value');
+        var url = "{{ route('lang.change', ['lang' => ':lang']) }}";
+        url = url.replace(':lang', lang);
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+            $.get(url,
+                function(response) {
+                    window.location.reload()
+                });
+    });
+
+
+    </script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     

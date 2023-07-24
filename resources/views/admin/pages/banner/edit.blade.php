@@ -23,3 +23,33 @@
     </div>
     <!-- end row -->
 @endsection
+<script>
+    $(document).on('submit', '#createForm', function(e) {
+        e.preventDefault();
+        
+        let form = $(this);
+        let url = form.attr('action');
+        let data =   new FormData($(this)[0]);
+    
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: data,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log(response);
+                window.location.href  = '/dashboard/banner'
+            },
+            error: function(errors) {
+    
+                let errorMessages = errors.responseJSON;
+                for (let key in errorMessages) {
+                    if (errorMessages.hasOwnProperty(key)) {
+                        toastr["error"](errorMessages[key]);
+                    }
+                }
+            }
+        });
+    });
+    </script>

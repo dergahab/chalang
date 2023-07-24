@@ -17,7 +17,7 @@ class CreateBannerTranslationsTable extends Migration
             $table->id();
             $table->foreignId('banner_id')->constrained();
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->string('locale');
             $table->timestamps();
         });

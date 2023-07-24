@@ -73,54 +73,27 @@
                     <h2 class="title">Our logo design process</h2>
                     <p>Our comprehensive logo design strategy ensures a perfectly crafted logo for your business.</p>
                 </div>
-                <div class="process-work sal-animate" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100">
-                    <div class="thumbnail paralax-image" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
-                        <img src="assets/media/others/process-1.png" alt="Thumbnail">
+                @foreach ($steps as $step)
+                    <div class="process-work sal-animate @if($loop->iteration % 2 != 0) content-reverse @endif" @if($loop->iteration % 2 != 0) data-sal="slide-right"@else data-sal="slide-left" @endif   data-sal-duration="1000" data-sal-delay="100">
+                        <div class="thumbnail paralax-image" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+                            <img src="{{asset('storage/'. $step->image)}}" alt="Thumbnail">
+                        </div>
+                        <div class="content">
+                            <span class="subtitle">{{$step->step}}</span>
+                            <h3 class="title">{{$step->title}}</h3>
+                            {!!$step->description!!}
+                        </div>
                     </div>
-                    <div class="content">
-                        <span class="subtitle">Step One</span>
-                        <h3 class="title">Discover</h3>
-                        <p>Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales, et placerat orci lobortis. Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.</p>
-                    </div>
-                </div>
-                <div class="process-work content-reverse sal-animate" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100">
-                    <div class="thumbnail paralax-image">
-                        <img src="assets/media/others/process-2.png" alt="Thumbnail">
-                    </div>
-                    <div class="content">
-                        <span class="subtitle">Step Two</span>
-                        <h3 class="title">Prototype</h3>
-                        <p>Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales, et placerat orci lobortis. Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.</p>
-                    </div>
-                </div>
-                <div class="process-work sal-animate" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="100">
-                    <div class="thumbnail paralax-image" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
-                        <img src="assets/media/others/process-3.png" alt="Thumbnail">
-                    </div>
-                    <div class="content">
-                        <span class="subtitle">Step Three</span>
-                        <h3 class="title">Test</h3>
-                        <p>Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales, et placerat orci lobortis. Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.</p>
-                    </div>
-                </div>
-                <div class="process-work content-reverse sal-animate" data-sal="slide-left" data-sal-duration="1000" data-sal-delay="100">
-                    <div class="thumbnail paralax-image">
-                        <img src="assets/media/others/process-4.png" alt="Thumbnail">
-                    </div>
-                    <div class="content">
-                        <span class="subtitle">Step four</span>
-                        <h3 class="title">Build</h3>
-                        <p>Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales, et placerat orci lobortis. Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.</p>
-                    </div>
-                </div>
+                  
+                @endforeach
             </div>
             <ul class="shape-group-17 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/bubble-24.png" alt="Bubble"></li>
-                <li class="shape shape-2"><img src="assets/media/others/bubble-23.png" alt="Bubble"></li>
-                <li class="shape shape-3"><img src="assets/media/others/line-4.png" alt="Line"></li>
-                <li class="shape shape-4"><img src="assets/media/others/line-5.png" alt="Line"></li>
-                <li class="shape shape-5"><img src="assets/media/others/line-4.png" alt="Line"></li>
-                <li class="shape shape-6"><img src="assets/media/others/line-5.png" alt="Line"></li>
+                <li class="shape shape-1"><img src="{{asset('assets/media/others/bubble-24.png')}}" alt="Bubble"></li>
+                <li class="shape shape-2"><img src="{{asset('assets/media/others/bubble-23.png')}}" alt="Bubble"></li>
+                <li class="shape shape-3"><img src="{{asset('assets/media/others/line-4.png')}}" alt="Line"></li>
+                <li class="shape shape-4"><img src="{{asset('assets/media/others/line-5.png')}}" alt="Line"></li>
+                <li class="shape shape-5"><img src="{{asset('assets/media/others/line-4.png')}}" alt="Line"></li>
+                <li class="shape shape-6"><img src="{{asset('assets/media/others/line-5.png')}}" alt="Line"></li>
             </ul>
         </section>
         <div class="section section-padding-equal bg-color-light">

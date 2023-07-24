@@ -200,3 +200,27 @@ $(document).on('click','.light-dark-mode',function(){
 //     }
 
 //     toggleSwitch.addEventListener('change', switchTheme, false);
+   
+        // Create a new FormData object to handle file uploads
+        var formData = new FormData(form[0]);
+      
+        // Example: Perform an AJAX POST request using $.ajax()
+        var url = "your_server_endpoint_url";
+        $.ajax({
+          url: url,
+          type: type,
+          data: formData,
+          processData: false, // Important: Prevent jQuery from processing the data
+          contentType: false, // Important: Let the browser set the content type
+          success: function (response) {
+            // Handle the response data here, if needed
+          },
+          error: function (xhr, status, error) {
+            // Handle errors here, if the request fails
+          },
+          complete: function () {
+            // Perform any cleanup or final actions here, if needed
+          }
+        });
+
+         

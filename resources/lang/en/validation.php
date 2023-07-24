@@ -90,5 +90,8 @@ return [
         'deadline' => 'Deadline',
         'desciption' => 'Açıqlama',
         'title' => 'Başlıq',
+        'name.az' => 'Başliq az',
+        'content.az' => 'Mezmun az',
+        'image' => 'Şəkil',
     ],
 ];

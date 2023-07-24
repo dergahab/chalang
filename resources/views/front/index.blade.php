@@ -6,16 +6,17 @@
         <section class="banner banner-style-4">
             <div class="container">
                 <div class="banner-content">
-                    <h1 class="title" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">Think the design, design the thinking.</h1>
-                    <p data-sal="slide-up" data-sal-duration="1000">Create live segments and target the right people
-                        for messages based on their behaviors.</p>
+                    <h1 class="title" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">{{$banner->title}}</h1>
+                    <p data-sal="slide-up" data-sal-duration="1000">{!!$banner->content!!}</p>
                     <div data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">
-                        <a href="portfolio.html" class="axil-btn btn-fill-primary btn-large">View Showcase</a>
+                        @if ($banner->url)
+                              <a href="{{$banner->url}}" class="axil-btn btn-fill-primary btn-large">View Showcase</a>
+                        @endif
                     </div>
                 </div>
                 <div class="banner-thumbnail">
                     <div class="large-thumb" data-sal="slide-left" data-sal-duration="800" data-sal-delay="400">
-                        <img class="paralax-image" src="assets/media/banner/banner-thumb-7.png" alt="Shape">
+                        <img class="paralax-image" src="{{asset('storage/'. $banner->image)}}" alt="Shape">
                     </div>
                 </div>
                 <div class="banner-social" data-sal="slide-up" data-sal-duration="800">

@@ -103,5 +103,6 @@ return [
         'phone' => 'Telefon',
         'role_id' => 'İcazə',
         'customer_id' => 'Müştəri',
+        'name.az' => 'Basliq az'
     ],
 ];

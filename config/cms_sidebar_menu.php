@@ -13,8 +13,21 @@ return [
     [
         'icon' => '<i class=" ri-home-5-fill"></i>',
         'title' => 'Haqqimizda',
-        'route' => 'admin.about.index',
         'can' => 'dashbord.index',
+        'inner' => [
+            [
+                'icon' => '<i class=" ri-home-5-fill"></i>',
+                'title' => 'Haqqimizda',
+                'route' => 'admin.about.index',
+                'can' => 'dashbord.index',
+            ],
+            [
+                'title' => 'Step',
+                'route' => 'admin.step.index',
+                'icon' => '<i class="ri-user-2-fill"></i>',
+                'can' => 'step.index',
+            ],
+        ]
     ],
     [
         'title' => 'Tənzimləmələr',
@@ -71,6 +84,12 @@ return [
         'title' => 'Şirkət',
         'route' => 'admin.company.index',
         'can' => 'company.index',
+    ],
+    [
+        'icon' => '<i class="ri-building-2-fill"></i>',
+        'title' => 'Banner',
+        'route' => 'admin.banner.index',
+        'can' => 'banner.index',
     ],
     [
         'icon' => '<i class="ri-building-2-fill"></i>',

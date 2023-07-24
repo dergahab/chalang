@@ -5,6 +5,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\StepController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\DatatableController;
 use App\Http\Controllers\Api\MainController;
@@ -44,6 +45,8 @@ Route::resource('sp-content', 'SpcontentController');
 Route::resource('contanct', ContactController::class);
 Route::resource('tag', TagController::class);
 Route::resource('content-text', ContenttextCortoller::class);
+Route::resource('step', 'StepController');
+Route::resource('banner', 'BannerController');
 
 Route::resource('file', 'FileController')->except(['create', 'index', 'update']);
 Route::post('order', 'FileController@order')->name('image.order');

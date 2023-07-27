@@ -1,3 +1,17 @@
 {
-    "Home" : "Əsas"
+    "Home": "Home",
+    "Services": "Xidmətlər",
+    "Portfolio": "İşlərimiz",
+    "About": "Haqqımızda",
+    "Blog": "Bloq",
+    "Contact": "Əlaqə",
+    "What We Can Do For You" : "Göstərdiyimiz xidmətlər",
+    "Services we can help you with" : "Services we can help you with",
+    "Our Project": "İşlərimiz",
+    "All Works": "All Works",
+    "Discover More Projects": "Discover More Projects",
+    "Top Clients": "Top Clients",
+    "Related Post": "Related Post",
+    "Let's Work Together": "Let's Work Together",
+    "Need a successful project?": "Need a successful project?"
 }

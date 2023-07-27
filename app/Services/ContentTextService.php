@@ -18,17 +18,17 @@ class ContentTextService
 
     public function create($request)
     {
-        $contentText = Contenttext::create([
-            'key' => $request->key,
-        ]);
-
-        return $contentText->id;
+      return  $this->translate($request);
     }
 
     public function update($request, $id)
     {
         DB::beginTransaction();
         try {
+           Contenttext::updateOrCreate(['id'=> $id],[
+                'key' => $request->key,
+            ]);
+
             foreach ($this->langs as $lang) {
                 if ($request->post('title')[$lang->lang]) {
                     ContenttextTranslation::where('contenttext_id', $id)->where('locale', $lang->lang)->update([
@@ -40,6 +40,9 @@ class ContentTextService
                 }
             }
             DB::commit();
+            return response()->json([
+                'success' => true
+            ],201);
         } catch (\Exception $e) {
             DB::rollback();
 
@@ -54,18 +57,21 @@ class ContentTextService
         return $id;
     }
 
-    public function translate($request)
+    public function translate($request , $id = null)
     {
         DB::beginTransaction();
         try {
-            $id = $this->create($request);
+          $text = Contenttext::updateOrCreate(['id'=> $id],[
+                'key' => $request->key,
+            ]);
+          
             foreach ($this->langs as $lang) {
-                if ($request->post('title')[$lang->lang]) {
-                    ContenttextTranslation::insert([
-                        'title' => $request->post('title')[$lang->lang],
+                if ($request->post('name')[$lang->lang]) {
+                    ContenttextTranslation::updateOrCreate(['contenttext_id' =>  $text->id, 'locale' => $lang->lang],[
+                        'title' => $request->post('name')[$lang->lang],
                         'content' => $request->post('content')[$lang->lang],
                         'locale' => $lang->lang,
-                        'contenttext_id' => $id,
+                        'contenttext_id' => $text->id,
                     ]);
                 }
             }
@@ -75,8 +81,5 @@ class ContentTextService
 
             return $e->getMessage();
         }
-
-        return 'success';
-
     }
 }

@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contenttext;
+use App\Models\Lang;
 use App\Services\ContentTextService;
 use Illuminate\Http\Request;
 
 class ContenttextCortoller extends Controller
 {
     protected $contenttextserive;
+    protected $langs;
 
     public function __construct()
     {
         $this->contenttextserive = new ContentTextService();
+        view()->share('langs', Lang::all());
     }
 
     /**
@@ -45,9 +48,10 @@ class ContenttextCortoller extends Controller
      */
     public function store(Request $request)
     {
-        $response = $this->contenttextserive->translate($request);
+    //   return  $request->all();
+        $response = $this->contenttextserive->create($request);
         if ($response != 'success') {
-            return redirect()->back()->with('error', 'Translation failed');
+            return redirect()->back()->with('error', $response );
         } else {
             return redirect()->back();
         }

@@ -33,8 +33,7 @@ class BannerService implements BaseService
 
     public function saveTranslatable($request, $id = null)
     {
-       
-
+     
         $data = [];
         DB::beginTransaction();
         try {
@@ -65,14 +64,13 @@ class BannerService implements BaseService
             DB::commit();
            
             return response()->json([
-                'code' => 200
-            ]);
+                'success' => true
+            ],200);
         } catch (\Exception $e) {
             DB::rollback();
-            return response()->json([
-                'code' =>  $e->getMessage()
-            ]);
-            return $e->getMessage();
+            // return response()->json([
+            //     'code' =>  $e->getMessage()
+            // ]);
         }
     }
 }

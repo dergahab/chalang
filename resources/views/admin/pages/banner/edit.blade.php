@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Banner Edit</h4>
-                    <form class="" action="{{ route('admin.banner.update', $item) }}" method="POST" enctype="multipart/form-data">
+                    <form class="" id="editForm" action="{{ route('admin.banner.update', $item) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.banner._form')
@@ -23,17 +23,18 @@
     </div>
     <!-- end row -->
 @endsection
+@push('js_stack')
 <script>
-    $(document).on('submit', '#createForm', function(e) {
+    $(document).on('submit', '#editForm', function(e) {
         e.preventDefault();
-        
         let form = $(this);
         let url = form.attr('action');
         let data =   new FormData($(this)[0]);
-    
+        console.log($(this).serialize());
+        // return false;
         $.ajax({
             url: url,
-            type: 'PUT',
+            type: 'POST',
             data: data,
             processData: false,
             contentType: false,
@@ -52,4 +53,6 @@
             }
         });
     });
-    </script>
+</script>
+
+@endpush

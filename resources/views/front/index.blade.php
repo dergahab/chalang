@@ -9,8 +9,8 @@
                     <h1 class="title" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="100">{{$banner->title}}</h1>
                     <p data-sal="slide-up" data-sal-duration="1000">{!!$banner->content!!}</p>
                     <div data-sal="slide-up" data-sal-duration="1000" data-sal-delay="200">
-                        @if ($banner->url)
-                              <a href="{{$banner->url}}" class="axil-btn btn-fill-primary btn-large">View Showcase</a>
+                        @if($banner->url)
+                              <a href="{{$banner->url}}" class="axil-btn btn-fill-primary btn-large">{{__('Contact')}}</a>
                         @endif
                     </div>
                 </div>
@@ -44,8 +44,8 @@
         <section class="section section-padding-equal bg-color-dark">
             <div class="container">
                 <div class="section-heading heading-light-left">
-                    <span class="subtitle">What We Can Do For You</span>
-                    <h2 class="title">Services we can help you with</h2>
+                    <span class="subtitle">{{__('What We Can Do For You')}}</span>
+                    <h2 class="title">{{__('Services we can help you with')}}</h2>
                     <p class="opacity-50">Nulla facilisi. Nullam in magna id dolor
                         blandit rutrum eget vulputate augue sed eu imperdiet.</p>
                 </div>

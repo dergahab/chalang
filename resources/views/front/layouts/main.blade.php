@@ -99,30 +99,30 @@
                                     <li >
                                         <a href="{{route('services')}}">
                                             <i class="fa fa-swatchbook"></i>
-                                            Services</a>
+                                            {{__('Services')}}</a>
                                     
                                     </li>
                                     <li >
                                         <a href="{{route('portfolio')}}">
                                             <i class="fa fa-suitcase"></i>
-                                            Portfolio</a>
+                                            {{__('Portfolio')}}</a>
                                   
                                     </li>
                                     <li class="">
                                         <a href="{{route('about-us')}}">
                                             <i class="fa fa-users"></i>
-                                            About us</a>
+                                           {{__('About')}}</a>
                                        
                                     </li>
                                     <li class="">
                                         <a href="{{route('blogs')}}">
                                             <i class="fas fa-pen-nib"></i>
-                                            Blog</a>
+                                            {{__('Blog')}}</a>
                                         
                                     </li>
                                     <li><a href="{{route('cuntuct-us')}}">
                                         <i class="fas fa-phone"></i>
-                                        Contact</a></li>
+                                        {{__('Contact')}}</a></li>
                                 </ul>
                             </nav>
                             <!-- End Mainmanu Nav -->

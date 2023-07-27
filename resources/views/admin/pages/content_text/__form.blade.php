@@ -15,39 +15,40 @@
             </div>
         </div>
   
-    <div class="col-md-12">
-        <ul class="nav nav-tabs" role="tablist">
-            @foreach(config('app.locales') as $lang)
-            <li class="nav-item">
-                <a class="nav-link @if($loop->first) active @endif" data-toggle="tab" href="#home-tab-{{ $lang }}"
-                    role="tab">
-                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                    <span class="d-none d-sm-block">{{ $lang }}</span>
-                </a>
-            </li>
+    <div class="col-md-12 mt-3 ">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            @foreach($langs as $lang)
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link @if($loop->first) active @endif" id="{{ $lang->country }}-tab" data-bs-toggle="tab"
+                        data-bs-target="#{{ $lang->country }}-edit" type="button" role="tab"
+                        aria-controls="{{ $lang->country }}"
+                        aria-selected="true">{{ $lang->country }}</button>
+                </li>
             @endforeach
         </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            @foreach(config('app.locales') as $lang)
-            
-            <div class="tab-pane @if($loop->first) active @endif p-3" id="home-tab-{{ $lang }}" role="tabpanel">
-                <div class="row">
-                    <div class="col-md-12 p-0">
-                        <div class="form-group">
-                            <label for="title-{{ $lang }}">Başlıq - {{ $lang }}</label>
-                            <input class="form-control"
-                                value="{{old('title',$item->translate('az')?->title)}}"
-                                name="title[{{ $lang }}]" @if($loop->first) required @endif>
-                        </div>
+        <div class="tab-content mt-3 " id="myTabContent">
+            @foreach($langs as $lang)
+                <div class="tab-pane  fade @if($loop->first) show active @endif " 
+                    id="{{ $lang->country }}-edit"
+                    role="tabpanel" 
+                    aria-labelledby="{{ $lang->country }}-tab">
+                    
+               
+                    <div class="form-group ">
+                        <label for="name">Başlıq ({{ $lang->lang }}) </label>
+                        <input type="text" value="{{old("title[$lang->lang ]",$item->translate($lang->lang)?->title)}}"
+                            name="name[{{ $lang->lang }}]" 
+                            id="company" class="form-control"
+                            placeholder="Kateqoriya adı " >
                     </div>
-                    <div class="col-md-12 p-0">
-                        <label for="">Məzmun - {{ $lang }}</label>
-                        <textarea name="content[{{ $lang }}]" class="form-control " cols="30" rows="10">{{old('conent',$item->translate($lang)?->content)}}</textarea>
+                    <div class="form-group mt-3 ">
+                        <label for="name">Məzmun ({{ $lang->lang }}) </label>
+                            <textarea class="form-control editor" name="content[{{ $lang->lang }}]"  
+                                id="" cols="30" rows="10"  
+                               novalidate>{{old("content[$lang]",$item->translate($lang->lang)?->content)}}</textarea>
                     </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
         </div>
     </div>
 

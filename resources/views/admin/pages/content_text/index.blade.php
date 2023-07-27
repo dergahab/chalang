@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Statik tekst List</h4>
-                    @include('admin.inc.dynamic_datatable', ['__datatableName' => 'contentText', '__datatableId' => 'datatable-content-text'])
+                    @include('admin.inc.dynamic_datatable', ['__datatableName' => 'contenttext', '__datatableId' => 'datatable-content-text'])
                 </div>
             </div>
         </div>

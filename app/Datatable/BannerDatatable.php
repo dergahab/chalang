@@ -11,7 +11,7 @@ class BannerDatatable extends BaseDatatable
     {
         parent::__construct(Banner::class, [
             'id' => 'ID',
-            'content' => 'Basliq',
+            'title' => 'Basliq',
         ], [
             'actions' => [
                 'title' => 'Actions',

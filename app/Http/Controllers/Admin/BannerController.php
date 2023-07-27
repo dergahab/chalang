@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BannerRequest;
+use App\Http\Requests\BnnerUpadeRequest;
 use App\Models\Banner;
 use App\Services\BannerService;
 use Illuminate\Http\Request;
@@ -74,8 +75,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BnnerUpadeRequest $request, $id)
     {
+        // dd($request->all());
         return $this->bannerService->update($request, $id);
     }
 

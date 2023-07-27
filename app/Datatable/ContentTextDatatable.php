@@ -2,17 +2,17 @@
 
 namespace App\Datatable;
 
-use App\Models\ContentText;
+use App\Models\Contenttext;
 use Illuminate\Database\Eloquent\Builder;
 
-class ContentTextDatatable extends BaseDatatable
+class ContenttextDatatable extends BaseDatatable
 {
     public function __construct()
     {
-        parent::__construct(ContentText::class, [
+        parent::__construct(Contenttext::class, [
             'id' => 'ID',
             'key' => 'Açar söz',
-            'title_az' => 'Başlıq',
+            'title' => 'Başlıq',
 
         ], [
 

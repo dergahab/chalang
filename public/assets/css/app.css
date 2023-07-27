@@ -1206,7 +1206,7 @@ Pagination
 }
 
 .section-heading .subtitle {
-    color: var(--color-rose);
+    color: var(--color-chart1);
     font-weight: 500;
     font-size: 20px;
     font-family: var(--font-primary);
@@ -6400,7 +6400,7 @@ Pagination
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    margin: 0 55px 0 50px;
+    margin: 0 32px 0 50px;
 }
 
 @media only screen and (max-width: 1199px) {

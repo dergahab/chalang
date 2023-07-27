@@ -5,7 +5,7 @@ namespace App\Datatable;
 use App\Models\Contenttext;
 use Illuminate\Database\Eloquent\Builder;
 
-class ContenttextDatatable extends BaseDatatable
+class TextDatatable extends BaseDatatable
 {
     public function __construct()
     {

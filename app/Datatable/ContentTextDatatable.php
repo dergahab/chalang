@@ -13,7 +13,6 @@ class ContenttextDatatable extends BaseDatatable
             'id' => 'ID',
             'key' => 'Açar söz',
             'title' => 'Başlıq',
-
         ], [
 
             'actions' => [

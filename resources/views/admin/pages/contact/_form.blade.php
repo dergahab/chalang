@@ -5,7 +5,7 @@
     </div>
     <div class="form-group pt-2">
         <label for="">Email</label>
-        <input type="text" name="email" value="{{old('mail', $item->mail)}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <input type="text" name="mail" value="{{old('mail', $item->mail)}}" id="" class="form-control" placeholder="" aria-describedby="helpId">
     </div>
     <div class="form-group pt-1">
         <label for="">Ünvan</label>

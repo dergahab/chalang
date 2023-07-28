@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Əlaqə məlumatları</h4>
-                    <form class="" action="{{ route('admin.portfolio.update', 1) }}" method="POST">
+                    <form class="" action="{{ route('admin.contanct.update', ['contanct' => 1]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.contact._form')

@@ -224,7 +224,7 @@
                                             <ul class="list-unstyled">
                                                 <li><a href="{{route('blogs')}}">Blog</a></li>
                                                 <li><a href="case-study.html">Case Studies</a></li>
-                                                <li><a href="project.html">Portfolio</a></li>
+                                                <li><a href="{{route('portfolio')}}">Portfolio</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -234,7 +234,7 @@
                                         <h6 class="widget-title">Support</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
-                                                <li><a href="contact.html">Contact</a></li>
+                                                <li><a href="{{route('cuntuct-us')}}">Contact</a></li>
                                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                                 <li><a href="terms-of-use.html">Terms of Use</a></li>
                                             </ul>
@@ -269,12 +269,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <form action="#" class="side-nav-search-form">
-                    <div class="form-group">
-                        <input type="text" class="search-field" name="search-field" placeholder="Search...">
-                        <button class="side-nav-search-btn"><i class="fas fa-search"></i></button>
-                    </div>
-                </form>
                 <div class="row ">
                     <div class="col-lg-5 col-xl-6">
                         <ul class="main-navigation list-unstyled">

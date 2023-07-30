@@ -47,7 +47,7 @@
     <div id="preloader"></div>
     <!-- Preloader End Here -->
 
-    <div class="my_switcher d-none d-lg-block">
+    {{-- <div class="my_switcher d-none d-lg-block">
         <ul>
             <li title="Light Mode">
                 <a href="javascript:void(0)" class="setColor light" data-theme="light">
@@ -60,7 +60,7 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> --}}
 
     <div id="main-wrapper" class="main-wrapper">
 
@@ -132,12 +132,19 @@
                                 <li class=" d-lg-block d-none">
                                   <button value="{{$languages->where('lang' ,'<>', app()->getLocale())->first()->lang}}" class="lang-btn">{{ strtoupper($languages->where('lang' ,'<>', app()->getLocale())->first()->lang) }}</button>
                                 </li>
-                                <li class="sidemenu-btn d-lg-block d-none">
-                                    <button class="btn-wrap" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuRight">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </button>
+                                <li class="  my_switcher d-lg-block d-none">
+                                        <ul >
+                                            <li title="Light Mode">
+                                                <a href="javascript:void(0)" class="setColor light" data-theme="light">
+                                                    <i class="fal fa-lightbulb-on"></i>
+                                                </a>
+                                            </li>
+                                            <li title="Dark Mode">
+                                                <a href="javascript:void(0)" class="setColor dark" data-theme="dark">
+                                                    <i class="fas fa-moon"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                 </li>
                                 <li class="mobile-menu-btn sidemenu-btn d-lg-none d-block">
                                     <button class="btn-wrap" data-bs-toggle="offcanvas" data-bs-target="#mobilemenu-popup">

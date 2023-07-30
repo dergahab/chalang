@@ -2269,9 +2269,9 @@ Pagination
 }
 
 .my_switcher {
-    position: fixed;
-    top: 200px;
-    left: 0;
+    /* position: fixed; */
+    /* top: 200px;
+    left: 0; */
     background-color: var(--color-rose);
     border-radius: 0 30px 30px 0;
     padding: 10px;
@@ -2281,7 +2281,8 @@ Pagination
 @media only screen and (max-width: 991px) {
     .my_switcher {
         position: initial;
-        display: block;
+        display: none;
+        
     }
 }
 
@@ -7048,6 +7049,7 @@ Pagination
 @media only screen and (max-width: 767px) {
     .header-action .my_switcher {
         margin-left: 15px;
+        display: none;
     }
 }
 

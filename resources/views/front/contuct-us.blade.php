@@ -66,12 +66,12 @@
                         <div class="contact-info mb--30">
                             <h4 class="title">Email</h4>
                             <p>Our support team will get back to in 48-h during standard business hours.</p>
-                            <h4 class="phone-number"><a href="mailto:info@example.com">{{$contact->mail}}</a></h4>
+                            <h4 class="phone-number"><a href="mailto:{{$contact->mail}}">{{$contact->mail}}</a></h4>
                         </div>
                         <div class="contact-info mb--30">
                             <h4 class="title">Address</h4>
                             <p>Our support team will get back to in 48-h during standard business hours.</p>
-                            <h4 class="phone-number"><a href="mailto:info@example.com">{{$contact->address}}</a></h4>
+                            <h4 class="phone-number"><a href="{{$contact->address}}">{{$contact->address}}</a></h4>
                         </div>
                     </div>
                 </div>
@@ -81,5 +81,10 @@
                 <li class="shape shape-2"><img src="{{asset('assets/media/others/bubble-1.png')}}" alt="Bubble"></li>
                 <li class="shape shape-3"><img src="{{asset('assets/media/others/circle-3.png')}}" alt="Circle"></li>
             </ul>
+        </section>
+        <section class="section ">
+            <div class="container-fluid">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d189.99795226331292!2d49.833003389274!3d40.36525083113342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2saz!4v1690659637725!5m2!1sru!2saz" width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
+            </div>
         </section>
 @endsection

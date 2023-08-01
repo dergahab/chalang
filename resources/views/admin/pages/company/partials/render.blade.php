@@ -3,7 +3,7 @@
 @method('Put')
     @csrf
     <div class="form-group">
-        <label for="name">Şirkət adı</label>
+        <label for="name">Şirkət adı1</label>
         <input type="text" name="company" value="{{$company->name}}" id="company-edit" class="form-control" placeholder="Departamnet adı"
             aria-describedby="helpId" required>
     </div>

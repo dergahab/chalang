@@ -75,7 +75,13 @@
   width: 60px; */
   border-radius: 50%;
   background-color: var(--color-body);
-  color: white;
-  padding: 10px;
+  text-align: center;
+  color: var(--color-white);
+  font-size: 18px;
+  height: 50px;
+  width: 50px;
+  line-height: 40px;
+  border: 1px solid transparent;
+  border-radius: 50%;
 
 }

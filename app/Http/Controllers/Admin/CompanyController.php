@@ -90,6 +90,7 @@ class CompanyController extends Controller
         if ($request->hasFile('file')) {
             $image = $this->upload($request, name: 'file', dir: 'company');
             $data['image'] = $image;
+
         }
 
         $company->update($data);

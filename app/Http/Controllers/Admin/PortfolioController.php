@@ -113,8 +113,8 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        Pcategory::where('id', $id)->delete();
-
+        $item = Portfolio::where('id', $id)->delete();
+      
         return redirect()->route('admin.portfolio.index');
     }
 

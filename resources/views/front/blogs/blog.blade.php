@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row row-40">
                     <div class="col-lg-8">
-                       @foreach ($blogs as $blog)
+                       @foreach ($data as $blog)
                        <div class="blog-grid">
                         <h3 class="title"><a href="single-blog.html">{{$blog->title}}</a></h3>
                         <div class="author">
@@ -49,17 +49,27 @@
                         <a href="{{route('blog.single',$blog->slug)}}" class="axil-btn btn-borderd btn-large">Read More</a>
                     </div>
                        @endforeach                    
-                        <div class="pagination">
-                            <ul>
-                                <li><a class="prev page-numbers" href="#"><i class="fal fa-arrow-left"></i></a></li>
-                                <li><a href="#" class="page-numbers current">1</a></li>
-                                <li><a class="page-numbers" href="#">2</a></li>
-                                <li><a class="page-numbers" href="#">3</a></li>
-                                <li><a class="page-numbers" href="#">4</a></li>
-                                <li><a class="page-numbers" href="#">5</a></li>
-                                <li><a class="next page-numbers" href="#"><i class="fal fa-arrow-right"></i></a></li>
-                            </ul>
-                        </div>
+                       <div class="pagination">
+                        <ul>
+                            @if ($data->onFirstPage())
+                                <li><span class="prev page-numbers disabled"><i class="fal fa-arrow-left"></i></span></li>
+                            @else
+                                <li><a class="prev page-numbers" href="{{ $data->previousPageUrl() }}"><i class="fal fa-arrow-left"></i></a></li>
+                            @endif
+                    
+                            @foreach ($data as $item)
+                                <li><a href="#" class="page-numbers {{ $data->currentPage() === $loop->iteration ? 'current' : '' }}">{{ $loop->iteration }}</a></li>
+                            @endforeach
+                    
+                            @if ($data->hasMorePages())
+                                <li><a class="next page-numbers" href="{{ $data->nextPageUrl() }}"><i class="fal fa-arrow-right"></i></a></li>
+                            @else
+                                <li><span class="next page-numbers disabled"><i class="fal fa-arrow-right"></i></span></li>
+                            @endif
+                        </ul>
+                    </div>
+                    
+                    
                     </div>
                     <div class="col-lg-4">
                         <div class="axil-sidebar">

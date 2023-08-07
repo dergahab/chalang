@@ -73,13 +73,7 @@
                 <li class="shape shape-3"><img src="{{asset('assets/media/others/bubble-5.png')}}" alt="Circle"></li>
             </ul>
         </section>
-        <!--=====================================-->
-        <!--=       Case Study Area Start       =-->
-        <!--=====================================-->
-    
-        <!--=====================================-->
-        <!--=        About Area Start         =-->
-        <!--=====================================-->
+
         <section class="section section-padding-equal bg-color-light">
             <div class="container">
                 <div class="row align-items-center">
@@ -133,45 +127,7 @@
                     <span class="subtitle">Our Project</span>
                     <h2 class="title">Our Project</h2>
                 </div>
-                <div class="axil-isotope-wrapper">
-                    <div class="isotope-button isotope-project-btn">
-                        <button data-filter="all" class="is-checked filter-button" class="filter-button"><span class="filter-text">All Works</span></button>
-                       
-                        @foreach ($portfolio_categories as $pcategory)
-                            <button data-filter="{{$pcategory->name}}" class="filter-button"><span class="filter-text">{{$pcategory->name}}</span></button>
-                        @endforeach
-                    </div>
-                    <div class="row isotope-list">
-                        @foreach ($portfolios as $portfolio)
-                        <div class="col-xl-3 col-lg-4 col-md-6 filter @foreach ($portfolio->pcategories as $subtitle) {{$subtitle->name}}   @endforeach">
-                            <div class="project-grid">
-                                <div class="thumbnail">
-                                    <a href="{{route('portfolio.single',$portfolio->slug)}}">
-                                        <img src="{{asset(Storage::url($portfolio->image))}}" class="image" alt="project">
-                                        <div class="middle">
-                                            <i class="fas fa-eaye"></i>
-                                          </div>
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h5 class="title"><a href="{{route('portfolio.single',$portfolio->slug)}}">{{$portfolio->title}}</a></h5>
-                                    <span class="subtitle">
-                                        @foreach ($portfolio->pcategories as $subtitle)
-                                        {{$subtitle->name}} 
-                                         @if (! $loop->last) ,
-                                        
-                                    @endif
-                                    @endforeach
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="more-project-btn">
-                        <a href="{{route('portfolio')}}" class="axil-btn btn-fill-primary">Discover More Projects</a>
-                    </div>
-                </div>
+                @include('front.inc.portfolio')
             </div>
             <ul class="shape-group-7 list-unstyled">
                 <li class="shape shape-1"><img src="{{asset('assets/media/others/circle-2.png')}}" alt="circle"></li>

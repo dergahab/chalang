@@ -51,7 +51,7 @@ class PortfolioSerice implements BaseService
         $model->company_id = $data['company_id'];
         $model->slug = Str::slug($data['name']['az']);
         $model->save();
-        $model->attachCategories($data['pcategory_id']);
+        $model->syncCategories($data['pcategory_id']);
 
         $this->saveTranslatable($data, $model->id);
     }

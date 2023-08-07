@@ -15,9 +15,9 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::all();
-
-        return view('front.blogs.blog', compact('blogs'));
+        $data = Blog::paginate(10); // Replace 10 with the number of records per page you want to display
+       
+        return view('front.blogs.blog', compact('data'));
     }
 
     public function single($slug)

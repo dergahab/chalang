@@ -20,14 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
     Auth::routes(['register' => false]);
 
-    if (env('APP_ENV') == 'local'){
-        Route::get('/',[FrontMainController::class, 'index'])->name('/');
-    }else{
-        Route::get('/', function () {
-            // return view('auth.login');
-            return view('coming-soon');
-        });
-    }
+    Route::get('/',[FrontMainController::class, 'index'])->name('/');
+
 
     Route::group(['middleware' => 'language'], function () {
 

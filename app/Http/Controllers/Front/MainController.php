@@ -14,6 +14,9 @@ class MainController extends Controller
 {
     public function index()
     {
+        if(!config('app.env')  == 'local'){
+           return view('coming-soon');
+        }
         $main_services = Service::where('in_main', 1)->where('parent_id', 0)->get();
 
         $portfolios = Portfolio::where('in_main', 1)->with('pcategories')->get();

@@ -9,5 +9,5 @@ class ServiceTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'content', 'description', 'locale'];
+    protected $fillable = ['name', 'content', 'description', 'locale', 'service_id'];
 }

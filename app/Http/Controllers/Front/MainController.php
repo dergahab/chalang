@@ -29,6 +29,6 @@ class MainController extends Controller
         $companies = Company::all();
         $blogs = Blog::all();
 
-        return view('front.index', compact('main_services', 'portfolio_categories', 'portfolios', 'companies', 'blogs', 'banner'));
+        return view('front.index.index', compact('main_services', 'portfolio_categories', 'portfolios', 'companies', 'blogs', 'banner'));
     }
 }

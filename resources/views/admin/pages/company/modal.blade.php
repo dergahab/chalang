@@ -15,7 +15,7 @@
                             placeholder="Departamnet adı" aria-describedby="helpId" required>
                     </div>
                     <div class="form-group">
-                        <label for="category" class="form-label ">Logo <span class="text-danger">230x133</span></label>
+                        <label for="category" class="form-label ">Logo <span class="text-danger">50x50</span></label>
                         <input name="file" class="form-control filestyle file" type="file"
                             data-buttonname="btn-secondary">
                     </div>
@@ -38,7 +38,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="edit-body">
-         
+
             </div>
         </div>
     </div>

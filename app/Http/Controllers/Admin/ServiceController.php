@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Lang;
 use App\Models\Service;
 use App\Models\ServiceTranslation;
+use App\Rules\NotNullIfLanguageIsEn;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $data = [];
         $data['parent_id'] = $request->parent_id ?? 0;
 
@@ -125,6 +128,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // return $request->all();
         $data = [];
         $data['parent_id'] = $request->parent_id ?? 0;
 
@@ -147,9 +151,9 @@ class ServiceController extends Controller
             foreach ($this->langs as $lang) {
                 if ($request->post('name')[$lang->lang]) {
                     $translation = ServiceTranslation::where('service_id', $id)->where('locale', $lang->lang)->first();
-                    if (! $translation) {
+                    if (!$translation) {
                         $translation = new ServiceTranslation();
-                        $translation->serice_id = $serive->id;
+                        $translation->service_id = $serive->id;
                         $translation->locale = $lang->lang;
                     }
                     $translation->name = $request->post('name')[$lang->lang] ?? $translation->name;
@@ -188,7 +192,7 @@ class ServiceController extends Controller
     public function in_main(Request $request)
     {
         $item = Service::find($request->id);
-        $item->in_main = ! $item->in_main;
+        $item->in_main = !$item->in_main;
         $item->save();
     }
 }

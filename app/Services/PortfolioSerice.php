@@ -21,10 +21,10 @@ class PortfolioSerice implements BaseService
     public function store($data)
     {
         // if(in_array('image', $data)){
-        $filename = uniqid().'.'.$data['image']->getClientOriginalExtension();
+        $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
         $data['image']->storeAs('uploads', $filename);
         Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
-        $image = 'portfolio/'.$filename;
+        $image = 'portfolio/' . $filename;
         // }
 
         $portfolio = Portfolio::create([
@@ -42,10 +42,10 @@ class PortfolioSerice implements BaseService
     {
 
         if (in_array('image', $data)) {
-            $filename = uniqid().'.'.$data['image']->getClientOriginalExtension();
+            $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
             $data['image']->storeAs('uploads', $filename);
             Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
-            $model->image = 'portfolio/'.$filename;
+            $model->image = 'portfolio/' . $filename;
         }
 
         $model->company_id = $data['company_id'];

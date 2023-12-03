@@ -15,10 +15,11 @@ class CreateServisContentTranslationsTable extends Migration
     {
         Schema::create('servis_content_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('servis_content_id')->constrained();
+            $table->foreignId('servis_content_id')->constrained()->onDelete('cascade');
+            ;
             $table->string('title');
-            $table->text('content');                  
-            $table->string('locale');   
+            $table->text('content');
+            $table->string('locale');
             $table->timestamps();
         });
     }

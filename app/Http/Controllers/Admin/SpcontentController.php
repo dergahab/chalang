@@ -20,8 +20,8 @@ class SpcontentController extends Controller
     {
         $this->langs = Lang::all();
         $this->serviscontent = new ServiceContentService();
-        view()->share('services', Service::where('parent_id','<>', 0)->get());
-        
+        view()->share('services', Service::where('parent_id', '<>', 0)->get());
+
     }
 
     public function index()
@@ -71,8 +71,8 @@ class SpcontentController extends Controller
      */
     public function edit($id)
     {
-      $item = ServisContent::find($id);
-      return view('admin.pages.sp_contnet.edit',compact('item'));
+        $item = ServisContent::find($id);
+        return view('admin.pages.sp_contnet.edit', compact('item'));
     }
 
     /**
@@ -83,12 +83,12 @@ class SpcontentController extends Controller
      */
     public function update(ServiceContentRequest $request, $id)
     {
-                // return $request->all();
+        // return $request->all();
 
         try {
-            $this->serviscontent->update($request->except('_method','_token'),$id);
+            $this->serviscontent->update($request->except('_method', '_token'), $id);
         } catch (\Exception $th) {
-           return  $th->getMessage();
+            return $th->getMessage();
         }
 
         return back();
@@ -102,6 +102,9 @@ class SpcontentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ServisContent::where('id', $id)->delete();
+        return response()->json([
+            'id' => $id
+        ]);
     }
 }

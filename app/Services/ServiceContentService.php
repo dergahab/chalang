@@ -8,32 +8,35 @@ use App\Models\ServisContent;
 use App\Models\ServisContentTranslation;
 use Illuminate\Support\Facades\DB;
 
-class ServiceContentService implements BaseService {
+class ServiceContentService implements BaseService
+{
 
     public $langs;
     public $servicecontentoption;
     public function __construct()
     {
         $this->langs = Lang::all();
-        $this->servicecontentoption = new ServiceContentOptionService();
+
     }
-    public function store($data){
-            $item = ServisContent::create([
-                'service_id' => $data['service_id']
-            ]);
-            $this->saveTranslatable($data, $item->id);
+    public function store($data)
+    {
+        $item = ServisContent::create([
+            'service_id' => $data['service_id']
+        ]);
+        $this->saveTranslatable($data, $item->id);
 
-            $this->servicecontentoption->store($data, $item->id);
     }
 
-    public function update(array $data , $model ){
-     $item = ServisContent::where('id', $model)->update([
-        'service_id' => $data['service_id']
-      ]);
-      $this->saveTranslatable($data, $model);
-     }
+    public function update(array $data, $model)
+    {
+        $item = ServisContent::where('id', $model)->update([
+            'service_id' => $data['service_id']
+        ]);
+        $this->saveTranslatable($data, $model);
+    }
 
-    public function saveTranslatable($data, $id ){
+    public function saveTranslatable($data, $id)
+    {
         DB::beginTransaction();
         try {
             foreach ($this->langs as $l) {
@@ -54,7 +57,7 @@ class ServiceContentService implements BaseService {
         } catch (\Exception $e) {
             DB::rollback();
 
-            dd( $e->getMessage());
+            dd($e->getMessage());
         }
     }
 }

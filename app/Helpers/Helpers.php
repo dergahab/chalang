@@ -26,3 +26,9 @@ class Helpers
         return $count->count();
     }
 }
+
+
+function portfolio_filter(string $filter)
+{
+    return preg_replace('"/[^/*\ ]+/"', '-', $filter);
+}

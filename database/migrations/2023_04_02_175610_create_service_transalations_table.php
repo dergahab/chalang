@@ -17,7 +17,7 @@ class CreateServiceTransalationsTable extends Migration
             $table->id();
             $table->foreignId('service_id')->constrained();
             $table->string('name');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->text('description')->nullable();
             $table->string('slug');
             $table->string('locale');

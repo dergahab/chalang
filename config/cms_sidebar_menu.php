@@ -73,7 +73,7 @@ return [
             ],
             [
                 'icon' => '<i class="ri-building-2-fill"></i>',
-                'title' => 'Servis content',
+                'title' => 'Xidmətlər content',
                 'route' => 'admin.sp-content.index',
                 'can' => 'service.index',
             ],
@@ -117,7 +117,7 @@ return [
             ],
         ],
     ],
-    
+
     [
         'icon' => '<i class="ri-briefcase-line"></i>',
         'title' => 'Blog',

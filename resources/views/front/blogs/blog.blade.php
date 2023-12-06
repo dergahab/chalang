@@ -7,10 +7,10 @@
         <div class="container">
             <div class="breadcrumb">
                 <ul class="list-unstyled">
-                    <li><a href="index-1.html">Home</a></li>
-                    <li class="active">Blog</li>
+                    <li><a href="{{ route('/') }}">Əsas Səhifə</a></li>
+                    <li class="active">Bloq</li>
                 </ul>
-                <h1 class="title h2">Blog</h1>
+                <h1 class="title h2">Bloq</h1>
             </div>
         </div>
         <ul class="shape-group-8 list-unstyled">
@@ -51,7 +51,7 @@
                             </div>
                             <p>{!! Illuminate\Support\Str::limit($blog->content, 200) !!}</p>
                             <a href="{{ route('blog.single', $blog->slug) }}" class="axil-btn btn-borderd btn-large">Read
-                                More</a>
+                                Ətraflı</a>
                         </div>
                     @endforeach
                     <div class="pagination">
@@ -83,9 +83,9 @@
                 <div class="col-lg-4">
                     <div class="axil-sidebar">
                         <div class="widget widget-search">
-                            <h4 class="widget-title">Search</h4>
+                            <h4 class="widget-title">Axtarış</h4>
                             <form action="#" class="blog-search">
-                                <input type="text" placeholder="Search…">
+                                <input type="text" placeholder="Axtarış...">
                                 <button class="search-button"><i class="fal fa-search"></i></button>
                             </form>
                         </div>

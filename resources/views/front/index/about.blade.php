@@ -4,7 +4,7 @@
             <div class="col-lg-6" data-sal="slide-up" data-sal-duration="800">
                 <div class="about-us">
                     <div class="section-heading heading-left mb-0">
-                        <span class="subtitle">About Us</span>
+                        <span class="subtitle">Haqqımızda</span>
                         <h2 class="title mb--40">We do design, code & develop.</h2>
                         <p>Nulla et velit gravida, facilisis quam a, molestie ante. Mauris placerat suscipit dui, eget
                             maximus tellus blandit a. Praesent non tellus sed ligula commodo blandit in et mauris.
@@ -16,7 +16,7 @@
             </div>
             <div class="col-xl-5 col-lg-6 offset-xl-1" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                 <div class="contact-form-box">
-                    <h3 class="title">Get a free Keystroke quote now</h3>
+                    <h3 class="title">Bizimlə əlaqə saxlayın</h3>
                     @include('front.inc.form', ['type' => 'main'])
                 </div>
             </div>

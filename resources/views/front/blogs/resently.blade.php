@@ -1,5 +1,5 @@
 <div class="widget widget-recent-post">
-    <h4 class="widget-title">Recent post</h4>
+    <h4 class="widget-title">Ənson Bloqlar</h4>
     <div class="post-list-wrap">
         <div class="single-post">
             <div class="post-thumbnail">

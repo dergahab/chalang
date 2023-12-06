@@ -1,7 +1,7 @@
 <section class="section section-padding-equal bg-color-dark">
     <div class="container">
         <div class="section-heading heading-light-left">
-            <span class="subtitle">{{ __('What We Can Do For You') }}</span>
+            <span class="subtitle">{{ __('Göstərdiyimiz xidmətlər') }}</span>
             <h2 class="title">{{ __('Services we can help you with') }}</h2>
             <p class="opacity-50">Nulla facilisi. Nullam in magna id dolor
                 blandit rutrum eget vulputate augue sed eu imperdiet.</p>

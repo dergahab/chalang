@@ -18,7 +18,7 @@
     </div>
     <input type="hidden" name="type" value="{{ $type }}">
     <div class="form-group">
-        <button type="submit" class="axil-btn btn-fill-primary btn-fluid">Get Pricing Now</button>
+        <button type="submit" class="axil-btn btn-fill-primary btn-fluid">Göndər</button>
     </div>
 </form>
 @push('js_script')

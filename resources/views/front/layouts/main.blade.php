@@ -97,13 +97,13 @@
                                 <ul class="mainmenu     justify-content-center">
                                     <li class="">
                                         <a href="{{ route('/') }}"><i class="fas fa-home"></i>
-                                            {{ __('static.home') }}</a>
+                                            {{ __('Əsas səhifə') }}</a>
 
                                     </li>
                                     <li>
                                         <a href="{{ route('services') }}">
                                             <i class="fa fa-swatchbook"></i>
-                                            {{ __('Services') }}</a>
+                                            {{ __('Xidmətlər') }}</a>
 
                                     </li>
                                     <li>
@@ -115,13 +115,13 @@
                                     <li class="">
                                         <a href="{{ route('about-us') }}">
                                             <i class="fa fa-users"></i>
-                                            {{ __('About') }}</a>
+                                            {{ __('Haqqımızda') }}</a>
 
                                     </li>
                                     <li class="">
                                         <a href="{{ route('blogs') }}">
                                             <i class="fas fa-pen-nib"></i>
-                                            {{ __('Blog') }}</a>
+                                            {{ __('Bloq') }}</a>
 
                                     </li>
                                     <li><a href="{{ route('cuntuct-us') }}">
@@ -221,7 +221,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="footer-widget">
-                                        <h6 class="widget-title">Services</h6>
+                                        <h6 class="widget-title">Xidmətlər</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
                                                 @foreach ($main_services as $service)
@@ -239,7 +239,7 @@
                                         <h6 class="widget-title">Resourses</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
-                                                <li><a href="{{ route('blogs') }}">Blog</a></li>
+                                                <li><a href="{{ route('blogs') }}">Bloq</a></li>
                                                 <li><a href="case-study.html">Case Studies</a></li>
                                                 <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
                                             </ul>

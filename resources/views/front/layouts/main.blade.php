@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
 
 </head>
 
@@ -372,6 +371,8 @@
 
     <!-- Site Scripts -->
     <script src="{{ asset('assets/js/app.js?v=') . time() }}"></script>
+    <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
+
     @stack('js_script')
 </body>
 

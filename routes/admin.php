@@ -3,6 +3,7 @@
 // use App\Http\Controllers\Admin\CompanyController;
 // use App\Http\Controllers\Admin\ContenttextCortoller;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\StepController;
@@ -26,7 +27,7 @@ Route::resource('user', 'UserController');
 Route::get('user-list', [UserController::class, 'list'])->name('user.list');
 Route::get('account', [UserController::class, 'account'])->name('account');
 Route::get('get-users', [UserController::class, 'getUsers'])->name('get.users');
-
+Route::get('message', [MessageController::class, 'index'])->name('message');
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     Lfm::routes();
     // \UniSharp\LaravelFilemanager\Lfm::routes();
@@ -55,7 +56,7 @@ Route::get('service-in-main', [ServiceController::class, 'in_main'])->name('serv
 Route::get('portfolio-in-main', [PortfolioController::class, 'in_main'])->name('portfolio.in_main');
 //Admin routes
 
-Route::get('index','AboutController@index')->name('about.index');
-Route::put('udate/{id}','AboutController@update')->name('about.update');
+Route::get('index', 'AboutController@index')->name('about.index');
+Route::put('udate/{id}', 'AboutController@update')->name('about.update');
 
 Route::resource('company', CompanyController::class);

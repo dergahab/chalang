@@ -4,21 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMessagesTable extends Migration
-{
+class CreateMessagesTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->string('email');
-            $table->string('company')->nullable();
+            $table->string('phone');
+            $table->string('email')->nullable();
             $table->text('message');
+            $table->text('type');
             $table->timestamps();
         });
     }
@@ -28,8 +27,7 @@ class CreateMessagesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('messages');
     }
 }

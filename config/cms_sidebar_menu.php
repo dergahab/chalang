@@ -86,6 +86,12 @@ return [
         'can' => 'company.index',
     ],
     [
+        'icon' => '<i class="ri-message-2-fill "></i>',
+        'title' => 'İsmarıclar',
+        'route' => 'admin.message',
+        'can' => 'company.index',
+    ],
+    [
         'icon' => '<i class="ri-building-2-fill"></i>',
         'title' => 'Banner',
         'route' => 'admin.banner.index',

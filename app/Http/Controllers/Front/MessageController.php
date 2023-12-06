@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
-{
-    public function __invoke(Request $request)
-    {
-        notify()->success('Laravel Notify is awesome!');
+class MessageController extends Controller {
+    public function __invoke(Request $request) {
+
+        Message::create($request->all());
+
         return response()->json([
             'status' => 201,
-            'data' => $request->all()
+            'message' => 'İsmarıcınız göndərildi ',
         ]);
     }
 }

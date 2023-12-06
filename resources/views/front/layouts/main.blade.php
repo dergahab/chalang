@@ -28,14 +28,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
 
 </head>
 
 <body class="sticky-header">
-    <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+
     <a href="#main-wrapper" id="backto-top" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
@@ -370,7 +370,6 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
     <!-- Site Scripts -->
     <script src="{{ asset('assets/js/app.js?v=') . time() }}"></script>
     @stack('js_script')

@@ -373,6 +373,7 @@
     <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
     <!-- Site Scripts -->
     <script src="{{ asset('assets/js/app.js?v=') . time() }}"></script>
+    @stack('js_script')
 </body>
 
 </html>

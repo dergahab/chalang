@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Front\MessageController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\MainController as FrontMainController;
 use App\Http\Controllers\Front\PortfolioController;
 use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\LanguageController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +20,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);
 
-    Route::get('/',[FrontMainController::class, 'index'])->name('/');
+Route::get('/', [FrontMainController::class, 'index'])->name('/');
 
 
-    Route::group(['middleware' => 'language'], function () {
+Route::group(['middleware' => 'language'], function () {
 
     // Route::get('index', [FrontMainController::class, 'index'])->name('/');
     Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
@@ -39,6 +41,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
     Route::get('portfolio-deatail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
-    });
+});
 
-    Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('lang.change');
+Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('lang.change');
+Route::post('contact', MessageController::class);

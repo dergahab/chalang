@@ -68,13 +68,14 @@
             <div class="axil-mainmenu">
                 <div class="container">
                     <div class="header-navbar">
-                        <div class="header-logo">
+                        <div class="header-logo" style="width: 20%">
                             <a href="{{ route('/') }}"><img class="light-version-logo"
-                                    style="width: 50% !important;" src="{{ asset('assets/media/logo.svg') }}"
+                                    style="width: 100% !important;" src="{{ asset('assets/media/logo.svg') }}"
                                     alt="logo"></a>
-                            <a href="{{ route('/') }}"><img class="dark-version-logo" style="width: 50% !important;"
-                                    src="{{ asset('assets/media/logo.svg') }}" alt="logo"></a>
-                            <a href="{{ route('/') }}"><img class="sticky-logo" style="width: 50% !important;"
+                            <a href="{{ route('/') }}"><img class="dark-version-logo"
+                                    style="width: 100% !important;" src="{{ asset('assets/media/logo.svg') }}"
+                                    alt="logo"></a>
+                            <a href="{{ route('/') }}"><img class="sticky-logo" style="width: 100% !important;"
                                     src="{{ asset('assets/media/logo.svg') }}" alt="logo"></a>
                         </div>
                         <div class="header-main-nav">

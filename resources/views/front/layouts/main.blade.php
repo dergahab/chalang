@@ -102,13 +102,13 @@
                                 <ul class="mainmenu     justify-content-center">
                                     <li class="">
                                         <a href="{{ route('/') }}"><i class="fas fa-home"></i>
-                                            {{ __('Əsas səhifə') }}</a>
+                                            {{ __('Home') }}</a>
 
                                     </li>
                                     <li>
                                         <a href="{{ route('services') }}">
                                             <i class="fa fa-swatchbook"></i>
-                                            {{ __('Xidmətlər') }}</a>
+                                            {{ __('Services') }}</a>
 
                                     </li>
                                     <li>
@@ -120,13 +120,13 @@
                                     <li class="">
                                         <a href="{{ route('about-us') }}">
                                             <i class="fa fa-users"></i>
-                                            {{ __('Haqqımızda') }}</a>
+                                            {{ __('About') }}</a>
 
                                     </li>
                                     <li class="">
                                         <a href="{{ route('blogs') }}">
                                             <i class="fas fa-pen-nib"></i>
-                                            {{ __('Bloq') }}</a>
+                                            {{ __('Blog') }}</a>
 
                                     </li>
                                     <li><a href="{{ route('cuntuct-us') }}">

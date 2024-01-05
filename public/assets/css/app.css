@@ -6380,7 +6380,7 @@ Pagination
 
 .axil-header .header-navbar .header-logo a {
     display: block;
-    width: 20%;
+    
 }
 
 .axil-header .header-navbar .header-logo .dark-version-logo {
@@ -6409,6 +6409,8 @@ Pagination
     .axil-header .header-navbar .header-main-nav {
         margin: 0 30px;
     }
+
+    
 }
 
 @media only screen and (max-width: 991px) {

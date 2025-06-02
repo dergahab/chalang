@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">HAqqimizda</h4>
-                    <form class="" action="{{ route('admin.about.update', $item ?? 0) }}" method="POST" enctype="multipart/form-data">
+                    <form class="" action="{{ route('admin.about.update', $item ?? ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.about._form')

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\AboutTranslation;
 use App\Models\Lang;
+use Cassandra\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,7 @@ class AboutController extends Controller {
         $this->langs = Lang::all();
     }
     public function index() {
-        $item = About::first() ?? 1;
+        $item = About::first() ?? new About();
         return view('admin.pages.about.edit', compact('item'));
     }
 

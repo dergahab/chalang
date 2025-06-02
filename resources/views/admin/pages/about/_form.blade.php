@@ -8,14 +8,14 @@
                 aria-labelledby="{{ $lang->country }}-tab">
                 <div class="form-group ">
                     <label for="name">Başlıq ({{ $lang->lang }}) </label>
-                    <input type="text" value="{{old('title',$item->translate($lang->lang)?->title)}}"
+                    <input type="text" value="{{old('title',$item?->translate($lang?->lang)?->title)}}"
                         name="name[{{ $lang->lang }}]" 
                         id="company" class="form-control"
                         placeholder="Kateqoriya adı "
                         @if($loop->first) required @endif >
                 </div>
                 <div class="form-group mt-3 ">
-                    <label for="name">Məzmun ({{ $lang->lang }}) </label>
+                    <label for="name">Məzmun ({{ $lang?->lang }}) </label>
                         <textarea class="form-control editor" name="description[{{ $lang->lang }}]"  
                             id="" cols="30" rows="10"  
                            novalidate>{{old("description",$item->translate($lang->lang)?->description)}}</textarea>

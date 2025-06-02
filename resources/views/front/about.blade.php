@@ -33,15 +33,15 @@
                 <div class="row">
                     <div class="col-xl-7 col-lg-6">
                         <div class="case-study-featured-thumb text-start">
-                            <img src="{{asset('storage/'. $item->image)}}" alt="travel">
+                            <img src="{{asset('storage/'. $item?->image)}}" alt="travel">
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-6">
                         <div class="case-study-featured">
                             <div class="section-heading heading-left">
                                 <span class="subtitle">Who we are</span>
-                                <h2 class="title">{{$item->title}}</h2>
-                                {!! $item->description!!}
+                                <h2 class="title">{{$item?->title}}</h2>
+                                {!! $item?->description!!}
                                 <a href="{{route('cuntuct-us')}}" class="axil-btn btn-fill-primary btn-large">Contact</a>
                             </div>
                             <div class="case-study-counterup">

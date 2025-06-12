@@ -23,6 +23,11 @@ return [
     'process_description' => 'Hərtərəfli logo dizayn strategiyamız biznesiniz üçün mükəmməl hazırlanmış logo təmin edir',
 
     // Services Section
+    'services' => [
+        'subtitle' => 'Göstərdiyimiz xidmətlər',
+        'title' => 'Təklif etdiyimiz xidmətlər',
+        'description' => 'Sadə ikonlardan tam funksiyalı veb saytlara və tətbiqlərə qədər hər şeyi dizayn edirik',
+    ],
     'our_services' => 'Xidmətlərimiz',
     'services_we_offer' => 'Təklif etdiyimiz xidmətlər',
     'find_out_more' => 'Ətraflı',

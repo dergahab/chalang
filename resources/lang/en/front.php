@@ -23,6 +23,11 @@ return [
     'process_description' => 'Our comprehensive logo design strategy ensures a perfectly crafted logo for your business',
 
     // Services Section
+    'services' => [
+        'subtitle' => 'Our Services',
+        'title' => 'Services we can help you with',
+        'description' => 'Design anything from simple icons to fully featured websites and applications',
+    ],
     'our_services' => 'Our Services',
     'services_we_offer' => 'Services we can help you with',
     'find_out_more' => 'Find out more',

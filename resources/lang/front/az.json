@@ -1,0 +1,38 @@
+{
+    "navigation": {
+        "home": "Ana səhifə",
+        "services": "Xidmətlər",
+        "portfolio": "İşlərimiz",
+        "about": "Haqqımızda",
+        "blog": "Bloq",
+        "contact": "Əlaqə"
+    },
+    "banner": {
+        "title": "Şirkətimizə xoş gəlmisiniz",
+        "description": "Biz sizin biznesiniz üçün ən yaxşı xidmətləri təqdim edirik"
+    },
+    "about": {
+        "who_we_are": "Biz Kimik",
+        "years_on_market": "Bazar Təcrübəsi",
+        "process": "Prosesimiz",
+        "logo_design_process": "Logo Dizayn Prosesi",
+        "logo_design_strategy": "Logo dizayn strategiyamız brendinizin ehtiyacları və məqsədlərinə əsaslanır"
+    },
+    "contact": {
+        "title": "Bizimlə Əlaqə",
+        "quote_title": "Pulsuz Təklif Alın",
+        "phone": "Telefon",
+        "phone_hours": "24/7 Əlaqə",
+        "email": "E-poçt",
+        "email_hours": "Mümkün qədər tez cavab verəcəyik",
+        "address": "Ünvan",
+        "address_hours": "Ofisimizi ziyarət edin"
+    },
+    "footer": {
+        "get_in_touch": "Əlaqə saxlayın!",
+        "subscribe": "Abunə olun",
+        "enter_email": "E-poçt ünvanınızı daxil edin",
+        "services": "Xidmətlər",
+        "follow_us": "Bizi izləyin"
+    }
+} 

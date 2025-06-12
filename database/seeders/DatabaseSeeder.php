@@ -15,20 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            BannerSeeder::class,
+            AboutSeeder::class,
             ContactSeeder::class,
-            SocialmediaSeeder::class,
-            StepSeeder::class,
-            SubcompoundSeeder::class,
-            SubscribeSeeder::class,
-            TagSeeder::class,
-            PcategorySeeder::class,
-            PortfolioSeeder::class,
-            PostSeeder::class,
-            ServiceSeeder::class,
-            SettingSeeder::class,
-            TeamSeeder::class,
-            TestimonialSeeder::class,
-            VideoSeeder::class,
         ]);
     }
 }

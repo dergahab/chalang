@@ -15,10 +15,10 @@ class AboutSeeder extends Seeder
      */
     public function run()
     {
-        // Create the main about record
-        $about = About::create([
-            'image' => 'about/default.jpg',
-            'video' => null
+        About::create([
+            'title' => 'About Our Company',
+            'description' => 'We are a leading company in providing innovative solutions',
+            'image' => 'about.jpg',
         ]);
 
         // Create translations for each language

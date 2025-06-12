@@ -15,9 +15,7 @@ class AboutSeeder extends Seeder
      */
     public function run()
     {
-        About::create([
-            'title' => 'About Our Company',
-            'description' => 'We are a leading company in providing innovative solutions',
+        $about = About::create([
             'image' => 'about.jpg',
         ]);
 

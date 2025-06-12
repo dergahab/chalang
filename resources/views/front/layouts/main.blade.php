@@ -139,7 +139,7 @@
                         <div class="header-action">
                             <ul class="list-unstyled">
                                 <li class=" d-lg-block d-none">
-                                    <select class="lang-select" onchange="changeLang(this.value)">
+                                    <select class="lang-select" onchange="changeLang(this.value)" style="background-color: #f8f9fa; border: 1px solid #ced4da; border-radius: 4px; padding: 8px; font-size: 16px; color: #495057;">
                                         @foreach($languages as $language)
                                             <option value="{{ $language->lang }}" {{ app()->getLocale() == $language->lang ? 'selected' : '' }}>{{ strtoupper($language->lang) }}</option>
                                         @endforeach

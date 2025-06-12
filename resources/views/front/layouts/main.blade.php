@@ -139,9 +139,11 @@
                         <div class="header-action">
                             <ul class="list-unstyled">
                                 <li class=" d-lg-block d-none">
-                                    <button
-                                        value="{{ $languages->where('lang', '<>', app()->getLocale())->first()->lang }}"
-                                        class="lang-btn">{{ strtoupper($languages->where('lang', '<>', app()->getLocale())->first()->lang) }}</button>
+                                    <select class="lang-select" onchange="changeLang(this.value)">
+                                        @foreach($languages as $language)
+                                            <option value="{{ $language->lang }}" {{ app()->getLocale() == $language->lang ? 'selected' : '' }}>{{ strtoupper($language->lang) }}</option>
+                                        @endforeach
+                                    </select>
                                 </li>
                                 <li class="  my_switcher d-lg-block d-none">
                                     <ul>
@@ -354,23 +356,11 @@
     <script src="{{ asset('assets/js/vendor/green-audio-player.min.js?v=') . time() }}"></script>
     <script src="{{ asset('assets/js/vendor/jquery.nav.js?v=') . time() }}"></script>
     <script>
-        $(".lang-btn").click(function(e) {
-            e.preventDefault();
-            var lang = $(this).attr('value');
+        function changeLang(lang) {
             var url = "{{ route('lang.change', ['lang' => ':lang']) }}";
             url = url.replace(':lang', lang);
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.get(url,
-                function(response) {
-                    window.location.reload()
-                });
-        });
+            window.location.href = url;
+        }
     </script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-heading heading-light-left">
             <span class="subtitle">Müştərilər</span>
-            <h2 class="title"> Clients</h2>
+            <h2 class="title">Clients</h2>
             <p>Design anything from simple icons to fully featured websites and applications.</p>
         </div>
         <div class="row">

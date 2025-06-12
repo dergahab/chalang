@@ -38,8 +38,8 @@
     <script>
         $(document).ready(function() {
             $("#contact").submit(function(e) {
-                e.preventDefault()
-                let data = $(this).serialize()
+                e.preventDefault();
+                let data = $(this).serialize();
                 $.post('contact', data, function(response) {
                     if (response.status == 201) {
                         console.log(response);
@@ -49,8 +49,8 @@
                             title: response.message
                         });
                     }
-                })
+                });
             });
-        })
+        });
     </script>
 @endpush

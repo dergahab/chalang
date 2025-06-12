@@ -16,7 +16,7 @@
                         <a href="{{ route('portfolio.single', $portfolio->slug) }}">
                             <img src="{{ asset(Storage::url($portfolio->image)) }}" class="image" alt="project">
                             <div class="middle">
-                                <i class="fas fa-eaye"></i>
+                                <i class="fas fa-eye"></i>
                             </div>
                         </a>
                     </div>

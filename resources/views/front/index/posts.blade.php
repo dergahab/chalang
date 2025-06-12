@@ -1,4 +1,4 @@
-<section class="section section-padding  related-blog-area">
+<section class="section section-padding related-blog-area">
     <div class="container">
         <div class="section-heading heading-left">
             <h3 class="title">Bloqlar</h3>

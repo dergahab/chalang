@@ -22,19 +22,19 @@
         </li>
     </ul>
 </div>     
-    <section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">    
+<section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">    
     <div class="container">
-                <div class="section-heading heading-left">
-                    <span class="subtitle">Our Project</span>
-                    <h2 class="title">Some of our finest <br> work.</h2>
-                </div>
-                @include('front.inc.portfolio')
-            </div>
-            <ul class="shape-group-7 list-unstyled">
-                <li class="shape shape-1"><img src="assets/media/others/circle-2.png" alt="circle"></li>
-                <li class="shape shape-2"><img src="assets/media/others/bubble-2.png" alt="Line"></li>
-                <li class="shape shape-3"><img src="assets/media/others/bubble-1.png" alt="Line"></li>
-            </ul>
-        </section>
-        @include('front.inc.worck_togather')
+        <div class="section-heading heading-left">
+            <span class="subtitle">Our Project</span>
+            <h2 class="title">Some of our finest <br> work.</h2>
+        </div>
+        @include('front.inc.portfolio')
+    </div>
+    <ul class="shape-group-7 list-unstyled">
+        <li class="shape shape-1"><img src="assets/media/others/circle-2.png" alt="circle"></li>
+        <li class="shape shape-2"><img src="assets/media/others/bubble-2.png" alt="Line"></li>
+        <li class="shape shape-3"><img src="assets/media/others/bubble-1.png" alt="Line"></li>
+    </ul>
+</section>
+@include('front.inc.worck_togather')
 @endsection

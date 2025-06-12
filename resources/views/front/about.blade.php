@@ -33,16 +33,16 @@
                 <div class="row">
                     <div class="col-xl-7 col-lg-6">
                         <div class="case-study-featured-thumb text-start">
-                            <img src="{{asset('storage/'. $item?->image)}}" alt="travel">
+                            <img src="{{ asset('storage/' . $item?->image) }}" alt="travel">
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-6">
                         <div class="case-study-featured">
                             <div class="section-heading heading-left">
                                 <span class="subtitle">Who we are</span>
-                                <h2 class="title">{{$item?->title}}</h2>
-                                {!! $item?->description!!}
-                                <a href="{{route('cuntuct-us')}}" class="axil-btn btn-fill-primary btn-large">Contact</a>
+                                <h2 class="title">{{ $item?->title }}</h2>
+                                {!! $item?->description !!}
+                                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-fill-primary btn-large">Contact</a>
                             </div>
                             <div class="case-study-counterup">
                                 <div class="single-counterup">
@@ -52,13 +52,6 @@
                                     </h2>
                                     <span class="counter-title">Years on the market</span>
                                 </div>
-                                {{-- <div class="single-counterup">
-                                    <h2 class="count-number">
-                                        <span class="number count">1500</span>
-                                        <span class="symbol">+</span>
-                                    </h2>
-                                    <span class="counter-title">Projects delivered so far</span>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -74,26 +67,25 @@
                     <p>Our comprehensive logo design strategy ensures a perfectly crafted logo for your business.</p>
                 </div>
                 @foreach ($steps as $step)
-                    <div class="process-work sal-animate @if($loop->iteration % 2 != 0) content-reverse @endif" @if($loop->iteration % 2 != 0) data-sal="slide-right"@else data-sal="slide-left" @endif   data-sal-duration="1000" data-sal-delay="100">
+                    <div class="process-work sal-animate @if($loop->iteration % 2 != 0) content-reverse @endif" @if($loop->iteration % 2 != 0) data-sal="slide-right"@else data-sal="slide-left" @endif data-sal-duration="1000" data-sal-delay="100">
                         <div class="thumbnail paralax-image" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
-                            <img src="{{asset('storage/'. $step->image)}}" alt="Thumbnail">
+                            <img src="{{ asset('storage/' . $step->image) }}" alt="Thumbnail">
                         </div>
                         <div class="content">
-                            <span class="subtitle">{{$step->step}}</span>
-                            <h3 class="title">{{$step->title}}</h3>
-                            {!!$step->description!!}
+                            <span class="subtitle">{{ $step->step }}</span>
+                            <h3 class="title">{{ $step->title }}</h3>
+                            {!! $step->description !!}
                         </div>
                     </div>
-                  
                 @endforeach
             </div>
             <ul class="shape-group-17 list-unstyled">
-                <li class="shape shape-1"><img src="{{asset('assets/media/others/bubble-24.png')}}" alt="Bubble"></li>
-                <li class="shape shape-2"><img src="{{asset('assets/media/others/bubble-23.png')}}" alt="Bubble"></li>
-                <li class="shape shape-3"><img src="{{asset('assets/media/others/line-4.png')}}" alt="Line"></li>
-                <li class="shape shape-4"><img src="{{asset('assets/media/others/line-5.png')}}" alt="Line"></li>
-                <li class="shape shape-5"><img src="{{asset('assets/media/others/line-4.png')}}" alt="Line"></li>
-                <li class="shape shape-6"><img src="{{asset('assets/media/others/line-5.png')}}" alt="Line"></li>
+                <li class="shape shape-1"><img src="{{ asset('assets/media/others/bubble-24.png') }}" alt="Bubble"></li>
+                <li class="shape shape-2"><img src="{{ asset('assets/media/others/bubble-23.png') }}" alt="Bubble"></li>
+                <li class="shape shape-3"><img src="{{ asset('assets/media/others/line-4.png') }}" alt="Line"></li>
+                <li class="shape shape-4"><img src="{{ asset('assets/media/others/line-5.png') }}" alt="Line"></li>
+                <li class="shape shape-5"><img src="{{ asset('assets/media/others/line-4.png') }}" alt="Line"></li>
+                <li class="shape shape-6"><img src="{{ asset('assets/media/others/line-5.png') }}" alt="Line"></li>
             </ul>
         </section>
         <div class="section section-padding-equal bg-color-light">

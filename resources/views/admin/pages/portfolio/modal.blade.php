@@ -8,6 +8,7 @@
                     <h5 class="modal-title" id="companyModalLabel">Yeni Portfolio Kateqoriya</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body">
                     <!-- Language Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,13 +29,13 @@
                     </ul>
 
                     <!-- Tab Content -->
-                    <div class="tab-content pt-3" id="myTabContent">
+                    <div class="tab-content pt-3" id="myTabContent" style="min-height: 150px;">
                         @foreach($langs as $lang)
                             <div class="tab-pane fade @if($loop->first) show active @endif"
                                  id="{{ $lang->country }}"
                                  role="tabpanel"
                                  aria-labelledby="{{ $lang->country }}-tab">
-                                <div class="form-group">
+                                <div class="form-group mb-3">
                                     <label for="name">Kateqoriya adı ({{ $lang->lang }})</label>
                                     <input type="text"
                                            name="name[{{ $lang->lang }}]"
@@ -68,7 +69,7 @@
                 </div>
 
                 <div class="modal-body" id="edit-body">
-                    <!-- Dynamic content goes here via AJAX -->
+                    <!-- Dynamic content loaded via JS/AJAX -->
                 </div>
 
                 <div class="modal-footer">

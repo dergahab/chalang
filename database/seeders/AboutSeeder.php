@@ -15,12 +15,38 @@ class AboutSeeder extends Seeder
      */
     public function run()
     {
-        About::create(['image' => 'default.jpg']);
-        AboutTranslation::create([
-            'about_id' => 1,
-            'title' => 'HAqqimizda',
-            'description' => 'asdasdasdasdasd',
-            'locale' => 'az'
+        // Create the main about record
+        $about = About::create([
+            'image' => 'about/default.jpg',
+            'video' => null
         ]);
+
+        // Create translations for each language
+        $translations = [
+            [
+                'locale' => 'az',
+                'title' => 'Haqqımızda',
+                'description' => 'Biz müasir texnologiyalar və innovativ həllər təklif edən peşəkar komandayıq. 10 ildən artıq təcrübəmizlə müştərilərimizə ən yaxşı xidməti göstərməyə çalışırıq.'
+            ],
+            [
+                'locale' => 'en',
+                'title' => 'About Us',
+                'description' => 'We are a professional team offering modern technologies and innovative solutions. With over 10 years of experience, we strive to provide the best service to our clients.'
+            ],
+            [
+                'locale' => 'ru',
+                'title' => 'О Нас',
+                'description' => 'Мы профессиональная команда, предлагающая современные технологии и инновационные решения. Имея более 10 лет опыта, мы стремимся предоставить нашим клиентам лучший сервис.'
+            ]
+        ];
+
+        foreach ($translations as $translation) {
+            AboutTranslation::create([
+                'about_id' => $about->id,
+                'locale' => $translation['locale'],
+                'title' => $translation['title'],
+                'description' => $translation['description']
+            ]);
+        }
     }
 }

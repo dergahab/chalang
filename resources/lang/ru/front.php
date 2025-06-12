@@ -1,0 +1,55 @@
+<?php
+
+return [
+    // Navigation
+    'home' => 'Главная',
+    'about' => 'О Нас',
+    'services' => 'Услуги',
+    'portfolio' => 'Портфолио',
+    'blog' => 'Блог',
+    'contact' => 'Контакты',
+
+    // Banner Section
+    'fastest_growing' => 'Одна из самых быстрорастущих компаний',
+    'design_develop' => 'Мы разрабатываем веб и мобильные приложения для наших клиентов по всему миру',
+    'contact_us' => 'Связаться с нами',
+
+    // About Section
+    'who_we_are' => 'Кто Мы',
+    'years_experience' => 'Лет на рынке',
+    'years' => 'лет',
+    'process' => 'Процесс',
+    'logo_design_process' => 'Наш процесс разработки логотипа',
+    'process_description' => 'Наша комплексная стратегия разработки логотипа обеспечивает идеально созданный логотип для вашего бизнеса',
+
+    // Services Section
+    'our_services' => 'Наши Услуги',
+    'services_we_offer' => 'Услуги, с которыми мы можем помочь',
+    'find_out_more' => 'Узнать больше',
+
+    // Portfolio Section
+    'our_projects' => 'Наши Проекты',
+    'portfolio_description' => 'Быстрый обзор отраслевых проблем, решенных с помощью дизайна командой Abstrak',
+    'view_all' => 'Смотреть Все',
+    'view_details' => 'Подробнее',
+
+    // Blog Section
+    'latest_news' => 'Последние Новости',
+    'read_more' => 'Читать Далее',
+
+    // Contact Section
+    'get_quote' => 'Получить бесплатное предложение',
+    'phone' => 'Телефон',
+    'email' => 'Эл. почта',
+    'address' => 'Адрес',
+    'working_hours' => 'Рабочие Часы',
+    'support_hours' => 'Наша служба поддержки свяжется с вами в течение 48 часов в стандартные рабочие часы',
+    'send_message' => 'Отправить Сообщение',
+    'full_name' => 'Полное Имя',
+    'message' => 'Сообщение',
+    'submit' => 'Отправить',
+
+    // Footer
+    'all_rights_reserved' => 'Все Права Защищены',
+    'follow_us' => 'Следите за Нами',
+]; 

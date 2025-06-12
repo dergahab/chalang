@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Testimonial;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +15,8 @@ class TestimonialSeeder extends Seeder
     public function run()
     {
         Testimonial::create([
-            'name' => 'Testimonial 1',
-            'content' => 'This is a testimonial.',
+            'name' => 'Client 1',
+            'comment' => 'Great service!',
         ]);
     }
 } 

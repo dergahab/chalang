@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Portfolio;
 use Illuminate\Database\Seeder;
 

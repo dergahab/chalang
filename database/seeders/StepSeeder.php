@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Step;
 use Illuminate\Database\Seeder;
 

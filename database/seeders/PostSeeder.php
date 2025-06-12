@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +16,7 @@ class PostSeeder extends Seeder
     {
         Post::create([
             'title' => 'Post 1',
-            'content' => 'This is a post.',
+            'description' => 'This is a post.',
         ]);
     }
 } 

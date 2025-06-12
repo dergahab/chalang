@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Lang;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class LangSeeder extends Seeder
 {
@@ -14,13 +14,26 @@ class LangSeeder extends Seeder
      */
     public function run()
     {
-        $langs = ['az' => 'Azərbaycan', 'en' => 'English'];
+        $languages = [
+            [
+                'country' => 'Azerbaijan',
+                'lang' => 'az',
+            ],
+            [
+                'country' => 'English',
+                'lang' => 'en',
+            ],
+            [
+                'country' => 'Russia',
+                'lang' => 'ru',
+            ],
+        ];
 
-        foreach ($langs as $lang => $country) {
-            Lang::create([
-                'lang' => $lang,
-                'country' => $country,
-            ]);
+        foreach ($languages as $language) {
+            DB::table('langs')->updateOrInsert(
+                ['lang' => $language['lang']],
+                $language
+            );
         }
     }
 }

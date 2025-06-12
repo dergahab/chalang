@@ -7,10 +7,10 @@
         <div class="container">
             <div class="breadcrumb">
                 <ul class="list-unstyled">
-                    <li><a href="index-1.html">Home</a></li>
-                    <li class="active">Contact</li>
+                    <li><a href="{{ route('home') }}">{{ __('front.navigation.home') }}</a></li>
+                    <li class="active">{{ __('front.navigation.contact') }}</li>
                 </ul>
-                <h1 class="title h2">Contact</h1>
+                <h1 class="title h2">{{ __('front.contact.title') }}</h1>
             </div>
         </div>
         <ul class="shape-group-8 list-unstyled">
@@ -33,25 +33,25 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="contact-form-box shadow-box mb--30">
-                        <h3 class="title">Get a free Keystroke quote now</h3>
+                        <h3 class="title">{{ __('front.contact.quote_title') }}</h3>
                         @include('front.inc.form', ['type' => 'contact'])
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6 offset-xl-1">
                     <div class="contact-info mb--30 mb_md--30 mt_md--0 ">
-                        <h4 class="title">Phone</h4>
-                        <p>Our customer care is open from Mon-Fri, 10:00 am to 6:00 pm</p>
-                        <h4 class="phone-number"><a href="tel:{{ $contact->phone }}">{{ $contact->phone }}</a></h4>
+                        <h4 class="title">{{ __('front.contact.phone') }}</h4>
+                        <p>{{ __('front.contact.phone_hours') }}</p>
+                        <h4 class="phone-number"><a href="tel:{{ $contact?->phone ?? '' }}">{{ $contact?->phone ?? '' }}</a></h4>
                     </div>
                     <div class="contact-info mb--30">
-                        <h4 class="title">Email</h4>
-                        <p>Our support team will get back to in 48-h during standard business hours.</p>
-                        <h4 class="phone-number"><a href="mailto:{{ $contact->mail }}">{{ $contact->mail }}</a></h4>
+                        <h4 class="title">{{ __('front.contact.email') }}</h4>
+                        <p>{{ __('front.contact.email_hours') }}</p>
+                        <h4 class="phone-number"><a href="mailto:{{ $contact?->mail ?? '' }}">{{ $contact?->mail ?? '' }}</a></h4>
                     </div>
                     <div class="contact-info mb--30">
-                        <h4 class="title">Address</h4>
-                        <p>Our support team will get back to in 48-h during standard business hours.</p>
-                        <h4 class="phone-number"><a href="{{ $contact->address }}">{{ $contact->address }}</a></h4>
+                        <h4 class="title">{{ __('front.contact.address') }}</h4>
+                        <p>{{ __('front.contact.address_hours') }}</p>
+                        <h4 class="phone-number"><a href="{{ $contact?->address ?? '#' }}">{{ $contact?->address ?? '' }}</a></h4>
                     </div>
                 </div>
             </div>

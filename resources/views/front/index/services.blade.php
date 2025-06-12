@@ -1,24 +1,23 @@
 <section class="section section-padding-equal bg-color-dark">
     <div class="container">
         <div class="section-heading heading-light-left">
-            <span class="subtitle">{{ __('Göstərdiyimiz xidmətlər') }}</span>
-            <h2 class="title">{{ __('Services we can help you with') }}</h2>
-            <p class="opacity-50">Nulla facilisi. Nullam in magna id dolor
-                blandit rutrum eget vulputate augue sed eu imperdiet.</p>
+            <span class="subtitle">{{ __('front.services.subtitle') }}</span>
+            <h2 class="title">{{ __('front.services.title') }}</h2>
+            <p class="opacity-50">{{ __('front.services.description') }}</p>
         </div>
         <div class="row">
-            @foreach ($main_services as $service)
+            @foreach ($main_services ?? [] as $service)
                 <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800"
                     data-sal-delay="100">
                     <div class="services-grid">
                         <div class="thumbnail">
                             {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}
-                            <img src="{{ asset(Storage::url($service->icon)) }}" alt="icon">
+                            <img src="{{ $service?->icon ? asset(Storage::url($service->icon)) : '' }}" alt="icon">
                         </div>
                         <div class="content">
                             <h5 class="title"> <a
-                                    href="{{ route('services') }}#{{ $service->name }}">{{ $service->name }}</a></h5>
-                            <p>{{ $service->description }}</p>
+                                    href="{{ route('services') }}#{{ $service?->name ?? '' }}">{{ $service?->name ?? '' }}</a></h5>
+                            <p>{{ $service?->description ?? '' }}</p>
                             {{-- <a href="service-design.html" class="more-btn">Find out more</a> --}}
                         </div>
                     </div>

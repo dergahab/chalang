@@ -6,8 +6,8 @@
         <div class="breadcrum-area breadcrumb-banner">
             <div class="container">
                 <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
-                    <h1 class="title h2">One of the fastest growing agency</h1>
-                    <p>We design and develop web and mobile applications for our clients worldwide.</p>
+                    <h1 class="title h2">{{ __('front.banner.title') }}</h1>
+                    <p>{{ __('front.banner.description') }}</p>
                 </div>
                 <div class="banner-thumbnail thumbnail-4" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
                     <img src="assets/media/banner/banner-thumb-3.png" alt="Illustration">
@@ -33,16 +33,16 @@
                 <div class="row">
                     <div class="col-xl-7 col-lg-6">
                         <div class="case-study-featured-thumb text-start">
-                            <img src="{{ asset('storage/' . $item?->image) }}" alt="travel">
+                            <img src="{{ $item?->image ? asset('storage/' . $item->image) : '' }}" alt="travel">
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-6">
                         <div class="case-study-featured">
                             <div class="section-heading heading-left">
-                                <span class="subtitle">Who we are</span>
-                                <h2 class="title">{{ $item?->title }}</h2>
-                                {!! $item?->description !!}
-                                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-fill-primary btn-large">Contact</a>
+                                <span class="subtitle">{{ __('front.about.who_we_are') }}</span>
+                                <h2 class="title">{{ $item?->title ?? '' }}</h2>
+                                {!! $item?->description ?? '' !!}
+                                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-fill-primary btn-large">{{ __('front.contact.title') }}</a>
                             </div>
                             <div class="case-study-counterup">
                                 <div class="single-counterup">
@@ -50,7 +50,7 @@
                                         <span class="number count">10</span>
                                         <span class="symbol">+</span>
                                     </h2>
-                                    <span class="counter-title">Years on the market</span>
+                                    <span class="counter-title">{{ __('front.about.years_on_market') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -62,19 +62,19 @@
         <section class="section section-padding bg-color-light pb--70">
             <div class="container">
                 <div class="section-heading mb--90">
-                    <span class="subtitle">Process</span>
-                    <h2 class="title">Our logo design process</h2>
-                    <p>Our comprehensive logo design strategy ensures a perfectly crafted logo for your business.</p>
+                    <span class="subtitle">{{ __('front.about.process') }}</span>
+                    <h2 class="title">{{ __('front.about.logo_design_process') }}</h2>
+                    <p>{{ __('front.about.logo_design_strategy') }}</p>
                 </div>
-                @foreach ($steps as $step)
+                @foreach ($steps ?? [] as $step)
                     <div class="process-work sal-animate @if($loop->iteration % 2 != 0) content-reverse @endif" @if($loop->iteration % 2 != 0) data-sal="slide-right"@else data-sal="slide-left" @endif data-sal-duration="1000" data-sal-delay="100">
                         <div class="thumbnail paralax-image" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
-                            <img src="{{ asset('storage/' . $step->image) }}" alt="Thumbnail">
+                            <img src="{{ $step?->image ? asset('storage/' . $step->image) : '' }}" alt="Thumbnail">
                         </div>
                         <div class="content">
-                            <span class="subtitle">{{ $step->step }}</span>
-                            <h3 class="title">{{ $step->title }}</h3>
-                            {!! $step->description !!}
+                            <span class="subtitle">{{ $step?->step ?? '' }}</span>
+                            <h3 class="title">{{ $step?->title ?? '' }}</h3>
+                            {!! $step?->description ?? '' !!}
                         </div>
                     </div>
                 @endforeach

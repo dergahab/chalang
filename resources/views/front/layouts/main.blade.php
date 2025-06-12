@@ -144,6 +144,11 @@
                                             <option value="{{ $language->lang }}" {{ app()->getLocale() == $language->lang ? 'selected' : '' }}>{{ strtoupper($language->lang) }}</option>
                                         @endforeach
                                     </select>
+                                    <!-- Debug info -->
+                                    <div style="display: none;">
+                                        Current locale: {{ app()->getLocale() }}
+                                        Session lang: {{ Session::get('lang') }}
+                                    </div>
                                 </li>
                                 <li class="  my_switcher d-lg-block d-none">
                                     <ul>

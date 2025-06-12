@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class SetLanguage
 {
@@ -18,10 +19,13 @@ class SetLanguage
     public function handle(Request $request, Closure $next)
     {
         if (Session::has('lang')) {
-            App::setLocale(Session::get('lang'));
+            $lang = Session::get('lang');
+            App::setLocale($lang);
+            Log::info('Language set to: ' . $lang);
+        } else {
+            Log::info('No language set in session');
         }
 
         return $next($request);
-
     }
 }

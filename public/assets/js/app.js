@@ -368,4 +368,8 @@
     }
     axilInit.i();
 
+    window.changeLang = function(lang) {
+        window.location.href = '/lang/' + lang;
+    };
+
 })(window, document, jQuery);

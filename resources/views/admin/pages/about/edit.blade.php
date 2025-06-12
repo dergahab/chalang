@@ -4,8 +4,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">HAqqimizda</h4>
-                    <form class="" action="{{ route('admin.about.update', $item ) }}" method="POST" enctype="multipart/form-data">
+                    <h4 class="mt-0 header-title">Haqqimizda</h4>
+                    <form class="" action="{{ route('admin.about.update', $item   ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.about._form')

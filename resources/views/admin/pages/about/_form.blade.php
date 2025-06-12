@@ -1,5 +1,5 @@
 <div class="row">
->
+
     <div class="tab-content mt-3 " id="myTabContent">
         @foreach($langs as $lang)
             <div class="tab-pane  fade @if($loop->first) show active @endif " 
@@ -11,7 +11,7 @@
                     <input type="text" value="{{old('title',$item?->translate($lang?->lang)?->title)}}"
                         name="name[{{ $lang->lang }}]" 
                         id="company" class="form-control"
-                        placeholder="Kateqoriya adı "
+                        placeholder="Başlıq"
                         @if($loop->first) required @endif >
                 </div>
                 <div class="form-group mt-3 ">
@@ -30,7 +30,7 @@
         <label for="file" class="form-label ">Şəkil <span class="text-danger">680x780</span></label>
         <input name="image" class="form-control filestyle file" type="file"
             data-buttonname="btn-secondary">
-            <img src="{{asset(Storage::url($item->image))}}" width="300px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+            <img src="{{asset(Storage::url($item?->image))}}" width="300px" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
     </div>
     
     <div class="col-6">

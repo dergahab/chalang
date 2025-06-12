@@ -15,9 +15,9 @@ class ContactSeeder extends Seeder
     public function run()
     {
         Contact::create([
-            'mail' => 'example@mail.com',
-            'phone' => '+994000000000',
-            'address' => 'Mars',
+            'address' => '123 Main St',
+            'phone' => '123-456-7890',
+            'email' => 'contact@example.com',
         ]);
     }
 }

@@ -3,11 +3,9 @@
 @section('heading_title', 'Xidmətlər')
 
 @section('heading_buttons')
-    @can('category.create')
         <a href="{{ route('admin.service.create') }}" class="btn btn-primary dropdown-toggle arrow-none waves-effect waves-light">
             <i class="fas fa-layer-group mr-2"></i> Əlavə et
         </a>
-    @endcan
 @endsection
 
 @section('content')
@@ -32,7 +30,7 @@
                         </thead>
                         <tbody id="sortables">
                             @forelse ($items as $item)
-                           
+
                             <tr class="sortable" data-id="{{ $item->id }}">
                                 <th scope="row" >{{$loop->iteration}}</th>
                                 <td>{{$item->name}}</td>
@@ -42,14 +40,14 @@
                                 <td>@include('admin.pages.service.in_main')</td>
                                 <td>@include('admin.pages.service.table_actions')</td>
                               </tr>
-                            
+
                             @empty
                               <p>Xidmət yoxdu</p>
                           @endforelse
-                       
+
                         </tbody>
                       </table>
-              
+
                     </div>
             </div>
         </div>
@@ -69,15 +67,15 @@
                   $('.sortable').each(function() {
                         order[$(this).data('id')] = $(this).index();
                     });
-                 
+
                     // $.post("{{ route('admin.service.index') }}", {
                     //     order:order,
                     //     token: "csrf_token()"
                     // },function(response) {
                     //     console.log(response.data);
-                    // });  
-                                      
-                   
+                    // });
+
+
               }
           });
       });
@@ -85,10 +83,10 @@
     <script>
         $(document).on('change','.in_main',function(){
             let id = $(this).data('id');
-            
+
             $.get("{{route('admin.service.in_main')}}", {id:id},
                 function (data) {
-                    
+
                 });
         })
     </script>

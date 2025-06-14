@@ -2,11 +2,9 @@
 @section('heading_title', 'Əməkdaşlar')
 
 @section('heading_buttons')
-    @can('personal.create')
         <button type="button"  class="btn btn-primary  arrow-none waves-effect waves-light create">
             <i class="fas fa-plus mr-2"></i> Əlavə et
         </button>
-    @endcan
 @endsection
 @section('content')
     <div class="row">
@@ -38,7 +36,7 @@
         <script>
             $(document).ready(function() {
 
-                $('.create').click(function (e) { 
+                $('.create').click(function (e) {
                     e.preventDefault();
                     $("#personal-modal").modal('toggle');
                 });

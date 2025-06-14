@@ -1,23 +1,21 @@
 @extends('admin.layouts.main')
 @section('heading_buttons')
-@can('position.create')
 {{-- <button type="button" class="btn btn-primary display-b float-right arrow-none waves-effect waves-light create">
     <i class="fas fa-plus mr-2"></i> Əlavə et
 </button> --}}
-@endcan
 @endsection
 
 
 
 @section('content')
           <!-- start page title -->
-     
+
         <!-- end page title -->
 
         <div class="row">
             <div class="col-xxl-12">
                 <div class="d-flex flex-column h-100">
-             
+
                     <div class="row">
                         <div class="col-md-6 col-xl-3">
                             <div class="card card-animate">
@@ -60,7 +58,7 @@
                                 </div><!-- end card body -->
                             </div> <!-- end card-->
                         </div> <!-- end col-->
-                   
+
                         <div class="col-md-6 col-xxl-3">
                             <div class="card card-animate">
                                 <div class="card-body">
@@ -68,7 +66,7 @@
                                         <div>
                                             <p class="fw-medium text-muted mb-0">Task</p>
                                             <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="55"></span>
-                                               
+
                                             </h2>
                                             <p class="mb-0 text-muted"><span class="badge bg-light text-danger mb-0"> <i class="ri-arrow-down-line align-middle"></i> 0.24 % </span> vs. previous month</p>
                                         </div>
@@ -108,7 +106,7 @@
                 </div>
             </div> <!-- end col-->
 
-         
+
         </div> <!-- end row-->
 
         <div class="row">

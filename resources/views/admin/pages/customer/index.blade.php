@@ -1,11 +1,9 @@
 @extends('admin.layouts.main')
 @section('heading_buttons')
 
-@can('position.create')
 <button type="button" class="btn btn-primary display-b float-right arrow-none waves-effect waves-light create">
     <i class="fas fa-plus mr-2"></i> Əlavə et
 </button>
-@endcan
 @endsection
 
 
@@ -14,7 +12,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        {{-- 
+        {{--
         {{ Breadcrumbs::render('user') }} --}}
     </div>
     <div class="col-lg-12">
@@ -72,7 +70,7 @@
                 pageLoader(true);
                 $.get(url, function (response) {
                     if(response.code == 200){
-                        
+
                         $("#inputs").html(response.view);
                         $("#customer-type-modal-edit").modal('toggle');
                     }
@@ -85,7 +83,7 @@
                 let id = $("#edit-id").val();
                 let url = "{{route('customer.update','update')}}"
                 url = url.replace('update',id);
-             
+
                 pageLoader(true);
                 $.post(url, data,
                     function (response) {
@@ -96,8 +94,8 @@
                         }
                         pageLoader(false);
                     });
-            
-        
+
+
             })
 
         });

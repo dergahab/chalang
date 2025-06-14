@@ -3,12 +3,10 @@
 @section('heading_title', 'Statik tekst')
 
 @section('heading_buttons')
-    @can('category.create')
         <a href="{{ route('admin.content-text.create') }}" class="btn btn-primary dropdown-toggle arrow-none waves-effect waves-light">
             <i class="fas fa-plus mr-2"></i> <i class="fas fa-car"></i>
             Əlavə et
         </a>
-    @endcan
 @endsection
 
 @section('content')

@@ -97,11 +97,11 @@
                         <div class="col-sm-6">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> © GO Panel.
+                            </script> © Panel.
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by Goweb team
+                                Design & Develop by Me
                             </div>
                         </div>
                     </div>

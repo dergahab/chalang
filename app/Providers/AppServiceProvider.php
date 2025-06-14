@@ -30,19 +30,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Share sidebar items with all admin views
+        // Initialize and share sidebar items with all admin views
         view()->composer('admin.*', function () {
-            $this->generateCmsSidebar();
-            view()->share('sidebarItems', CmsSidebar::getInstance()->getItems());
+            $sidebar = CmsSidebar::getInstance();
+            $sidebar->clearItems(); // Clear existing items
+            $sidebar->addItems(config('cms_sidebar_menu')); // Add menu items
+            view()->share('sidebarItems', $sidebar->getItems());
         });
 
+        // Share other common data
         if (Schema::hasTable('users')) {
             view()->share('users', User::all());
         }
         if (Schema::hasTable('langs')) {
             view()->share('languages', Lang::all());
-        }
-        if (Schema::hasTable('langs')) {
             view()->share('langs', Lang::all());
         }
         if (Schema::hasTable('contacts')) {
@@ -54,11 +55,5 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('services')) {
             view()->share('main_services', Service::where('in_main', 1)->where('parent_id', 0)->get());
         }
-    }
-
-    public function generateCmsSidebar()
-    {
-        $adminSidebarMenu = CmsSidebar::getInstance();
-        $adminSidebarMenu->addItems(config('cms_sidebar_menu'));
     }
 }

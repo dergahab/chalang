@@ -30,11 +30,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        view()->composer('admin.inc.left_sidebar', function () {
+        // Share sidebar items with all admin views
+        view()->composer('admin.*', function () {
             $this->generateCmsSidebar();
             view()->share('sidebarItems', CmsSidebar::getInstance()->getItems());
         });
+
         if (Schema::hasTable('users')) {
             view()->share('users', User::all());
         }
@@ -51,10 +52,8 @@ class AppServiceProvider extends ServiceProvider
             view()->share('socialmedia', Socialmedia::all());
         }
         if (Schema::hasTable('services')) {
-            ;
             view()->share('main_services', Service::where('in_main', 1)->where('parent_id', 0)->get());
         }
-
     }
 
     public function generateCmsSidebar()

@@ -3,7 +3,7 @@
         <div class="call-to-action">
             <div class="section-heading heading-light">
                 <span class="subtitle">Let's Work Together</span>
-                <h2 class="title">Need a successful project?</h2>
+                <h2 class="title">{{ __('front.work_together.title') }}</h2>
                 <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-large btn-fill-white">Estimate Project</a>
             </div>
             <div class="thumbnail">

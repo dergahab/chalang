@@ -216,7 +216,7 @@
                             data-sal-delay="100">
                             <div class="footer-widget border-end">
                                 <div class="footer-newsletter">
-                                    <h2 class="title">Get in touch!</h2>
+                                    <h2 class="title">{{ __('front.footer.get_in_touch') }}</h2>
                                     <p>Fusce varius, dolor tempor interdum tristique, dui urna bib
                                         endum magna, ut ullamcorper purus</p>
                                     <form>
@@ -325,7 +325,7 @@
                                 </address>
                             </div>
                             <div class="contact-inner">
-                                <h5 class="title">Find us here</h5>
+                                <h5 class="title">{{ __('front.footer.find_us') }}</h5>
                                 <div class="contact-social-share">
                                     <ul class="social-share list-unstyled">
                                         <li><a href="../../../index.htm"><i class="fab fa-facebook-f"></i></a></li>

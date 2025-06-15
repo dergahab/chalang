@@ -6,8 +6,8 @@
         <div class="breadcrum-area breadcrumb-banner">
             <div class="container">
                 <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
-                    <h1 class="title h2">Best solutions for your business</h1>
-                    <p>Give your business a unique logo to stand out from crowd. We’ll create logo specifically for your company.</p>
+                    <h1 class="title h2">{{ __('front.services.best_solutions') }}</h1>
+                    <p>{{ __('front.services.logo_description') }}</p>
                 </div>
                 <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
                     <img class="paralax-image" src="assets/media/banner/banner-thumb-4.png" alt="Illustration">
@@ -42,7 +42,7 @@
           <div class="section section-padding" id="{{$item->name}}">
             <div class="container">
                 <div class="section-heading heading-left">
-                    <span class="subtitle">Service</span>
+                    <span class="subtitle">{{ __('front.services.service_subtitle') }}</span>
                     <h2 class="title">{{$item->name}}</h2>
                 </div>
                 <div class="row">
@@ -73,8 +73,8 @@
             <div class="container">
                 <div class="call-to-action">
                     <div class="section-heading heading-light">
-                        <span class="subtitle">Let's Work Together</span>
-                        <h2 class="title">Need a successful project?</h2>
+                        <span class="subtitle">{{ __('front.work_together.subtitle') }}</span>
+                        <h2 class="title">{{ __('front.work_together.title') }}</h2>
                         <a href="contact.html" class="axil-btn btn-large btn-fill-white">Estimate Project</a>
                     </div>
                     <div class="thumbnail">

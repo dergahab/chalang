@@ -3,8 +3,8 @@
 <div class="breadcrum-area breadcrumb-banner">
     <div class="container">
         <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
-            <h1 class="title h2">Our projects</h1>
-            <p>A quick view of industry specific problems solved with design by the awesome team at Abstrak.</p>
+            <h1 class="title h2">{{ __('front.portfolio.our_projects') }}</h1>
+            <p>{{ __('front.portfolio.portfolio_description') }}</p>
         </div>
         <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
             <img class="paralax-image" src="assets/media/banner/banner-thumb-1.png" alt="Illustration">
@@ -25,8 +25,8 @@
 <section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">    
     <div class="container">
         <div class="section-heading heading-left">
-            <span class="subtitle">Our Project</span>
-            <h2 class="title">Some of our finest <br> work.</h2>
+            <span class="subtitle">{{ __('front.portfolio.subtitle') }}</span>
+            <h2 class="title">{{ __('front.portfolio.finest_work') }}</h2>
         </div>
         @include('front.inc.portfolio')
     </div>

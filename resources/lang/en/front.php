@@ -36,6 +36,10 @@ return [
         'our_services' => 'Our Services',
         'services_we_offer' => 'Services we can help you with',
         'find_out_more' => 'Find out more',
+        'best_solutions' => 'Best solutions for your business',
+        'free_quote' => 'Get a free Keystroke quote now',
+        'service_subtitle' => 'Service',
+        'logo_description' => 'Give your business a unique logo to stand out from crowd. We\'ll create logo specifically for your company.',
     ],
 
     // Portfolio Section
@@ -44,6 +48,8 @@ return [
         'portfolio_description' => 'A quick view of industry specific problems solved with design by the awesome team at Abstrak',
         'view_all' => 'View All',
         'view_details' => 'View Details',
+        'finest_work' => 'Some of our finest work.',
+        'subtitle' => 'Our Project',
     ],
 
     // Blog Section
@@ -75,6 +81,8 @@ return [
     'footer' => [
         'all_rights_reserved' => 'All Rights Reserved',
         'follow_us' => 'Follow Us',
+        'get_in_touch' => 'Get in touch!',
+        'find_us' => 'Find us here',
     ],
 
     'clients' => [
@@ -86,5 +94,16 @@ return [
     'banner' => [
         'title' => 'One of the fastest growing agencies',
         'description' => 'We design and develop web and mobile applications for our clients worldwide',
+    ],
+
+    // Additional translations for h tags
+    'work_together' => [
+        'title' => 'Need a successful project?',
+        'subtitle' => 'Let\'s Work Together',
+    ],
+
+    'index' => [
+        'our_project' => 'Our Project',
+        'projects_subtitle' => 'Projects',
     ],
 ];

@@ -29,10 +29,10 @@ Route::group(['middleware' => 'language'], function () {
 
     // Route::get('index', [FrontMainController::class, 'index'])->name('/');
     Route::get('blogs', [BlogController::class, 'index'])->name('blogs');
-    Route::get('blog/{blog:slug}', [BlogController::class, 'single'])->name('blog.single');
+    Route::get('blog/{blog:slug}', [BlogController::class, 'single'])->name('blog');
     Route::get('about-us', AboutController::class)->name('about-us');
     Route::get('contact', function () {
-        // return view('auth.login');
+
         return view('front.contuct-us');
     })->name('cuntuct-us');
 

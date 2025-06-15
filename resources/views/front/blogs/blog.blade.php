@@ -46,11 +46,11 @@
                                 </div>
                             </div> --}}
                             <div class="post-thumbnail">
-                                <a href="{{ route('blog.single', $blog->slug) }}"><img
+                                <a href="{{ route('blog', $blog->slug) }}"><img
                                         src="{{ asset(Storage::url($blog->big_image)) }}" alt="Blog"></a>
                             </div>
                             <p>{!! Illuminate\Support\Str::limit($blog->content, 200) !!}</p>
-                            <a href="{{ route('blog.single', $blog->slug) }}" class="axil-btn btn-borderd btn-large">Read
+                            <a href="{{ route('blog', $blog->slug) }}" class="axil-btn btn-borderd btn-large">Read
                                 Ətraflı</a>
                         </div>
                     @endforeach

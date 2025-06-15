@@ -1,13 +1,43 @@
 @extends('front.layouts.main')
 @section('content')
+    <style>
+        .blog-tags {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .blog-tags .title {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .blog-tags .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .blog-tags .tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background-color: #f8f9fa;
+            color: #495057;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .blog-tags .tag:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
     <div class="breadcrum-area">
         <div class="container">
             <div class="breadcrumb">
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('/') }}">Home</a></li>
-                    <li class="active">Blog</li>
+                    <li><a href="{{ route('/') }}">{{__('front.home')}}</a></li>
+                    {{-- <li class="active">{{__('front.blog')}}</li> --}}
                 </ul>
-                <h1 class="title h2">{{ $item->title }}</h1>
+                <h1 class="title h2">{{ $item?->title }}</h1>
             </div>
         </div>
         <ul class="shape-group-8 list-unstyled">
@@ -40,7 +70,24 @@
                                     </ul>
                                 </div>
                             </div> --}}
-                            {{ $item->content }}
+                            @if(is_array($item->content))
+                                @foreach($item->content as $content)
+                                    {!! $content !!}
+                                @endforeach
+                            @else
+                                {!! $item->content !!}
+                            @endif
+
+                            @if($item?->terms?->count() > 0)
+                            <div class="blog-tags mt-4">
+                                <h5 class="title">{{__('front.blog.tags')}}</h5>
+                                <div class="tags">
+                                    @foreach($item->terms as $term)
+                                        <a href="{{ route('blog.term', $term->slug) }}" class="tag">{{ $term->name }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
 
                         </div>
 
@@ -49,9 +96,9 @@
                 <div class="col-lg-4">
                     <div class="axil-sidebar">
                         <div class="widget widget-search">
-                            <h4 class="widget-title">Search</h4>
+                            <h4 class="widget-title">{{__('front.blog.search')}}</h4>
                             <form action="#" class="blog-search">
-                                <input type="text" placeholder="Search…">
+                                <input type="text" placeholder="{{__('front.blog.search_placeholder')}}">
                                 <button class="search-button"><i class="fal fa-search"></i></button>
                             </form>
                         </div>
@@ -74,7 +121,7 @@
     <section class="section section-padding-equal pt-0 related-blog-area">
         <div class="container">
             <div class="section-heading heading-left">
-                <h3 class="title">Related Post</h3>
+                <h3 class="title">{{__('front.blog.related_posts')}}</h3>
             </div>
             <div class="slick-slider recent-post-slide"
                 data-slick='{"infinite": true, "autoplay": true, "arrows": false, "dots": false, "slidesToShow": 2,
@@ -97,7 +144,7 @@
                                     More</a></h5>
                             <p>Demand generation is a constant struggle for any business. Each marketing strategy you employ
                                 has...</p>
-                            <a href="single-blog-2.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
+                            <a href="single-blog-2.html" class="more-btn">{{__('front.blog.read_more')}}<i class="far fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +156,7 @@
                         <div class="post-content">
                             <h5 class="title"><a href="single-blog-3.html">SEO Statistics You Should Know in 2021</a></h5>
                             <p>Organic search has the potential to capture more than 40 percent of your gross revenue...</p>
-                            <a href="single-blog-3.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
+                            <a href="single-blog-3.html" class="more-btn">{{__('front.blog.read_more')}}<i class="far fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +170,7 @@
                                     More</a></h5>
                             <p>Demand generation is a constant struggle for any business. Each marketing strategy you employ
                                 has...</p>
-                            <a href="single-blog-2.html" class="more-btn">Learn more<i class="far fa-angle-right"></i></a>
+                            <a href="single-blog-2.html" class="more-btn">{{__('front.blog.read_more')}}<i class="far fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>

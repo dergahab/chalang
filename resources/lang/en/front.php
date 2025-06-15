@@ -48,8 +48,13 @@ return [
 
     // Blog Section
     'blog' => [
+        'title' => 'From our Blog',
         'latest_news' => 'Latest News',
         'read_more' => 'Read More',
+        'search' => 'Search',
+        'search_placeholder' => 'Search...',
+        'related_posts' => 'Related Posts',
+        'tags' => 'Tags',
     ],
 
     // Contact Section
@@ -78,13 +83,7 @@ return [
         'description' => 'We collaborate with a diverse range of companies to deliver outstanding results across industries.',
     ],
 
-    'blog' => [
-        'title' => 'From our Blog',
-        'latest_news' => 'Latest News',
-        'read_more' => 'Read More',
-    ],
-
-     'banner' => [
+    'banner' => [
         'title' => 'One of the fastest growing agencies',
         'description' => 'We design and develop web and mobile applications for our clients worldwide',
     ],

@@ -48,8 +48,13 @@ return [
 
     // Blog Section
     'blog' => [
+        'title' => 'Bloqumuzdan',
         'latest_news' => 'Son Xəbərlər',
         'read_more' => 'Ətraflı',
+        'search' => 'Axtar',
+        'search_placeholder' => 'Axtar...',
+        'related_posts' => 'Əlaqəli Yazılar',
+        'tags' => 'Teqlər',
     ],
 
     // Contact Section
@@ -76,12 +81,6 @@ return [
         'subtitle' => 'Müştərilərimiz',
         'title' => 'Qlobal brendlərin etibar etdiyi',
         'description' => 'Biz müxtəlif sahələrdə möhtəşəm nəticələr əldə etmək üçün şirkətlərlə əməkdaşlıq edirik.',
-    ],
-
-    'blog' => [
-        'title' => 'Bloqumuzdan',
-        'latest_news' => 'Son Xəbərlər',
-        'read_more' => 'Ətraflı',
     ],
 
     'banner' => [

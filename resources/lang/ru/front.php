@@ -48,8 +48,13 @@ return [
 
     // Blog Section
     'blog' => [
+        'title' => 'Из нашего блога',
         'latest_news' => 'Последние Новости',
         'read_more' => 'Читать Далее',
+        'search' => 'Поиск',
+        'search_placeholder' => 'Поиск...',
+        'related_posts' => 'Похожие Статьи',
+        'tags' => 'Теги',
     ],
 
     // Contact Section

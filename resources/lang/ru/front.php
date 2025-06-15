@@ -8,6 +8,7 @@ return [
     'portfolio' => 'Портфолио',
     'blog' => 'Блог',
     'contact' => 'Контакты',
+    'more' => 'Подробнее',
 
     // Banner Section
     'fastest_growing' => 'Одна из самых быстрорастущих компаний',
@@ -75,6 +76,7 @@ return [
     'footer' => [
         'all_rights_reserved' => 'Все Права Защищены',
         'follow_us' => 'Следите за Нами',
+        'get_in_touch' => 'Свяжитесь с нами'
     ],
 
     'clients' => [

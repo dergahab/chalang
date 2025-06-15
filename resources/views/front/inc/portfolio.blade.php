@@ -1,6 +1,6 @@
 <div class="axil-isotope-wrapper">
     <div class="isotope-button isotope-project-btn">
-        <button data-filter="all" class="is-checked filter-button"><span class="filter-text">Hamısı</span></button>
+        <button data-filter="all" class="is-checked filter-button"><span class="filter-text">{{__("All")}}</span></button>
 
         @foreach ($portfolio_categories as $pcategory)
             <button data-filter="{{ Str::slug($pcategory->name, '') }}" class="filter-button"><span
@@ -38,6 +38,6 @@
         @endforeach
     </div>
     <div class="more-project-btn">
-        <a href="{{ route('portfolio') }}" class="axil-btn btn-fill-primary">Ətraflı</a>
+        <a href="{{ route('portfolio') }}"class="axil-btn btn-large btn-fill-white">{{__('front.more')}}</a>
     </div>
 </div>

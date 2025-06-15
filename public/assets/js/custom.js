@@ -32,3 +32,26 @@ $(document).ready(function() {
 });
 
 
+
+    function toggleLangDropdown() {
+        const dropdown = document.getElementById('langDropdown');
+        if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+            dropdown.style.display = 'flex'; // göstər
+        } else {
+            dropdown.style.display = 'none'; // gizlət
+        }
+    }
+
+    // Dropdown xaricinə kliklə bağlamaq üçün:
+    document.addEventListener('click', function(event) {
+        const container = document.querySelector('.lang-select-container');
+        const dropdown = document.getElementById('langDropdown');
+        const selectedLang = container.querySelector('.selected-lang');
+
+        if (!container.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
+
+
+

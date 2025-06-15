@@ -8,6 +8,7 @@ return [
     'portfolio' => 'Portfolio',
     'blog' => 'Blog',
     'contact' => 'Əlaqə',
+    'more' => 'Ətraflı',
 
     // Banner Section
     'fastest_growing' => 'Ən sürətli böyüyən agentlik',
@@ -75,6 +76,7 @@ return [
     'footer' => [
         'all_rights_reserved' => 'Bütün hüquqlar qorunur',
         'follow_us' => 'Bizi İzləyin',
+        'get_in_touch' => 'Bizimlə əlaqə saxlayın'
     ],
 
     'clients' => [

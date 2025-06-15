@@ -102,54 +102,59 @@
                                 <ul class="mainmenu     justify-content-center">
                                     <li class="">
                                         <a href="{{ route('/') }}"><i class="fas fa-home"></i>
-                                            {{ __('Home') }}</a>
+                                            {{ __('front.home') }}</a>
 
                                     </li>
                                     <li>
                                         <a href="{{ route('services') }}">
                                             <i class="fa fa-swatchbook"></i>
-                                            {{ __('Services') }}</a>
+                                            {{ __('services') }}</a>
 
                                     </li>
                                     <li>
                                         <a href="{{ route('portfolio') }}">
                                             <i class="fa fa-suitcase"></i>
-                                            {{ __('Portfolio') }}</a>
+                                            {{ __('portfolio') }}</a>
 
                                     </li>
                                     <li class="">
                                         <a href="{{ route('about-us') }}">
                                             <i class="fa fa-users"></i>
-                                            {{ __('About') }}</a>
+                                            {{ __('about') }}</a>
 
                                     </li>
                                     <li class="">
                                         <a href="{{ route('blogs') }}">
                                             <i class="fas fa-pen-nib"></i>
-                                            {{ __('Blog') }}</a>
+                                            {{ __('blog') }}</a>
 
                                     </li>
                                     <li><a href="{{ route('cuntuct-us') }}">
                                             <i class="fas fa-phone"></i>
-                                            {{ __('Contact') }}</a></li>
+                                            {{ __('contact') }}</a></li>
                                 </ul>
                             </nav>
                             <!-- End Mainmanu Nav -->
                         </div>
                         <div class="header-action">
                             <ul class="list-unstyled">
-                                <li class=" d-lg-block d-none">
-                                    <select class="lang-select" onchange="changeLang(this.value)" style="background-color: #f8f9fa; border: 1px solid #ced4da; border-radius: 4px; padding: 8px; font-size: 16px; color: #495057;">
-                                        @foreach($languages as $language)
-                                            <option value="{{ $language->lang }}" {{ app()->getLocale() == $language->lang ? 'selected' : '' }}>{{ strtoupper($language->lang) }}</option>
-                                        @endforeach
-                                    </select>
-                                    <!-- Debug info -->
-                                    <div style="display: none;">
-                                        Current locale: {{ app()->getLocale() }}
-                                        Session lang: {{ Session::get('lang') }}
+
+                                <li class="lang-select-container d-lg-block d-none" style="position: relative; width: 50px;">
+                                    <div class="selected-lang" onclick="toggleLangDropdown()" style="cursor: pointer;">
+                                        {{ strtoupper(app()->getLocale()) }}
                                     </div>
+                                    <ul class="lang-list" id="langDropdown" style="display: none;">
+                                        @foreach($languages as $language)
+                                            @if(app()->getLocale() != $language->lang)
+                                            <li onclick="changeLang('{{ $language->lang }}')">
+                                                {{ strtoupper($language->lang) }}
+                                            </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
                                 </li>
+
+
                                 <li class="  my_switcher d-lg-block d-none">
                                     <ul>
                                         <li title="Light Mode">
@@ -222,7 +227,7 @@
                                     <form>
                                         <div class="input-group">
                                             <input type="email" class="form-control" placeholder="Email address">
-                                            <button class="subscribe-btn" type="submit">Subscribe</button>
+                                            <button class="subscribe-btn" type="submit">{{__('subscribe')}}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -233,12 +238,12 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="footer-widget">
-                                        <h6 class="widget-title">Xidmətlər</h6>
+                                        <h6 class="widget-title">{{__('services')}}</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
                                                 @foreach ($main_services as $service)
                                                     <li><a
-                                                            href="{{ route('services') }}#{{ $service->name }}">{{ $service->name }}</a>
+                                                            href="{{ route('services') }}#{{ $service->name }}">{{ $service?->name }}</a>
                                                     </li>
                                                 @endforeach
 
@@ -251,19 +256,18 @@
                                         <h6 class="widget-title">Resourses</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
-                                                <li><a href="{{ route('blogs') }}">Bloq</a></li>
-                                                <li><a href="case-study.html">Case Studies</a></li>
-                                                <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
+                                                <li><a href="{{ route('blogs') }}">{{__('blog')}}</a></li>
+                                                <li><a href="{{ route('portfolio') }}">{{__('portfolio')}}</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="footer-widget">
-                                        <h6 class="widget-title">Support</h6>
+                                        <h6 class="widget-title">{{__("Suport")}}</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
-                                                <li><a href="{{ route('cuntuct-us') }}">Contact</a></li>
+                                                <li><a href="{{ route('cuntuct-us') }}">{{__("contact")}}</a></li>
                                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                                 <li><a href="terms-of-use.html">Terms of Use</a></li>
                                             </ul>
@@ -278,8 +282,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="footer-copyright">
-                                <span class="copyright-text">© 2021. All rights reserved by <a
-                                        href="https://axilthemes.com/">Axilthemes</a>.</span>
+                                <span class="copyright-text">© <?= date('Y') ?>. All rights reserved .</span>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -8,7 +8,7 @@ return [
     'portfolio' => 'Portfolio',
     'blog' => 'Blog',
     'contact' => 'Contact',
-
+    'more' => 'More',
     // Banner Section
     'fastest_growing' => 'One of the fastest growing agency',
     'design_develop' => 'We design and develop web and mobile applications for our clients worldwide',
@@ -83,6 +83,7 @@ return [
         'follow_us' => 'Follow Us',
         'get_in_touch' => 'Get in touch!',
         'find_us' => 'Find us here',
+        'get_in_touch' => 'Contact us today'
     ],
 
     'clients' => [

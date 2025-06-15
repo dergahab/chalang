@@ -39,7 +39,7 @@
                     <div class="col-xl-5 col-lg-6">
                         <div class="case-study-featured">
                             <div class="section-heading heading-left">
-                                <span class="subtitle">{{ __('front.about.who_we_are') }}</span>
+                                <span class="subtitle">{{ __('who_we_are') }}</span>
                                 <h2 class="title">{{ $item?->title ?? '' }}</h2>
                                 {!! $item?->description ?? '' !!}
                                 <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-fill-primary btn-large">{{ __('front.contact.title') }}</a>
@@ -47,7 +47,7 @@
                             <div class="case-study-counterup">
                                 <div class="single-counterup">
                                     <h2 class="count-number">
-                                        <span class="number count">10</span>
+                                        <span class="number count">5</span>
                                         <span class="symbol">+</span>
                                     </h2>
                                     <span class="counter-title">{{ __('front.about.years_on_market') }}</span>
@@ -64,7 +64,7 @@
                 <div class="section-heading mb--90">
                     <span class="subtitle">{{ __('front.about.process') }}</span>
                     <h2 class="title">{{ __('front.about.logo_design_process') }}</h2>
-                    <p>{{ __('front.about.logo_design_strategy') }}</p>
+                    <p>{{ __('design_strategy') }}</p>
                 </div>
                 @foreach ($steps ?? [] as $step)
                     <div class="process-work sal-animate @if($loop->iteration % 2 != 0) content-reverse @endif" @if($loop->iteration % 2 != 0) data-sal="slide-right"@else data-sal="slide-left" @endif data-sal-duration="1000" data-sal-delay="100">

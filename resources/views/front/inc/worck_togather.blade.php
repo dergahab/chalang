@@ -2,9 +2,10 @@
     <div class="container">
         <div class="call-to-action">
             <div class="section-heading heading-light">
-                <span class="subtitle">Let's Work Together</span>
-                <h2 class="title">{{ __('front.work_together.title') }}</h2>
-                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-large btn-fill-white">Estimate Project</a>
+                <span class="subtitle">{{ __('Let\'s Work Together') }}</span>
+                <h2 class="title">{{ __('Bring Your Project to Life With Us') }}</h2>
+                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-large btn-fill-white">    {{ __('Estimate Project') }}
+</a>
             </div>
             <div class="thumbnail">
                 <div class="larg-thumb" data-sal="zoom-in" data-sal-duration="600" data-sal-delay="100">

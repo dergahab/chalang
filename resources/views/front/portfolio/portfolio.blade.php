@@ -1,10 +1,10 @@
 @extends('front.layouts.main')
-@section('content') 
+@section('content')
 <div class="breadcrum-area breadcrumb-banner">
     <div class="container">
         <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
-            <h1 class="title h2">{{ __('front.portfolio.our_projects') }}</h1>
-            <p>{{ __('front.portfolio.portfolio_description') }}</p>
+            <h1 class="title h2">{{ __('portfolio_title') }}</h1>
+            <p>{{ __("portfolio_subtitle") }}</p>
         </div>
         <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
             <img class="paralax-image" src="assets/media/banner/banner-thumb-1.png" alt="Illustration">
@@ -21,12 +21,12 @@
             <img src="assets/media/others/line-4.png" alt="Line">
         </li>
     </ul>
-</div>     
-<section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">    
+</div>
+<section class="section section-padding-equal project-column-4 pt--200 pt_md--80 pt_sm--60">
     <div class="container">
         <div class="section-heading heading-left">
-            <span class="subtitle">{{ __('front.portfolio.subtitle') }}</span>
-            <h2 class="title">{{ __('front.portfolio.finest_work') }}</h2>
+            <span class="subtitle">{{__("Our Work")}}</span>
+            <h2 class="title">{{ __('Discover the projects we’ve crafted.') }}</h2>
         </div>
         @include('front.inc.portfolio')
     </div>

@@ -38,6 +38,6 @@
         @endforeach
     </div>
     <div class="more-project-btn">
-        <a href="{{ route('portfolio') }}"class="axil-btn btn-large btn-fill-white">{{__('front.more')}}</a>
+        <a href="{{ route('portfolio') }}"class="axil-btn btn-fill-primary">{{__('front.more')}}</a>
     </div>
 </div>

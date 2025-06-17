@@ -16,39 +16,46 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Xidmətlər List</h4>
                     {{-- @include('admin.inc.dynamic_datatable', ['__datatableName' => 'category', '__datatableId' => 'datatable-category']) --}}
-                    <table class="table table-bordered" id="categories">
+                    <table class="table table-striped table-hover">
                         <thead>
-                          <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Ad</th>
-                            @if( !Request::get('parent'))
-                                <th scope="col">Alt xidmət</th>
-                            @endif
-                            <th>Əsas Səhifədə</th>
-                            <th scope="col">Əməliyyat</th>
-                          </tr>
-                        </thead>
-                        <tbody id="sortables">
-                            @forelse ($items as $item)
-
-                            <tr class="sortable" data-id="{{ $item->id }}">
-                                <th scope="row" >{{$loop->iteration}}</th>
-                                <td>{{$item->name}}</td>
-                                @if( !Request::get('parent'))
-                                <td><a class="btn btn-sm btn-info" href="?parent={{$item->id}}">Alt servis ({{$item->childs()->count()}})</a></td>
+                            <tr>
+                                <th>ID</th>
+                                <th>Ad</th>
+                                @if(!Request::get('parent'))
+                                    <th>Alt xidmət</th>
                                 @endif
-                                <td>@include('admin.pages.service.in_main')</td>
-                                <td>@include('admin.pages.service.table_actions')</td>
-                              </tr>
-
+                                <th>Əsas Səhifədə</th>
+                                <th>Əməliyyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($items as $item)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    @if(!Request::get('parent'))
+                                        <td>
+                                            <a class="btn btn-sm btn-info" href="?parent={{ $item->id }}">
+                                                Alt servis ({{ $item->childs()->count() }})
+                                            </a>
+                                        </td>
+                                    @endif
+                                    <td>
+                                        @if ($item->in_main)
+                                            <i class="fas fa-check text-success"></i>
+                                        @else
+                                            <i class="fas fa-times text-danger"></i>
+                                        @endif
+                                    </td>
+                                    <td>@include('admin.pages.service.table_actions')</td>
+                                </tr>
                             @empty
-                              <p>Xidmət yoxdu</p>
-                          @endforelse
-
+                                <tr>
+                                    <td colspan="5" class="text-center">Xidmət yoxdu</td>
+                                </tr>
+                            @endforelse
                         </tbody>
-                      </table>
-
-                    </div>
+                    </table>
             </div>
         </div>
         <!-- end col -->
@@ -57,29 +64,7 @@
 @push('js_stack')
     <!-- Parsley js -->
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        $(document).ready(function() {
 
-        $( "#sortables" ).sortable({
-              cancel: 'thead',
-              stop:() => {
-                  let order = {}
-                  $('.sortable').each(function() {
-                        order[$(this).data('id')] = $(this).index();
-                    });
-
-                    // $.post("{{ route('admin.service.index') }}", {
-                    //     order:order,
-                    //     token: "csrf_token()"
-                    // },function(response) {
-                    //     console.log(response.data);
-                    // });
-
-
-              }
-          });
-      });
-    </script>
     <script>
         $(document).on('change','.in_main',function(){
             let id = $(this).data('id');

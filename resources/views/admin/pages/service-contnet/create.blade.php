@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title"> Yeni Xidmət</h4>
-                    <form class="" action="{{ route('admin.sp-content.store') }}" method="POST"
+                    <form class="" action="{{ route('admin.service-content.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        @include('admin.pages.sp_contnet._form')
+                        @include('admin.pages.service-contnet._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
                                 <button type="submit"

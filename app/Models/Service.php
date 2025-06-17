@@ -12,9 +12,9 @@ class Service extends Model implements TranslatableContract
 {
     use HasFactory,Translatable,SoftDeletes;
 
-    public $translatedAttributes = ['name', 'content', 'description', 'slug'];
+    public $translatedAttributes = ['name', 'content', 'description', 'slug' ];
 
-    protected $fillable = ['parent_id', 'icon', 'slug', 'image'];
+    protected $fillable = ['parent_id', 'icon', 'slug', 'image', 'in_main'];
 
     public function childs()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Portfolio;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PortfolioStore;
@@ -114,7 +114,7 @@ class PortfolioController extends Controller
     public function destroy($id)
     {
         $item = Portfolio::where('id', $id)->delete();
-      
+
         return redirect()->route('admin.portfolio.index');
     }
 

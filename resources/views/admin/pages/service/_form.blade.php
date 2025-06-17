@@ -41,6 +41,15 @@
         @endforeach
     </div>
 
+    <div class="form-group mt-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="in_main" id="in_main"
+                value="{{$item->in_main}}" {{ old('in_main', $item->in_main) ? 'checked' : '' }}>
+            <label class="form-check-label" for="in_main">
+                Əsas səhifədə göstər
+            </label>
+        </div>
+    </div>
 
     <div class="col-md-6 mt-2">
         <div class="form-group">

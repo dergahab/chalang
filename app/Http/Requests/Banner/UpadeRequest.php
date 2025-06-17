@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
+namespace App\Http\Requests\Banner;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class BannerRequest extends FormRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpadeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class BannerRequest extends FormRequest
         return [
             'name.az' => 'required',
             'content.az' => 'required',
-            'image' => 'required|file',
         ];
     }
 

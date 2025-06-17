@@ -2,9 +2,9 @@
 @section('heading_title', 'Blog kategoriya')
 
 @section('heading_buttons')
-        <button type="button"  class="btn btn-primary float-right arrow-none waves-effect waves-light create">
+        <a type="button" href="{{route('admin.bcategory.create')}}" class="btn btn-primary float-right arrow-none waves-effect waves-light ">
             <i class="fas fa-plus mr-2"></i> Əlavə et
-        </button>
+        </a>
 @endsection
 @section('content')
 <div class="row">
@@ -14,43 +14,37 @@
 
             <div class="card-body">
 
-                @include('admin.inc.dynamic_datatable', [
-                    '__datatableName' => 'bcategory',
-                    '__datatableId' => 'bcategory',
-                ])
+                <table class="table table-bordered" id="bcategory">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adı</th>
+                            <th>Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($items as $bcategory)
+                            <tr>
+                                <td>{{ $bcategory->id }}</td>
+                                <td>{{ $bcategory->name }}</td>
+                                <td>
+                                    <a href="{{ route('admin.bcategory.edit', $bcategory->id) }}" class="btn btn-sm btn-warning">
+                                        <i class="fas fa-edit"></i> Redaktə et
+                                    </a>
+                                    <form action="{{ route('admin.bcategory.destroy', $bcategory->id) }}" method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Silmək istədiyinizə əminsiniz?')">
+                                            <i class="fas fa-trash"></i> Sil
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
     </div>
     <!-- end col -->
-    @include('admin.pages.bcategory.modal')
 </div>
 @endsection
-@push('js_stack')
-    <script>
-        $(document).ready(function () {
-            $(".create").click(function (e) {
-                $("#company-modal").modal('toggle');
-            });
-
-            $("#save").click(function (e) {
-            e.preventDefault();
-            let data = $('#saveForm').serialize();
-            $.post("{{route('admin.bcategory.store')}}", data,
-                function (response) {
-                    dTReload()
-                    $("#company-modal").modal('toggle');
-                    $('#saveForm').trigger("reset");
-                });
-           });
-
-           $(document).on('click',' .edit',function(){
-               $.get($(this).data('route'),
-                function (res) {
-                if(res.code == 200){
-                    $('#edit-body').html(res.view)
-                    $("#modal-edit").modal('toggle');
-                }
-                });
-            });
-        });
-    </script>
-@endpush

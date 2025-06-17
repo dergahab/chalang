@@ -57,12 +57,13 @@ class AboutController extends Controller {
                 }
             }
             DB::commit();
+
+            return redirect()->route('admin.about.index')->with('success', 'Məlumat uğurla yeniləndi');
         } catch (\Exception $e) {
             DB::rollback();
 
-            return $e->getMessage();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
-        return back();
     }
 }

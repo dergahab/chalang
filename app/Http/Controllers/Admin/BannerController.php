@@ -3,64 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BannerRequest;
-use App\Http\Requests\BnnerUpadeRequest;
+use App\Http\Requests\Banner\UpadeRequest;
+use App\Http\Requests\Banner\StoreRequest;
 use App\Models\Banner;
 use App\Services\BannerService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BannerController extends Controller
 {
     public function __construct(protected BannerService $bannerService){}
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('admin.pages.banner.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $item =new Banner();
         return view('admin.pages.banner.create', compact('item'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(BannerRequest $request)
+
+    public function store(StoreRequest $request)
     {
          $this->bannerService->store($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $item = Banner::find($id);
@@ -68,27 +39,21 @@ class BannerController extends Controller
         return view('admin.pages.banner.edit', compact('item'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(BnnerUpadeRequest $request, $id)
+    public function update(UpadeRequest $request, $id)
     {
-        // dd($request->all());
-        return $this->bannerService->update($request, $id);
+
+        DB::beginTransaction();
+        try {
+            $this->bannerService->update($request, $id);
+            DB::commit();
+            session()->flash('success', 'Banner updated successfully');
+            return redirect()->route('admin.banner.edit', $id);
+        } catch (\Exception $e) {
+            DB::rollback();
+            session()->flash('error', 'Failed to update banner: ' . $e->getMessage());
+            return redirect()->back();
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

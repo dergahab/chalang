@@ -27,8 +27,11 @@ class BlogController extends Controller
 
     public function index()
     {
-        return view('admin.pages.blog.index');
+        $items = BlogTranslation::where('locale', 'az')->get();
+        return view('admin.pages.blog.index', compact("items"));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -76,16 +79,15 @@ class BlogController extends Controller
                 }
             }
             DB::commit();
+            session()->flash('success', 'Blog created successfully');
+            return redirect()->route('admin.blog.index');
         } catch (\Exception $e) {
             DB::rollback();
 
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
+            session()->flash('error', 'Blog creation failed: ' . $e->getMessage());
+            return redirect()->route('admin.blog.create');
         }
 
-        return redirect()->route('admin.blog.index');
     }
 
     /**
@@ -151,16 +153,16 @@ class BlogController extends Controller
                 }
             }
             DB::commit();
+            session()->flash('success', 'Blog updated successfully');
+            return redirect()->route('admin.blog.index');
         } catch (\Exception $e) {
             DB::rollback();
 
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
+            session()->flash('error', 'Blog update failed: ' . $e->getMessage());
+            return redirect()->route('admin.blog.create');
+
         }
 
-        return redirect()->route('admin.blog.index');
 
     }
 

@@ -14,10 +14,32 @@ t
 
             <div class="card-body">
 
-                @include('admin.inc.dynamic_datatable', [
-                    '__datatableName' => 'blog',
-                    '__datatableId' => 'blog',
-                ])
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Başlıq</th>
+                            <th>Yaradılma Tarixi</th>
+                            <th>Əməliyyatlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($items as $blog)
+                            <tr>
+                                <td>{{ $blog->id }}</td>
+                                <td>{{ $blog->title }}</td>
+                                <td>
+                                    <a href="{{ route('admin.blog.edit', $blog->id) }}" class="btn btn-sm btn-warning">Redaktə et</a>
+                                    <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Silmək istədiyinizə əminsiniz?')">Sil</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
     </div>
 

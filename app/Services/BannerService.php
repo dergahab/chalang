@@ -33,10 +33,9 @@ class BannerService implements BaseService
 
     public function saveTranslatable($request, $id = null)
     {
-     
+
         $data = [];
-        DB::beginTransaction();
-        try {
+
             if ($request['image']) {
                 $filename = uniqid().'.'.$request['image']->getClientOriginalExtension();
                 Storage::disk('public')->putFileAs('banner', $request['image'], $filename);
@@ -61,16 +60,6 @@ class BannerService implements BaseService
                     );
                 }
             }
-            DB::commit();
-           
-            return response()->json([
-                'success' => true
-            ],200);
-        } catch (\Exception $e) {
-            DB::rollback();
-            // return response()->json([
-            //     'code' =>  $e->getMessage()
-            // ]);
-        }
+
     }
 }

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Bcategory;
-use App\Models\BcategoryTranslation;
 use App\Models\Lang;
+use App\Models\Bcategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+use App\Models\BcategoryTranslation;
+use App\Http\Requests\BlogeCategoy\Store;
+use App\Http\Requests\BlogCategory\StoreRequest;
+use App\Http\Requests\BlogCategory\UpdateRequest;
 
 class BcategoryController extends Controller
 {
@@ -21,15 +24,18 @@ class BcategoryController extends Controller
 
     public function index()
     {
-        return view('admin.pages.bcategory.index');
+        $items = BcategoryTranslation::with('bcategory')->where('locale', 'az')->get();
+        // dd(vars: $items->toArray());
+        return view('admin.pages.bcategory.index', compact("items"));
     }
 
     public function create()
     {
-        //
+        $item = new Bcategory();
+        return view('admin.pages.bcategory.create', compact('item'));
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request, Lang $langModel)
     {
 
         DB::beginTransaction();
@@ -47,18 +53,17 @@ class BcategoryController extends Controller
                 }
             }
             DB::commit();
+                    session()->flash('success', 'Category created successfully');
+
+            return redirect()->route("admin.bcategory.index");
+
         } catch (\Exception $e) {
             DB::rollback();
 
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
+            session()->flash('error', 'Category creation failed: ' . $e->getMessage());
         }
 
-        return response()->json([
-            'code' => 200,
-        ]);
+
 
     }
 
@@ -92,7 +97,7 @@ class BcategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         foreach ($this->langs as $lang) {
             if ($request->post('name')[$lang->lang]) {
@@ -102,6 +107,7 @@ class BcategoryController extends Controller
                 ]);
             }
         }
+        session()->flash('success', 'Category updated successfully');
 
         return redirect()->route('admin.bcategory.index');
     }

@@ -4,15 +4,15 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">Bloq Kateqoriya</h4>
-                    <form class="" action="{{ route('admin.bcategory.update', $item->id) }}" method="POST">
+                    <h4 class="mt-0 header-title">Kateqoriya</h4>
+                    <form class="" action="{{ route('admin.bcategory.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
+                        @method('POST')
                         @include('admin.pages.bcategory._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
-                                <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Düzənlə</button>
-                                <button type="reset" class="btn btn-danger waves-effect">Imtina</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Əlavə et</button>
+                                <button type="reset" class="btn btn-danger waves-effect">Təmizlə</button>
                             </div>
                         </div>
                     </form>

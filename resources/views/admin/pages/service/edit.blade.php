@@ -2,6 +2,9 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
+            <a href="{{ route('admin.service.index') }}" class="btn btn-primary mb-3">
+                Bütün Servislərə Qayıt
+            </a>
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Servis</h4>

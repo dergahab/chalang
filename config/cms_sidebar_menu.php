@@ -51,7 +51,7 @@ return [
             [
                 'icon' => '<i class="ri-building-2-fill"></i>',
                 'title' => 'Xidmətlər content',
-                'route' => 'admin.sp-content.index',
+                'route' => 'admin.service-content.index',
                 'can' => 'service.index',
             ],
         ]

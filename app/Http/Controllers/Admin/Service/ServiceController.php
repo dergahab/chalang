@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Service\UpdateRequest;
 use App\Models\Lang;
 use App\Models\Service;
 use App\Models\ServiceTranslation;
-use App\Rules\NotNullIfLanguageIsEn;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -126,7 +126,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         // return $request->all();
         $data = [];
@@ -142,6 +142,7 @@ class ServiceController extends Controller
             $data['icon'] = $image;
         }
         $data['slug'] = Str::slug($request->post('name')['az']);
+        $data['in_main'] = $request->post('in_main');
 
         DB::beginTransaction();
         try {
@@ -164,16 +165,17 @@ class ServiceController extends Controller
                 }
             }
             DB::commit();
+
+            session()->flash('success','Service updated succesfuly ');
+            return redirect()->route('admin.pages.service.edit', $id);
         } catch (\Exception $e) {
             DB::rollback();
 
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
-        }
 
-        return redirect()->route('admin.service.index');
+            session()->flash('success',$e->getMessage());
+            return redirect()->route('admin.service.edit', $id);
+
+        }
     }
 
     /**

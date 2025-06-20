@@ -20,11 +20,33 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Banner List</h4>
-                    @include('admin.inc.dynamic_datatable', [
-                        '__datatableName' => 'banner',
-                        '__datatableId' => 'datatable-category',
-                    ])
-
+                    <table class="table simple-tableS">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Image</th>  
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($items as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td><img src="{{ asset('storage/'.$item->image) }}" alt="" width="80"></td>
+                                    <td>
+                                        <a href="{{ route('admin.banner.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form action="{{ route('admin.banner.destroy', $item->id) }}" method="POST" style="display:inline-block;">  
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>   
+                            @endforeach
+                        </tbody>
+                    </table>            
                 </div>
             </div>
         </div>

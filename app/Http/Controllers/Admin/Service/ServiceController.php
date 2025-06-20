@@ -52,47 +52,40 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $data = [];
         $data['parent_id'] = $request->parent_id ?? 0;
 
-        if ($request->image) {
-            $image = $this->upload($request, name: 'image', dir: 'services');
-            $data['image'] = $image;
-        }
+        $this->handleImageUpload($request, $data, 'image');
+        $this->handleImageUpload($request, $data, 'icon');
 
-        if ($request->icon) {
-            $image = $this->upload($request, name: 'icon', dir: 'services');
-            $data['icon'] = $image;
-        }
-        // $data['slug'] = Str::slug($request->post('name')['az']);
         DB::beginTransaction();
         try {
-
             $service = Service::create($data);
             foreach ($this->langs as $lang) {
-                if ($request->post('name')[$lang->lang]) {
-                    ServiceTranslation::insert([
-                        'name' => $request->post('name')[$lang->lang],
-                        'content' => $request->post('content')[$lang->lang],
-                        'description' => $request->post('description')[$lang->lang],
-                        'locale' => $lang->lang,
-                        'service_id' => $service->id,
-                        'slug' => Str::slug($request->post('name')['az'])
-                    ]);
+                $name = $request->post('name')[$lang->lang] ?? null;
+                if ($name) {
+                    ServiceTranslation::updateOrCreate(
+                        [
+                            'service_id' => $service->id,
+                            'locale' => $lang->lang,
+                        ],
+                        [
+                            'name' => $name,
+                            'content' => $request->post('content')[$lang->lang] ?? '',
+                            'description' => $request->post('description')[$lang->lang] ?? '',
+                            'slug' => Str::slug($name),
+                        ]
+                    );
                 }
             }
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-
             return response()->json([
                 'code' => 401,
                 'error' => $e->getMessage(),
             ]);
         }
-
         return redirect()->route('admin.service.index');
     }
 
@@ -128,53 +121,42 @@ class ServiceController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        // return $request->all();
         $data = [];
         $data['parent_id'] = $request->parent_id ?? 0;
-
-        if ($request->image) {
-            $image = $this->upload($request, name: 'image', dir: 'services');
-            $data['image'] = $image;
-        }
-
-        if ($request->icon) {
-            $image = $this->upload($request, name: 'icon', dir: 'services');
-            $data['icon'] = $image;
-        }
-        $data['slug'] = Str::slug($request->post('name')['az']);
         $data['in_main'] = $request->post('in_main');
+
+        $this->handleImageUpload($request, $data, 'image');
+        $this->handleImageUpload($request, $data, 'icon');
+        $data['slug'] = Str::slug($request->post('name')['az']);
 
         DB::beginTransaction();
         try {
-
-            $serive = Service::find($id);
-            $serive->update($data);
+            $service = Service::find($id);
+            $service->update($data);
             foreach ($this->langs as $lang) {
-                if ($request->post('name')[$lang->lang]) {
-                    $translation = ServiceTranslation::where('service_id', $id)->where('locale', $lang->lang)->first();
-                    if (!$translation) {
-                        $translation = new ServiceTranslation();
-                        $translation->service_id = $serive->id;
-                        $translation->locale = $lang->lang;
-                    }
-                    $translation->name = $request->post('name')[$lang->lang] ?? $translation->name;
-                    $translation->content = $request->post('content')[$lang->lang] ?? $translation->content;
-                    $translation->description = $request->post('description')[$lang->lang] ?? $translation->description;
-                    $translation->slug = Str::slug($request->post('name')[$lang->lang]) ?? $translation->slug;
-                    $translation->save();
+                $name = $request->post('name')[$lang->lang] ?? null;
+                if ($name) {
+                    ServiceTranslation::updateOrCreate(
+                        [
+                            'service_id' => $service->id,
+                            'locale' => $lang->lang,
+                        ],
+                        [
+                            'name' => $name,
+                            'content' => $request->post('content')[$lang->lang] ?? '',
+                            'description' => $request->post('description')[$lang->lang] ?? '',
+                            'slug' => Str::slug($name ?? uniqid()),
+                        ]
+                    );
                 }
             }
             DB::commit();
-
             session()->flash('success','Service updated succesfuly ');
             return redirect()->route('admin.pages.service.edit', $id);
         } catch (\Exception $e) {
             DB::rollback();
-
-
             session()->flash('success',$e->getMessage());
             return redirect()->route('admin.service.edit', $id);
-
         }
     }
 
@@ -196,5 +178,15 @@ class ServiceController extends Controller
         $item = Service::find($request->id);
         $item->in_main = !$item->in_main;
         $item->save();
+    }
+
+    /**
+     * Helper to handle image upload and update data array.
+     */
+    private function handleImageUpload(Request $request, array &$data, $field)
+    {
+        if ($request->hasFile($field)) {
+            $data[$field] = $this->upload($request, name: $field, dir: 'services');
+        }
     }
 }

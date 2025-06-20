@@ -33,33 +33,57 @@ class BannerService implements BaseService
 
     public function saveTranslatable($request, $id = null)
     {
-
         $data = [];
+        $banner = null;
 
-            if ($request['image']) {
-                $filename = uniqid().'.'.$request['image']->getClientOriginalExtension();
-                Storage::disk('public')->putFileAs('banner', $request['image'], $filename);
-                $data['image'] = 'banner/'.$filename;
-            }
+        // Handle file upload only if a new image is provided
+        if (!empty($request['image'])) {
+            $filename = (string) \Illuminate\Support\Str::uuid() . '.' . $request['image']->getClientOriginalExtension();
+            $path = 'banner/' . $filename;
 
-            if($request['url']){
-                $data['url'] =$request['url'];
-            }
-
-            $banner = Banner::updateOrCreate(['id' => $id],$data);
-            foreach ($this->langs as $l) {
-                if ($request['name'][$l->lang]) {
-                    BannerTranslation::updateOrCreate(
-                        ['banner_id' => $banner->id, 'locale' => $l->lang],
-                        [
-                            'title' => $request['name'][$l->lang],
-                            'content' => $request['content'][$l->lang],
-                            'locale' => $l->lang,
-                            'banner_id' =>  $banner->id,
-                        ]
-                    );
+            // If updating, delete the old image
+            if ($id) {
+                $banner = Banner::find($id);
+                if ($banner && $banner->image && Storage::disk('public')->exists($banner->image)) {
+                    Storage::disk('public')->delete($banner->image);
                 }
             }
 
+            // Store new image
+            try {
+                Storage::disk('public')->putFileAs('banner', $request['image'], $filename);
+                $data['image'] = $path;
+            } catch (\Exception $e) {
+                // Handle error (log or throw)
+                throw new \Exception('Image upload failed: ' . $e->getMessage());
+            }
+        }
+
+        if (!empty($request['url'])) {
+            $data['url'] = $request['url'];
+        }
+
+        // Create or update banner
+        $banner = Banner::updateOrCreate(['id' => $id], $data);
+
+        // Handle translations
+        foreach ($this->langs as $l) {
+            $locale = $l->lang;
+            $title = $request['name'][$locale] ?? null;
+            $content = $request['content'][$locale] ?? null;
+            if ($title || $content) {
+                BannerTranslation::updateOrCreate(
+                    ['banner_id' => $banner->id, 'locale' => $locale],
+                    [
+                        'title' => $title,
+                        'content' => $content,
+                        'locale' => $locale,
+                        'banner_id' => $banner->id,
+                    ]
+                );
+            }
+        }
+
+        return $banner;
     }
 }

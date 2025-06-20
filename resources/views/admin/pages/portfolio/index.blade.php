@@ -23,15 +23,3 @@
 
 </div>
 @endsection
-@push('js_stack')
-<script>
-    $(document).on('change','.in_main',function(){
-        let id = $(this).data('id');
-
-        $.get("{{route('admin.portfolio.in_main')}}", {id:id},
-            function (data) {
-
-            });
-    })
-</script>
-@endpush

@@ -50,7 +50,7 @@
             <div class="col-lg-6 offset-xl-1">
                 <div class="why-choose-us">
                     <div class="section-heading heading-left">
-                        <h3 class="title">{{$content?->title}}</h3>
+                        <h3 class="title">{{$content?->title ?? ''}}</h3>
                         <p>{!!$content?->content!!}</p>
                     </div>
                   

@@ -4,55 +4,82 @@ namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceContent\StoreRequest;
-use App\Http\Requests\ServiceContentRequest;
+use App\Http\Requests\ServiceContent\UpdateRequest;
 use App\Models\Lang;
 use App\Models\Service;
 use App\Models\ServisContent;
-use App\Services\ServiceContentService;
+use App\Services\Service\ServiceContentService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ServiceContentController extends Controller
 {
     protected $serviscontent;
-    public function __construct(protected ServisContent $servisContent, protected Lang $langs)
+    public function __construct(protected ServiceContentService $service, protected Lang $langs)
     {
-        view()->share('services', Service::where('parent_id', '<>', 0)->get());
+        
     }
 
     public function index()
     {
-        return view('admin.pages.service-contnet.index');
+        $servicecontent = ServisContent::with('service')->get();
+        return view('admin.pages.service-contnet.index', compact('servicecontent'));
     }
 
 
     public function create()
     {
-        $item = $this->servisContent;
-        return view('admin.pages.service-contnet.create', compact('item'));
+        $servicecontent = new ServisContent();
+        $services = Service::where('parent_id', '<>', 0)
+            ->whereDoesntHave('content')
+            ->get();
+        return view('admin.pages.service-contnet.create', compact('servicecontent', 'services'));
     }
 
-       public function store(StoreRequest $request)
-    {
-        $this->serviscontent->store($request->except('_token'));
-        return back();
+    public function store(StoreRequest $request)
+    {   
+        DB::beginTransaction();
+        try {
+            $this->service->store($request);
+
+            flash()->success('success', 'Service content created successfully');
+            return redirect()->route('admin.service-content.index');
+            
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            flash()->success('error', 'Service content created successfully');
+            return redirect()->route('admin.service-content.index');
+        
+        }
     }
-
-
 
     public function edit($id)
     {
-        $item = ServisContent::find($id);
-        return view('admin.pages.sp_contnet.edit', compact('item'));
+        $servicecontent = ServisContent::find($id);
+        $services = Service::where('parent_id', '<>', 0)
+            ->whereDoesntHave('content')
+            ->get();
+        return view('admin.pages.service-contnet.edit', compact('servicecontent', 'services'));
     }
-    public function update(ServiceContentRequest $request, $id)
+
+    public function update(UpdateRequest $request, $id)
     {
         try {
-            $this->serviscontent->update($request->except('_method', '_token'), $id);
+            $this->service->update($request, $id);
+           
+            flash()->success('success', 'Service content created successfully');
+            return redirect()->route('admin.service-content.index');
+        
+            DB::commit();
         } catch (\Exception $th) {
-            return $th->getMessage();
+            DB::rollback();
+
+            flash()->success('error', 'Service content failed');
+            return redirect()->route('admin.service-content.index');
+        
         }
 
-        return back();
     }
 
    

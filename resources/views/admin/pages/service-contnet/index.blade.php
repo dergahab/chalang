@@ -18,21 +18,22 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Service</th>
                             <th>Başlıq</th>
                             <th>Açıqlama</th>
                             <th>Əməliyyatlar</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($services as $service)
+                        @foreach($servicecontent as $servicecontent)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $service->title }}</td>
-                                <td>{{ $service->description }}</td>
+                                <td> {{$servicecontent->service->translate('az')?->name}} </td>
+                                <td>{{ $servicecontent->title }}</td>
+                                <td>{!! $servicecontent->content !!}</td>
                                 <td>
-                                    <a href="{{ route('admin.service-content.show', $service->id) }}" class="btn btn-sm btn-info">Bax</a>
-                                    <a href="{{ route('admin.service-content.edit', $service->id) }}" class="btn btn-sm btn-warning">Redaktə et</a>
-                                    <form action="{{ route('admin.service-content.destroy', $service->id) }}" method="POST" style="display:inline-block;">
+                                    <a href="{{ route('admin.service-content.edit', $servicecontent->id) }}" class="btn btn-sm btn-warning">Redaktə et</a>
+                                    <form action="{{ route('admin.service-content.destroy', $servicecontent->id) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Silmək istədiyinizə əminsiniz?')">Sil</button>

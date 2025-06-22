@@ -5,10 +5,13 @@
             <label for="">Servis</label>
             <select name="service_id" id="" class="form-control">
                 <option value="">Seуçin...</option>
-                @foreach ($services as $service)
-                    <option @if ($item->service_id == $service->id) selected @endif value="{{ $service->id }}">
-                        {{ $service->name }}</option>
-                @endforeach
+                @forelse ($services as $service)
+                    <option @if ($servicecontent?->service_id == $service->id) selected @endif value="{{ $service->id }}">
+                        {{ $service->translate(app()->getLocale())?->name ?? $service->name }}
+                    </option>
+                @empty
+                    <option disabled selected>Xidmət tapılmadı</option>
+                @endforelse
             </select>
         </div>
     </div>
@@ -30,12 +33,12 @@
                 <div class="form-group ">
                     <label for="name">Başlıq ({{ $lang->lang }}) </label>
                     <input type="text" name="name[{{ $lang->lang }}]" id="company" class="form-control"
-                        value="{{ old('name[' . $lang->lang . ']', $item->translate($lang->lang)?->title) }}">
+                        value="{{ old('name[' . $lang->lang . ']', $servicecontent->translate($lang->lang)?->title) }}">
                 </div>
                 <div class="form-group mt-3 ">
                     <label for="name">Məzmun ({{ $lang->lang }}) </label>
                     <textarea class="form-control editor" name="description[{{ $lang->lang }}]" id="" cols="30"
-                        rows="4">{{ old('description[' . $lang->lang . ']', $item->translate($lang->lang)?->content) }}</textarea>
+                        rows="4">{{ old('description[' . $lang->lang . ']', $servicecontent->translate($lang->lang)?->content) }}</textarea>
                 </div>
                 <hr>
 

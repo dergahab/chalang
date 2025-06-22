@@ -5,10 +5,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Kateqoriya</h4>
-                    <form class="" action="{{ route('admin.sp-content.update', $item) }}" method="POST">
+                    <form class="" action="{{ route('admin.service-content.update', $servicecontent) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        @include('admin.pages.sp_contnet._form')
+                        @include('admin.pages.service-contnet._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
                                 <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Düzənlə</button>

@@ -20,7 +20,7 @@ class ServiceController extends Controller
     public function details($slug)
     {
         $item = Service::orWhereTranslationLike('slug', '%' . $slug . '%')->first();
-        $content = ServisContent::where('service_id', $item->id)->first();
+        $content = ServisContent::where('service_id', $item?->id)->first();
         return view('front.services.single', compact('item', 'content'));
     }
 }

@@ -3,14 +3,11 @@
 // use App\Http\Controllers\Admin\CompanyController;
 // use App\Http\Controllers\Admin\ContenttextCortoller;
 
-use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ContenttextCortoller;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\Portfolio\PortfolioController as PortfolioPortfolioController;
 use App\Http\Controllers\Admin\Service\ServiceContentController;
-use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\DatatableController;
 use App\Http\Controllers\Api\MainController;

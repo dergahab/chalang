@@ -155,7 +155,7 @@ class ServiceController extends Controller
             return redirect()->route('admin.pages.service.edit', $id);
         } catch (\Exception $e) {
             DB::rollback();
-            session()->flash('success',$e->getMessage());
+            session()->flash('error',$e->getMessage());
             return redirect()->route('admin.service.edit', $id);
         }
     }

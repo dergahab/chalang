@@ -12,6 +12,7 @@ use App\Models\Portfolio;
 use App\Services\PortfolioSerice;
 use App\Traits\FileUploader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PortfolioController extends Controller
 {
@@ -96,13 +97,19 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PortfolioUpdate $request, Portfolio $portfolio)
+    public function update(PortfolioUpdate $request, $id)
     {
+        DB::beginTransaction();
+        try {
+            $this->portfolioService->update($request->validated(), $id);
+            session()->flash('success','Protfolio updated succesfuly ');
+            DB::commit();
+            return back();
+        } catch (\Exception $e) {
+            DB::rollback();
+            session()->flash('error',$e->getMessage());
 
-        $this->portfolioService->update($request->validated(), $portfolio);
-        $this->flashAlert('jndlaskdjlajksdlkajsdlkajsd', 'success');
-
-        return back();
+        }
     }
 
     /**

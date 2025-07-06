@@ -29,6 +29,7 @@ class PortfolioSerice implements BaseService
 
         $portfolio = Portfolio::create([
             'company_id' => $data['company_id'],
+            'in_main' => $data['in_main'],
             'slug' => Str::slug($data['name']['az']),
             'image' => $image,
         ]);
@@ -38,10 +39,12 @@ class PortfolioSerice implements BaseService
         $this->saveTranslatable($data, $portfolio->id);
     }
 
-    public function update($data, $model)
-    {
+    public function update($data, $id)
+    {  
+        $model = Portfolio::findOrFail($id);
 
-        if (in_array('image', $data)) {
+        // Şəkil yenilənirsə
+        if (isset($data['image']) && $data['image']) {
             $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
             $data['image']->storeAs('uploads', $filename);
             Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
@@ -49,37 +52,35 @@ class PortfolioSerice implements BaseService
         }
 
         $model->company_id = $data['company_id'];
+        $model->in_main = $data['in_main'] ?? 0;
         $model->slug = Str::slug($data['name']['az']);
         $model->save();
-        $model->syncCategories($data['pcategory_id']);
+       
+        // Kateqoriyaları yenilə
+        if (isset($data['pcategory_id'])) {
+            $model->syncCategories($data['pcategory_id']);
+        }
 
+        // Tərcümələri yenilə
         $this->saveTranslatable($data, $model->id);
     }
 
     public function saveTranslatable($data, $id)
     {
-        DB::beginTransaction();
-        try {
-            foreach ($this->langs as $l) {
-                if ($data['name'][$l->lang]) {
-                    PortfolioTranslation::updateOrCreate(
+    foreach ($this->langs as $l) {
+        if ($data['name'][$l->lang]) {
+            PortfolioTranslation::updateOrCreate(
 
-                        ['portfolio_id' => $id, 'locale' => $l->lang],
-                        [
-                            'title' => $data['name'][$l->lang],
-                            'description' => $data['description'][$l->lang],
-                            'slug' => Str::slug($data['name'][$l->lang]),
-                            'locale' => $l->lang,
-                            'portfolio_id' => $id,
-                        ]
-                    );
-                }
-            }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-
-            return $e->getMessage();
+                ['portfolio_id' => $id, 'locale' => $l->lang],
+                [
+                    'title' => $data['name'][$l->lang],
+                    'description' => $data['description'][$l->lang],
+                    'slug' => Str::slug($data['name'][$l->lang]),
+                    'locale' => $l->lang,
+                    'portfolio_id' => $id,
+                ]
+            );
         }
+    }
     }
 }

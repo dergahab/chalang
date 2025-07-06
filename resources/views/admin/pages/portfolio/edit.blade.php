@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Əlaqə məlumatları</h4>
-                    <form class="" action="{{ route('admin.portfolio.update', $item) }}" method="POST" enctype="multipart/form-data">
+                    <form class="" action="{{ route('admin.portfolio.update', $item->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @include('admin.pages.portfolio._form')

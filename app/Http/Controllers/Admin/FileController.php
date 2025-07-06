@@ -30,7 +30,9 @@ class FileController extends Controller
         $uploadedFiles = $request->file('files');
 
         foreach ($uploadedFiles as $file) {
-            $filename = uniqid().'.'.$file->getClientOriginalExtension();
+            $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $filename = \Illuminate\Support\Str::slug($originalName) . '-' . uniqid() . '.' . $extension;
             $path = $file->storeAs('uploads', $filename);
             Storage::disk('public')->putFileAs('images', $file, $filename);
 

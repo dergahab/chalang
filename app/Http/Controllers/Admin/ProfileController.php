@@ -28,10 +28,11 @@ class ProfileController extends Controller
 
             $dPath = 'profile/';
             $img = $request->file('image');
-            $fName = $img->getClientOriginalName();
+            $originalName = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
             $exten = $img->getClientOriginalExtension();
+            $fName = \Illuminate\Support\Str::slug($originalName) . '-' . uniqid() . '.' . $exten;
             $request->file('image')->storeAs($dPath, $fName);
-            $path = $dPath.''.$fName;
+            $path = $dPath . $fName;
             Storage::disk('public')->put($path, file_get_contents($request->file('image')));
 
             $data['image'] = $path;

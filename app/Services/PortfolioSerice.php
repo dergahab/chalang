@@ -20,12 +20,12 @@ class PortfolioSerice implements BaseService
 
     public function store($data)
     {
-        // if(in_array('image', $data)){
-        $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
-        $data['image']->storeAs('uploads', $filename);
+        // Generate a slugified file name based on the original file name
+        $originalName = pathinfo($data['image']->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $data['image']->getClientOriginalExtension();
+        $filename = Str::slug($originalName) . '-' . uniqid() . '.' . $extension;
         Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
         $image = 'portfolio/' . $filename;
-        // }
 
         $portfolio = Portfolio::create([
             'company_id' => $data['company_id'],
@@ -45,8 +45,9 @@ class PortfolioSerice implements BaseService
 
         // Şəkil yenilənirsə
         if (isset($data['image']) && $data['image']) {
-            $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
-            $data['image']->storeAs('uploads', $filename);
+            $originalName = pathinfo($data['image']->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $data['image']->getClientOriginalExtension();
+            $filename = Str::slug($originalName) . '-' . uniqid() . '.' . $extension;
             Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
             $model->image = 'portfolio/' . $filename;
         }

@@ -26,13 +26,17 @@ class AboutController extends Controller {
 
         $about = About::find($id);
         if($request->image) {
-            $filename = uniqid().'.'.$request->image->getClientOriginalExtension();
+            $originalName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $request->image->getClientOriginalExtension();
+            $filename = \Illuminate\Support\Str::slug($originalName) . '-' . uniqid() . '.' . $extension;
             Storage::disk('public')->putFileAs('portfolio', $request->image, $filename);
             $about->image = 'portfolio/'.$filename;
         }
 
         if($request->image) {
-            $filename = uniqid().'.'.$request->image->getClientOriginalExtension();
+            $originalName = pathinfo($request->image->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $request->image->getClientOriginalExtension();
+            $filename = \Illuminate\Support\Str::slug($originalName) . '-' . uniqid() . '.' . $extension;
             Storage::disk('public')->putFileAs('about', $request->image, $filename);
             $about->image = 'about/'.$filename;
         }

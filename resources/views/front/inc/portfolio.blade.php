@@ -14,7 +14,7 @@
                 <div class="project-grid">
                     <div class="thumbnail">
                         <a href="{{ route('portfolio.single', $portfolio->slug) }}">
-                            <img src="{{ asset(Storage::url($portfolio->image)) }}" class="image" alt="project">
+                            <img src="{{ asset(Storage::url('/public/'.$portfolio->image)) }}" class="image" alt="project">
                             <div class="middle">
                                 <i class="fas fa-eye"></i>
                             </div>

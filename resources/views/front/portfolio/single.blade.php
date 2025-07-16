@@ -8,7 +8,7 @@
             <p>{{ $portfolio->description }}</p>
         </div>
         <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
-            <img class="paralax-image" src="{{ asset(Storage::url($portfolio->image)) }}" alt="Illustration">
+            <img class="paralax-image" src="{{ asset(Storage::url('/portfolio/'.$portfolio->image)) }}" alt="Illustration">
         </div>
     </div>
     <ul class="shape-group-8 list-unstyled">

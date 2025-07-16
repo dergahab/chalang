@@ -50,7 +50,7 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{asset(Storage::url($child->icon))}}" alt="icon">
+                                <img src="{{asset(Storage::url( '/public/'.$child->icon))}}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"> <a href="{{route('service.single',$child->slug)}}">{{$child->name}}</a></h5>

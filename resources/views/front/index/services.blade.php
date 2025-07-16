@@ -12,7 +12,7 @@
                     <div class="services-grid">
                         <div class="thumbnail">
                             {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}
-                            <img src="{{ $service?->icon ? asset(Storage::url($service->icon)) : '' }}" alt="icon">
+                            <img src="{{ $service?->icon ? asset(Storage::url('/public/'.$service->icon)) : '' }}" alt="icon">
                         </div>
                         <div class="content">
                             <h5 class="title"> <a

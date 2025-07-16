@@ -7,7 +7,7 @@
             <p>{{$item->description}}</p>
         </div>
         <div class="banner-thumbnail sal-animate" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
-            <img class="paralax-image" src="{{asset(Storage::url($item->image))}}" alt="Illustration" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
+            <img class="paralax-image" src="{{asset(Storage::url('/public/'.$item->image))}}" alt="Illustration" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg);">
         </div>
     </div>
     <ul class="shape-group-8 list-unstyled">

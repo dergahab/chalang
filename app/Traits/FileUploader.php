@@ -8,7 +8,7 @@ trait FileUploader
 {
     public function upload($request, $name, $dir = 'images')
     {
-        $dPath = $dir;
+        $dPath = "public/". $dir;
         $img = $request->file($name);
         $exten = $img->getClientOriginalExtension();
         $fName = preg_replace('/\..+$/', '', $img->getClientOriginalName()).'.'.$exten;

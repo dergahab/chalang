@@ -15,6 +15,6 @@ class Company extends Model
 
     public function getImageAttribute($key)
     {
-        return isset($key) ? asset(Storage::url($key)) : null;
+        return isset($key) ? asset(Storage::url('/public/'.$key)) : null;
     }
 }

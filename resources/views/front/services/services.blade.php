@@ -42,7 +42,6 @@
           <div class="section section-padding" id="{{$item->name}}">
             <div class="container">
                 <div class="section-heading heading-left">
-                    <span class="subtitle">{{ __('front.services.service_subtitle') }}</span>
                     <h2 class="title">{{$item->name}}</h2>
                 </div>
                 <div class="row">

@@ -74,7 +74,7 @@
         @if($item->image)
 
         <div class="col-md-6 pt-3">
-                <img src="{{asset('storage/' . $item->image)}}" width="200px" height="200PX" srcset="">
+                <img src="{{asset('/storage/public/' . $item->image)}}" width="200px" height="200PX" srcset="">
         </div>
         @endif
 

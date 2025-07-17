@@ -17,7 +17,7 @@
                         <div class="content">
                             <h5 class="title"> <a
                                     href="{{ route('services') }}#{{ $service?->name ?? '' }}">{{ $service?->name ?? '' }}</a></h5>
-                         <p>{{ \Illuminate\Support\Str::limit($service?->description ?? '', 170, '...') }}</p>
+                         <p>{{ \Illuminate\Support\Str::limit($service?->description ?? '', 152, '...') }}</p>
                             {{-- <a href="service-design.html" class="more-btn">Find out more</a> --}}
                         </div>
                     </div>

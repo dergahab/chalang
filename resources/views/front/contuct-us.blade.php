@@ -42,11 +42,13 @@
                         <h4 class="title">{{ __('front.contact.phone') }}</h4>
                         {{-- <p>{{ __('front.contact.phone_hours') }}</p> --}}
                         <h4 class="phone-number"><a href="tel:{{ $contact?->phone ?? '' }}">{{ $contact?->phone ?? '' }}</a></h4>
-
+                    </div>
+                     <div class="contact-info mb--30 mb_md--30 mt_md--0 ">
                          <h4 class="title">{{ __('front.contact.email') }}</h4>
                         {{-- <p>{{ __('front.contact.email_hours') }}</p> --}}
                         <h4 class="phone-number"><a href="mailto:{{ $contact?->mail ?? '' }}">{{ $contact?->mail ?? '' }}</a></h4>
-
+                     </div>
+                     <div class="contact-info mb--30 mb_md--30 mt_md--0 ">
                          <h4 class="title">{{ __('front.contact.address') }}</h4>
                         {{-- <p>{{ __("front.contact.working_hours") }}</p> --}}
                         <h4 class="phone-number"><a href="{{ $contact?->address ?? '#' }}">{{ $contact?->address ?? '' }}</a></h4>

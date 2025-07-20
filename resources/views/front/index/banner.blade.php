@@ -12,7 +12,7 @@
         <div class="banner-thumbnail">
             <div class="large-thumb" data-sal="slide-left" data-sal-duration="800" data-sal-delay="400">
                 @if($banner?->image)
-                    <img class="paralax-image" src="{{ asset(Storage::url('/public/'.$banner->image)) }} " alt="Shape">
+                    <img class="paralax-image" src="{{ asset(Storage::url($banner->image)) }} " alt="Shape">
                 @endif            </div>
         </div>
         <div class="banner-social" data-sal="slide-up" data-sal-duration="800">

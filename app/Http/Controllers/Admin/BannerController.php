@@ -36,7 +36,6 @@ class BannerController extends Controller
     public function edit($id)
     {
         $item = Banner::find($id);
-
         return view('admin.pages.banner.edit', compact('item'));
     }
 

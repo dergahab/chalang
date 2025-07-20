@@ -11,13 +11,14 @@
         </div>
         <div class="banner-thumbnail">
             <div class="large-thumb" data-sal="slide-left" data-sal-duration="800" data-sal-delay="400">
-                <img class="paralax-image" src="{{ $banner?->image ? asset( $banner->image) : '' }}" alt="Shape">
-            </div>
+                @if($banner?->image)
+                    <img class="paralax-image" src="{{ asset('storage/'.$banner->image) }}" alt="Shape">
+                @endif            </div>
         </div>
         <div class="banner-social" data-sal="slide-up" data-sal-duration="800">
             <div class="border-line"></div>
             <ul class="list-unstyled social-icon">
-                @foreach ($socialmedia ?? [] as $media) 
+                @foreach ($socialmedia ?? [] as $media)
                     <li><a href="{{ $media?->link ?? '#' }}"><i class="{{ $media?->icon ?? '' }}"></i> {{ $media?->name ?? '' }}</a></li>
                 @endforeach
             </ul>

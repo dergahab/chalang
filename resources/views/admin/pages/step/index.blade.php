@@ -74,15 +74,6 @@
           });
       });
     </script>
-    <script>
-        $(document).on('change','.in_main',function(){
-            let id = $(this).data('id');
 
-            $.get("{{route('admin.service.in_main')}}", {id:id},
-                function (data) {
-
-                });
-        })
-    </script>
 @endpush
 

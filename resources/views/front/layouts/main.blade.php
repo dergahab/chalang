@@ -125,7 +125,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('cuntuct-us') }}" class="{{ request()->segment(1) == 'cuntuct-us' ? 'active' : '' }}">
+                                        <a href="{{ route('cuntuct-us') }}" class="{{ request()->segment(1) == 'contact' ? 'active' : '' }}">
                                             <i class="fas fa-phone"></i> {{ __('contact') }}
                                         </a>
                                     </li>

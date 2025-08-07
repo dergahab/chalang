@@ -38,8 +38,9 @@
     </a>
 
     <!-- Preloader Start Here -->
-    <div id="preloader"></div>
-    <!-- Preloader End Here -->
+    <div id="preloader-wrapper">
+        <div class="spinner"></div>
+    </div>    <!-- Preloader End Here -->
 
     {{-- <div class="my_switcher d-none d-lg-block">
         <ul>
@@ -68,15 +69,15 @@
                     <div class="header-navbar">
                         <div class="header-logo" style="width: 10% !immortant">
                             <a href="{{ route('/') }}">
-                                <img class="light-version-logo" style="width: 50% !important"
+                                <img class="light-version-logo" style="width: 85% !important"
                                     src="{{ asset('assets/media/logo.svg') }}" alt="logo">
                             </a>
                             <a href="{{ route('/') }}">
-                                <img class="dark-version-logo" style="width: 50% !important;"
+                                <img class="dark-version-logo" style="width: 85% !important;"
                                     src="{{ asset('assets/media/logo.svg') }}" alt="logo">
                             </a>
                             <a href="{{ route('/') }}">
-                                <img class="sticky-logo" style="width: 50% !important;"
+                                <img class="sticky-logo" style="width: 85% !important;"
                                     src="{{ asset('assets/media/logo.svg') }}" alt="logo">
                             </a>
                         </div>
@@ -87,9 +88,9 @@
                                     <div class="mobile-nav-header">
                                         <div class="mobile-nav-logo">
                                             <a href="index-1.html">
-                                                <img class="light-mode" width="50%"
+                                                <img class="light-mode" width="85%"
                                                     src="{{ asset('assets/media/logo-2.svg') }}" alt="Site Logo">
-                                                <img class="dark-mode" width="50%"
+                                                <img class="dark-mode" width="85%"
                                                     src="{{ asset('assets/media/logo-3.svg') }}" alt="Site Logo">
                                             </a>
                                         </div>
@@ -97,40 +98,39 @@
                                                 class="fas fa-times"></i></button>
                                     </div>
                                 </div>
-                                <ul class="mainmenu     justify-content-center">
-                                    <li class="">
-                                        <a href="{{ route('/') }}"><i class="fas fa-home"></i>
-                                            {{ __('front.home') }}</a>
-
+                                <ul class="mainmenu justify-content-center">
+                                    <li>
+                                        <a href="{{ route('/') }}" class="{{ request()->segment(1) == '' ? 'active' : '' }}">
+                                            <i class="fas fa-home"></i> {{ __('front.home') }}
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('services') }}">
-                                            <i class="fa fa-swatchbook"></i>
-                                            {{ __('services') }}</a>
-
+                                        <a href="{{ route('services') }}" class="{{ request()->segment(1) == 'services' ? 'active' : '' }}">
+                                            <i class="fa fa-swatchbook"></i> {{ __('services') }}
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('portfolio') }}">
-                                            <i class="fa fa-suitcase"></i>
-                                            {{ __('portfolio') }}</a>
-
+                                        <a href="{{ route('portfolio') }}" class="{{ request()->segment(1) == 'portfolio' ? 'active' : '' }}">
+                                            <i class="fa fa-suitcase"></i> {{ __('portfolio') }}
+                                        </a>
                                     </li>
-                                    <li class="">
-                                        <a href="{{ route('about-us') }}">
-                                            <i class="fa fa-users"></i>
-                                            {{ __('about') }}</a>
-
+                                    <li>
+                                        <a href="{{ route('about-us') }}" class="{{ request()->segment(1) == 'about-us' ? 'active' : '' }}">
+                                            <i class="fa fa-users"></i> {{ __('about') }}
+                                        </a>
                                     </li>
-                                    <li class="">
-                                        <a href="{{ route('blogs') }}">
-                                            <i class="fas fa-pen-nib"></i>
-                                            {{ __('blog') }}</a>
-
+                                    <li>
+                                        <a href="{{ route('blogs') }}" class="{{ request()->segment(1) == 'blogs' ? 'active' : '' }}">
+                                            <i class="fas fa-pen-nib"></i> {{ __('blog') }}
+                                        </a>
                                     </li>
-                                    <li><a href="{{ route('cuntuct-us') }}">
-                                            <i class="fas fa-phone"></i>
-                                            {{ __('contact') }}</a></li>
+                                    <li>
+                                        <a href="{{ route('cuntuct-us') }}" class="{{ request()->segment(1) == 'cuntuct-us' ? 'active' : '' }}">
+                                            <i class="fas fa-phone"></i> {{ __('contact') }}
+                                        </a>
+                                    </li>
                                 </ul>
+
                             </nav>
                             <!-- End Mainmanu Nav -->
                         </div>
@@ -376,6 +376,16 @@
     <script src="{{ asset('assets/js/custom.js?v=') . time() }}"></script>
 
     @stack('js_script')
+<script>
+    window.addEventListener("load", function () {
+        const preloader = document.getElementById("preloader-wrapper");
+        if (preloader) {
+            preloader.style.opacity = "0";
+            preloader.style.visibility = "hidden";
+            preloader.style.transition = "opacity 0.5s ease-out";
+        }
+    });
+</script>
 </body>
 
 </html>

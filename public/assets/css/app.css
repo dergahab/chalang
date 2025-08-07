@@ -69,7 +69,7 @@ STYLESHEET INDEXING
     --color-black: #000000;
     --color-light: #ECF2F6;
     --color-dark: #27272E;
-    --color-text-dark: #292930;
+    --color-text-dark: #50237c;
     --color-accent1: #FFDC60;
     --color-accent2: #FAB8C4;
     --color-blue-shade: #6865FF;
@@ -80,7 +80,7 @@ STYLESHEET INDEXING
     --color-pink-shade: #FFD3DB;
     --color-peach: #FFEDDC;
     --color-rose: #4b0082;
-    --color-chart1: #896BA7;
+    --color-chart1: #cf9bff;
     --color-chart2: #BADEFF;
     --color-body: #4b0082;
     --color-gray-1: #757589;
@@ -3763,26 +3763,31 @@ Pagination
 }
 
 .contact-info .phone-number {
-    font-size: 48px;
+    font-size: 30px;
     color: var(--color-accent2);
     margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1199px) {
     .contact-info .phone-number {
-        font-size: 42px;
+        font-size: 30px;
+        margin-bottom: 35px;
     }
 }
 
 @media only screen and (max-width: 991px) {
     .contact-info .phone-number {
-        font-size: 34px;
+        font-size: 29px;
+        margin-bottom: 30px;
+
     }
 }
 
 @media only screen and (max-width: 767px) {
     .contact-info .phone-number {
-        font-size: 30px;
+        font-size: 25px;
+        margin-bottom: 30px;
+
     }
 }
 

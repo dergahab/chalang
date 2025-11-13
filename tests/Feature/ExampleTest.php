@@ -17,4 +17,4 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
-}
+} 

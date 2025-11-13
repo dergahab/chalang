@@ -7,10 +7,10 @@
         <div class="container">
             <div class="breadcrumb">
                 <ul class="list-unstyled">
-                    <li><a href="{{ route("/") }}">{{__("home")}}</a></li>
-                    <li class="active">{{ __("contact") }}</li>
+                    <li><a href="{{ route('/') }}">{{ __('front.home') }}</a></li>
+                    <li class="active">{{ __('front.contact.title') }}</li>
                 </ul>
-                <h1 class="title h2">{{ __("contact_title") }}</h1>
+                <h1 class="title h2">{{ __('front.contact.title') }}</h1>
             </div>
         </div>
         <ul class="shape-group-8 list-unstyled">
@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-xl-5 col-lg-6">
                     <div class="contact-form-box shadow-box mb--30">
-                        <h3 class="title">{{ __("front.contact_us") }}</h3>
+                        <h3 class="title">{{ __('front.contact.get_quote') }}</h3>
                         @include('front.inc.form', ['type' => 'contact'])
                     </div>
                 </div>

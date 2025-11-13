@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use App\Models\ServiceContentOption;
-use App\Models\ServisContent;
-use Illuminate\Database\Query\Builder;
 
 class ServiceController extends Controller
 {
@@ -19,8 +16,14 @@ class ServiceController extends Controller
 
     public function details($slug)
     {
-        $item = Service::orWhereTranslationLike('slug', '%' . $slug . '%')->first();
-        $content = ServisContent::where('service_id', $item->id)->first();
-        return view('front.services.single', compact('item', 'content'));
+        $item = Service::with('content')->where(function ($query) use ($slug) {
+            $query->where('slug', $slug)
+                ->orWhereTranslation('slug', $slug);
+        })->firstOrFail();
+
+        return view('front.services.single', [
+            'item' => $item,
+            'content' => $item->content,
+        ]);
     }
 }

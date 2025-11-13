@@ -7,8 +7,8 @@ return [
     'services' => 'Services',
     'portfolio' => 'Portfolio',
     'blog' => 'Blog',
-    'contact' => 'Contact',
     'more' => 'More',
+    'follow' => 'Follow',
     // Banner Section
     'fastest_growing' => 'One of the fastest growing agency',
     'design_develop' => 'We design and develop web and mobile applications for our clients worldwide',
@@ -61,10 +61,12 @@ return [
         'search_placeholder' => 'Search...',
         'related_posts' => 'Related Posts',
         'tags' => 'Tags',
+        'empty_state' => 'No blog posts are available yet. Please check back soon.',
     ],
 
     // Contact Section
     'contact' => [
+        'title' => 'Contact',
         'get_quote' => 'Get a free quote now',
         'phone' => 'Phone',
         'email' => 'Email',
@@ -75,6 +77,8 @@ return [
         'full_name' => 'Full Name',
         'message' => 'Message',
         'submit' => 'Submit',
+        'success_message' => 'Your message has been sent successfully.',
+        'error_message' => 'Unable to send your message. Please try again.',
     ],
 
     // Footer
@@ -101,6 +105,7 @@ return [
     'work_together' => [
         'title' => 'Need a successful project?',
         'subtitle' => 'Let\'s Work Together',
+        'cta' => 'Estimate Project',
     ],
 
     'index' => [

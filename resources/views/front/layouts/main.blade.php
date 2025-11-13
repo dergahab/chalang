@@ -129,9 +129,9 @@
                                             {{ __('blog') }}</a>
 
                                     </li>
-                                    <li><a href="{{ route('cuntuct-us') }}">
+                                    <li><a href="{{ route('contact') }}">
                                             <i class="fas fa-phone"></i>
-                                            {{ __('contact') }}</a></li>
+                                            {{ __('front.contact.title') }}</a></li>
                                 </ul>
                             </nav>
                             <!-- End Mainmanu Nav -->
@@ -267,7 +267,7 @@
                                         <h6 class="widget-title">{{__("Suport")}}</h6>
                                         <div class="footer-menu-link">
                                             <ul class="list-unstyled">
-                                                <li><a href="{{ route('cuntuct-us') }}">{{__("contact")}}</a></li>
+                                                <li><a href="{{ route('contact') }}">{{ __('front.contact.title') }}</a></li>
                                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
                                                 <li><a href="terms-of-use.html">Terms of Use</a></li>
                                             </ul>

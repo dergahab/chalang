@@ -42,7 +42,7 @@
                                 <span class="subtitle">{{ __('who_we_are') }}</span>
                                 <h2 class="title">{{ $item?->title ?? '' }}</h2>
                                 {!! $item?->description ?? '' !!}
-                                <a href="{{ route('cuntuct-us') }}" class="axil-btn btn-fill-primary btn-large">{{ __('front.contact.title') }}</a>
+                                <a href="{{ route('contact') }}" class="axil-btn btn-fill-primary btn-large">{{ __('front.contact.title') }}</a>
                             </div>
                             <div class="case-study-counterup">
                                 <div class="single-counterup">

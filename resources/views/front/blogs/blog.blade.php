@@ -7,10 +7,10 @@
         <div class="container">
             <div class="breadcrumb">
                 <ul class="list-unstyled">
-                    <li><a href="{{ route('/') }}">Əsas Səhifə</a></li>
-                    <li class="active">Bloq</li>
+                    <li><a href="{{ route('/') }}">{{ __('front.home') }}</a></li>
+                    <li class="active">{{ __('front.blog.title') }}</li>
                 </ul>
-                <h1 class="title h2">Bloq</h1>
+                <h1 class="title h2">{{ __('front.blog.title') }}</h1>
             </div>
         </div>
         <ul class="shape-group-8 list-unstyled">
@@ -23,15 +23,15 @@
         </ul>
     </div>
     <!--=====================================-->
-    <!--=        Blog Area Start       	    =-->
+    <!--=        Blog Area Start            =-->
     <!--=====================================-->
     <section class="section-padding-equal">
         <div class="container">
             <div class="row row-40">
                 <div class="col-lg-8">
-                    @foreach ($data as $blog)
+                    @forelse ($data as $blog)
                         <div class="blog-grid">
-                            <h3 class="title"><a href="single-blog.html">{{ $blog->title }}</a></h3>
+                            <h3 class="title"><a href="{{ route('blog', $blog->slug) }}">{{ $blog->title }}</a></h3>
                             {{-- <div class="author">
                                 <div class="author-thumb">
                                     <img src="{{ asset('assets/media/blog/author-1.png') }}" alt="Blog Author">
@@ -47,45 +47,54 @@
                             </div> --}}
                             <div class="post-thumbnail">
                                 <a href="{{ route('blog', $blog->slug) }}"><img
-                                        src="{{ asset(Storage::url($blog->big_image)) }}" alt="Blog"></a>
+                                        src="{{ $blog->big_image ? asset(Storage::url($blog->big_image)) : '' }}"
+                                        alt="{{ $blog->title }}"></a>
                             </div>
                             <p>{!! Illuminate\Support\Str::limit($blog->content, 200) !!}</p>
-                            <a href="{{ route('blog', $blog->slug) }}" class="axil-btn btn-borderd btn-large">Read
-                                Ətraflı</a>
+                            <a href="{{ route('blog', $blog->slug) }}" class="axil-btn btn-borderd btn-large">
+                                {{ __('front.blog.read_more') }}
+                            </a>
                         </div>
-                    @endforeach
-                    <div class="pagination">
-                        <ul>
-                            @if ($data->onFirstPage())
-                                <li><span class="prev page-numbers disabled"><i class="fal fa-arrow-left"></i></span></li>
-                            @else
-                                <li><a class="prev page-numbers" href="{{ $data->previousPageUrl() }}"><i
-                                            class="fal fa-arrow-left"></i></a></li>
-                            @endif
+                    @empty
+                        <p class="text-center">{{ __('front.blog.empty_state') }}</p>
+                    @endforelse
 
-                            @foreach ($data as $item)
-                                <li><a href="#"
-                                        class="page-numbers {{ $data->currentPage() === $loop->iteration ? 'current' : '' }}">{{ $loop->iteration }}</a>
-                                </li>
-                            @endforeach
+                    @if ($data->hasPages())
+                        <div class="pagination">
+                            <ul>
+                                @if ($data->onFirstPage())
+                                    <li><span class="prev page-numbers disabled"><i class="fal fa-arrow-left"></i></span>
+                                    </li>
+                                @else
+                                    <li><a class="prev page-numbers" href="{{ $data->previousPageUrl() }}"><i
+                                                class="fal fa-arrow-left"></i></a></li>
+                                @endif
 
-                            @if ($data->hasMorePages())
-                                <li><a class="next page-numbers" href="{{ $data->nextPageUrl() }}"><i
-                                            class="fal fa-arrow-right"></i></a></li>
-                            @else
-                                <li><span class="next page-numbers disabled"><i class="fal fa-arrow-right"></i></span></li>
-                            @endif
-                        </ul>
-                    </div>
+                                @for ($page = 1; $page <= $data->lastPage(); $page++)
+                                    <li>
+                                        <a href="{{ $data->url($page) }}"
+                                            class="page-numbers {{ $data->currentPage() === $page ? 'current' : '' }}">{{ $page }}</a>
+                                    </li>
+                                @endfor
 
+                                @if ($data->hasMorePages())
+                                    <li><a class="next page-numbers" href="{{ $data->nextPageUrl() }}"><i
+                                                class="fal fa-arrow-right"></i></a></li>
+                                @else
+                                    <li><span class="next page-numbers disabled"><i
+                                                class="fal fa-arrow-right"></i></span></li>
+                                @endif
+                            </ul>
+                        </div>
+                    @endif
 
                 </div>
                 <div class="col-lg-4">
                     <div class="axil-sidebar">
                         <div class="widget widget-search">
-                            <h4 class="widget-title">Axtarış</h4>
+                            <h4 class="widget-title">{{ __('front.blog.search') }}</h4>
                             <form action="#" class="blog-search">
-                                <input type="text" placeholder="Axtarış...">
+                                <input type="text" placeholder="{{ __('front.blog.search_placeholder') }}">
                                 <button class="search-button"><i class="fal fa-search"></i></button>
                             </form>
                         </div>

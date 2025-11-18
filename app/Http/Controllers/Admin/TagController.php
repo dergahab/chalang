@@ -14,8 +14,7 @@ class TagController extends Controller
 
     public function __construct()
     {
-        view()->share('langs', Lang::all());
-
+        // Defer language loading to avoid blocking artisan commands
         $this->tagService = new TagService();
     }
 

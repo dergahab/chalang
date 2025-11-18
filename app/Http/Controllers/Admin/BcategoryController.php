@@ -16,11 +16,21 @@ class BcategoryController extends Controller
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading to avoid blocking route gathering during artisan commands
+        // Use getter method instead
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function index()
     {
+        $this->canOrAbort('bcategory.index');
         return view('admin.pages.bcategory.index');
     }
 
@@ -31,12 +41,12 @@ class BcategoryController extends Controller
 
     public function store(Request $request)
     {
-
+        $this->canOrAbort('bcategory.create');
         DB::beginTransaction();
         try {
             $bcategory = Bcategory::create();
 
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($request->post('name')[$lang->lang]) {
                     BcategoryTranslation::insert([
                         'name' => $request->post('name')[$lang->lang],
@@ -81,6 +91,7 @@ class BcategoryController extends Controller
      */
     public function edit($id)
     {
+        $this->canOrAbort('bcategory.edit');
         $item = Bcategory::find($id);
 
         return view('admin.pages.pcategory.edit', compact('item'));
@@ -94,7 +105,8 @@ class BcategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        foreach ($this->langs as $lang) {
+        $this->canOrAbort('bcategory.edit');
+        foreach ($this->getLangs() as $lang) {
             if ($request->post('name')[$lang->lang]) {
                 BcategoryTranslation::where('bcategory_id', $id)->where('locale', $lang->lang)->update([
                     'name' => $request->post('name')[$lang->lang],
@@ -114,6 +126,7 @@ class BcategoryController extends Controller
      */
     public function destroy($id)
     {
+        $this->canOrAbort('bcategory.delete');
         Bcategory::where('id', $id)->delete();
 
         return response()->json([

@@ -15,7 +15,15 @@ class StepSerive implements BaseService
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function store($data)
@@ -57,7 +65,7 @@ class StepSerive implements BaseService
     {
         DB::beginTransaction();
         try {
-            foreach ($this->langs as $l) {
+            foreach ($this->getLangs() as $l) {
                 if ($data['name'][$l->lang]) {
                     StepTranslation::updateOrCreate(
 

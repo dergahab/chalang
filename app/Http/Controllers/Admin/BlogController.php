@@ -21,12 +21,25 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        view()->share('categories', Bcategory::all());
-        $this->langs = Lang::all();
+        $this->middleware('permission:blog.index')->only(['index', 'show']);
+        $this->middleware('permission:blog.create')->only(['create', 'store']);
+        $this->middleware('permission:blog.edit')->only(['edit', 'update']);
+        $this->middleware('permission:blog.delete')->only(['destroy']);
+        
+        // Defer data loading to methods (don't load in constructor to avoid blocking artisan commands)
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function index()
     {
+        $this->canOrAbort('blog.index');
         return view('admin.pages.blog.index');
     }
 
@@ -37,6 +50,7 @@ class BlogController extends Controller
      */
     public function create()
     {
+        $this->canOrAbort('blog.create');
         $item = new Blog();
 
         return view('admin.pages.blog.create', compact('item'));
@@ -49,6 +63,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $this->canOrAbort('blog.create');
         $data = [];
         $data['user_id'] = Auth::user()->id;
         if ($request->image) {
@@ -64,7 +79,7 @@ class BlogController extends Controller
         try {
 
             $blog = Blog::create($data);
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($request->post('name')[$lang->lang]) {
                     BlogTranslation::insert([
                         'title' => $request->post('name')[$lang->lang],
@@ -107,6 +122,7 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
+        $this->canOrAbort('blog.edit');
         $item = Blog::find($id);
 
         return view('admin.pages.blog.edit', compact('item'));
@@ -120,6 +136,7 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->canOrAbort('blog.edit');
         // return $request->all();
         $data = [];
         if ($request->image) {
@@ -136,7 +153,7 @@ class BlogController extends Controller
 
             $portfolio = Blog::find($id);
             $portfolio->update($data);
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($request->post('name')[$lang->lang]) {
                     $translation = BlogTranslation::where('blog_id', $id)->where('locale', $lang->lang)->first();
                     if (! $translation) {
@@ -172,6 +189,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
+        $this->canOrAbort('blog.delete');
         Blog::where('id', $id)->delete();
 
         return redirect()->route('admin.blog.index');

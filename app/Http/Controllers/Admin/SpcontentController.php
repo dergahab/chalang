@@ -16,12 +16,28 @@ class SpcontentController extends Controller
 {
     protected $langs;
     protected $serviscontent;
+    protected $services;
+
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer data loading to avoid blocking artisan commands
         $this->serviscontent = new ServiceContentService();
-        view()->share('services', Service::where('parent_id', '<>', 0)->get());
+    }
 
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
+    }
+
+    protected function getServices()
+    {
+        if (!$this->services) {
+            $this->services = Service::where('parent_id', '<>', 0)->get();
+        }
+        return $this->services;
     }
 
     public function index()

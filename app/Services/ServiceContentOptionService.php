@@ -16,7 +16,15 @@ class ServiceContentOptionService {
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
     public function store($data, $id){
         for ($i=0; $i <count(            'title_az') ; $i++) { 

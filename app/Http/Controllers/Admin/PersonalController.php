@@ -13,14 +13,37 @@ use Spatie\Permission\Models\Role;
 
 class PersonalController extends Controller
 {
+    protected $positions;
+    protected $departments;
+    protected $roles;
+
     public function __construct()
     {
-        $postions = Position::orderBy('name', 'asc')->get();
-        $departments = Department::orderBy('name', 'asc')->get();
-        $roles = Role::whereNotIn('id', [1, 2])->get();
-        view()->share('postions', $postions);
-        view()->share('departments', $departments);
-        view()->share('roles', $roles);
+        // Defer data loading to avoid blocking artisan commands
+    }
+
+    protected function getPositions()
+    {
+        if (!$this->positions) {
+            $this->positions = Position::orderBy('name', 'asc')->get();
+        }
+        return $this->positions;
+    }
+
+    protected function getDepartments()
+    {
+        if (!$this->departments) {
+            $this->departments = Department::orderBy('name', 'asc')->get();
+        }
+        return $this->departments;
+    }
+
+    protected function getRoles()
+    {
+        if (!$this->roles) {
+            $this->roles = Role::whereNotIn('id', [1, 2])->get();
+        }
+        return $this->roles;
     }
 
     /**

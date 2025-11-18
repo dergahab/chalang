@@ -16,7 +16,15 @@ class ContenttextCortoller extends Controller
     public function __construct()
     {
         $this->contenttextserive = new ContentTextService();
-        view()->share('langs', Lang::all());
+        // Defer language loading to avoid blocking artisan commands
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     /**

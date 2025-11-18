@@ -17,7 +17,15 @@ class BannerService implements BaseService
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function store($data)
@@ -48,7 +56,7 @@ class BannerService implements BaseService
             }
 
             $banner = Banner::updateOrCreate(['id' => $id],$data);
-            foreach ($this->langs as $l) {
+            foreach ($this->getLangs() as $l) {
                 if ($request['name'][$l->lang]) {
                     BannerTranslation::updateOrCreate(
                         ['banner_id' => $banner->id, 'locale' => $l->lang],

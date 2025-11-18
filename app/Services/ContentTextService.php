@@ -13,7 +13,15 @@ class ContentTextService
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function create($request)
@@ -25,11 +33,11 @@ class ContentTextService
     {
         DB::beginTransaction();
         try {
-           Contenttext::updateOrCreate(['id'=> $id],[
+            Contenttext::updateOrCreate(['id'=> $id],[
                 'key' => $request->key,
             ]);
 
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($request->post('title')[$lang->lang]) {
                     ContenttextTranslation::where('contenttext_id', $id)->where('locale', $lang->lang)->update([
                         'title' => $request->post('title')[$lang->lang],
@@ -65,7 +73,7 @@ class ContentTextService
                 'key' => $request->key,
             ]);
           
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($request->post('name')[$lang->lang]) {
                     ContenttextTranslation::updateOrCreate(['contenttext_id' =>  $text->id, 'locale' => $lang->lang],[
                         'title' => $request->post('name')[$lang->lang],

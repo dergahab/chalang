@@ -10,20 +10,23 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        view()->share('categories', Bcategory::all());
+        // Don't load any data in constructor - it runs during route gathering
+        // Data will be loaded in methods as needed
     }
 
     public function index()
     {
-        $data = Blog::paginate(10); // Replace 10 with the number of records per page you want to display
+        $data = Blog::paginate(10);
+        $categories = Bcategory::all();
        
-        return view('front.blogs.blog', compact('data'));
+        return view('front.blogs.blog', compact('data', 'categories'));
     }
 
     public function single($slug)
     {
         $item = Blog::where('slug', $slug)->first();
+        $categories = Bcategory::all();
 
-        return view('front.blogs.single', compact('item'));
+        return view('front.blogs.single', compact('item', 'categories'));
     }
 }

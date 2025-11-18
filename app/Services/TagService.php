@@ -13,7 +13,15 @@ class TagService
 
     public function __construct()
     {
-        $this->langs = Lang::all();
+        // Defer language loading to avoid blocking artisan commands
+    }
+
+    protected function getLangs()
+    {
+        if (!$this->langs) {
+            $this->langs = Lang::all();
+        }
+        return $this->langs;
     }
 
     public function create($data)
@@ -27,7 +35,7 @@ class TagService
     {
         DB::beginTransaction();
         try {
-            foreach ($this->langs as $lang) {
+            foreach ($this->getLangs() as $lang) {
                 if ($data['name'][$lang->lang]) {
                     TagTranslation::updateOrCreate(
                         [

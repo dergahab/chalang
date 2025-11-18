@@ -3,13 +3,13 @@
 namespace App\Services;
 
 use App\Models\Lang;
-use App\Models\Portfolio;
-use App\Models\PortfolioTranslation;
+use App\Models\Step;
+use App\Models\StepTranslation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class PortfolioSerice implements BaseService
+class StepService implements BaseService
 {
     public $langs;
 
@@ -28,40 +28,37 @@ class PortfolioSerice implements BaseService
 
     public function store($data)
     {
+        // return $data;
         // if(in_array('image', $data)){
-        $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
+        $filename = uniqid().'.'.$data['image']->getClientOriginalExtension();
         $data['image']->storeAs('uploads', $filename);
         Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
-        $image = 'portfolio/' . $filename;
+        $image = 'portfolio/'.$filename;
         // }
 
-        $portfolio = Portfolio::create([
-            'company_id' => $data['company_id'],
-            'slug' => Str::slug($data['name']['az']),
+        $step = Step::create([
             'image' => $image,
         ]);
 
-        $portfolio->attachCategories($data['pcategory_id']);
 
-        $this->saveTranslatable($data, $portfolio->id);
+        $this->saveTranslatable($data, $step->id);
+
+        return redirect()->route('admin.step.index');
     }
 
     public function update($data, $model)
     {
-
-        if (in_array('image', $data)) {
-            $filename = uniqid() . '.' . $data['image']->getClientOriginalExtension();
+        $model = Step::find($model);
+        if ($data['image']) {
+            $filename = uniqid().'.'.$data['image']->getClientOriginalExtension();
             $data['image']->storeAs('uploads', $filename);
             Storage::disk('public')->putFileAs('portfolio', $data['image'], $filename);
-            $model->image = 'portfolio/' . $filename;
+            $model->image = 'portfolio/'.$filename;
         }
 
-        $model->company_id = $data['company_id'];
-        $model->slug = Str::slug($data['name']['az']);
         $model->save();
-        $model->syncCategories($data['pcategory_id']);
-
         $this->saveTranslatable($data, $model->id);
+        return back();
     }
 
     public function saveTranslatable($data, $id)
@@ -70,15 +67,15 @@ class PortfolioSerice implements BaseService
         try {
             foreach ($this->getLangs() as $l) {
                 if ($data['name'][$l->lang]) {
-                    PortfolioTranslation::updateOrCreate(
+                    StepTranslation::updateOrCreate(
 
-                        ['portfolio_id' => $id, 'locale' => $l->lang],
+                        ['step_id' => $id, 'locale' => $l->lang],
                         [
                             'title' => $data['name'][$l->lang],
-                            'description' => $data['description'][$l->lang],
-                            'slug' => Str::slug($data['name'][$l->lang]),
+                            'description' => $data['content'][$l->lang],
+                            'step' => $data['step'][$l->lang],
                             'locale' => $l->lang,
-                            'portfolio_id' => $id,
+                            'step_id' => $id,
                         ]
                     );
                 }

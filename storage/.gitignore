@@ -1,6 +1,0 @@
-*
-!.gitignore
-!logs/.gitignore
-!framework/.gitignore
-!app/.gitignore
-!debugbar/.gitignore

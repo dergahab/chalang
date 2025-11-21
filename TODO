@@ -1,3 +1,8 @@
 1 Validaiyalar yazma,
 2 Fail olduqda old valuyari forma qaytarmaq
-3
+3 Ana testlər:
+   - HTTP smoke: /, /services, /portfolio, /blogs, /about-us, /contact 200 qaytarsın
+   - Əlaqə formu validation + uğurlu göndərmə
+   - Dil dəyişimi: /lang/az|en|ru sessiyada saxlanır
+   - Admin login + əsas CRUD (xidmət, portfolio, blog, banner)
+   - Assets 404 yoxlaması (CSS/JS yüklənir)

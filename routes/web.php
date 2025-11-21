@@ -37,9 +37,19 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('services', [ServiceController::class, 'index'])->name('services');
     Route::get('service-deatail/{service:slug}', [ServiceController::class, 'details'])->name('service.single');
 
-    Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
-    Route::get('portfolio-deatail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
+Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('portfolio-deatail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('lang.change');
 Route::post('contact', MessageController::class)->name('contact.submit');
+Route::post('subscribe', function (Request $request) {
+    $validated = $request->validate([
+        'mail' => 'required|email',
+    ]);
+
+    \App\Models\Subscribe::create($validated);
+
+    return back()->with('success', __('front.messages.subscribe_success', ['email' => $validated['mail']]));
+})->name('subscribe');
+require __DIR__.'/test.php';

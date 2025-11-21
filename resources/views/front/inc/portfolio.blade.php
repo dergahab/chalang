@@ -14,7 +14,21 @@
                 <div class="project-grid">
                     <div class="thumbnail">
                         <a href="{{ route('portfolio.single', $portfolio->slug) }}">
-                            <img src="{{ asset(Storage::url($portfolio->image)) }}" class="image" alt="project">
+                            @php
+                                $img = $portfolio->image;
+                                $imgUrl = null;
+                                if ($img) {
+                                    if (\Illuminate\Support\Str::startsWith($img, ['http://', 'https://'])) {
+                                        $imgUrl = $img;
+                                    } elseif (\Illuminate\Support\Facades\Storage::disk('public')->exists($img)) {
+                                        $imgUrl = \Illuminate\Support\Facades\Storage::url($img);
+                                    } elseif (file_exists(public_path($img))) {
+                                        $imgUrl = asset($img);
+                                    }
+                                }
+                                $imgUrl = $imgUrl ?? asset('assets/media/portfolio/portfolio-1.png');
+                            @endphp
+                            <img src="{{ $imgUrl }}" class="image" alt="project">
                             <div class="middle">
                                 <i class="fas fa-eye"></i>
                             </div>

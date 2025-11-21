@@ -8,7 +8,7 @@
         <div class="container">
             <div class="section-heading heading-left mb--40">
                 <span class="subtitle">{{ __('front.portfolio.portfolio_description') }}</span>
-                <h2 class="title">{{ __('PortfolioProject') }}</h2>
+                <h2 class="title">{{ __('front.portfolio.our_projects') }}</h2>
             </div>
             @include('front.inc.portfolio')
         </div>

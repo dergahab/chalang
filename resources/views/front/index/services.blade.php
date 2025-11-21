@@ -12,7 +12,23 @@
                     <div class="services-grid">
                         <div class="thumbnail">
                             {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}
-                            <img src="{{ $service?->icon ? asset(Storage::url($service->icon)) : '' }}" alt="icon">
+                            @php
+                                $iconPath = $service?->icon;
+                                $iconUrl = null;
+
+                                if ($iconPath) {
+                                    if (\Illuminate\Support\Str::startsWith($iconPath, ['http://', 'https://'])) {
+                                        $iconUrl = $iconPath;
+                                    } elseif (\Illuminate\Support\Facades\Storage::disk('public')->exists($iconPath)) {
+                                        $iconUrl = \Illuminate\Support\Facades\Storage::url($iconPath);
+                                    } elseif (file_exists(public_path($iconPath))) {
+                                        $iconUrl = asset($iconPath);
+                                    }
+                                }
+
+                                $iconUrl = $iconUrl ?? asset('assets/media/icon/icon-1.png');
+                            @endphp
+                            <img src="{{ $iconUrl }}" alt="icon">
                         </div>
                         <div class="content">
                             <h5 class="title"> <a

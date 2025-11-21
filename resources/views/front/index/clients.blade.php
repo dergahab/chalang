@@ -9,7 +9,21 @@
             @foreach ($companies ?? [] as $company)
                 <div class="col-lg-3 col-6" data-sal="slide-up" data-sal-duration="500">
                     <div class="brand-grid active">
-                        <img src="{{ $company?->image ?? '' }}" alt="{{ $company?->name ?? '' }}">
+                        @php
+                            $logo = $company?->image;
+                            $logoUrl = null;
+                            if ($logo) {
+                                if (\Illuminate\Support\Str::startsWith($logo, ['http://', 'https://'])) {
+                                    $logoUrl = $logo;
+                                } elseif (\Illuminate\Support\Facades\Storage::disk('public')->exists($logo)) {
+                                    $logoUrl = \Illuminate\Support\Facades\Storage::url($logo);
+                                } elseif (file_exists(public_path($logo))) {
+                                    $logoUrl = asset($logo);
+                                }
+                            }
+                            $logoUrl = $logoUrl ?? asset('assets/media/brand/brand-1.png');
+                        @endphp
+                        <img src="{{ $logoUrl }}" alt="{{ $company?->name ?? '' }}">
                     </div>
                 </div>
             @endforeach

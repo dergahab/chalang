@@ -42,7 +42,7 @@
           <div class="section section-padding" id="{{$item->name}}">
             <div class="container">
                 <div class="section-heading heading-left">
-                    <span class="subtitle">{{ __('front.services.service_subtitle') }}</span>
+                    <span class="subtitle">{{ __('front.services.subtitle') }}</span>
                     <h2 class="title">{{$item->name}}</h2>
                 </div>
                 <div class="row">
@@ -50,7 +50,23 @@
                     <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
                         <div class="services-grid service-style-2">
                             <div class="thumbnail">
-                                <img src="{{asset(Storage::url($child->icon))}}" alt="icon">
+                                @php
+                                    $iconPath = $child->icon;
+                                    $iconUrl = null;
+
+                                    if ($iconPath) {
+                                        if (\Illuminate\Support\Str::startsWith($iconPath, ['http://', 'https://'])) {
+                                            $iconUrl = $iconPath;
+                                        } elseif (\Illuminate\Support\Facades\Storage::disk('public')->exists($iconPath)) {
+                                            $iconUrl = \Illuminate\Support\Facades\Storage::url($iconPath);
+                                        } elseif (file_exists(public_path($iconPath))) {
+                                            $iconUrl = asset($iconPath);
+                                        }
+                                    }
+
+                                    $iconUrl = $iconUrl ?? asset('assets/media/icon/icon-1.png');
+                                @endphp
+                                <img src="{{ $iconUrl }}" alt="icon">
                             </div>
                             <div class="content">
                                 <h5 class="title"> <a href="{{route('service.single',$child->slug)}}">{{$child->name}}</a></h5>

@@ -6,8 +6,8 @@
         <div class="breadcrum-area breadcrumb-banner">
             <div class="container">
                 <div class="section-heading heading-left" data-sal="slide-right" data-sal-duration="1000" data-sal-delay="300">
-                    <h1 class="title h2">{{ __("ServiceTitle") }}</h1>
-                    <p>{{ __("ServiceDesctioption") }}</p>
+                    <h1 class="title h2">{{ __('front.services.title') }}</h1>
+                    <p>{{ __('front.services.description') }}</p>
                 </div>
                 <div class="banner-thumbnail" data-sal="slide-up" data-sal-duration="1000" data-sal-delay="400">
                     <img class="paralax-image" src="assets/media/banner/banner-thumb-4.png" alt="Illustration">

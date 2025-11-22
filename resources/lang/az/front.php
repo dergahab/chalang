@@ -13,7 +13,7 @@ return [
     // Banner Section
     'fastest_growing' => 'Ən sürətli böyüyən agentlik',
     'design_develop' => 'Müştərilərimiz üçün web və mobil tətbiqlər hazırlayırıq',
-    'contact_us' => 'Bizimlə Əlaqə',
+    'contact_us' => 'Bizimlə əlaqə',
 
     // About Section
     'about' => [
@@ -42,9 +42,10 @@ return [
     // Portfolio Section
     'portfolio' => [
         'our_projects' => 'Layihələrimiz',
-        'portfolio_description' => 'Abstrak komandasının dizayn vasitəsilə həll etdiyi sənaye spesifik problemlərin sürətli baxışı',
+        'portfolio_description' => 'Komandamızın dizaynla həll etdiyi sektor spesifik problemlərə qısa baxış',
         'view_all' => 'Hamısına Bax',
         'view_details' => 'Ətraflı',
+        'all' => 'Hamısı',
     ],
 
     // Blog Section
@@ -65,7 +66,7 @@ return [
         'email' => 'E-poçt',
         'address' => 'Ünvan',
         'working_hours' => 'İş saatları',
-        'support_hours' => 'Dəstək komandamız standart iş saatları ərzində 48 saat ərzində sizinlə əlaqə saxlayacaq',
+        'support_hours' => 'Dəstək komandamız 48 saat ərzində sizinlə əlaqə saxlayacaq',
         'send_message' => 'Mesaj Göndər',
         'full_name' => 'Ad Soyad',
         'message' => 'Mesaj',
@@ -75,14 +76,14 @@ return [
     // Footer
     'footer' => [
         'all_rights_reserved' => 'Bütün hüquqlar qorunur',
-        'follow_us' => 'Bizi İzləyin',
+        'follow_us' => 'Bizi izləyin',
         'get_in_touch' => 'Bizimlə əlaqə saxlayın'
     ],
 
     'clients' => [
         'subtitle' => 'Müştərilərimiz',
         'title' => 'Qlobal brendlərin etibar etdiyi',
-        'description' => 'Biz müxtəlif sahələrdə möhtəşəm nəticələr əldə etmək üçün şirkətlərlə əməkdaşlıq edirik.',
+        'description' => 'Fərqli sahələrdə mükəmməl nəticələr üçün şirkətlərlə əməkdaşlıq edirik.',
     ],
 
     'banner' => [
@@ -90,4 +91,7 @@ return [
         'description' => 'Müştərilərimiz üçün veb və mobil tətbiqlər hazırlayırıq',
     ],
 
+    'messages' => [
+        'subscribe_success' => 'Uğurla abunə oldunuz: :email',
+    ],
 ];

@@ -35,10 +35,10 @@ Route::group(['middleware' => 'language'], function () {
     Route::get('contact', ContactController::class)->name('contact');
 
     Route::get('services', [ServiceController::class, 'index'])->name('services');
-    Route::get('service-deatail/{service:slug}', [ServiceController::class, 'details'])->name('service.single');
+    Route::get('service-detail/{service:slug}', [ServiceController::class, 'details'])->name('service.single');
 
-Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
-Route::get('portfolio-deatail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
+    Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+    Route::get('portfolio-detail/{portfolio:slug}', [PortfolioController::class, 'details'])->name('portfolio.single');
 });
 
 Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage'])->name('lang.change');
@@ -52,4 +52,3 @@ Route::post('subscribe', function (Request $request) {
 
     return back()->with('success', __('front.messages.subscribe_success', ['email' => $validated['mail']]));
 })->name('subscribe');
-require __DIR__.'/test.php';

@@ -1,6 +1,6 @@
 <div class="axil-isotope-wrapper">
     <div class="isotope-button isotope-project-btn">
-        <button data-filter="all" class="is-checked filter-button"><span class="filter-text">{{__("All")}}</span></button>
+        <button data-filter="all" class="is-checked filter-button"><span class="filter-text">{{ __('front.portfolio.all') }}</span></button>
 
         @foreach ($portfolio_categories as $pcategory)
             <button data-filter="{{ Str::slug($pcategory->name, '') }}" class="filter-button"><span

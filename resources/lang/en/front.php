@@ -50,6 +50,7 @@ return [
         'view_details' => 'View Details',
         'finest_work' => 'Some of our finest work.',
         'subtitle' => 'Our Project',
+        'all' => 'All',
     ],
 
     // Blog Section
@@ -99,6 +100,10 @@ return [
     'banner' => [
         'title' => 'One of the fastest growing agencies',
         'description' => 'We design and develop web and mobile applications for our clients worldwide',
+    ],
+
+    'messages' => [
+        'subscribe_success' => 'Subscribed successfully: :email',
     ],
 
     // Additional translations for h tags

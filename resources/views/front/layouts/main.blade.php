@@ -67,9 +67,9 @@
             <div class="axil-mainmenu">
                 <div class="container">
                     <div class="header-navbar">
-                        <div class="header-logo" style="width: 10% !immortant">
+                        <div class="header-logo" style="width: 10% !important;">
                             <a href="{{ route('/') }}">
-                                <img class="light-version-logo" style="width: 85% !important"
+                                <img class="light-version-logo" style="width: 85% !important;"
                                     src="{{ asset('assets/media/logo.svg') }}" alt="logo">
                             </a>
                             <a href="{{ route('/') }}">

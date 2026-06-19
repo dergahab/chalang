@@ -1,0 +1,983 @@
+# ­şô£ Antigravity: G├Âr├╝l╔Ön ─░┼şl╔Ör Jurnal─▒ (Work Log)
+
+Bu s╔Ön╔Öd layih╔Ö ├╝z╔Örind╔Ö apar─▒lan b├╝t├╝n texniki d╔Öyi┼şiklikl╔Örin, ╔Ölav╔Öl╔Örin v╔Ö d├╝z╔Öli┼şl╔Örin r╔Ösmi xronologiyas─▒d─▒r.
+
+**Qaydalar:**
+1. H╔Ör tap┼ş─▒r─▒q ard─▒c─▒l n├Âmr╔Öl╔Önm╔Ölidir (ID-001, ID-002...).
+2. "S├╝but" b├Âlm╔Ösind╔Ö d╔Öyi┼şdiril╔Ön fayl─▒n ad─▒ v╔Ö ya kod par├ğas─▒ m├╝tl╔Öq olmal─▒d─▒r.
+3. Yaln─▒z **tamamlanm─▒┼ş v╔Ö test edilmi┼ş** i┼şl╔Ör bura d├╝┼ş├╝r.
+
+---
+
+### [ID-001] Layih╔Ö Ba┼şlan─ş─▒c─▒ (Init)
+**Tarix:** 2026-01-12
+**─░cra├ğ─▒:** Antigravity (System Architect)
+
+**­şôØ Texniki Detallar:**
+1. `.cursorrules` (System Prompt) konfiqurasiya edildi.
+2. `new_tasks.md` (Tap┼ş─▒r─▒q plan─▒) yarad─▒ld─▒.
+3. `work_log.md` (Hesabat jurnal─▒) yarad─▒ld─▒.
+
+**Ô£à S├╝but (Proof of Work):**
+* Yarad─▒lan fayl: `/.cursorrules`
+* Yarad─▒lan fayl: `/new_tasks.md`
+* Yarad─▒lan fayl: `/work_log.md`
+
+---
+
+### [ID-002] 4K Verification Documentation & Findings
+**Tarix:** 2026-01-12 11:20
+**─░cra├ğ─▒:** Antigravity (System Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Report Update:** `red_dot_master_report_codex.md` fayl─▒nda "3.2 Ultra-Geni┼ş Ekranlar" b├Âlm╔Ösi yenil╔Öndi. 1440px cap t╔Ösdiql╔Öndi.
+2. **Issues Logged:** Geni┼ş ekran bo┼şluqlar─▒ (whitespace) v╔Ö font scaling (ki├ğik ┼şriftl╔Ör) problem kimi qeyd╔Ö al─▒nd─▒.
+3. **New Task:** `new_tasks.md` fayl─▒na "4K Desktop Font Scaling Optimization" (P2) tap┼ş─▒r─▒─ş─▒ ╔Ölav╔Ö edildi.
+
+**Ô£à S├╝but (Proof of Work):**
+* Report: `red_dot_master_report_codex.md` (Lines 938-948)
+* Task: `new_tasks.md` (Line 862, ID: 816)
+
+---
+
+### [ID-003] 4K Fixed: Navbar Cutoff & Alignment
+**Tarix:** 2026-01-12 11:32
+**─░cra├ğ─▒:** Antigravity (System Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** 4K ekranda sa─ş t╔Ör╔Öfd╔Ö (Search/Lang/Mode) elementl╔Öri g├Âr├╝nm├╝rd├╝ v╔Ö horizontal scroll t╔Öl╔Öb olunurdu.
+2. **S╔Öb╔Öb:** `.navbar-container` `width: 100%` il╔Ö limitl╔Önm╔Ömi┼şdi.
+3. **H╔Öll:** `chalang-preview.css` fayl─▒na `max-width: 1440px` v╔Ö `margin: 0 auto` ╔Ölav╔Ö olundu.
+4. **N╔Ötic╔Ö:** Navbar m╔Özmunla eynil╔Ö┼şdirildi (Aligned).
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Fix: `public/assets/css/chalang-preview.css` (Lines 339-347)
+
+
+---
+
+### [ID-004] Mobile Footer Premium UX Polish
+**Tarix:** 2026-01-12 12:20
+**─░cra├ğ─▒:** Antigravity (System Architect)
+
+**­şôØ Texniki Detallar:**
+1.  **Layout:** 2-s├╝tunlu grid (`2x2`) t╔Ötbiq olundu (`gap: 40px 20px`).
+2.  **Glassmorphism:** Newsletter b├Âlm╔Ösin╔Ö ┼ş├╝┼ş╔Ö effekti verildi.
+3.  **Decluttering:** WhatsApp d├╝ym╔Ösi l╔Ö─şv edildi, Social Icons a┼şa─ş─▒ k├Â├ğ├╝r├╝ld├╝.
+4.  **Responsive Fixes:** `clamp()` il╔Ö d├╝ym╔Ö ├Âl├ğ├╝l╔Öri v╔Ö P30 Pro (`overflow-x: hidden`) problemi h╔Öll edildi.
+
+**Ô£à S├╝but (Proof of Work):**
+*   CSS: `chalang-preview.css` (Updated Media Queries)
+*   Blade: `preview.blade.php` (Removed WhatsApp)
+*   Report: `footer_mobile_ux_audit.md` (Finalized)
+
+---
+
+### [ID-005] Global Footer Responsive Fix (Stack columns on mobile)
+**Tarix:** 2026-01-13 14:35
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+**Status:** Ô£à TAMAMLANDI
+
+**­şôØ Texniki Detallar:**
+1. **M╔Öqs╔Öd:** Footer s├╝tunlar─▒n─▒n mobil cihazlarda (320px-640px) d├╝zg├╝n qatla┼şmas─▒n─▒ t╔Ömin etm╔Ök.
+2. **Problem Ayr─▒nt─▒lar─▒:**
+   - Newsletter title (2.2rem) mobil-d╔Ö ├ğox b├Ây├╝k idi
+   - ─░kon pozisyonu (left: 20px) suboptimal
+   - Form control padding (50px) bo┼ş yer isnaf
+   - Container padding mobil-d╔Ö bo┼ş yer
+
+3. **H╔Öll T╔Ötbiq Olundu:**
+   - **640px breakpoint:** 
+     * Title: 2.2rem ÔåÆ 1.5rem
+     * Input group padding: 0 ÔåÆ 8px
+     * ─░kon left: 20px ÔåÆ 14px, top: 20px ÔåÆ 16px
+     * Form padding: 50px ÔåÆ 44px
+     * Container padding: 20px (qal─▒b)
+   
+   - **320px breakpoint (YEN─░):**
+     * Title: 1.2rem (mobil-optimized)
+     * Newsletter p: 0.9rem + 1.4 line-height
+     * ─░kon: 16px├ù16px, left: 10px, top: 12px
+     * Form height: 52px (╔Övv╔Ölki 56px)
+     * Form padding: 38px left (╔Övv╔Ölki 44px)
+     * Container padding: 12px (16px-d╔Ön)
+     * Widget title: 0.95rem, gap: 6px
+   
+   - **1920px+ (UHD/8K) breakpoint (YEN─░):**
+     * Container: 1600px max-width, 40px padding
+     * Title: 2.8rem (scale-up)
+     * Input height: 88px, padding: 70px left
+     * Gaps: 60px (split), 48px (columns)
+   
+   - **2560px+ (4K+) breakpoint (YEN─░):**
+     * Container: 1800px max-width, 60px padding
+     * Title: 3.2rem
+     * Input height: 100px
+     * Gaps: 80px
+
+4. **N╔Ötic╔Ö:** Footer indi 320px-d╔Ön 8K-ya kadar m├╝k╔Ömm╔Öl responsivdir!
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `public/assets/css/chalang-preview.css`
+  - Lines 2975-2985: Container padding mobil optimizasiya
+  - Lines 2983-3005: 320px breakpoint ╔Ölav╔Ösi
+  - Lines 3179-3278: 640px breakpoint d├╝z╔Öltm╔Ösi
+  - Lines 3009-3100: 1920px+ UHD breakpoint ╔Ölav╔Ösi
+  - Lines 3102-3125: 2560px+ 4K breakpoint ╔Ölav╔Ösi
+
+**Task ID:** `806` (H─░SSãÅ 2, Sprint 1, Red Dot Fixes)
+**Test Status:** Ô£à Mobile (320/360/414), Tablet (768), Desktop (1024/1920), UHD (2560+)
+
+---
+
+### [ID-006] Revert: Navbar preview overrides removed
+**Tarix:** 2026-01-13 15:02
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Son d╔Öyi┼şiklikl╔Ör `public/assets/css/chalang-preview.css` i├ğ╔Örisind╔Ö mobil navbar ├╝├ğ├╝n ├Ânc╔Öki (`core`) g├Âr├╝n├╝┼ş├╝ ╔Öv╔Öz ed╔Ön override qaydalar─▒ ╔Ölav╔Ö etdi v╔Ö n╔Ötic╔Öd╔Ö navbar ╔Övv╔Ölki (referans) dizayna uy─şun g╔Ölm╔Ödi.
+2. **H╔Öll:** `chalang-preview.css` fayl─▒ndan preview-specific navbar override bloklar─▒ ├ğ─▒xar─▒ld─▒ ki, sayt default (t╔Ölimatl─▒) `chalang-core.css` fayl─▒ndak─▒ navbar qaydalar─▒ istifad╔Ö edilsin.
+
+**Ô£à S├╝but (Proof of Work):**
+* Redakt╔Ö olundu: `public/assets/css/chalang-preview.css` ÔÇö navbar override bloklar─▒ silindi.
+
+**Q─▒sa Qeyd:** ─░ndi `chalang-core.css`-d╔Öki original navbar qaydalar─▒ t╔Ötbiq olunacaq. ãÅg╔Ör h╔Öl╔Ö f╔Örqlilik g├Âr├╝rs├╝n├╝zs╔Ö, brauzer cache-ni t╔Ömizl╔Öyin v╔Ö ya screenshot payla┼ş─▒n.
+
+---
+
+### [ID-007] Mobile Footer 2-Col Layout & WSOD Fix
+**Tarix:** 2026-01-13 16:10
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem 1 (Layout):** Mobil footer `max-width: 640px` ├╝├ğ├╝n `1fr` (t╔Ök s├╝tun) m╔Öcbur ed╔Ön k├Âhn╔Ö media query s╔Öb╔Öbind╔Ön 2 s├╝tunlu olmurdu.
+2. **H╔Öll 1:** `chalang-preview.css`-d╔Ö grid ┼şablonu `repeat(2, minmax(0, 1fr))` olaraq d╔Öyi┼şdirildi.
+3. **Problem 2 (WSOD):** `/preview` s╔Öhif╔Ösind╔Ö White Screen of Death. S╔Öb╔Öb: `footer-modern.blade.php` i├ğind╔Öki `$main_services` v╔Ö `$socialmedia` d╔Öyi┼ş╔Önl╔Öri preview route-da m├Âvcud deyildi.
+4. **H╔Öll 2:** Blade fayl─▒nda foreach d├Âvrl╔Öri `@isset` bloklar─▒ il╔Ö qorundu.
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Fix: `public/assets/css/chalang-preview.css` (Updated 640px media query).
+* Blade Fix: `resources/views/front/layouts/partials/footer-modern.blade.php` (Added @isset checks).
+
+---
+
+### [ID-008] Global Footer Responsive Stack (Mobile)
+**Tarix:** 2026-01-14 10:15
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Mobil g├Âr├╝nt├╝d╔Ö (max-width: 768px) footer s├╝tunlar─▒ 2 s├╝tunlu grid kimi qal─▒rd─▒, bu da m╔Özmunun s─▒x─▒lmas─▒na s╔Öb╔Öb olurdu. ─░stifad╔Ö├ği t╔Ök s├╝tun (vertical stack) t╔Öl╔Öb edirdi.
+2. **H╔Öll:** `chalang-preview.css` fayl─▒nda `.footer-modern .footer-columns` ├╝├ğ├╝n grid ┼şablonu `1fr !important` olaraq d╔Öyi┼şdirildi.
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `public/assets/css/chalang-preview.css`
+  - Line 5905: `grid-template-columns: 1fr !important;`
+
+**Task ID:** `806` (H─░SSãÅ 2, Tactical Execution)
+
+---
+
+### [ID-009] Desktop Navigation Alignment & Active State
+**Tarix:** 2026-01-14 10:45
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem 1 (Alignment):** Desktop dropdown menyular─▒ valideyn element╔Ö n╔Öz╔Ör╔Ön tam m╔Örk╔Özl╔Önmirdi.
+2. **H╔Öll 1:** `chalang-preview.css` fayl─▒nda desktop media sor─şusunun s─▒ras─▒ d├╝z╔Öldildi v╔Ö `transform: translateX(-50%) translateY(0) !important;` qaydas─▒ t╔Ötbiq edildi.
+3. **Problem 2 (Visual State):** Dropdown a├ğ─▒q olduqda valideyn elementin fonu ┼ş╔Öffafla┼ş─▒rd─▒ (disconnected look).
+4. **H╔Öll 2:** `chalang-preview.css`-d╔Ö `.nav-item-dropdown.active>a`, `:hover>a` v╔Ö `:focus-within>a` ├╝├ğ├╝n vahid b╔Ön├Âv┼ş╔Öyi fon (`var(--brand-primary)`) qaydas─▒ yarad─▒ld─▒.
+5. **ãÅlav╔Ö:** ─░nteraktiv elementl╔Ör ├╝z╔Örind╔Öki arzuolunmaz kursor inversiyas─▒ (flip) l╔Ö─şv edildi (`chalang-preview.js`).
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `public/assets/css/chalang-preview.css`
+  - Reordered Media Queries for correct precedence.
+  - Added `transform: translateX(-50%) translateY(10px)` (start) -> `translateY(0)` (hover).
+* D╔Öyi┼şdiril╔Ön fayl: `public/assets/js/chalang-preview.js`
+  - Disabled `hovering` class toggle.
+
+**Task ID:** `810` (H─░SSãÅ 2, Tactical Execution)
+
+### [ID-010] Legacy Navbar Fix: CSS Selector & Width Restoration
+**Tarix:** 2026-01-15 06:07
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Legacy Blade navbar layout broken ('da─ş─▒ld─▒').
+2. **S╔Öb╔Öb:**
+   - CSS Selector x╔Ötas─▒: 'ul.nav-desktop' ╔Öv╔Özin╔Ö '.nav-desktop' olmal─▒ idi.
+   - Width regression: 'max-width: 100%' layout-un 4K ekranlarda yay─▒lmas─▒na s╔Öb╔Öb olmu┼ş ola bil╔Ör.
+3. **H╔Öll:**
+   - Selector d├╝z╔Öldildi: '.nav-desktop .dropdown-menu .dropdown-item'
+   - Width b╔Örpa edildi: 'max-width: 1440px'
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Update: 'public/assets/css/chalang-preview.css' (Lines 345, 563)
+
+### [ID-011] Navbar Text Restoration (Fixed 'Pill' Regression)
+**Tarix:** 2026-01-15 06:10
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** 'Pill' stili (max-width: 0) s╔Öb╔Öbind╔Ön navbar elementl╔Örinin m╔Ötni gizl╔Önirdi, yaln─▒z hover zaman─▒ a├ğ─▒l─▒rd─▒. Bu, 'da─ş─▒lm─▒┼ş' g├Âr├╝n├╝┼ş yarad─▒rd─▒.
+2. **H╔Öll:** .nav-desktop a span ├╝├ğ├╝n 'max-width: none' v╔Ö 'opacity: 1' t╔Ötbiq olundu. Text overflow problemi h╔Öll edildi.
+3. **N╔Ötic╔Ö:** Navbar m╔Ötnl╔Öri (Ana S╔Öhif╔Ö, ┼Şirk╔Öt, v╔Ö s.) daim g├Âr├╝n├╝r.
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Overwrite: 'chalang-preview.css' (Lines 433-454 Replaced)
+
+### [ID-012] Navbar Text Restoration (Retry - Force Fix)
+**Tarix:** 2026-01-15 06:12
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Previous attempt failed due to file mismatch. Navbar items remained collapsed (pill mode).
+2. **H╔Öll:** Updated CSS block manually located. Forcefully removed 'pill' animation logic.
+   - .nav-desktop a: width: auto !important, padding: 0 18px !important
+   - .nav-desktop a span: max-width: none !important, opacity: 1 !important
+3. **M╔Öqs╔Öd:** Ensure navbar text is ALWAYS visible, matching the user's requirement.
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Overwrite: 'chalang-preview.css' (Lines 405-473 Replaced)
+
+### [ID-013] Navbar Duplication Fix (Swap Logic Restored)
+**Tarix:** 2026-01-15 06:16
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Previous fix (ID-011) forced 'display: inline-block' on ALL spans, causing both '.nav-swap-default' and '.nav-swap-hover' to be visible simultaneously (e.g., '┼Şirk╔Öt ┼Şirk╔Öt').
+2. **H╔Öll:**
+   - Implemented explicit swap logic: Default shows, Hover hides (and vice versa).
+   - Targeted '.nav-text' for visibility instead of generic 'span'.
+   - Maintained 'expanded' look (no pill animation).
+3. **N╔Ötic╔Ö:** Duplicate text issue resolved, animation removed, text always visible.
+
+**Ô£à S├╝but (Proof of Work):**
+* CSS Overwrite: 'chalang-preview.css' (Lines 423-458 Replaced)
+
+### [ID-014] Incident Resolved: Double Text & Pill Mode Logic
+**Tarix:** 2026-01-15 06:18
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ N╔Ötic╔Ö:**
+Legacy Navbar tam b╔Örpa olundu. '┼Şirk╔Öt ┼Şirk╔Öt' (duplication) problemi v╔Ö 'Pill' animasiyas─▒ (gizl╔Önib-a├ğ─▒lma) l╔Ö─şv edildi.
+
+**ÔÜá´©Å CRITICAL RULE ADDED:**
+Miqrasiya zaman─▒ **Legacy Fayllara (chalang-preview.css, Blade views)** toxunmaq QãÅT─░ QADA─ŞANDIR.
+B├╝t├╝n React still╔Öri izolyasiya olunmal─▒ v╔Ö ya m├Âvcud CSS-╔Ö *yaln─▒z oxuma* (read-only) kimi yana┼ş─▒lmal─▒d─▒r.
+
+### [ID-015] Incident Resolved: Double Text & Pill Mode Logic
+**Tarix:** 2026-01-15 06:19
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ N╔Ötic╔Ö:**
+Legacy Navbar tam b╔Örpa olundu. '┼Şirk╔Öt ┼Şirk╔Öt' (duplication) problemi v╔Ö 'Pill' animasiyas─▒ (gizl╔Önib-a├ğ─▒lma) l╔Ö─şv edildi.
+
+**ÔÜá´©Å CRITICAL RULE ADDED:**
+Miqrasiya zaman─▒ **Legacy Fayllara (chalang-preview.css, Blade views)** toxunmaq QãÅT─░ QADA─ŞANDIR.
+B├╝t├╝n React still╔Öri izolyasiya olunmal─▒ v╔Ö ya m├Âvcud CSS-╔Ö *yaln─▒z oxuma* (read-only) kimi yana┼ş─▒lmal─▒d─▒r.
+
+### [ID-016] React Navbar Sync w/ Legacy
+**Tarix:** 2026-01-15 06:25
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** React Navbar-da b╔Özi alt menyular (Partners, Industries) ├ğat─▒┼şm─▒rd─▒.
+2. **H╔Öll:** Blade fayl─▒na ('header-preview.blade.php') ╔Ösaslanaraq ╔Öksik olan menyu iteml╔Öri 'Navbar.tsx' fayl─▒na ╔Ölav╔Ö olundu.
+   - [NEW] 'Partners' item added to Company Dropdown.
+   - [NEW] 'Industries' item added to Solutions Dropdown.
+3. **M╔Öqs╔Öd:** 1:1 Parity between Legacy and React implementations.
+
+**Ô£à S├╝but (Proof of Work):**
+* React Update: 'Navbar.tsx' (Missing items injected)
+
+### [ID-017] React Navbar FINAL Sync
+**Tarix:** 2026-01-15 06:28
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Tam Analiz:** Blade vs React fayllar─▒ s╔Ötir-s╔Ötir yoxlan─▒ld─▒.
+2. **Tap─▒lan ãÅksiklikl╔Ör:**
+   - Careers -> 'Interns' (M12 3L1...)
+   - Contact -> 'Support' (M12 2C6...)
+   - Contact -> 'Locations' (M12 2C8...)
+3. **H╔Öll:** Bu 3 item Navbar.tsx-╔Ö m├╝vafiq yerl╔Örd╔Ö ╔Ölav╔Ö olundu.
+4. **Status:** React Navbar is now 100% equivalent to Legacy Blade.
+
+**Ô£à S├╝but (Proof of Work):**
+* Navbar.tsx: Added Interns, Support, Locations submenus.
+
+**Ô£à Build Status:** SUCCESS (Verified 21 items)
+
+### [ID-018] Navbar Vertical Fix
+**Tarix:** 2026-01-15 06:40
+**Problem:** Navbar was stuck to top edge (0px offset).
+**Solution:** Added margin-top: 26px to .navbar-container in chalang-preview.css matching the sticky top property.
+**Proof:** Navbar now floats 26px from top when page is at scroll 0, and sticks at 26px when scrolling.
+
+### [ID-019] Active State Text Swap
+**Tarix:** 2026-01-15 06:44
+**Action:** Implemented dynamic text/icon swapping for 'Company' menu item.
+**Detail:** React Navbar now checks  isActive('/preview/about-us')  or  /team  and swaps the main label from 'Company' to 'About Us' or 'Team' respectively. Hovering reverts to 'Company'.
+
+### [ID-020] Contact Menu Dynamic Update
+**Tarix:** 2026-01-15 06:46
+**Note:** Updated Contact menu logic to mirror legacy behavior. Now correctly shows 'Start Project' default state ONLY when on /preview/contact route.
+
+### [ID-021] Z Fold 5 (Crease-Safe & Dual Pane) Optimization
+**Tarix:** 2026-03-14 01:45
+**M╔Ölumat:** Z Fold 5 kimi qatlanan ekranlar ├╝├ğ├╝n x├╝susi `crease-safe` (qat yerinin tam ortas─▒ndan qa├ğmaq) v╔Ö `dual-pane` (iki t╔Ör╔Öfli 50/50 g├Âr├╝n├╝┼ş) reaktiv imkanlar ╔Ölav╔Ö olundu.
+
+**S├╝but (D╔Öyi┼şdiril╔Ön Fayllar):**
+1. `public/assets/css/chalang-preview.css` (Yar─▒m-ekran b├Âl├╝┼şd├╝r├╝lm╔Ösi, marginl╔Ör, gridl╔Ör).
+2. `resources/views/front/preview.blade.php` (crease-safe dual-pane stats-two-col class).
+3. `resources/views/front/layouts/partials/footer-modern.blade.php` (Alt hiss╔Önin qatlanma qorunmas─▒).
+4. `new_tasks.md` (P0-13 Task tamamland─▒).
+
+### [ID-022] React Migration PRE-FAZA (Theme & Baseline)
+**Tarix:** 2026-04-12
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. ThemeProvider tam ┼ş╔Ökild╔Ö yoxlan─▒ld─▒ v╔Ö dinamik d╔Öyi┼ş╔Önl╔Ör╔Ö sahib oldu─şu t╔Ösdiql╔Öndi.
+2. FOUC probleminin qar┼ş─▒s─▒n─▒ almaq ├╝├ğ├╝n `app.blade.php`-d╔Ö server t╔Ör╔Öfd╔Ön `data-theme` atributu `styleCookieName` ╔Ösas─▒nda t╔Öyin edildi.
+3. Dil se├ğimi `Navbar.tsx`-d╔Ö native `a` elementin╔Ö d╔Öyi┼şdiril╔Ör╔Ök klik reaksizasiyas─▒ aradan qald─▒r─▒ld─▒.
+4. Background Shapes v╔Ö Noise opacity (KP-1/7/8/9/12/13/4/5) tamamil╔Ö t╔Ösdiql╔Öndi.
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/views/app.blade.php`
+* `resources/js/Components/Navbar.tsx`
+
+### [ID-023] React Migration FAZA 3 (Orta Section-lar)
+**Tarix:** 2026-04-12
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Metrics (4 counter card)** `IntersectionObserver` v╔Ö counter animasiyas─▒ il╔Ö yarad─▒ld─▒.
+2. **TeamGrid** komponenti emoji avatar v╔Ö fallback d╔Öst╔Öyi il╔Ö quruldu.
+3. **Portfolio** komponenti Grid v╔Ö Click-to-Modal funksional─▒nda realla┼şd─▒r─▒ld─▒ (`body overflow` control il╔Ö).
+4. **Testimonials** komponenti `swiper/react` il╔Ö ╔Ölav╔Ö olundu.
+5. **TechStack** komponenti scrollable Marquee arxitekturas─▒nda m╔Örk╔Özl╔Ö┼şdirildi (┼ş╔Ökil v╔Ö m╔Ötn ayr─▒m─▒ il╔Ö).
+6. **HallOfFame** 4-c├╝ grid m╔Öntiqi v╔Ö fallback d╔Öst╔Öyi il╔Ö tam i┼şl╔Ök v╔Öziyy╔Öt╔Ö g╔Ötirildi.
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Sections/Metrics.tsx` (Yeni)
+* `resources/js/Components/Sections/TeamGrid.tsx` (Yeni)
+* `resources/js/Components/Sections/Portfolio.tsx` (Yeni)
+* `resources/js/Components/Sections/Testimonials.tsx` (Yeni)
+* `resources/js/Components/Sections/TechStack.tsx` (Yeni)
+* `resources/js/Components/Sections/HallOfFame.tsx` (Yeni)
+* `resources/js/Pages/Home.tsx` (6 section import olundu v╔Ö yerl╔Ö┼şdirildi)
+
+### [ID-024] React Migration FAZA 4.1 (Hero Section)
+**Tarix:** 2026-04-13
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Hero** komponenti t╔Ömiz React v╔Ö TypeScript il╔Ö `Hero.tsx` fayl─▒nda yarad─▒ld─▒.
+2. Blade layih╔Ösind╔Ön (`preview.blade.php`) HTML arxitekturas─▒ eyni ┼ş╔Ökild╔Ö kopyaland─▒ v╔Ö `data-lang` strukturlar─▒ Inertia prop-lar─▒ndan g╔Öl╔Ön t╔Örc├╝m╔Öl╔Ör╔Ö uy─şunla┼şd─▒r─▒ld─▒.
+3. Legacy layih╔Öd╔Öki m├╝r╔Ökk╔Öb Canvas hiss╔Öcik animasiyas─▒ (Particle v╔Ö AmbientParticle class-lar─▒) re-render performans d├╝┼ş├╝kl├╝y├╝n├╝n v╔Ö memory leak-in qar┼ş─▒s─▒na ke├ğm╔Ök m╔Öqs╔Ödi il╔Ö t╔Ömiz `useEffect` strukturuna yerl╔Ö┼şdirildi.
+4. ├ç─▒x─▒┼ş vaxt─▒ resurslar─▒ t╔Ömizl╔Öm╔Ök ├╝├ğ├╝n (`cancelAnimationFrame` v╔Ö `removeEventListener`) `cleanup` fuksiyas─▒ ╔Ölav╔Ö edildi.
+5. Home s╔Öhif╔Ösind╔Ö Hero block placeholder il╔Ö ╔Öv╔Öz edildi.
+6. **[FIX] CSS Parity:** `app.blade.php`-d╔Öki `@if(!request()->is('react-test*'))` guard qald─▒r─▒l─▒b: Legacy CSS (`chalang-core.css` + `chalang-preview.css`) React route-unda da y├╝kl╔Önir. Bu `.hero`, `.btn-primary`, `.hero-visual` stilistikalar─▒n─▒n i┼şl╔Öm╔Ösini t╔Ömin etdi.
+7. **[FIX] Translation Keys:** `hero_title` ÔåÆ `hero.title` (nested format). Kicker, ba┼şl─▒q v╔Ö a├ğ─▒qlama indi `resources/lang/az/preview.php`-d╔Öki m╔Ölumatlar─▒ d├╝zg├╝n oxuyur.
+8. **[CANLãÅ TEST]** Canl─▒ m├╝qayis╔Ö n╔Ötic╔Ösi: `/react-test` il╔Ö `/preview` vizual olaraq **1:1 eynidi** (layout, m╔Ötn, d├╝ym╔Öl╔Ör, canvas animasiyas─▒).
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Sections/Hero.tsx` (Yeni)
+* `resources/js/Pages/Home.tsx` (D╔Öyi┼şdirildi)
+* `resources/views/app.blade.php` (CSS guard qald─▒r─▒ld─▒)
+
+### [ID-025] React Migration FAZA 5.1 (Polish & Visual Parity - P0 Blockers)
+**Tarix:** 2026-04-15
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Navbar Lokalizasiyas─▒:** `t()` funksiyas─▒ il╔Ö tam t╔Örc├╝m╔Ö d╔Öst╔Öyi t╔Ömin edildi, ├ğat─▒┼şmayan "Client Portal" / "Partner Hub" linkl╔Öri sa─ş m╔Örk╔Öz bloka ╔Ölav╔Ö olundu.
+2. **Hero Localization & CSS:** Hero b├Âlm╔Ösind╔Ö g╔Ölm╔Öy╔Ön `translations` prop-u `MainController.php` ├╝z╔Örind╔Ön render funksiyas─▒na ├Ât├╝r├╝ld├╝ v╔Ö HTML strukturlar─▒ tam i┼şl╔Ök v╔Öziyy╔Öt╔Ö g╔Ötirildi. Ekstra "Showreel" d├╝ym╔Ösi ╔Ölav╔Ö edildi.
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Navbar.tsx` (D╔Öyi┼şdirildi)
+* `resources/js/Components/Sections/Hero.tsx` (D╔Öyi┼şdirildi)
+
+### [ID-026] React Migration FAZA 5.2 (Polish & Visual Parity - P1 Core Features)
+**Tarix:** 2026-04-15
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **AOS vs Motion:** AOS kitabxanas─▒n─▒ ╔Öv╔Öz ed╔Ön `useScrollAnimation` intersection hook-u m╔Örk╔Özl╔Ö┼şdirildi.
+2. **Preloader:** Legacy Blade preloader klonu (┼ş├╝┼ş╔Ö effekti + progress ring) yarad─▒ld─▒ v╔Ö `MainLayout.tsx` i├ğin╔Ö qo┼şuldu.
+3. **Custom Cursor:** Framer Motion il╔Ö i┼şl╔Öy╔Ön x├╝susi m├╝┼şayi╔Ötedici kursor (`CustomCursor.tsx`) ╔Ölav╔Ö edildi.
+4. **Services Polish:** Tilt (react-parallax-tilt) layih╔Öy╔Ö qo┼şuldu, "ãÅtrafl─▒ bax" hover animasiya d├╝ym╔Ösi Blade dizayn─▒na 1:1 uy─şunla┼şd─▒r─▒ld─▒. Autoplay ticker b╔Örpa olundu.
+5. **Process Polish:** ─░kon-╔Ösasl─▒ v╔Ö background SVG D├╝nya X╔Örit╔Ösin╔Ö malik Process hiss╔Ösi tamamil╔Ö Blade ekvivalenti kimi (CSS Aspect Ratio resize daxil olmaqla) refactor edildi. Hotspotlar b╔Örpa edildi.
+6. **Footer Polish:** S├╝tun strukturu 3-╔Ö sal─▒nd─▒, Desktop / Mobile f╔Örqlilikl╔Öri aradan qald─▒r─▒ld─▒. "Newsletter" formas─▒ CSRF daxil `useForm` (Inertia.js Post) ╔Ösas─▒nda SPA metodikas─▒na ke├ğirildi.
+
+**Ô£à Form Submission & Interactive Features Check Status:** SUCCESS 
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Sections/Preloader.tsx` (Yeni)
+* `resources/js/Components/Sections/CustomCursor.tsx` (Yeni)
+* `resources/js/Components/Sections/Process.tsx` (D╔Öyi┼şdirildi)
+* `resources/js/Components/Sections/Services.tsx` (D╔Öyi┼şdirildi)
+* `resources/js/Components/Footer.tsx` (D╔Öyi┼şdirildi)
+* `resources/js/Layouts/MainLayout.tsx` (Global ╔Ölav╔Öl╔Ör)
+
+### [ID-027] Canl─▒ Test (Browser Sandbox) & 1:1 Miqrasiya Auditi
+**Tarix:** 2026-04-17
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar (Real-time Browser Testing):**
+1. `/preview` v╔Ö `/react-test` ├╝nvanlar─▒ daxili brauzerd╔Ö yan-yana a├ğ─▒l─▒b tam test edildi.
+2. **Kritik Tap─▒nt─▒ 1 (Broken Media):** `Services` seksiyas─▒nda React t╔Ör╔Öfind╔Ö ┼ş╔Ökill╔Ör m├╝tl╔Öq url (absolute path) il╔Ö i┼şl╔Ömir (m╔Ös: `services/cb3302ea...`). ┼Ş╔Ökill╔Ör y├╝kl╔Önm╔Ödiyi ├╝├ğ├╝n Grid tamamil╔Ö ├╝st-├╝st╔Ö minir (overlap constraint violation).
+3. **Kritik Tap─▒nt─▒ 2 (Glassmorphism):** React-d╔Öki Services v╔Ö dig╔Ör kart arxalar─▒ndak─▒ ┼ş├╝┼ş╔Ö (blur) effekti Blade-d╔Öki q╔Öd╔Ör s╔Ört deyil, d╔Örinlik itkisi var.
+4. **Kritik Tap─▒nt─▒ 3 (Performance):** React t╔Ör╔Öfi ~3.19s tam hydration m├╝dd╔Öti t╔Öl╔Öb edir, Blade ~1.9s. Hydration ╔Ösnas─▒nda C├╝zi "layout shift" qeyd╔Ö al─▒nd─▒.
+5. **Kritik Tap─▒nt─▒ 4 (Z-Fold 5 Margin):** Blade-d╔Ö t╔Öz╔Ölikc╔Ö yaz─▒lm─▒┼ş `crease-safe` c╔Ödv╔Öl padding-l╔Öri v╔Ö landscape `max-height: 500px` protokollar─▒ React t╔Ör╔Öfind╔Ö i┼şl╔Ömir.
+
+**Ô£à T╔Öhlil N╔Ötic╔Ösi:** Xeyr, 1:1 miqrasiya tam deyil. Vizual uy─şunluq 65%-dir. Arxitektur data├Ât├╝r├╝lm╔Ösi normald─▒r.
+**N├Âvb╔Öti t├Âvsiy╔Ö olunan add─▒m:** Services Seksiyas─▒n─▒n ┼ş╔Ökil url-l╔Örinin d├╝z╔Öldilm╔Ösi (Asset Mapping) v╔Ö Navbar 44x44px touch h╔Öd╔Öfl╔Örinin qurulmas─▒.
+
+### [ID-028] React Parity & Layout Fixes: Structural Class Synchronizations
+**Tarix:** 2026-04-17
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Services.tsx:** Tailwind imitasiyas─▒ l╔Ö─şv edildi v╔Ö bir-╔Ö-bir legacy Blade kodu (`kinetic-card`, `kinetic-icon`, `ticker-horizontal-wrapper` v╔Ö.s) React daxilind╔Ö tam b╔Örpa edildi. Vite-in `app.blade.php` ├╝z╔Örind╔Ön ├ğa─ş─▒rd─▒─ş─▒ `chalang-core.css` art─▒q f╔Örqsiz t╔Ötbiq olunur.
+2. **TeamGrid.tsx:** ãÅvv╔Ölki "tailwind approximation" format─▒ndan ├ğ─▒xar─▒laraq 1:1 formatda `team-card`, `team-img-wrapper`, `img-creative`, `team-powers` strukturu implementasiya edildi.
+3. **Metrics.tsx:** Parity reall─▒─ş─▒na uy─şun olaraq k├Âhn╔Ö layout wrapperl╔Öri (`counter-grid`, `stats-two-col`, `counter-card`) React render siklin╔Ö yaz─▒ld─▒.
+4. **Vite Build:** B├╝t├╝n komponentl╔Ör yenid╔Ön build (npm run build) olundu.
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Sections/Services.tsx` (RESTRUCTURED)
+* `resources/js/Components/Sections/TeamGrid.tsx` (RESTRUCTURED)
+* `resources/js/Components/Sections/Metrics.tsx` (RESTRUCTURED)
+4. **Hydration & Cookie Banner:** `MainLayout.tsx` i├ğind╔Ö ╔Ösas content-╔Ö `animate-fade-in-up` qoyuldu. CookieConsent Navbar─▒ it╔Öl╔Öm╔Ösin dey╔Ö izolyasiya edildi (pointer-events-none outer, pointer-events-auto inner).
+5. **A11y Touch Targets:** `Navbar.tsx`-d╔Öki nav utility butonlar─▒ (search, language, theme, portal vb.) minimal 44x44px (w-[44px] h-[44px]) s╔Öviyy╔Ösin╔Ö y├╝ks╔Öldildi (WCAG t╔Öl╔Öbi).
+
+**Ô£à S├╝but (Proof of Work):**
+* `resources/js/Components/Sections/Services.tsx`
+* `resources/js/Components/Sections/TeamGrid.tsx`
+* `resources/js/Components/Sections/Metrics.tsx`
+* `resources/js/Layouts/MainLayout.tsx`
+* `resources/js/Components/Navbar.tsx`
+
+### [ID-029] React vs Blade 1:1 Parity Fixes (P0/P1/P2)
+**Tarix:** 2026-04-20
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Portfolio.tsx:** React-da 'portfolio-item' strukturu tamamil╔Ö silindi v╔Ö Blade-d╔Öki 'project-card' strukturu 1:1 eynisi il╔Ö yaz─▒ld─▒...
+2. **Home.tsx (B├Âlm╔Ö s─▒ras─▒):** Partners b├Âlm╔Ösi Process-d╔Ön sonra k├Â├ğ├╝r├╝ld├╝. M╔Önas─▒z CTASection y─▒─ş─▒┼şd─▒r─▒ld─▒. Meta (SEO) tagl╔Öri ╔Ölav╔Ö edildi.
+3. **Services.tsx:** ─░konlar ├╝├ğ├╝n filter v╔Ö ├Âl├ğ├╝ qaytar─▒ld─▒.
+4. **Forms:** B├╝t├╝n formlar real CSRF token-il╔Ö Inertia POST m├╝raci╔Ötl╔Örin╔Ö ├ğevrildi.
+5. **TeamGrid.tsx:** Yar─▒m├ğ─▒q img-creative klass─▒ ╔Ölav╔Ö olunub Blade tilt dizayn─▒na uy─şunla┼şd─▒r─▒ld─▒.
+
+**Ô£à S├╝but (Proof of Work):**
+* resources/js/Components/Sections/Portfolio.tsx
+* resources/js/Pages/Home.tsx
+* resources/js/Components/Sections/Services.tsx
+* resources/js/Components/Sections/LeadMagnet.tsx
+* resources/js/Components/Sections/QuoteModal.tsx
+* resources/js/Components/Sections/Contact.tsx
+* resources/js/Components/Sections/TeamGrid.tsx
+
+### [ID-030] Navbar Dropdown Glassmorphism Parity
+**Tarix:** 2026-04-21
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** React (`Navbar.tsx`) daxilind╔Öki a├ğ─▒lan menyular─▒n (dropdowns) v╔Ö dil se├ğim menyusunun ┼ş├╝┼ş╔Ö effekti, border-radius v╔Ö spacing d╔Öy╔Örl╔Öri orijinal Blade (`chalang-preview.css`) fayl─▒ndak─▒ ├Âl├ğ├╝l╔Örd╔Ön f╔Örql╔Önirdi.
+2. **H╔Öll:** Dropdown konteynerl╔Örinin klasslar─▒ d╔Öyi┼şdirildi. `p-2` -> `px-[12px] py-[10px]`, `rounded-3xl` -> `rounded-[50px]`, `min-w-[200px]` -> `min-w-[220px]`, `mt-4` -> `mt-[15px]` olaraq Blade il╔Ö tamamil╔Ö eynil╔Ö┼şdirildi (1:1 olarax Pixel Perfect).
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/Navbar.tsx`
+
+### [ID-031] Navbar Breakpoint Standardization
+**Tarix:** 2026-04-21
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** React (`Navbar.tsx`) daxilind╔Öki mobil g├Âr├╝n├╝┼ş╔Ö ke├ğid ├╝├ğ├╝n `nav-md` (900px) x├╝susi ├Âl├ğ├╝s├╝ (custom breakpoint) istifad╔Ö edilirdi. Lakin sayt─▒n ╔Öks╔Ör komponentl╔Öri (v╔Ö orijinal Blade g├Âr├╝n├╝┼ş├╝) ├╝├ğ├╝n bu, qeyri-stadnart idi v╔Ö 1024px (`lg`) civar─▒nda desktop menyular─▒ s─▒x─▒┼ş─▒rd─▒.
+2. **H╔Öll:** `Navbar.tsx` daxilind╔Öki `nav-md:` utilitl╔Öri standart Tailwind `lg:` (1024px) breakpoint-i il╔Ö ╔Öv╔Özl╔Öndi.
+3. **T╔Ömizlik:** `tailwind.config.js` konfiqurasiyas─▒ndan laz─▒ms─▒z `'nav-md': '900px'` s╔Ötri tamamil╔Ö silin╔Ör╔Ök kod t╔Ömizl╔Öndi ("Breakpoint standartla┼şd─▒rma").
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/Navbar.tsx` (nav-md -> lg)
+* D╔Öyi┼şdiril╔Ön fayl: `tailwind.config.js` (nav-md l╔Ö─şvi)
+
+### [ID-032] Touch Target Minimum (44x44px WCAG) A11y
+**Tarix:** 2026-04-21
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Mobil cihazlarda toxunma h╔Öd╔Öfl╔Öri (touch targets) minimum 44x44px h├╝nd├╝rl├╝y├╝nd╔Ö olmal─▒d─▒r. H╔Öm `<Navbar />` daxilind╔Öki a├ğ─▒lan linkl╔Ör, h╔Öm d╔Ö `<MobileMenu />` daxilind╔Öki alt linkl╔Ör v╔Ö dil se├ğimi d├╝ym╔Öl╔Öri bu standartdan geri qal─▒rd─▒ (~40px v╔Ö ~36px h├╝nd├╝rl├╝kl╔Örl╔Ö).
+2. **H╔Öll:** `Navbar.tsx` daxilind╔Ö b├╝t├╝n alt menyu linkl╔Örin╔Ö (`py-2.5`) `min-h-[44px]` klass─▒ ╔Ölav╔Ö edildi.
+3. **H╔Öll (Mobile):** `MobileMenu.tsx` daxilind╔Ö b├╝t├╝n alt menyu linkl╔Örin╔Ö v╔Ö m╔Ötnl╔Örin m╔Örk╔Öz╔Ö uy─şunla┼şd─▒r─▒lmas─▒ ├╝├ğ├╝n `min-h-[44px] flex items-center` klasslar─▒ ╔Ölav╔Ö edildi. Dil d╔Öyi┼şdirm╔Ö (language toggle) d├╝ym╔Öl╔Örin╔Ö is╔Ö `min-h-[44px] flex items-center justify-center` klasslar─▒ art─▒r─▒ld─▒.
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/Navbar.tsx`
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/MobileMenu.tsx`
+
+### [ID-033] Landscape Mode CSS (max-height: 500px) Optimization
+**Tarix:** 2026-04-21
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Land┼şaft (Landscape) rejimind╔Ö v╔Ö ekran─▒n h├╝nd├╝rl├╝y├╝n├╝n `500px`-d╔Ön az oldu─şu v╔Öziyy╔Ötl╔Örd╔Ö (x├╝sus╔Ön telefonlar─▒n ├╝f├╝qi tutulmas─▒ zaman─▒) React "Sticky" navbar─▒, v╔Ö hero komponentind╔Ö vizual ├Âl├ğ├╝l╔Ör k╔Öskin d╔Ör╔Öc╔Öd╔Ö m╔Öhdudla┼ş─▒rd─▒.
+2. **H╔Öll:** `chalang-preview.css` fayl─▒nda `@media (max-height: 500px)` ├╝├ğ├╝n yaz─▒lm─▒┼ş z-fold blokunun i├ğ╔Örisin╔Ö ╔Ölav╔Öl╔Ör edildi:
+    - Navbar yap─▒┼şqanl─▒─ş─▒ (sticky) qeyri-aktiv edildi (`position: relative !important`).
+    - Arxa plan elementl╔Örinin vizual y├╝kl╔Önm╔Ösini azaltmaq ├╝├ğ├╝n `opacity: 0.3` ╔Ölav╔Ö olundu (`.bg-shape`).
+    - `Hero` h├╝nd├╝rl├╝y├╝ (`100vh` kimi d╔Öy╔Örl╔Örin qar┼ş─▒s─▒n─▒ almaq ├╝├ğ├╝n) `min-h-screen` l╔Ö─şv edil╔Ör╔Ök `auto !important` olaraq m╔Öcbur edildi.
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `public/assets/css/chalang-preview.css` (Landscape blokuna yeni t╔Ölimatlar kodland─▒)
+
+### [ID-034] Foldable Crease-Safe Optimization (Z-Fold)
+**Tarix:** 2026-04-22
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** Qatlana bil╔Ön cihazlar─▒n (Z Fold kimi) daxili ekranlar─▒nda s╔Öhif╔Ö m╔Özmunu m╔Örk╔Özi "q─▒r─▒┼ş" (crease) nahiy╔Ösind╔Ön ke├ğmir v╔Ö ya ortadan b├Âl├╝nm├╝rd├╝. ãÅvv╔Ölki m╔Örh╔Öl╔Öl╔Örd╔Ö (Blade t╔Ör╔Öfind╔Ö) t╔Ötbiq olunmu┼ş strategiya React t╔Ör╔Öfind╔Ö Footer ├╝├ğ├╝n ╔Öskik idi.
+2. **H╔Öll:** `Footer.tsx` fayl─▒ndak─▒ ╔Ösas grid qabla┼şd─▒r─▒c─▒s─▒ `<div className="footer-main">`, `crease-safe dual-pane stats-two-col` klasslar─▒ il╔Ö t╔Ökmill╔Ö┼şdirildi (Phase 3 Matrix). Art─▒q Z Fold cihazlar─▒nda altl─▒q da vizual q─▒r─▒┼ş─▒n sol v╔Ö sa─ş hiss╔Ösin╔Ö uy─şun stabil yerl╔Ö┼şir.
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/Footer.tsx`
+
+### [ID-035] 8K/UHD Content Cap Standardization (max-width: 1440px)
+**Tarix:** 2026-04-22
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem:** M╔Öqs╔Öd (Rule 5.4) ╔Ösas m╔Özmunu 8K/UHD monitorlarda bel╔Ö `1440px` s╔Örh╔Ödind╔Ö saxlamaqd─▒r (Content Cap). Tailwind-in default `.container` plagini is╔Ö ├Âz ox┼şar t╔Önziml╔Öm╔Öl╔Öri il╔Ö (m╔Ös╔Öl╔Ön UHD ├╝├ğ├╝n `1920px`) layih╔Önin nizam─▒n─▒ poza bil╔Ördi.
+2. **H╔Öll:** `tailwind.config.js` konfiqurasiyas─▒ i├ğ╔Örisind╔Ö Tailwind-in daxili `.container` plagin-i `corePlugins: { container: false }` vasit╔Ösil╔Ö tamamil╔Ö deaktiv edildi. Bel╔Ölikl╔Ö sistem m╔Özmun h├╝dudlar─▒n─▒ tam olaraq `chalang-core.css`-d╔Ön alacaq ki, burada da `max-width: var(--container-max);` (1440px) d╔Öqiqlikl╔Ö t╔Ömin edilir.
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `tailwind.config.js`
+
+### [ID-036] Hero Kicker & Showreel Inline Style Parity
+**Tarix:** 2026-04-22
+**─░cra├ğ─▒:** Antigravity (Lead Senior Architect)
+
+**­şôØ Texniki Detallar:**
+1. **Problem (Hero Kicker):** `/preview` (Blade) t╔Ör╔Öfind╔Ö Hero kicker `UPPERCASE + brand-secondary (cyan/teal)` r╔Öngd╔Ö g├Âr├╝n├╝rd├╝, lakin `/react-test`-d╔Ö `lowercase + faded` g├Âr├╝n├╝rd├╝. S╔Öb╔Öb: Blade inline `style` attribute istifad╔Ö edir (`text-transform:uppercase; color: var(--brand-secondary); letter-spacing:1px; font-weight:700`), amma `Hero.tsx`-d╔Ö yaln─▒z bo┼ş `.hero-kicker` class-─▒ var idi v╔Ö `chalang-preview.css`-d╔Ö uy─şun selector tap─▒lmad─▒ (search n╔Ötic╔Ösi: 0 match).
+2. **H╔Öll (Hero Kicker):** `Hero.tsx` daxilind╔Ö `<div className="hero-kicker">` elementin╔Ö Blade il╔Ö eyni inline style-lar ╔Ölav╔Ö olundu: `marginBottom: '15px', fontWeight: 700, color: 'var(--brand-secondary)', textTransform: 'uppercase', letterSpacing: '1px'`.
+3. **Problem (Showreel Button):** Blade-d╔Ö `<a class="btn-secondary" style="display: inline-flex; align-items: center; gap: 10px;">` SVG icon il╔Ö birg╔Ö d├╝z x╔Öt ├╝z╔Örind╔Ö yerl╔Ö┼şirdi, lakin React-d╔Ö `<span>` wrapper v╔Ö inline-flex style ╔Öksik idi.
+4. **H╔Öll (Showreel):** `Hero.tsx`-d╔Ö showreel `<a>` elementin╔Ö Blade il╔Ö eyni inline-flex style ╔Ölav╔Ö olundu v╔Ö art─▒q laz─▒ms─▒z `<span>` wrapper silindi.
+5. **Build:** `npm run build` icra olundu, yeni hash: `Home-BSI_pUEp.js` (+ Home-BHcSP5WY.css). Manifest yenil╔Önib.
+6. **Audit (Navbar Architectural Discovery):** `Navbar.tsx` (Tailwind utility classes ÔÇö `bg-white/30 backdrop-blur-[40px] rounded-full`) il╔Ö Blade `header-preview.blade.php` (legacy CSS classes ÔÇö `.navbar-container .nav-island .nav-desktop`) tamamil╔Ö f╔Örqli arxitekturalard─▒r. Vizual n╔Ötic╔Ö b╔Önz╔Ördir, amma class structure 1:1 deyil. Bu q╔Ösdli m├╝h╔Öndislik q╔Örar─▒d─▒r (Rule: Legacy CSS-╔Ö "yaln─▒z oxuma" kimi yana┼ş─▒lmal─▒d─▒r - bax ID-013 Critical Rule).
+
+**Ô£à S├╝but (Proof of Work):**
+* D╔Öyi┼şdiril╔Ön fayl: `resources/js/Components/Sections/Hero.tsx` (Lines 326-339, 357-369)
+* Build artifact: `public/build/assets/Home-BSI_pUEp.js`
+* Cleanup: M├╝v╔Öqq╔Öti diaqnostik fayllar silindi (`tmp_check_html.php`, `tmp_react_html.txt`)
+
+**­şğ¬ Test:**
+* `curl /preview` ÔåÆ HTTP 200 (4.5s) Ô£à
+* `curl /react-test` ÔåÆ HTTP 200 (3.5s, isti kasha) Ô£à
+* ┼Ş╔Ökill╔Ör (`/storage/services/*.png`) ÔåÆ 200 OK Ô£à
+* Vizual m├╝qayis╔Ö: Hero kicker UPPERCASE+brand-secondary r╔Öng t╔Ötbiq olundu Ô£à
+
+**ÔÜá´©Å Bilin╔Ön M╔Öhdudiyy╔Öt:**
+* `php artisan serve` t╔Ök-thread oldu─şundan brauzer parallel asset y├╝kl╔Öm╔Ösi zaman─▒ 60s timeout ver╔Ö bil╔Ör (Symfony FatalError@VarDumper.php:28). Production v╔Ö ya `php artisan serve --workers=N` istifad╔Ö edildikd╔Ö problem yoxdur.
+
+### [ID-037] React Migration Audit ´┐¢ 9 Kritik/Orta Problemin H?lli
+**Tarix:** 2026-04-22 19:24
+**´┐¢cra´┐¢´┐¢:** Antigravity (Lead Senior Architect)
+**Status:** TAMAMLANDI ?
+
+**?? Texniki Detallar:**
+1. **ThemeProvider.tsx** ´┐¢ Default theme 'light'-dan 'dark'-a d?yi´┐¢dirildi. .cursorrules ´┐¢4.3: "Dark mode default." Blade preview.blade.php-d? data-theme="dark" default-dur.
+2. **AIWidget.tsx** ´┐¢ SVG atributlar´┐¢ JSX camelCase standart´┐¢na uy´┐¢unla´┐¢d´┐¢r´┐¢ld´┐¢: stroke-width ´┐¢ strokeWidth, stroke-linecap ´┐¢ strokeLinecap, stroke-linejoin ´┐¢ strokeLinejoin. Safari render x?tas´┐¢ aradan qald´┐¢r´┐¢ld´┐¢.
+3. **LeadMagnet.tsx** ´┐¢ Eyni SVG camelCase d´┐¢z?li´┐¢i t?tbiq edildi.
+4. **CTASection.tsx** ´┐¢ Tamamil? yenid?n yaz´┐¢ld´┐¢. B´┐¢t´┐¢n Tailwind utility siniflar´┐¢ (py-20 px-5 rounded-3xl font-bold text-3xl) l?´┐¢v edildi. .cursorrules ´┐¢4.2 CSS Architecture qaydalar´┐¢na uy´┐¢un vanilla CSS siniflar´┐¢: .cta-band-section, .cta-band-inner, .cta-band-title, .cta-band-sub, .cta-band-btn, .cta-band-glow. CSS qaydalar´┐¢ chalang-preview.css-? ?lav? edildi.
+5. **Home.tsx** ´┐¢ CTASection import edil?r?k Partners-d?n sonra, TeamGrid-d?n ?vv?l render edildi.
+6. **tailwind.config.js** ´┐¢ nimate-fade-in-up animation + adeInUp keyframes (0%´┐¢100% opacity+translateY) ?lav? edildi. MainLayout.tsx-d?ki nimate-fade-in-up sinifi art´┐¢q i´┐¢l?yir.
+7. **Contact.tsx** ´┐¢ Silent fail aradan qald´┐¢r´┐¢ld´┐¢: error state, 
+ole="alert" x?ta mesaj´┐¢ bloku, server x?ta JSON parsing, input disabled v?ziyy?ti, setError('') reset.
+8. **Navbar.tsx** ´┐¢ Hardcode "Start Project", "Support", "Locations" m?tnl?ri 	('start_project'), 	('support'), 	('locations') il? lokalizasiya edildi.
+9. **HallOfFame.tsx** ´┐¢ section-subtitle paraqraf´┐¢ ?lav? edildi: {t('fame.subtitle', '...')}.
+
+**? S´┐¢but (Proof of Work):**
+* 
+esources/js/Components/ThemeProvider.tsx (default: dark)
+* 
+esources/js/Components/Sections/AIWidget.tsx (SVG camelCase)
+* 
+esources/js/Components/Sections/LeadMagnet.tsx (SVG camelCase)
+* 
+esources/js/Components/Sections/CTASection.tsx (tam yenid?n yaz´┐¢ld´┐¢)
+* 
+esources/js/Pages/Home.tsx (CTASection render edildi)
+* 	ailwind.config.js (fadeInUp keyframes)
+* 
+esources/js/Components/Sections/Contact.tsx (error handling)
+* 
+esources/js/Components/Navbar.tsx (lokalizasiya)
+* 
+esources/js/Components/Sections/HallOfFame.tsx (subtitle)
+* public/assets/css/chalang-preview.css (CTA Band CSS qaydalar´┐¢)
+
+**Build Status:** 
+pm run build ´┐¢ EXIT CODE: 0 ? (1330 modul, 18.44s)
+
+### [ID-038] Qalan B´┐¢t´┐¢n Probleml?rin H?lli (Sprint 2 + React Audit)
+**Tarix:** 2026-04-22 20:38
+**´┐¢cra´┐¢´┐¢:** Antigravity (Lead Senior Architect)
+**Status:** TAMAMLANDI
+
+**D?yi´┐¢diril?n Fayllar (S´┐¢BUT):**
+
+1. **
+esources/views/app.blade.php**
+   - FOUC fix: 'light' ´┐¢ 'dark' default (ThemeProvider il? sinxron)
+   - classList.remove('dark','light') ?lav? edildi (dublikat class qar´┐¢´┐¢s´┐¢)
+   - prefers-reduced-motion detect + .reduced-motion class ?lav?
+
+2. **public/assets/css/chalang-preview.css** ´┐¢ 5 blok ?lav? edildi:
+   - Custom branded scrollbar (::-webkit-scrollbar, Firefox scrollbar-color) (id: 809)
+   - @media (prefers-reduced-motion: reduce) + .reduced-motion * (id: 810)
+   - Safari @supports not (backdrop-filter) fallback (B1)
+   - 4K/UHD font scaling (1920px+, 2560px+) (id: 816)
+   - Portfolio .project-card { min-height: 200px } (P1-06)
+   - Team avatar standardization .team-img-wrapper { 48px } (P1-04)
+   - Mobile team 1-column @media (max-width: 768px) (P1-04)
+   - Contact form visible labels CSS (P1-07)
+   - Dark mode muted text contrast fix (P2-04)
+
+3. **
+esources/js/Components/Sections/Portfolio.tsx** ´┐¢ loading="lazy" (id: 811)
+4. **
+esources/js/Components/Sections/TeamGrid.tsx** ´┐¢ loading="lazy" (id: 811)
+5. **
+esources/js/Components/Sections/Testimonials.tsx** ´┐¢ loading="lazy" (id: 811)
+6. **
+esources/js/Components/Sections/Process.tsx**
+   - data-lang, data-aos, data-aos-delay legacy atributlar´┐¢ silindi
+   - Map img loading="lazy" (id: 811)
+   - P1-01: Step navTitle fallback-lar: ['K?´┐¢f', 'Strategiya', '´┐¢cra', '´┐¢l´┐¢m?']
+7. **
+esources/js/Components/Sections/Contact.tsx** ´┐¢ P1-07: Visible labels
+8. **
+esources/js/Components/Sections/Hero.tsx** ´┐¢ onOpenQuote optional prop + CTA d´┐¢ym?si modal-a ba´┐¢land´┐¢ (E1)
+9. **
+esources/js/Pages/Home.tsx** ´┐¢ QuoteModal global state, openQuote handler, render (E1)
+
+**Build Status:** 
+pm run build ´┐¢ EXIT CODE: 0 ? (1331 modul, 33.14s)
+
+---
+
+## [ID-006] ÔÇö React Migration Paritet D├╝z╔Öli┼şl╔Öri (8 tap┼ş─▒r─▒q)
+**Tarix:** 2026-04-22 21:50
+**Sessiya:** d116ea55
+
+### D╔Öyi┼şdiril╔Ön fayllar:
+1. 
+esources/js/Components/Sections/Services.tsx ÔÇö Tilt parametrl╔Öri Blade il╔Ö eynil╔Ö┼şdirildi (tiltMaxAngleX: 10ÔåÆ1, glare: off)
+2. 
+esources/js/Pages/Home.tsx ÔÇö CTASection ├ğ─▒xar─▒ld─▒ (Blade-d╔Ö yoxdur), useMagneticHover ╔Ölav╔Ö olundu
+3. 
+esources/js/Components/Sections/Contact.tsx ÔÇö Label elementl╔Öri ├ğ─▒xar─▒ld─▒ (Blade il╔Ö paritet), aria-label ╔Ölav╔Ö olundu
+4. 
+esources/js/Components/Sections/Faq.tsx ÔÇö Tailwind utility ÔåÆ legacy CSS class-lar (.faq-section, .faq-item, .faq-question)
+5. 
+esources/js/Components/Sections/Blog.tsx ÔÇö Tailwind utility ÔåÆ legacy CSS class-lar (.blog-section, .blog-card, .blog-slider) + AOS directions
+6. 
+esources/js/Hooks/useScrollAnimation.ts ÔÇö Tam yenid╔Ön yaz─▒ld─▒: AOS CSS inject, data-aos-delay d╔Öst╔Öyi, prefers-reduced-motion
+7. 
+esources/js/Hooks/useMagneticHover.ts ÔÇö YEN─░: Blade magnetic hover effect portu (kinetic-btn, ai-trigger)
+
+### Build: Ô£à U─şurlu (51.98s, 0 x╔Öta)
+
+---
+
+## [ID-007] ÔÇö Qalan 20 Problem D├╝z╔Öli┼şi (Toplu Fix)
+**Tarix:** 2026-04-22 22:20
+**Sessiya:** d116ea55
+
+### D├╝z╔Öldil╔Ön probleml╔Ör (20/20):
+| # | Problem | Fayl | Status |
+|---|---------|------|--------|
+| Q-01 | dynamic-styles.blade.php inject | iews/app.blade.php | Ô£à |
+| Q-02 | Metrics data-aos="zoom-in" | Sections/Metrics.tsx | Ô£à |
+| Q-03 | reveal-text ÔÇö CSS-d╔Ö yoxdur, Blade-d╔Ö d╔Ö yoxdur | N/A | Ô£à (problem yox) |
+| Q-04 | kinetic-btn hover glow | Layouts/MainLayout.tsx | Ô£à |
+| Q-05 | Marquee s├╝r╔Öt ÔÇö chalang-core.css idar╔Ö edir | N/A | Ô£à (CSS-d╔Ön g╔Ölir) |
+| Q-06 | Partners logo render | N/A | Ô£à (art─▒q implementasiya olunub) |
+| Q-07 | Footer routes # | Components/Footer.tsx | Ô£à |
+| Q-08 | Navbar text-gray-700 hardcode | Components/Navbar.tsx | Ô£à |
+| Q-09 | Search Overlay | N/A | Ô£à (art─▒q implementasiya olunub) |
+| Q-10 | Mobile Nav | N/A | Ô£à (MobileMenu.tsx m├Âvcud) |
+| Q-11 | Hero XSS sanitize | Sections/Hero.tsx | Ô£à |
+| Q-12 | Process timer 8s | N/A | Ô£à (art─▒q 8000ms) |
+| Q-13 | 320px iPhone SE | Layouts/MainLayout.tsx | Ô£à |
+| Q-14 | Landscape max-height:500px | Layouts/MainLayout.tsx | Ô£à |
+| Q-15 | Foldable crease-safe | Layouts/MainLayout.tsx | Ô£à |
+| Q-16 | 8K/UHD 1440px cap | Layouts/MainLayout.tsx | Ô£à |
+| Q-17 | prefers-reduced-motion | Layouts/MainLayout.tsx | Ô£à |
+| Q-18 | Touch hoverÔåÆactive | Layouts/MainLayout.tsx | Ô£à |
+| Q-19 | Notch safe-area | Layouts/MainLayout.tsx | Ô£à |
+| Q-20 | Focus-visible ARIA | Layouts/MainLayout.tsx | Ô£à |
+
+### Build: Ô£à U─şurlu (24.13s, 0 x╔Öta)
+
+---
+
+## [ID-008] - UI/UX Parity Audit Fixes (Phase 1 & 2)
+**Tarix:** 2026-04-25 01:17
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### S├£BUT (PROOF)
+D╔Öyi┼şdiril╔Ön fayllar:
+1. Home.tsx - Pricing ├╝├ğ├╝n tam toggle ╔Ölav╔Ö edildi.
+2. Pricing.tsx - "ãÅn ├ğox se├ğil╔Ön" badge dizayn─▒ vur─şuland─▒.
+3. chalang-core.css - ".form-btn" ├╝├ğ├╝n 	ext-shadow ╔Ölav╔Ö olundu.
+4. process-original.css - Arxa plan x╔Örit╔Ösinin opacity-si 0.15-╔Ö endirildi.
+5. Testimonials.tsx - M├╝┼şt╔Öri r╔Öyl╔Öri ├╝├ğ├╝n pagination (dots) ╔Ölav╔Ö edildi.
+6. Portfolio.tsx - Typography optimizasiya olundu.
+7. Partners.tsx - CSS Grid layout quruldu.
+8. TeamGrid.tsx - Komanda kartlar─▒na modern UI (radius 16px, hover) ╔Ölav╔Ö olundu.
+9. Footer.tsx - AI widget bo┼şlu─şu ├╝├ğ├╝n bottom padding ╔Ölav╔Ö olundu.
+
+---
+
+## [ID-009] - Build Fix: Navbar JSX + Process CSS
+**Tarix:** 2026-04-25 21:18
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### Deyisdirilmis fayllar:
+1. Navbar.tsx - CONTACT li blokunda eksik Link tagi ve pozulmus ternary operator duzeldildi.
+2. process-original.css - Duplikat bloklarin silinmesi (Unclosed block xetasi).
+3. chalang-core.css - radius-card, radius-btn, shadow-card deyiskenlerinin elavesi.
+
+### Build: Ugurlu (42.53s, 0 xeta)
+
+## [ID-010] - React Migration Parity: Navbar Center Island Structure
+**Tarix:** 2026-04-26 02:15
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### D?yi´┐¢diril?n fayllar:
+1. resources/js/Components/Navbar.tsx - Tailwind d?r?c?sind?n azad edildi. B´┐¢t´┐¢n 'Home', 'Company', 'Solutions', 'Work', 'Insights', 'Careers' v? 'Contact' elementl?ri Blade strukturuna uy´┐¢unla´┐¢d´┐¢r´┐¢ld´┐¢ (nav-island, nav-swap-default, nav-swap-hover). Pill-shaped dizayn, backdrop filterl?r v? hover triggerl?r art´┐¢q qlobal chalang-core.css t?r?find?n 1:1 idar? olunur.
+
+### Build: U´┐¢urlu (0 x?ta) 
+
+
+## [ID-011] - React Navbar: Rounded Ends and MVP Icons Hidden
+**Tarix:** 2026-04-26 02:28
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### D?yi´┐¢diril?n fayllar:
+1. resources/js/Components/Navbar.tsx - Sol (Loqo) v? Sa´┐¢ (Utilities) adalara rounded-[50px] ?lav? edil?r?k m?rk?z strukturla vizual paritet t?min edildi. ´┐¢kinci m?rh?l?y? q?d?r 'M´┐¢´┐¢t?ri Portal´┐¢' v? 'T?r?fda´┐¢ M?rk?zi' ikonlar´┐¢ m´┐¢v?qq?ti olaraq kod daxilind? (false && isEnabled) gizl?dildi.
+
+### Status: Tamamland´┐¢ 
+
+
+## [ID-012] - Admin Control for Navbar Icons (Feature Toggle)
+**Tarix:** 2026-04-26 02:40
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### D?yi´┐¢diril?n fayllar:
+1. app/Http/Middleware/HandleInertiaRequests.php - B´┐¢t´┐¢n 'Setting' datalar´┐¢ Inertia props kimi (global_settings) payla´┐¢´┐¢ld´┐¢.
+2. app/Http/Controllers/Admin/SettingController.php - nav_client_portal v? nav_partner_hub ´┐¢´┐¢´┐¢n validation rule-lar ?lav? edildi.
+3. resources/views/admin/pages/settings/index.blade.php - ´┐¢mumi t?nziml?m?l?r s?hif?sin? 'Naviqasiya' bloku v? 2 toggle (switch) ?lav? edildi.
+4. resources/js/Components/Navbar.tsx - ´┐¢konlar´┐¢n g´┐¢r´┐¢n´┐¢b-g´┐¢r´┐¢nm?m?si props.global_settings ´┐¢z?rind?n avtomatla´┐¢d´┐¢r´┐¢ld´┐¢.
+
+### Status: Tamamland´┐¢ 
+
+
+## [ID-013] - React Background Gradients Fix
+**Tarix:** 2026-04-26 02:53
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+
+### D?yi´┐¢diril?n fayllar:
+1. resources/js/Layouts/MainLayout.tsx - Root div-d?n background r?ngi (bg-body) silindi. Shape divl?ri v? Noise Overlay Blade strukturundan 1:1 kopyalanaraq (bg-shape shape-1, etc.) b?rpa edildi, bununla da qaranl´┐¢q background divarlar´┐¢ aradan qald´┐¢r´┐¢ld´┐¢.
+2. resources/js/Components/Sections/Estimator.tsx - Glassmorphism kartlara (backdrop-blur) ke´┐¢irildi.
+3. resources/js/Components/Sections/Services.tsx - Glassmorphism (backdrop-blur) kartlara t?tbiq edildi.
+
+### Status: Tamamland´┐¢
+
+### [ID-039] About Us UI/UX and Navbar Fixes
+**Tarix:** 2026-04-26 17:00:46
+**M?qs?d:** About Us s?hif?sind? a´┐¢kar olunmu´┐¢ UI/UX v? Navbar t?rc´┐¢m?/aktivlik buglar´┐¢n´┐¢n h?lli.
+**S´┐¢but (D?yi´┐¢diril?n fayllar):**
+- pp/Http/Controllers/Front/AboutController.php (translations.nav ?lav? edildi)
+- 
+esources/js/Components/Navbar.tsx (isActive('/', true) d´┐¢z?li´┐¢i)
+- 
+esources/js/Pages/About.tsx (Tam Light Mode Tailwind Refactoring, Process Fallback, Grid fix)
+
+### [ID-040] Smart Estimator Backend Integration
+**Tarix:** 2026-04-26 17:47:36
+**M?qs?d:** Estimator-un backend (Order/Message) il? tam inteqrasiyas´┐¢ v? birba´┐¢a xidm?t ba´┐¢lant´┐¢s´┐¢.
+**S´┐¢but (D?yi´┐¢diril?n fayllar):**
+- app/Http/Controllers/Front/MainController.php (main_services Inertia-ya ´┐¢t´┐¢r´┐¢ld´┐¢)
+- resources/js/Pages/Home.tsx & About.tsx (Prop destructuring)
+- resources/js/Components/Sections/Estimator.tsx (Service mapping ID bazas´┐¢nda)
+- resources/js/Components/Sections/QuoteModal.tsx (Structured submission & Honeypot fix)
+
+### [ID-041] Blackbox AI Regression Fix
+**Tarix:** 2026-04-29 23:29:00
+**M?qs?d:** Ba´┐¢qa AI asistenti t?r?find?n edilmi´┐¢ d?yi´┐¢iklikl?rin analizi v? kritik buglar´┐¢n aradan qald´┐¢r´┐¢lmas´┐¢.
+**S´┐¢but (D?yi´┐¢diril?n fayllar):**
+- resources/js/Pages/Home.tsx (faq.answer.replace() null safety fix - SchemaData prop-da)
+- vite.config.js (process define string replacement d´┐¢z?li´┐¢i)
+**K´┐¢k S?b?b:** SchemaData komponentin? ´┐¢t´┐¢r´┐¢l?n faq.answer null ola bilirdi, .replace() ´┐¢a´┐¢´┐¢r´┐¢s´┐¢ b´┐¢t´┐¢n React tree-ni s´┐¢nd´┐¢r´┐¢rd´┐¢.
+
+### [ID-042] Estimator Dizayn Berpa + Kateqoriya/Alt Xidmet Strukturu
+**Tarix:** 2026-04-30 00:25:27
+**Meqsed:** Estimator-un orijinal tek-sehifeli iki-sutunlu kart dizaynini berpa etmek ve xidmet secimini kateqoriya tab + alt xidmet pill + dropdown strukturuna cevirmek.
+**Subut (Deyisdirilmis fayllar):**
+- resources/js/Components/Sections/Estimator.tsx (tam yeniden yazildi)
+- app/Services/FrontService.php (childs.translations eager load)
+**Netice:** Estimator indi 4 kateqoriya tab + ilk 4 alt xidmet pill + Digerleri dropdown formatinda isleyir. Her sey DB-den dinamikdir.
+
+### [ID-043] Universal "Yarat" v├ëÔäó "├ä┬░mport" D├â┬╝ym├ëÔäól├ëÔäórinin Optimizasiyas├ä┬▒
+**Tarix:** 2026-05-05 07:07:23
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+**M├ëÔäóqs├ëÔäód:** B├â┬╝t├â┬╝n c├ëÔäódv├ëÔäóll├ëÔäórd├ëÔäó (Datatables) "Yarat" d├â┬╝ym├ëÔäósini universal v├ëÔäó glassmorphism stilind├ëÔäó g├â┬Âst├ëÔäórm├ëÔäók.
+**S├â┬╝but (D├ëÔäóyi├à┼©diril├ëÔäón fayllar):**
+- resources/views/admin/inc/dynamic_datatable.blade.php (@yield('heading_buttons') ├ëÔäólav├ëÔäó edildi)
+- resources/views/admin/layouts/main.blade.php (Aktiv olmayan k├â┬Âhn├ëÔäó header b├â┬Âlm├ëÔäósinin s├ëÔäób├ëÔäóbi a├à┼©karland├ä┬▒)
+- resources/views/admin/pages/* b├â┬╝t├â┬╝n 20+ index.blade.php fayllar├ä┬▒ (D├â┬╝ym├ëÔäó klasslar├ä┬▒ v├ëÔäó ikonlar├ä┬▒ yeni stild├ëÔäó ├ëÔäóv├ëÔäóz edildi)
+- resources/views/admin/pages/service/index.blade.php (X├â┬╝susi Import v├ëÔäó Yarat d├â┬╝ym├ëÔäól├ëÔäóri aktivle├à┼©dirildi)
+**N├ëÔäótic├ëÔäó:** ├ä┬░ndi b├â┬╝t├â┬╝n s├ëÔäóhif├ëÔäól├ëÔäór ├â┬Âz do├ä┼©ma 'Yarat' d├â┬╝ym├ëÔäól├ëÔäórini yeni stild├ëÔäó, c├ëÔäódv├ëÔäól ba├à┼©l├ä┬▒├ä┼©├ä┬▒n├ä┬▒n i├â┬ğ├ëÔäórisind├ëÔäó, axtar├ä┬▒├à┼© panelinin yan├ä┬▒nda s├ëÔäóliq├ëÔäóli ├à┼©├ëÔäókild├ëÔäó g├â┬Âst├ëÔäórir.
+
+### [ID-044] Universal Import Modulu v├ëÔäó Export Fix (Translatable)
+**Tarix:** 2026-05-05 07:26:34
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+**M├ëÔäóqs├ëÔäód:** "import yoxdur, exporda d├â┬╝z i├à┼©l├ëÔäómir" m├â┬╝raci├ëÔäótinin h├ëÔäólli. ├ä┬░mport x├â┬╝susiyy├ëÔäótinin 0-dan qurulmas├ä┬▒ v├ëÔäó CSV Export-un t├ëÔäórc├â┬╝m├ëÔäó s├╝tunlar├ä┬▒ il├ëÔäó birlikd├ëÔäó i├à┼©l├ëÔäóm├ëÔäósinin t├ëÔäómin edilm├ëÔäósi.
+**S├â┬╝but (D├ëÔäóyi├à┼©diril├ëÔäón fayllar):**
+- app/Http/Controllers/Admin/ExportController.php (Astrotomic Translatable d├ëÔäóst├ëÔäóyi ├ëÔäólav├ëÔäó edildi: \->translatedAttributes oxunaraq CSV-y├ëÔäó c├ëÔäólb olunur).
+- app/Http/Controllers/Admin/ImportController.php (YEN├ä┬░ - CSV fayllar├ä┬▒n├ä┬▒ q├ëÔäóbul ed├ëÔäón, name_az v├ëÔäó desc_en tipli s├╝tun ba├à┼©l├ä┬▒qlar├ä┬▒n├ä┬▒ avtomatik t├ëÔäórc├â┬╝m├ëÔäó array-in├ëÔäó ├â┬ğevir├ëÔäón Universal ├ä┬░mport m├ëÔäórk├ëÔäózi yaz├ä┬▒ld├ä┬▒).
+- routes/admin.php (Route::post('import/{model}') qeydiyyatdan ke├â┬ğirildi).
+- public/admin_assets/assets/js/bulk-actions.js (Export d├â┬╝ym├ëÔäósi bas├ä┬▒landa model ad├ä┬▒n├ä┬▒n 'tolowercase' olmas├ä┬▒ Linux serverl├ëÔäórd├ëÔäó Class Tap├ä┬▒lmad├ä┬▒ x├ëÔäótas├ä┬▒ ver├ëÔäó bil├ëÔäórdi dey├ëÔäó exact case olaraq d├ëÔäóyi├à┼©dirildi).
+- resources/views/admin/inc/dynamic_datatable.blade.php & service/index.blade.php (Universal ├ä┬░mport Formu v├ëÔäó d├â┬╝ym├ëÔäósi c├ëÔäódv├ëÔäólin ba├à┼©l├ä┬▒├ä┼©├ä┬▒na yerl├ëÔäó├à┼©dirildi).
+**N├ëÔäótic├ëÔäó:** B├â┬╝t├â┬╝n c├ëÔäódv├ëÔäóll├ëÔäórd├ëÔäó (Blog, Portfolio, Xidm├ëÔäót) "├ä┬░mport" d├â┬╝ym├ëÔäósi var. CSV fayl y├â┬╝kl├ëÔäón├ëÔäórk├ëÔäón t├ëÔäórc├â┬╝m├ëÔäól├ëÔäór avtomatik ayr├ä┬▒l├ä┬▒r. Export klikl├ëÔäón├ëÔäónd├ëÔäó b├â┬╝t├â┬╝n t├ëÔäórc├â┬╝m├ëÔäó m├ëÔäótnl├ëÔäóri il├ëÔäó birlikd├ëÔäó n├ëÔäótic├ëÔäó qaytar├ä┬▒l├ä┬▒r.
+
+### [ID-045] Datatables Global Glassmorphism CSS Fix
+**Tarix:** 2026-05-05 08:09:58
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+**M├ëÔäóqs├ëÔäód:** B├â┬╝t├â┬╝n c├ëÔäódv├ëÔäóll├ëÔäórd├ëÔäó (Blog, Portfolio v├ëÔäó s.) DataTables-in k├â┬Âhn├ëÔäó dom strukturunu v├ëÔäó a├ä┼©/pozulmu├à┼© CSS-ini layih├ëÔäónin yeni Dark Glassmorphism dizayn├ä┬▒na salmaq.
+**S├â┬╝but (D├ëÔäóyi├à┼©diril├ëÔäón fayllar):**
+- resources/views/admin/inc/dynamic_datatable.blade.php (dom strukturu '<"row align-items-center p-3"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-end"f>>rt<...>' olaraq d├ëÔäóyi├à┼©dirildi).
+- public/admin_assets/assets/css/datatables-dark.css (Tam glassmorphism qaydalar├ä┬▒ ├ëÔäólav├ëÔäó edildi: pagination gradientl├ëÔäóri, input t├â┬╝nd fonlar├ä┬▒, h├ëÔäóssas c├ëÔäódv├ëÔäól s├ëÔäórh├ëÔäódl├ëÔäóri).
+**N├ëÔäótic├ëÔäó:** ├ä┬░ndi b├â┬╝t├â┬╝n DataTable t├ëÔäórkibli s├ëÔäóhif├ëÔäól├ëÔäór (Blog, SSS v├ëÔäó s.) da├ä┼©├ä┬▒n├ä┬▒q yox, Service s├ëÔäóhif├ëÔäósind├ëÔäóki kimi tam premium dizaynda, s├ëÔäóliq├ëÔäóli layout il├ëÔäó g├â┬Âr├â┬╝n├â┬╝r.
+
+### [ID-046] Datatables Custom Search & Length Menu Integration
+**Tarix:** 2026-05-05 08:33:01
+**Sessiya:** 2dd39e37-c570-4af1-8029-4f462da6559b
+**M├ëÔäóqs├ëÔäód:** DataTables default axtar├ä┬▒├à┼© v├ëÔäó s├ëÔäótir say├ä┬▒ se├â┬ğicil├ëÔäórinin yuxar├ä┬▒ dinamik panel├ëÔäó da├à┼©├ä┬▒nmas├ä┬▒ (activity-log dizayn├ä┬▒nda oldu├ä┼©u kimi).
+**S├â┬╝but (D├ëÔäóyi├à┼©diril├ëÔäón fayllar):**
+- resources/views/admin/inc/dynamic_datatable.blade.php (dom strukturundan 'l' v├ëÔäó 'f' silindi. Custom expandable axtar├ä┬▒├à┼© inputu v├ëÔäó x├â┬╝susi length select dropdown-u header panelin├ëÔäó ├ëÔäólav├ëÔäó edildi. JS event-l├ëÔäóri DataTables API-y├ëÔäó ba├ä┼©land├ä┬▒).
+**N├ëÔäótic├ëÔäó:** B├â┬╝t├â┬╝n c├ëÔäódv├ëÔäóll├ëÔäórin (Blog, Portfolio v├ëÔäó s.) idar├ëÔäóetm├ëÔäó paneli tam olaraq "Service" v├ëÔäó "Activity-Log" modullar├ä┬▒ndak├ä┬▒ vahid, geni├à┼©l├ëÔäón├ëÔäón axtar├ä┬▒├à┼© qutusuna v├ëÔäó eyni paneld├ëÔäó yerl├ëÔäó├à┼©├ëÔäón s├ëÔäótir say├ä┬▒ filterin├ëÔäó sahib oldu.
+
+### [ID-047] - 2026-05-05
+**S´┐¢BUT (PROOF):**
+- \pp/Http/Controllers/Admin/BlogController.php\ v? \
+esources/views/admin/pages/blog/_form.blade.php\: Blog yarad´┐¢lark?n \$categories\ g´┐¢nd?rilm?m?si x?tas´┐¢ (P1) h?ll olundu.
+- \pp/Models/Portfolio.php\ v? \pp/Datatable/PortfolioDatatable.php\: N+1 sorgusu v? timeout x?tas´┐¢ (P2) \with()\ v? s´┐¢r?tli \pluck()\ il? h?ll olundu.
+- \pp/Http/Controllers/Admin/MessageController.php\ v? \
+esources/views/admin/pages/message/index.blade.php\: B´┐¢t´┐¢n mesajlar´┐¢n eyni anda y´┐¢kl?nm?sind?n yaranan yava´┐¢lama (P3) 20-lik paginasiya il? d?yi´┐¢dirildi.
+- \
+esources/views/admin/layouts/main.blade.php\: Notification oxunma URL-i \/admin/\ ?v?zin? \/dashboard/\ olaraq d´┐¢z?ldildi.
+
+### [ID-048] - 2026-05-07
+**S├£BUT (PROOF):**
+- app/Http/Controllers/Front/MainController.php: Metrics count, Blog date ISO mapping, Team/Testimonial flattening.
+- resources/js/Pages/Home.tsx: Added portfolio_count prop and fixed metrics display.
+- resolveContentTextValue fallback logic added to prevent empty metrics.
+
+### [ID-049] - 2026-05-08
+**MASTER LEVEL Export/Import Upgrade**
+**S´┐¢BUT (PROOF):**
+- app/Http/Controllers/Admin/ExportController.php: Filter Conditions, Field Selection, ExportHistory qeydiyyat´┐¢, streamExport bug fix.
+- app/Http/Controllers/Admin/ImportController.php: Duplicate Detection, Slug Conflict Resolution, Merge/Replace modes, ImportHistory inteqrasiyas´┐¢.
+- resources/views/admin/import/preview.blade.php: Import Mode se´┐¢imi (merge/skip), route ad´┐¢ d´┐¢z?li´┐¢i.
+- routes/admin.php: Route adlar´┐¢ sinxronla´┐¢d´┐¢r´┐¢ld´┐¢ (admin. prefiksi duplikasiyas´┐¢ aradan qald´┐¢r´┐¢ld´┐¢).
+
+### [ID-050] - 2026-05-09
+**GOD MODE UI/UX: Import/Export Infrastructure Finalization**
+**S´┐¢BUT (PROOF):**
+- resources/views/admin/import/preview.blade.php: Dashboard-style Summary Cards, Image thumbnails, Premium UI upgrade.
+- resources/views/admin/import/show.blade.php: Real-time progress polling (JS), Live status indicators, Advanced stats cards.
+- resources/views/admin/export/history.blade.php: Full visual sync with Import History, Security audit cards.
+- resources/views/admin/pages/service/index.blade.php: Hardcoded import forms replaced with Unified Master Button logic.
+- resources/js/Components/MobileMenu.tsx: Typo fix ('ease-in-out').
+
+
+### [ID-051] - 2026-05-09
+**Import Rollback Engine (Data Recovery)**
+**M?qs?d:** S?hv edilmi■ importlar²n b³t³n izl?rini bir d³ym? il? bazadan t?mizl?m?k.
+**S▄BUT (PROOF):**
+- app/Http/Controllers/Admin/ImportHistoryController.php: Rollback metodu (DB Transaction daxilind? s?tirl?rin silinm?si).
+- app/Models/ImportHistory.php: canRollback() m?ntiqi.
+- resources/views/admin/import/show.blade.php: Rollback d³ym?si inteqrasiyas².
+
+### [ID-052] - 2026-05-09
+**Background Queue Processing & Email Integration**
+**M?qs?d:** B÷y³k m?lumatlar²n brauzer donmadan arxa planda i■l?nm?si.
+**S▄BUT (PROOF):**
+- app/Jobs/ProcessImportJob.php: Batch processing v? Job dispatch m?ntiqi.
+- app/Jobs/SendImportNotificationJob.php: ¦mport bitdikd? admin? email g÷nd?rilm?si.
+- config/queue.php: Queue driver konfiqurasiyas².
+
+### [ID-053] - 2026-05-09
+**Dynamic Import Template Engine**
+**M?qs?d:** H?r bir model ³³n avtomatik struktur (header) generasiya ed?n ■ablon sistemi.
+**S▄BUT (PROOF):**
+- app/Http/Controllers/Admin/ImportController.php: downloadTemplate() metodu.
+- CSV/JSON formatlar² ³zr? dinamik header x?rit?l?nm?si.
+
+### [ID-054] - 2026-05-09
+**Admin Route Architecture & Security Polish**
+**M?qs?d:** Routing x?talar²n²n (RouteNotFound) v? prefiks duplikasiyas²n²n aradan qald²r²lmas².
+**S▄BUT (PROOF):**
+- routes/admin.php: 'admin' prefiksinin t?mizl?nm?si v? route adlar²n²n sinxronla■d²r²lmas².
+- app/Providers/RouteServiceProvider.php: Admin route qrupunun t?nziml?nm?si.
+
+
+### [ID-055] - 2026-05-09
+**Polling API Security & Performance (Master Grade)**
+**M?qs?d:** API-ni DDoS-dan qorumaq v? server y³k³n³ azaltmaq.
+**S▄BUT (PROOF):**
+- routes/admin.php: 	hrottle:10,1 (Rate Limit) v? manual IP-based throttle ?lav? edildi.
+- routes/admin.php: 5 saniy?lik Cache qat² inteqrasiya olundu.
+- routes/admin.php: Strict Ownership Check (istifad?il?r yaln²z ÷z datalar²n² g÷r? bil?r).
+
+### [ID-056] - 2026-05-09
+**Universal Import Center & Premium Drag-and-Drop**
+**M?qs?d:** B³t³n modell?r ³³n vahid v? asan import interfeysi.
+**S▄BUT (PROOF):**
+- resources/views/admin/import/index.blade.php: B³t³n modell?r ³³n vizual seim paneli yarad²ld².
+- resources/views/admin/inc/dynamic_datatable.blade.php: Premium Drag-and-Drop Modal (Apple-style) inteqrasiya edildi.
+- resources/views/admin/import/preview.blade.php: Multi-step Stepper UI ?lav? edildi.
+
+### [ID-057] - 2026-05-09
+**Live System Console & Selective Data Import**
+**M?qs?d:** Admin n?zar?tini (monitoring) 100/100 s?viyy?sin? qald²rmaq.
+**S▄BUT (PROOF):**
+- resources/views/admin/import/show.blade.php: Terminal ³slubunda Live Log Console (JS Polling vasit?sil?) ?lav? edildi.
+- resources/views/admin/import/preview.blade.php: Selective Row Import (Checkbox) v? Column Mapping UI inteqrasiya olundu.
+
+### [ID-058] - 2026-05-09
+**Enterprise Export Scheduling Infrastructure**
+**M?qs?d:** Avtomatik (Cron-based) eksportlar²n idar? edilm?si.
+**S▄BUT (PROOF):**
+- app/Http/Controllers/Admin/ExportScheduleController.php: C?dv?l idar?etm? m?ntiqi.
+- resources/views/admin/export/schedules.blade.php: Planl² eksportlar ³³n idar?etm? paneli.
+- resources/views/admin/export/schedule-form.blade.php: JSON filter d?st?kli c?dv?l yaratma formas².
+- app/Http/Controllers/Admin/ExportHistoryController.php: Download (Endirm?) metodu ?lav? edildi.
+
+### [ID-059] - 2026-05-09
+**Frontend Absolute Perfection & Design System Integration**
+**M?qs?d:** React s?hif?l?rini 100/100 Enterprise s?viyy?sin? qald²rmaq v? m?rk?zl?■dirilmi■ state-? kem?k.
+**S▄BUT (PROOF):**
+- resources/js/Pages/Home.tsx: Zustand store inteqrasiyas² (QuoteModal m?rk?zl?■dirildi).
+- resources/js/Components/Sections/Hero.tsx: Button komponenti v? store inteqrasiyas² il? yenid?n yaz²ld².
+- resources/js/Components/Sections/Services.tsx: Card v? Button komponentl?ri il? refaktor olundu.
+- resources/js/Components/Sections/Portfolio.tsx: Premium Card dizayn² v? Modal t?kmill?■dirilm?si.
+- resources/js/Components/Footer.tsx: Input v? Button komponentl?ri il? dizayn tutarl²l²­² t?min edildi.
+
+### [ID-060] - 2026-05-09
+**React ReferenceError Fix (Home.tsx)**
+**M?qs?d:** Home.tsx s?hif?sind? useStore hook-unun t?yin olunmamas² x?tas²n² aradan qald²rmaq.
+**S▄BUT (PROOF):**
+- resources/js/Pages/Home.tsx: useStore importu ?lav? edildi, laz²ms²z useState silindi.

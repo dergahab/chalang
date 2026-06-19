@@ -13,5 +13,5 @@ class Contenttext extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title', 'content'];
 
-    protected $fillable = ['key'];
+    protected $fillable = ['key', 'section_order'];
 }

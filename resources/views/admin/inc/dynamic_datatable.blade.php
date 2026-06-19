@@ -1,9 +1,18 @@
+@if(isset($__model))
+<div class="d-flex justify-content-end mb-3">
+    <button id="bulk-delete-btn" class="btn btn-danger" style="display: none;" data-model="{{ $__model }}">
+        <i class="ri-delete-bin-line"></i> Seçilənləri Sil (<span class="count">0</span>)
+    </button>
+</div>
+@endif
+
 <div class="table-responsive">
-    <table id="{{ $__datatableId }}" class="table table-bordered dt-responsive data-table" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    <table id="{{ $__datatableId }}" class="{{ $__table_class ?? 'table table-bordered dt-responsive data-table' }}" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     </table>
 </div>
 
 @push('js_stack')
+    <script src="{{ asset('admin_assets/assets/js/bulk-actions.js') }}"></script>
     @php
      if (isset($__export)) {
         $__excel    = isset($__export['excel']) ? $__export['excel'] : '1,2,3,4';
@@ -92,6 +101,30 @@
 
                 window.dTable.buttons().container().appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
             }
+
+            $(document).on('change', '.status-toggle', function() {
+                let id = $(this).data('id');
+                let model = $(this).data('model');
+                let status = $(this).prop('checked');
+
+                axiosInstance.post('{{ route('admin.toggle_publish') }}', {
+                    cmid: id,
+                    classPath: model,
+                })
+                .then(response => {
+                    if(response.data.status === 200) {
+                        toastr.success('Status uğurla yeniləndi');
+                    } else {
+                        toastr.error('Xəta baş verdi: ' + response.data.message);
+                        $(this).prop('checked', !status);
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    toastr.error('Sistem xətası baş verdi');
+                    $(this).prop('checked', !status);
+                });
+            });
         });
     </script>
 @endpush

@@ -1,24 +1,24 @@
+<!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="{{ route('/') }}" class="logo logo-dark">
-            <img src="{{ asset('admin/assets/images/logo-dark.png') }}" alt="" height="22">
+        <a href="{{ route('admin.home') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('admin/assets/images/logo-dark.png') }}" alt="" height="22">
+                <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('admin/assets/images/logo-white.png') }}" alt="" height="17">
+                <span>CHALANG</span>
             </span>
         </a>
 
         <!-- Light Logo-->
-        <a href="/" class="logo logo-light">
+        <a href="{{ route('admin.home') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt="" height="22">
+                <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('admin/assets/images/logo-white.png') }}" alt="" height="17">
+                <span>CHALANG</span>
             </span>
         </a>
 
@@ -31,10 +31,20 @@
     <div id="scrollbar">
         <div class="container-fluid">
 
+            <div class="sidebar-search-wrapper p-3">
+                <div class="search-box">
+                    <input type="text" class="form-control" id="sidebar-search" placeholder="Menyuda axtar...">
+                    <i class="ri-search-line search-icon"></i>
+                </div>
+            </div>
             <div id="two-column-menu"></div>
             <ul class="navbar-nav" id="navbar-nav">
+                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 @foreach ($sidebarItems as $item)
+                    @if ($item->get('feature') && !\App\Helpers\FeatureFlag::isEnabled($item->get('feature')))
+                        @continue
+                    @endif
 
                     @if (!$item->get('route') && $item->get('inner') === null)
                         <li class="menu-title">
@@ -65,6 +75,9 @@
                                 id="sidebarDashboards{{ $loop->iteration }}">
                                 <ul class="nav nav-sm flex-column">
                                     @foreach ($item->get('inner') as $inner)
+                                        @if ($inner->get('feature') && !\App\Helpers\FeatureFlag::isEnabled($inner->get('feature')))
+                                            @continue
+                                        @endif
                                         <li class="nav-item">
                                             <a href="{{ route($inner->get('route'), $inner->get('params') ?? []) }}"
                                                 class="nav-link @if ($item->get('is_active_route')) active @endif"

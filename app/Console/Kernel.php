@@ -14,7 +14,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Daily restart to pick up deployments/new code
+        $schedule->command('queue:restart')
+            ->dailyAt('03:00')
+            ->withoutOverlapping();
+
+        // Queue health check with sane defaults for monitoring (adjust thresholds via env/cron)
+        $schedule->command('queue:health --queue=default --max-size=100 --max-failed=0')
+            ->everyFifteenMinutes()
+            ->withoutOverlapping()
+            ->onOneServer()
+            ->appendOutputTo(storage_path('logs/queue-health.log'));
     }
 
     /**

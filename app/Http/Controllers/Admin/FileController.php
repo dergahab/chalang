@@ -30,13 +30,18 @@ class FileController extends Controller
         $uploadedFiles = $request->file('files');
 
         foreach ($uploadedFiles as $file) {
-            $filename = uniqid().'.'.$file->getClientOriginalExtension();
-            $path = $file->storeAs('uploads', $filename);
-            Storage::disk('public')->putFileAs('images', $file, $filename);
+             // Basic validation
+            $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf'];
+            if (!in_array($file->getMimeType(), $allowedMimes)) {
+                continue; 
+            }
+
+            $filename = uniqid(time().'_').'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('images', $filename, 'public');
 
             // Save file details to the database
             Image::create([
-                'url' => 'images/'.$filename,
+                'url' => $path,
                 'parentable_id' => $request->id,
                 'parentable_type' => Portfolio::class,
             ]);
@@ -60,11 +65,11 @@ class FileController extends Controller
     {
         $image = Image::findOrFail($id);
 
-        // Delete the image record from the database
-        $filePath = 'public/'.$image->url;
-
         // Delete the image file from the storage disk
-        Storage::disk('local')->delete($filePath);
+        if (Storage::disk('public')->exists($image->url)) {
+            Storage::disk('public')->delete($image->url);
+        }
+        
         $image->delete();
 
         return response()->json([

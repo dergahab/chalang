@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <!-- Pre-blurred: runtime CSS filter:blur() istifadə olunmur -->
+    <filter id="starGlow" x="-150%" y="-150%" width="400%" height="400%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="22" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 1.2 0" result="boosted"/>
+      <feMerge>
+        <feMergeNode in="boosted"/>
+        <feMergeNode in="boosted"/>
+      </feMerge>
+    </filter>
+    <!-- Ulduz forması: Hero.tsx L214-dəki path2 ilə eyni, 200x200 viewBox-a scale edilib -->
+    <!-- Original viewBox: 0 0 18 18, burda: 0 0 200 200, scale ~11.1x -->
+  </defs>
+
+  <!-- Xarici ambient glow halkası — zərif parıltı effekti -->
+  <circle
+    cx="100" cy="100" r="70"
+    fill="currentColor"
+    opacity="0.08"
+    filter="url(#starGlow)"
+  />
+
+  <!-- Əsas ulduz forması — Hero.tsx-dəki 4-guşəli sparkle, 200x200-ə scale edilib -->
+  <!--
+    Original path (18x18 viewBox):
+    M8.23,13.3 l.19.37 c.14.28.36.5.64.64 l.37.19 s.01.02,0,.03
+    l-.37.19 c-.28.14-.5.36-.64.64 l-.19.37 s-.02.01-.03,0
+    l-.19-.37 c-.14-.28-.36-.5-.64-.64 l-.37-.19 s-.01-.02,0-.03
+    l.37-.19 c.28-.14.5-.36.64-.64 l.19-.37 s.02-.01.03,0Z
+
+    Scale matrisi: translate(-8.23*11.1, -13.3*11.1) + scale(11.1)
+    Mərkəz (100,100)-ə yerləşdirilir.
+  -->
+  <g transform="translate(100,100)" filter="url(#starGlow)">
+    <!--
+      4-pointed star — parametrik formada:
+      Outer radius: 45px, Inner radius: 18px
+      Chalang sparkle proporsionu saxlanılır
+    -->
+    <path
+      d="M0,-45
+         C2,-18 18,-2 45,0
+         C18,2 2,18 0,45
+         C-2,18 -18,2 -45,0
+         C-18,-2 -2,-18 0,-45Z"
+      fill="currentColor"
+      opacity="0.85"
+    />
+  </g>
+</svg>

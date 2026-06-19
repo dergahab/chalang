@@ -1,11 +1,12 @@
 <div class="row">
     <div class="form-group mt-3 ">
         <label for="name">Üst servislər </label>
-        <select name="parent_id" id="" class="form-control select2">
-            <option value="0">Üst servis seçin</option>
-            @foreach ($services as $service)
-                <option @if ($item->parent_id == $service->id) selected @endif value="{{ $service->id }}">
-                    {{ $service->name }}</option>
+        <select name="parent_id" id="parent_id" class="form-control select2">
+            <option value="0">Üst servis seçin (Valideyn yoxdur)</option>
+            @foreach ($parents as $parent)
+                <option @if ($item->parent_id == $parent->id) selected @endif value="{{ $parent->id }}">
+                    {{ $parent->name }} ({{ $parent->children->count() }} alt servis)
+                </option>
             @endforeach
         </select>
     </div>
@@ -37,6 +38,10 @@
                     <label for="content-{{ $lang->lang }}">Məzmun</label>
                     <textarea name="content[{{ $lang->lang }}]" id="" cols="5" class="form-control" rows="4">{{ old('content', $item->translate($lang->lang)?->content) }}</textarea>
                 </div>
+                <div class="form-group mt-3">
+                    <label>CTA Mətni ({{ $lang->lang }})</label>
+                    <input type="text" class="form-control" name="cta_text[{{ $lang->lang }}]" value="{{ old('cta_text', $item->translate($lang->lang)?->cta_text) }}">
+                </div>
             </div>
         @endforeach
     </div>
@@ -61,6 +66,13 @@
         <img src="{{ asset(Storage::url($item->image)) }}"
             class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
             alt="">
+    </div>
+
+    <div class="col-md-12 mt-2">
+        <div class="form-group">
+            <label>CTA Link</label>
+            <input type="text" name="cta_link" class="form-control" value="{{ old('cta_link', $item->cta_link) }}">
+        </div>
     </div>
 
 </div>

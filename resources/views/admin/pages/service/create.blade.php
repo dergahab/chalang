@@ -10,7 +10,7 @@
                         @include('admin.pages.service._form')
                         <div class="form-group mb-0 mt-3">
                             <div>
-                                <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Düzənlə</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light mr-1">Yadda Saxla</button>
                                 <button type="reset" class="btn btn-danger waves-effect">Imtina</button>
                             </div>
                         </div>

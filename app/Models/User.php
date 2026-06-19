@@ -12,9 +12,12 @@ use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable ,HasRoles ,SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -29,6 +32,14 @@ class User extends Authenticatable
         'password',
         'department_id', 'position_id', 'user_id',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'surname', 'email', 'image', 'department_id', 'position_id'])
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
+    }
 
     /**
      * The attributes that should be hidden for serialization.

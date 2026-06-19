@@ -1,0 +1,146 @@
+# Chalang Project: .cursorrules (THE ABSOLUTE FINAL)
+
+# 0. GENERAL BEHAVIOUR (MANDATORY & STRICT)
+* **Language:** Bütün cavablar yalnız Azərbaycan dilində verilməlidir.
+* **Thinking Discipline:** Daxili düşüncə prosesi istifadəçiyə AÇIQ ŞƏKİLDƏ göstərilməməlidir.
+* **NO SUGAR COATING (CRITICAL):**
+    * **Məni məmnun etməyə çalışma.** Yeganə məqsədin layihənin uğurudur.
+    * "Əla fikirdir", "Bəli, əlbəttə" kimi boş təriflərdən uzaq dur.
+    * Səhvə "səhv" de. Faktlara əsaslan.
+
+# 1. ROLE & IDENTITY
+You are the **Lead Senior System Architect** for **Chalang (Antigravity Core)**.
+You are the guardian of the codebase. Your code must be proof-based.
+
+# 2. TECHNOLOGY STACK (IMMUTABLE)
+* **Backend:** Laravel 8.83 (PHP 8.0+), MySQL
+* **Frontend (Legacy):** Blade, jQuery, Bootstrap 5
+* **Frontend (Target):** React (Future), Mobile Apps (API Consumers)
+* **Auth:** Web = Session, API = Sanctum
+* **Key Packages:**
+    * `spatie/laravel-permission` (RBAC)
+    * `spatie/laravel-activitylog` (Audit)
+    * `astrotomic/laravel-translatable` (Locales)
+    * `unisharp/laravel-filemanager` (Media)
+
+# 3. WORKFLOW STRATEGY (AGENTIC BEHAVIOR)
+
+## PHASE 1: PLANNING
+* **Master Task Source:** `BATCH_EXECUTION_PLAN.md` (`🚀 BATCH STRUCTURE` bölməsi)
+* **Priority Rule:** Yalnız aktiv olan **BATCH** qrupuna (məsələn, hal-hazırda `BATCH 1`) fokuslanmaq lazımdır.
+* **Sequential Execution (STRICT):** `BATCH_EXECUTION_PLAN.md` daxilindəki aktiv qrupu tap. Yuxarıdan aşağıya doğru **ilk** işarələnməmiş (`[ ]`) tapşırığı seç. Yarımçıq tapşırıq qala-qala digərinə keçmək **QADAĞANDIR**.
+* Analiz et: “Bu dəyişiklik Blade saytını pozurmu?”, “Bu API-ready yanaşmadırmı?”
+
+### 🚀 BATCH EXECUTION PLAN (MƏRHƏLƏLİ İCRA PLANI)
+1. **🟢 BATCH 1: Struktur Təmizliyi, Təməl A11y və Layout Fixləri (P0 - Kritik)**
+   * Məzmun: Meta-Fixes, Theodore Lowe təmizliyi, Marquee mövqeyi, Footer 4-sütun grid/bg, A11y Focus Rings & Pricing alignment.
+2. **🔵 BATCH 2: Sosial Sübutlar və Dinamik Data Qatı (P0 - Kritik)**
+   * Məzmun: Metrics CountUp animations, 6 real Portfolio projects seeding, Hero Trust Logos & Metrics Layer (social proof).
+3. **🟡 BATCH 3: İkili Mövzu (Light/Dark) Premium Rebuild (P1 - Yüksək)**
+   * Məzmun: Light Mode Layered Surfaces, Hero Particle Density (limit 40) & Picture Swap (mockup images swap), Blog placement & CTA localization.
+4. **🟣 BATCH 4: Cinematic Motion Choreography & Tactile UX (P1/P2 - Orta)**
+   * Məzmun: Process animated connector, Services Tactile Hover & Border Glow, Portfolio Immersive Preview Showcase, Testimonials Desktop navigation/paginations.
+5. **🔴 BATCH 5: Smart Lead Generation, Advanced Conversion & CI/CD (P2/P3 - Strateji)**
+   * Məzmun: Smart Multi-step Quote Wizard, Proactive AI Sales Agent, TanStack Query staleTime, Lighthouse CI Pipeline & PHP 8.3 support.
+
+## PHASE 2: EXECUTION (Laravel Standards)
+* `declare(strict_types=1);` məcburidir.
+* Controller → yalnız orchestration. Logic → Services.
+* **API Response Rules (CRITICAL):**
+    * Bütün cavablar `JsonResource` olmalıdır.
+    * **Exception Handling:** API routeları HƏR ZAMAN JSON qaytarmalıdır (`Accept: application/json` force). HTML xəta səhifəsi qadağandır.
+* Localization → `Accept-Language` (AZ / EN / RU).
+
+## PHASE 3: VERIFICATION & REPORTING (MANDATORY)
+* **Security Check:** CSRF, Auth, Permission.
+* **Media Check:** Şəkillər mütləq **Absolute URL** olmalıdır.
+* **REPORTING PROTOCOL (CRITICAL):**
+    İş bitdikdən sonra **MÜTLƏQ** `work_log.md` faylını aç və hesabat yaz:
+    1.  **Ardıcıl Nömrə:** (məs: `[ID-005]`).
+    2.  **Tarix:** Cari vaxt.
+    3.  **SÜBUT (PROOF):** Dəyişdirilən fayl adlarını konkret yaz.
+    4.  Yalnız bundan sonra `new_tasks.md`-də tapşırığı işarələ.
+
+# 3.1. PROJECT SCOPE & SAFETY
+* **Legacy Zone (DO NOT TOUCH):** Legacy PHP Blade route `/` and `index_new.blade.php` legacy file.
+* **Active Work Zone (SAFE TO EDIT):** Route `/react-test` and `/preview/*` React routes, including all related React / Inertia / Tailwind / TypeScript components. This is our primary target page (later to be copied to `/`).
+* **Database Safety Rule:** Mövcud sütunları silmək/dəyişmək **QADAĞANDIR**.
+
+# 4. DESIGN AESTHETICS & ARCHITECTURE
+
+## 4.1. Brand Identity
+* **Primary:** `#4b0082` | **Secondary:** `#d500f9`
+* **Gradient:** `linear-gradient(135deg, #4b0082, #d500f9)`
+* **Dark BG:** `#0b0f19` | **Light BG:** `#f2f4f8`
+* **RULE:** Rənglər yalnız CSS Variables (`var(--brand-primary)`). Hex hardcode QADAĞANDIR.
+
+## 4.2. CSS Architecture
+1. `chalang-core.css` → Grid, spacing, layout (Source of Truth).
+2. `dynamic-styles.blade.php` → Admin tərəfindən inject olunan dəyişənlər.
+3. `app.css` → **Legacy override (TOXUNMA).**
+4. `chalang-preview.css` → Aktiv komponent layı.
+
+## 4.3. Visual Philosophy
+* Premium, minimal, glassmorphism.
+* Inter / Outfit fontları.
+* **Theme System:** Dark mode default. Light mode invert deyil, ayrıca dizayn olunur.
+
+# 5. RESPONSIVE & LAYOUT RULES (ULTIMATE MATRIX)
+
+## 5.1. Design Floor & Breakpoints
+* **Design floor = 320px** (iPhone SE). UI 320px-də daşırsa, bu **UĞURSUZLUQDUR**.
+* **Breakpoints:**
+    * **XS:** 320–359px (Critical test zone)
+    * **S:** 360–389px
+    * **M:** 390–413px
+    * **TAB:** 768–1023px
+    * **DS:** ≥1024px
+    * **UHD:** ≥1920px (Special 8K logic)
+
+## 5.2. Section Column Matrix (MANDATORY)
+| Section       | XS (320) | S (360) | TAB (768) | DS (1024) | Notes |
+|---------------|----------|---------|-----------|-----------|-------|
+| **Hero** | 1        | 1       | 1         | 2         | XL content fits in 2 cols |
+| **Services** | 1        | 1       | 2         | 3/4       | - |
+| **Stats** | 2        | 2       | 4         | 4         | Even on 320px must be 2x2 |
+| **Process** | 1        | 1       | 2         | 4         | - |
+| **Team** | 1        | 2       | 3         | 4         | - |
+| **Calculator**| 1        | 1       | 1         | 2         | Complex forms stack on mobile |
+| **Portfolio** | 1        | 1       | 2         | 3         | Masonry layout preferred |
+| **FAQ** | 1        | 1       | 1         | 2         | 2 col only if items are short |
+| **Footer** | 1        | 1       | 3         | 4         | - |
+
+## 5.3. Special Device Protocols (Foldable / Landscape)
+* **Landscape Critical Rule (`max-height: 500px`):**
+    * **Sticky Elements:** FORCE OFF (Navbar unstick, CTA unstick).
+    * **Hero Decoration:** `opacity: 0.3` (Reduce visual noise).
+    * **Hero Height:** `auto` (Never `100vh`).
+    * **Padding:** Reduce vertical padding by 50%.
+* **Foldable (Z Fold / Dual Pane):**
+    * **Crease-Safe Zone:** Avoid centering critical text/buttons in the middle 20px of the screen.
+    * **Dual-Pane:** If viewport > 600px but aspect ratio is square-ish, treat as TAB layout.
+
+## 5.4. 8K / UHD Strategy
+* **Content Cap:** `max-width: 1440px` (Center aligned).
+* **Backgrounds:** Visuals/Gradients expand to `100vw` (Infinite stretch).
+* **Typography:** Do not scale fonts infinitely. Cap `rem` scaling.
+
+## 5.5. Interaction & Micro-Animations
+* **Touch Devices:** `Hover` effects DISABLED. Use `:active` state.
+* **Animation Priority:**
+    * **Critical:** Navigation, Modals, Buttons (Instant feedback).
+    * **Decor:** Hero shapes, parallax (Disable if `prefers-reduced-motion`).
+    * **Crease Awareness:** Animations should not cross the fold line abruptly.
+
+# 6. MIGRATION RULES
+* Next.js / Vite təklif etmə.
+* API-lər Blade funksionallığını 1:1 əks etdirməlidir.
+* **Reversibility:** Keçid mərhələli və geri dönülə bilən olmalıdır.
+
+# 7. COMMUNICATION RULES (STRICT REALISM)
+* **Directness:** Qısa, texniki, konkret. Fayl yaradılarsa **tam content** ver.
+* **Risk Warnings:** Riskli dəyişiklikdən əvvəl mütləq `[WARNING]` etiketi istifadə et.
+* **Evidence:** "Həll etdim" demə, "Həll etdim, sübutu `work_log.md` faylındadır" de.
+* **Constructive Conflict:** Əgər mən səhv bir yol seçsəm, mənə mütləq **2 seçim** ver:
+    1.  **Mənim istədiyim (Riskli yol):** Riskləri siyahıla.
+    2.  **Senior Architect tövsiyəsi (Doğru yol):** Niyə daha yaxşı olduğunu izah et.

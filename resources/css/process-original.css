@@ -1,0 +1,391 @@
+.process-section {
+                padding: 70px 20px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Premium Steps Navigation */
+            .process-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 40px;
+                padding: 0 20px;
+            }
+
+            /* Connecting Line */
+            .process-container::before {
+                content: '';
+                position: absolute;
+                top: 50px;
+                /* Aligned with circle center */
+                left: 60px;
+                right: 60px;
+                height: 1px;
+                background: rgba(255, 255, 255, 0.05);
+                z-index: 0;
+            }
+
+            [data-theme="light"] .process-container::before {
+                background: rgba(0, 0, 0, 0.05);
+                /* Lighter line for light mode */
+            }
+
+            .process-step {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                flex: 1;
+                opacity: 0.7;
+            }
+
+            .process-step:hover {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+
+            .process-step.active {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            .step-circle {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 16px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transition: all 0.4s ease;
+                position: relative;
+            }
+
+            /* Active State Stylings */
+            .process-step.active .step-circle {
+                background: var(--brand-primary);
+                border-color: var(--brand-primary);
+                box-shadow: 0 0 30px rgba(var(--brand-primary-rgb), 0.4);
+            }
+
+            [data-theme="light"] .step-circle {
+                background: #fff;
+                border: 1px solid #eee;
+                color: var(--text-main);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            }
+
+            [data-theme="light"] .process-step.active .step-circle {
+                color: #fff;
+                /* Keep text white on active in light mode if bg is primary */
+            }
+
+            .step-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 8px;
+                padding: 0 10px;
+            }
+
+            [data-theme="light"] .step-title {
+                color: var(--text-main);
+            }
+
+            .step-desc {
+                font-size: 0.9rem;
+                color: var(--text-sub);
+                max-width: 200px;
+                line-height: 1.4;
+            }
+
+            [data-theme="light"] .step-desc {
+                color: #64748b;
+            }
+
+            /* Details Container (The big card) */
+            /* Map Hotspots */
+            /* Map Hotspots */
+            .map-hotspot {
+                position: absolute;
+                width: 14px;
+                height: 14px;
+                background: var(--brand-primary) !important;
+                /* Theme Purple */
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                box-shadow: 0 0 15px rgba(124, 58, 237, 0.6);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+            }
+
+            .map-hotspot::before,
+            .map-hotspot::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: 1px solid var(--brand-primary);
+                animation: ripple 2s infinite linear;
+            }
+
+            .map-hotspot::after {
+                animation-delay: 1s;
+            }
+
+            .map-hotspot-label {
+                position: absolute;
+                left: 50%;
+                bottom: 140%;
+                transform: translateX(-50%) translateY(6px);
+                background: rgba(10, 15, 25, 0.92);
+                color: #fff;
+                font-size: 0.75rem;
+                padding: 6px 10px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.2s ease;
+            }
+
+            .map-hotspot:hover .map-hotspot-label,
+            .map-hotspot:focus-visible .map-hotspot-label {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            [data-theme="light"] .map-hotspot-label {
+                background: rgba(255, 255, 255, 0.95);
+                color: #0f172a;
+                border-color: rgba(0, 0, 0, 0.08);
+            }
+
+            @keyframes ripple {
+                0% {
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.8;
+                    border-width: 2px;
+                }
+
+                100% {
+                    width: 400%;
+                    height: 400%;
+                    opacity: 0;
+                    border-width: 0;
+                }
+            }
+
+            /* Clean List Style (Grid Layout) */
+            .process-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px 30px;
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+                max-width: 800px;
+                width: 100%;
+            }
+
+            .process-list li {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                /* Subtle border for structure */
+                border-radius: 12px;
+                padding: 12px 16px !important;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #e2e8f0;
+                font-weight: 500;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                text-align: left;
+            }
+
+            .process-list li:hover {
+                background: rgba(255, 255, 255, 0.08);
+                transform: translateX(5px);
+                border-color: rgba(255, 255, 255, 0.2);
+            }
+
+            .process-list li svg {
+                color: #00ff88;
+                /* Green Checkmarks */
+                flex-shrink: 0;
+            }
+
+            /* LIGHT MODE OVERRIDES for List */
+            [data-theme="light"] .process-list li {
+                background: rgba(0, 0, 0, 0.04);
+                border-color: rgba(0, 0, 0, 0.08);
+                color: var(--text-main);
+            }
+
+            [data-theme="light"] .process-list li:hover {
+                background: rgba(0, 0, 0, 0.08);
+                /* Darker hover */
+                border-color: rgba(0, 0, 0, 0.15);
+            }
+
+            /* Mobile Grid */
+            @media (max-width: 600px) {
+                .process-list {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* Step-to-Card Connector */
+            .process-step.active::after {
+                content: '';
+                position: absolute;
+                bottom: -60px;
+                /* Connect deeper */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 60px;
+                background: linear-gradient(to bottom, var(--brand-primary) 0%, rgba(124, 58, 237, 0) 100%);
+                opacity: 0.8;
+                z-index: 0;
+                box-shadow: 0 0 10px var(--brand-primary);
+            }
+
+            /* Map Background Sizing - Force Full Bleed */
+            /* Removed old process-map-bg styles */
+
+            .process-section {
+                position: relative;
+                overflow: hidden;
+                /* Clip the full width map */
+                padding: 80px 0;
+            }
+
+            .process-details-container {
+                max-width: 1100px;
+                margin: 40px auto 0;
+                position: relative;
+                min-height: 400px;
+                z-index: 2;
+                /* Ensure card is above map */
+            }
+
+            /* CTA Button (Neon Style) */
+            .process-cta-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: linear-gradient(135deg, var(--brand-primary), #9333ea);
+                color: #fff !important;
+                padding: 12px 24px;
+                border-radius: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                margin-top: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+            }
+
+            .process-cta-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(124, 58, 237, 0.6);
+            }
+
+            /* Better Contrast for Detail Text (Dark Mode) */
+            .process-detail-item p {
+                color: rgba(255, 255, 255, 0.9);
+                /* More opaque for readability */
+                font-size: 1.05rem;
+                /* Slightly larger */
+                margin-bottom: 20px;
+            }
+
+            /* Map Vignette Overlay */
+            .process-map-wrapper::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(circle at center, transparent 30%, var(--bg-body) 90%);
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            /* Light Mode Text Contrast */
+            [data-theme="light"] .process-detail-item p {
+                color: #334155 !important;
+                /* Dark Slate for readability */
+                font-weight: 500;
+            }
+
+            [data-theme="light"] .process-details-container {
+                background: rgba(255, 255, 255, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            }
+
+            /* Enhanced Step Connector */
+            .process-step.active::after {
+                content: '';
+                position: absolute;
+                bottom: -80px;
+                /* Extend to touch card */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 2px;
+                height: 80px;
+                background: linear-gradient(to bottom, var(--brand-primary) 0%, var(--brand-primary) 60%, transparent 100%);
+                opacity: 1;
+                z-index: 0;
+                box-shadow: 0 0 15px var(--brand-primary);
+                animation: flowDown 1.5s infinite;
+            }
+
+            @keyframes flowDown {
+                0% {
+                    background-position: 0% 0%;
+                }
+
+                100% {
+                    background-position: 0% 100%;
+                }
+            }
+
+            /* Map Container - Strict Ratio Formatting */
+            .process-map-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transform-origin: center center;
+            }
+
+            .process-map-img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                /* Ensure image fits container exactly */
+                opacity: 0.15;
+            }

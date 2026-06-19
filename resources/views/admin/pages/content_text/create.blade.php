@@ -33,7 +33,7 @@
 
 @push('js_stack')
     <!-- Parsley js -->
-    <script src="{{ asset('admin/plugins/parsleyjs/parsley.min.js') }}"></script>
+    <script src="{{ asset('admin_assets/plugins/parsleyjs/parsley.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('form').parsley();

@@ -11,4 +11,9 @@ class Lang extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['lang', 'contry'];
+
+    public function getCodeAttribute()
+    {
+        return $this->lang;
+    }
 }

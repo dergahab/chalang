@@ -20,6 +20,7 @@
 
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="{{asset('assets/css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/chalang-preview.css?v=') . time() }}">
 
 </head>
 
@@ -27,12 +28,11 @@
     <!--[if lte IE 9]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   	<![endif]-->
-    <a href="#main-wrapper" id="backto-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    @include('front.layouts.partials.scroll_to_top')
+
 
     <!-- Preloader Start Here -->
-    <div id="preloader"></div>
+    <div id="preloader-wrapper"></div>
     <!-- Preloader End Here -->
 
     <div class="my_switcher d-none d-lg-block">
@@ -109,6 +109,8 @@
 
     <!-- Site Scripts -->
     <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{ asset('assets/js/chalang-preview.js?v=') . time() }}"></script>
 </body>
+
 
 </html>

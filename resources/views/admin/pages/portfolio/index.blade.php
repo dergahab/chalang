@@ -17,6 +17,7 @@
                 @include('admin.inc.dynamic_datatable', [
                     '__datatableName' => 'portfolio',
                     '__datatableId' => 'portfolio',
+                    '__model' => 'App\Models\Portfolio',
                 ])
             </div>
     </div>

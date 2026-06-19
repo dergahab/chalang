@@ -1,0 +1,138 @@
+### [ID-001] Layihə Başlanğıcı (Init)
+### [ID-002] 4K Verification Documentation & Findings
+### [ID-003] 4K Verification Documentation & Findings
+### [ID-004] 4K Fixed: Navbar Cutoff & Alignment
+### [ID-005] Mobile Footer Premium UX Polish
+### [ID-006] Global Footer Responsive Fix (Stack columns on mobile)
+### [ID-007] Revert: Navbar preview overrides removed
+### [ID-008] Mobile Footer 2-Col Layout & WSOD Fix
+### [ID-009] Global Footer Responsive Stack (Mobile)
+### [ID-010] Desktop Navigation Alignment & Active State
+### [ID-011] Legacy Navbar Fix: CSS Selector & Width Restoration
+### [ID-012] Navbar Text Restoration (Fixed 'Pill' Regression)
+### [ID-013] Navbar Text Restoration (Retry - Force Fix)
+### [ID-014] Navbar Duplication Fix (Swap Logic Restored)
+### [ID-015] Incident Resolved: Double Text & Pill Mode Logic
+### [ID-016] Incident Resolved: Double Text & Pill Mode Logic
+### [ID-017] React Navbar Sync w/ Legacy
+### [ID-018] React Navbar FINAL Sync
+### [ID-019] Navbar Vertical Fix
+### [ID-020] Active State Text Swap
+### [ID-021] Active State Text Swap
+### [ID-022] Contact Menu Dynamic Update
+### [ID-023] Contact Menu Dynamic Update
+### [ID-024] Z Fold 5 (Crease-Safe & Dual Pane) Optimization
+### [ID-025] Z Fold 5 (Crease-Safe & Dual Pane) Optimization
+### [ID-026] React Migration PRE-FAZA (Theme & Baseline)
+### [ID-027] React Migration FAZA 3 (Orta Section-lar)
+### [ID-028] React Migration PRE-FAZA (Theme & Baseline)
+### [ID-029] React Migration FAZA 3 (Orta Section-lar)
+### [ID-030] React Migration FAZA 4.1 (Hero Section)
+### [ID-031] React Migration FAZA 4.1 (Hero Section)
+### [ID-032] React Migration FAZA 5.1 (Polish & Visual Parity - P0 Blockers)
+### [ID-033] React Migration FAZA 5.2 (Polish & Visual Parity - P1 Core Features)
+### [ID-034] React Migration FAZA 5.1 (Polish & Visual Parity - P0 Blockers)
+### [ID-035] Canlı Test (Browser Sandbox) & 1:1 Miqrasiya Auditi
+### [ID-036] React Parity & Layout Fixes: Structural Class Synchronizations
+### [ID-037] React vs Blade 1:1 Parity Fixes (P0/P1/P2)
+### [ID-038] Navbar Dropdown Glassmorphism Parity
+### [ID-039] Navbar Breakpoint Standardization
+### [ID-040] Touch Target Minimum (44x44px WCAG) A11y
+### [ID-041] Landscape Mode CSS (max-height: 500px) Optimization
+### [ID-042] Landscape Mode CSS (max-height: 500px) Optimization
+### [ID-043] Foldable Crease-Safe Optimization (Z-Fold)
+### [ID-044] 8K/UHD Content Cap Standardization (max-width: 1440px)
+### [ID-045] Hero Kicker & Showreel Inline Style Parity
+### [ID-046] React Migration Audit � 9 Kritik/Orta Problemin H?lli
+### [ID-047] Qalan B�t�n Probleml?rin H?lli (Sprint 2 + React Audit)
+### [ID-056] About Us UI/UX and Navbar Fixes
+### [ID-057] Smart Estimator Backend Integration
+### [ID-058] Blackbox AI Regression Fix
+### [ID-059] Estimator Dizayn Berpa + Kateqoriya/Alt Xidmet Strukturu
+### [ID-060] - 2026-05-05
+### [ID-061] Datatables Global Glassmorphism CSS Fix
+### [ID-062] Datatables Custom Search & Length Menu Integration
+### [ID-063] - 2026-05-07
+### [ID-064] - 2026-05-08
+### [ID-065] - 2026-05-09
+### [ID-066] - 2026-05-09
+### [ID-067] - 2026-05-09
+### [ID-068] - 2026-05-09
+### [ID-069] - 2026-05-09
+### [ID-070] - 2026-05-09
+### [ID-071] - 2026-05-09
+### [ID-072] - 2026-05-09
+### [ID-073] - 2026-05-09
+### [ID-074] - 2026-05-09
+### [ID-075] - 2026-05-09
+### [ID-076] - 2026-05-09
+### [ID-077] - 2026-05-09
+### [ID-078] - 2026-05-09
+### [ID-079] - 2026-05-09
+### [ID-080] - 2026-05-09
+### [ID-081] - 2026-05-09
+### [ID-082] - 2026-05-09
+### [ID-083] - 2026-05-09
+### [ID-084] - 2026-05-09
+### [ID-085] - 2026-05-09
+### [ID-086] - 2026-05-09
+### [ID-087] - 2026-05-10
+### [ID-088] - 2026-05-12
+### [ID-089] - 2026-05-12
+### [ID-090] - 2026-05-12
+### [ID-091] - 2026-05-12
+### [ID-092] - 2026-05-13
+### [ID-093] - 2026-05-14: Phase 0 Təcili Düzəlişlər (Stabilizasiya)
+### [ID-094] - 2026-05-14: Phase 6 Təhlükəsizlik Düzəlişləri
+### [ID-095] - 2026-05-14: Phase 11 React Kod Keyfiyyəti Düzəlişləri
+### [ID-096] - 2026-05-14: Phase 11 TypeScript, Code Splitting & Test Coverage
+### [ID-097] - 2026-05-14: Phase 1.11.1.8 Code Splitting Reinstated
+### [ID-098] - 2026-05-14: TypeScript Zero-Error & Task Tracking Sync
+### [ID-099] - 2026-05-14: React Migration Stability & Cleanup
+### [ID-100] - 2026-05-14: Theme & Baseline Optimization
+### [ID-101] - 2026-05-14: Navbar UI & Logic Fixes
+### [ID-102] - 2026-05-14
+### [ID-103] - 2026-05-14
+### [ID-104] - 2026-05-14
+### [ID-105] - 2026-05-14
+### [ID-106] - 2026-05-14
+### [ID-107] - 2026-05-14
+### [ID-108] - 2026-05-14
+### [ID-110] - 2026-05-15
+### [ID-109] - 2026-05-14
+### [ID-111] - 2026-05-14
+### [ID-113] - 2026-05-15
+### [ID-114] - 2026-05-15
+### [ID-115] - 2026-05-15
+### [ID-116] - 2026-05-15
+### [ID-117] - 2026-05-15
+### [ID-118] - 2026-05-15
+### [ID-119] - 2026-05-15
+### [ID-120] - 2026-05-15
+### [ID-121] - 2026-05-15
+### [ID-122] - 2026-05-15
+### [ID-123] - 2026-05-15
+### [ID-124] - 2026-05-15
+### [ID-125] - 2026-05-15
+### [ID-126] - 2026-05-15
+### [ID-127] - 2026-05-15
+### [ID-128] - 2026-05-15
+### [ID-129] - 2026-05-15
+### [ID-130] - 2026-05-15
+### [ID-131] - 2026-05-15
+### [ID-132] - 2026-05-15
+### [ID-133] - 2026-05-15
+### [ID-134] - 2026-05-15
+### [ID-135] - 2026-05-15
+### [ID-136] - 2026-05-15
+### [ID-137] - 2026-05-15: Phase 1.3 — Section Heading Typography Scale Audit + MASTER_PLAN Sync
+### [ID-138] - 2026-05-16: Section Visibility Fix + Lazy Import / Performance Polish
+### [ID-139] - 2026-05-16: Phase 3.4 — DB Migration: project_type & outcome columns
+### [ID-140] - 2026-05-17: Phase 1.7 — TypeScript Cleanup (any → unknown)
+### [ID-141] - 2026-05-17: Phase 2.7 — About Timeline Component
+### [ID-142] - 2026-05-17: Phase 4.6 — Toast Notification Component
+### [ID-144] - 2026-05-17: Phase 4.5 ÔÇö ARIA Section Labels & Blog Article Schema
+### [ID-145] - 2026-05-17: Phase 2.2 ÔÇö Navbar Improvements (Current Design)
+### [ID-146] - 2026-05-17: Phase 3.3 ÔÇö Pricing & Estimator Currency Hardcode Fix
+### [ID-147] - 2026-05-17: Phase 4.5 ÔÇö Blog Article Schema Re-implementation
+### [ID-148] - 2026-05-17: Navbar CTA Removal (User Request)

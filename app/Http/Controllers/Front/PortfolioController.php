@@ -27,4 +27,23 @@ class PortfolioController extends Controller
 
         return view('front.portfolio.single', compact('images', 'portfolio'));
     }
+
+    public function newIndex()
+    {
+        $portfolios = Portfolio::with('pcategories')->get();
+
+        $pcategory = $portfolios->pluck('id')->toArray();
+        $portfolio_categories = Pcategory::whereHas('portfolios', function ($query) use ($pcategory) {
+            $query->whereIn('pcategory_portfolio.portfolio_id', $pcategory);
+        })->get();
+
+        return view('front.portfolio.portfolio_new', compact('portfolio_categories', 'portfolios'));
+    }
+
+    public function newDetails(Portfolio $portfolio)
+    {
+        $images = $portfolio->images;
+
+        return view('front.portfolio.single_new', compact('images', 'portfolio'));
+    }
 }

@@ -21,6 +21,22 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Admin Panel: Planlanan Funksiyalar
+
+- **AI dəstəyi**: avtomatik tərcümə (AZ→EN/RU), AI copywriter (SEO yönümlü), meta təklifləri, dil/stil QA.
+- **Analitika**: canlı ziyarətçi xəritəsi, heatmap, lead konversiya/funnel, uptime/performance, anomaliya alertləri.
+- **CRM/Lead**: Kanban lövhəsi (Yeni/Danışıqlar/Bağlandı), müştəri profili, avtomatik təsnifat (lead/spam/iş), firmografik enrich.
+- **UI/UX idarəetməsi**: brand rəng palitrası dəyişdirici, banner/popup builder, feature toggles, A/B test planlayıcı.
+- **Təhlükəsizlik/Audit**: ətraflı activity log (diff/revert), rol auditi, snapshot/backup (versiya qaytarma).
+- **Bildirişlər**: dropdown + tarixçə, “Hamısını oxunmuş et”, mail/Slack/Push inteqrasiyası.
+- **Mobil/PWA**: PWA manifest + offline draft, push bildirişlər (yeni lead/mesaj), mobil optimizasiyası.
+- **Sessiya izləmə**: session replay, form tərk etmə xəbərdarlıqları.
+- **Kontent planlama**: kontent təqvimi, tapşırıq əlaqələndirməsi.
+- **Form/Media/SEO**: vizual form builder + CSV/Excel export, media optimizasiya, XML sitemap/404/broken-link/hreflang/meta checker.
+- **Segmentasiya/Hədəfləmə**: popup/bannerləri ölkə/cihaz/səhifə/UTM-ə görə göstərmək, trigger və A/B test.
+- **Ops/Monitorinq**: uptime və error log paneli, performans/traffik anomaliya alertləri.
+- **Əlavə**: təsdiq axını (Draft→Review→Publish), şablon kitabxanası, smart media picker, GDPR/cookie modulu, təklif/invoice generator, email templateləri, bulk əməliyyatlar, daha sürətli axtarış (Elastic/MeiliSearch).
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

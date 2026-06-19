@@ -17,6 +17,7 @@ t
                 @include('admin.inc.dynamic_datatable', [
                     '__datatableName' => 'blog',
                     '__datatableId' => 'blog',
+                    '__model' => 'App\Models\Blog',
                 ])
             </div>
     </div>

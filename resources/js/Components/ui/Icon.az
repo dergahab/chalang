@@ -1,0 +1,107 @@
+/**
+ * Icon Component - Wrapper for Lucide React icons
+ * Provides consistent icon usage across the application
+ */
+import { LucideIcon, icons as lucideIcons } from 'lucide-react';
+
+// Available icon names
+export type IconName = keyof typeof lucideIcons;
+
+// Icon component props
+interface IconProps {
+    name: IconName;
+    size?: number;
+    strokeWidth?: number;
+    className?: string;
+    'aria-label'?: string;
+}
+
+/**
+ * Dynamic icon component
+ */
+export function Icon({ name, size = 20, strokeWidth = 2, className = '', ...props }: IconProps) {
+    const IconComponent = lucideIcons[name] as LucideIcon;
+    
+    if (!IconComponent) {
+        console.warn(`Icon "${name}" not found`);
+        return null;
+    }
+    
+    return (
+        <IconComponent
+            size={size}
+            strokeWidth={strokeWidth}
+            className={className}
+            aria-label={props['aria-label'] || name}
+            {...props}
+        />
+    );
+}
+
+/**
+ * Common icons re-exported for easy access
+ */
+export {
+    // Navigation
+    Menu, X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight,
+    ArrowLeft, ArrowRight, ArrowUp, ArrowDown,
+    ExternalLink, Home, Settings, User, Users,
+    // Actions
+    Check, X as XCircle, Plus, Minus, Search, Filter,
+    Copy, Edit, Trash, Download, Upload, Save,
+    Eye, EyeOff, Clock, Calendar, Bell,
+    // Social
+    Mail, Phone, Globe, MapPin, Send, Share,
+    // UI
+    Moon, Sun, Volume, VolumeOff, Wifi, WifiOff,
+    Settings2, Sliders, RefreshCw, Loader,
+    // Status
+    AlertCircle, AlertTriangle, Info, HelpCircle,
+    CheckCircle, XCircle as XCircleFilled,
+    // Content
+    Image, Video, File, Folder, MessageSquare,
+    Star, Heart, ThumbsUp, ThumbsDown,
+    // Misc
+    Zap, Code, Briefcase, Laptop, Smartphone,
+    Facebook, Twitter, Instagram, Linkedin, Youtube, Telegram,
+} from 'lucide-react';
+
+/**
+ * Icon button wrapper
+ */
+interface IconButtonProps {
+    icon: LucideIcon;
+    label: string;
+    size?: number;
+    variant?: 'default' | 'ghost' | 'outline';
+    className?: string;
+    onClick?: () => void;
+}
+
+export function IconButton({ 
+    icon: IconComponent, 
+    label, 
+    size = 20, 
+    variant = 'default',
+    className = '',
+    onClick 
+}: IconButtonProps) {
+    const variantClasses = {
+        default: 'p-2 rounded-lg hover:bg-foreground/10 transition-colors',
+        ghost: 'p-2 rounded-lg hover:bg-foreground/5 transition-colors',
+        outline: 'p-2 rounded-lg border border-foreground/20 hover:bg-foreground/5 transition-colors',
+    };
+    
+    return (
+        <button
+            type="button"
+            aria-label={label}
+            onClick={onClick}
+            className={variantClasses[variant] + ' ' ' + className}
+        >
+            <IconComponent size={size} />
+        </button>
+    );
+}
+
+export default Icon;

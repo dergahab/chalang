@@ -7,24 +7,27 @@
   "contact": "Contact",
   "more": "Learn More",
   "All": "All",
-  "PortfolioProject": "Projets",
+  "PortfolioProject": "Projects",
   "Support": "Support",
-  "ServiceTitle" : "Digital Services That Add Real Value",
-  "ServiceDesctioption" : "We shape your brand with design and strategy.",
-
-  "Let's Work Together": "Давайте работать вместе",
-    "Bring Your Project to Life With Us": "Реализуем ваш проект вместе",
-    "Estimate Project": "Оценить проект",
-    "Our Work": "Our Work",
-    "Discover the projects we’ve crafted.": "Discover the projects we’ve crafted.",
-
-
-    "portfolio_title": "Our Successful Projects",
-    "portfolio_subtitle": "Explore how we bring value to brands.",
-    "contact_title": "Contact Us",
+  "ServiceTitle": "Digital Services That Add Real Value",
+  "ServiceDesctioption": "We shape your brand with design and strategy.",
+  "Let's Work Together": "Let's Work Together",
+  "Bring Your Project to Life With Us": "Bring Your Project to Life With Us",
+  "Estimate Project": "Get a Project Estimate",
+  "Our Work": "Our Work",
+  "Discover the projects we've crafted.": "Discover the projects we've crafted.",
+  "portfolio_title": "Our Successful Projects",
+  "portfolio_subtitle": "Explore how we bring value to brands.",
+  "contact_title": "Contact Us",
   "contact_subtitle": "Get in touch with us now for your creative project. Our expert team in design, web development, and branding is ready to support you.",
-  "who_we_are": "Who we are",
-    "design_strategy": "Design strategy"
-
-
+  "who_we_are": "Who We Are",
+  "design_strategy": "Design Strategy",
+  "preview.estimator.disclaimer": "* These prices are estimated. The final price may vary depending on project requirements and functionalities.",
+  "preview.estimator.urgency_hint": "Slide to adjust project delivery speed.",
+  "preview.estimator.urgency_slow": "Slow",
+  "preview.estimator.urgency_normal": "Standard",
+  "preview.estimator.urgency_urgent": "Urgent",
+  "Page Not Found": "Page Not Found",
+  "The page you are looking for does not exist.": "The page you are looking for does not exist or has been moved.",
+  "Back to Home": "Back to Home"
 }

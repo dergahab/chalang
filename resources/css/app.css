@@ -1,1 +1,74 @@
-@import 'toastr';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply text-text-main overflow-x-clip;
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-body);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Selection */
+    ::selection {
+        @apply bg-brand-secondary text-white;
+    }
+}
+
+/* Animations included in Tailwind Config, but custom ones here */
+.animate-ticker {
+    animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Marquee — Infinite text scroll (Blade: .infinite-text) */
+@keyframes infiniteScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Partners — Horizontal logo marquee (Blade: .partners-track) */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .animate-ticker,
+    [style*="infiniteScroll"],
+    [style*="marquee"] {
+        animation: none !important;
+    }
+}
+
+/* Background shapes float animation (1:1 with Blade chalang-preview.css) */
+@keyframes float {
+    from {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    to {
+        transform: translateX(-50%) translateY(20px);
+    }
+}

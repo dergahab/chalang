@@ -12,7 +12,8 @@
                 <div class="card-body">
                     @include('admin.inc.dynamic_datatable', [
                         '__datatableName' => 'user',
-                        '__datatableId' => 'users',
+                        '__datatableId' => 'user',
+                        '__model' => 'App\Models\User',
                     ])
                 </div>
             </div>

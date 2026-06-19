@@ -23,48 +23,41 @@
                     @include('admin.inc.dynamic_datatable', [
                         '__datatableName' => 'banner',
                         '__datatableId' => 'datatable-category',
+                        '__model' => 'App\Models\Banner',
                     ])
 
                 </div>
             </div>
         </div>
-    @endsection
-    @push('js_stack')
-        <!-- Parsley js -->
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <script>
-            $(document).ready(function() {
+    </div>
+@endsection
+@push('js_stack')
+    <!-- Parsley js -->
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
 
-                $("#sortables").sortable({
-                    cancel: 'thead',
-                    stop: () => {
-                        let order = {}
-                        $('.sortable').each(function() {
-                            order[$(this).data('id')] = $(this).index();
-                        });
-
-                        // $.post("{{ route('admin.service.index') }}", {
-                        //     order:order,
-                        //     token: "csrf_token()"
-                        // },function(response) {
-                        //     console.log(response.data);
-                        // });  
-
-
-                    }
-                });
-            });
-        </script>
-        <script>
-            $(document).on('change', '.in_main', function() {
-                let id = $(this).data('id');
-
-                $.get("{{ route('admin.service.in_main') }}", {
-                        id: id
-                    },
-                    function(data) {
-
+            $("#sortables").sortable({
+                cancel: 'thead',
+                stop: () => {
+                    let order = {}
+                    $('.sortable').each(function() {
+                        order[$(this).data('id')] = $(this).index();
                     });
-            })
-        </script>
-    @endpush
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).on('change', '.in_main', function() {
+            let id = $(this).data('id');
+
+            $.get("{{ route('admin.service.in_main') }}", {
+                    id: id
+                },
+                function(data) {
+
+                });
+        })
+    </script>
+@endpush

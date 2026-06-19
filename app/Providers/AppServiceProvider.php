@@ -30,6 +30,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Illuminate\Pagination\Paginator::useBootstrap();
+
+        // Production hygiene: disable debug tooling and lower log verbosity in prod
+        if ($this->app->environment('production')) {
+            config([
+                'debugbar.enabled' => false,
+                'debugbar.storage.enabled' => false,
+                'logging.channels.stack.level' => 'warning',
+                'logging.channels.single.level' => 'warning',
+                'logging.channels.daily.level' => 'warning',
+            ]);
+        }
+
         // Initialize and share sidebar items with all admin views
         view()->composer('admin.*', function () {
             $sidebar = CmsSidebar::getInstance();
@@ -39,21 +52,32 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // Share other common data
-        if (Schema::hasTable('users')) {
-            view()->share('users', User::all());
-        }
-        if (Schema::hasTable('langs')) {
-            view()->share('languages', Lang::all());
-            view()->share('langs', Lang::all());
-        }
-        if (Schema::hasTable('contacts')) {
-            view()->share('contact', Contact::first());
-        }
-        if (Schema::hasTable('socialmedia')) {
-            view()->share('socialmedia', Socialmedia::all());
-        }
-        if (Schema::hasTable('services')) {
-            view()->share('main_services', Service::where('in_main', 1)->where('parent_id', 0)->get());
+        if (!$this->app->runningInConsole()) {
+            if (Schema::hasTable('users')) {
+                view()->share('users', User::all());
+            }
+            if (Schema::hasTable('langs')) {
+                view()->share('languages', Lang::all());
+                view()->share('langs', Lang::all());
+            }
+            if (Schema::hasTable('contacts')) {
+                view()->share('contact', Contact::first());
+            }
+            if (Schema::hasTable('socialmedia')) {
+                view()->share('socialmedia', Socialmedia::all());
+            }
+            if (Schema::hasTable('services')) {
+                $services = Service::where('in_main', 1)
+                    ->where('parent_id', 0)
+                    ->get()
+                    ->map(function ($service) {
+                        $rawName = $service->name;
+                        $flat = \Illuminate\Support\Arr::flatten((array) $rawName);
+                        $service->name = implode(' / ', array_filter($flat, 'strlen'));
+                        return $service;
+                    });
+                view()->share('main_services', $services);
+            }
         }
     }
 }

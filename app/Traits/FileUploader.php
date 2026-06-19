@@ -8,13 +8,27 @@ trait FileUploader
 {
     public function upload($request, $name, $dir = 'images')
     {
-        $dPath = $dir;
-        $img = $request->file($name);
-        $exten = $img->getClientOriginalExtension();
-        $fName = preg_replace('/\..+$/', '', $img->getClientOriginalName()).'.'.$exten;
-        $request->file($name)->storeAs($dPath, $fName);
-        $path = $dPath.'/'.$fName;
-        Storage::disk('public')->put($path, file_get_contents($request->file($name)));
+        if (!$request->hasFile($name)) {
+            return null;
+        }
+
+        $file = $request->file($name);
+
+        // Basic validation (can be enhanced or moved to FormRequest)
+        if (!$file->isValid()) {
+            throw new \Exception('Invalid file upload.');
+        }
+
+        $allowedMimes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf'];
+        if (!in_array($file->getMimeType(), $allowedMimes)) {
+            throw new \Exception('Invalid file type. Allowed: jpg, png, gif, webp, pdf');
+        }
+
+        $exten = $file->getClientOriginalExtension();
+        $fName = uniqid(time().'_').'.'.$exten;
+        
+        // Store only on public disk
+        $path = $file->storeAs($dir, $fName, 'public');
 
         return $path;
     }

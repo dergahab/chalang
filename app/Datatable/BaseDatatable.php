@@ -83,7 +83,8 @@ abstract class BaseDatatable
         $response = [];
 
         if (request()->has('sumTotal')) {
-            $total = getCacshTotal();
+            // Check if function exists or safe fallback
+            $total = function_exists('getCacheTotal') ? getCacheTotal() : ['try_amount' => 0, 'azn_amount' => 0];
             $response['sumTotal'] = (float) $total['try_amount'];
             $response['sumTotalAzn'] = (float) $total['azn_amount'];
         }
@@ -93,7 +94,16 @@ abstract class BaseDatatable
             $mainQuery->take($requestQuery['perPage']);
         }
 
-        $mainQuery->orderBy($mainQuery->getModel()->getTable().'.'.$requestQuery['columnName'], $requestQuery['columnSort']);
+        $table = $mainQuery->getModel()->getTable();
+        $column = $requestQuery['columnName'];
+        
+        // Only apply orderBy if the column exists in the main table and is not a virtual column
+        if (\Illuminate\Support\Facades\Schema::hasColumn($table, $column)) {
+            $mainQuery->orderBy($table.'.'.$column, $requestQuery['columnSort']);
+        } else {
+            // Default sort to ID if the requested column is not sortable in DB
+            $mainQuery->orderBy($table.'.id', 'desc');
+        }
 
         if ($requestQuery['request']->has('sumFiltered')) {
             $response['sumfiltered'] = $mainQuery->take($requestQuery['perPage'])->get()->sum('amount');
@@ -123,6 +133,21 @@ abstract class BaseDatatable
         return $records->map(function ($item) use (&$iterator) {
             $item['order_number'] = $iterator++;
             $data = [];
+            
+            // Add Checkbox Data
+            $data['checkbox'] = '<div class="form-check"><input type="checkbox" class="form-check-input bulk-item" value="'.$item->id.'"><label class="form-check-label"></label></div>';
+
+            // Add Status Toggle if column exists
+            if (isset($item->status)) {
+                $checked = $item->status ? 'checked' : '';
+                $data['status'] = '<div class="form-check form-switch">
+                    <input class="form-check-input status-toggle" type="checkbox" role="switch" 
+                        data-id="'.$item->id.'" 
+                        data-model="'.get_class($item).'" 
+                        '.$checked.'>
+                </div>';
+            }
+
             foreach (array_keys($this->tableColumns) as $key) {
                 $data[$this->sanitizeColumn($key)] = $this->formatPredefinedColumns($key, data_get($item, $key));
             }
@@ -192,6 +217,28 @@ abstract class BaseDatatable
     protected function columns(): JsonResponse
     {
         $columns = [];
+
+        // Add Checkbox Column
+        $columns[] = [
+            'data' => 'checkbox',
+            'title' => '<div class="form-check"><input type="checkbox" class="form-check-input" id="select-all"><label class="form-check-label" for="select-all"></label></div>',
+            'orderable' => false,
+            'searchable' => false,
+            'width' => '40px',
+            'className' => 'text-center'
+        ];
+
+        // Check if model has status column
+        $modelInstance = new $this->baseModel;
+        if (\Illuminate\Support\Facades\Schema::hasColumn($modelInstance->getTable(), 'status')) {
+            $columns[] = [
+                'data' => 'status',
+                'title' => 'Status',
+                'orderable' => true,
+                'width' => '80px',
+                'className' => 'text-center'
+            ];
+        }
 
         foreach ($this->tableColumns as $key => $value) {
             $column = $key;

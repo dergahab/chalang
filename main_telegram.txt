@@ -1,0 +1,24 @@
+    public function __construct(Nutgram $bot)
+    public function dispatchMessage(string $message, ?string $type = null, array $options = []): void
+    public function sendToAdmin(string $message, array $options = []): bool
+    public function sendWithButtons(string $message, array $buttons): bool
+    public function notifyNewLead(array $leadData): bool
+    public function notifyDelayedReply(array $leadData, int $minutes): bool
+    public function notifyNewSubscription(string $email): bool
+    public function notifyNewUser(array $userData): bool
+    public function notifyLogin(array $userData): bool
+    public function notifyFailedLogin(string $email, string $ip): bool
+    public function notifyImport(string $modelType, int $successCount, int $failedCount, array $errors = []): bool
+    public function notifyExport(string $modelType, int $count, string $filePath): bool
+    public function notifySlowRequest(string $url, float $duration): bool
+    public function notifyError(string $error, string $file, int $line): bool
+    public function notifyDatabaseError(string $query, string $error): bool
+    public function notifyLowDiskSpace(int $freePercent): bool
+    public function notifyLowMemory(int $usedPercent): bool
+    public function notifyCacheClear(string $type): bool
+    public function notifyExperimentStarted(array $experiment): bool
+    public function notifyExperimentComplete(array $experiment, array $winner): bool
+    public function notifyBulkAction(string $action, string $model, int $count): bool
+    public function notifyScheduledAction(string $name, int $success, int $failed): bool
+    public function notifyDailyStats(array $stats): bool
+    public function notifySystemHealth(array $health): bool

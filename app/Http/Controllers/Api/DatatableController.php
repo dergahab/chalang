@@ -12,15 +12,22 @@ class DatatableController extends Controller
 
     public function handle($datasource)
     {
-        $class = $this->namespace.'\\'.Str::ucfirst($datasource).'Datatable';
+        $class = $this->namespace.'\\'.Str::studly($datasource).'Datatable';
 
         try {
             return (new $class)->datatable();
         } catch (QueryException $exception) {
-            dd($exception);
+            \Illuminate\Support\Facades\Log::error($exception);
+            if (config('app.debug')) {
+                throw $exception;
+            }
+            return response()->json(['message' => 'Server Error'], 500);
         } catch (\Exception $exception) {
-            dd($exception);
-            throw new \Exception('Datatable class `'.$class.'` not found!');
+            \Illuminate\Support\Facades\Log::error($exception);
+            if (config('app.debug')) {
+                throw $exception;
+            }
+            return response()->json(['message' => 'Server Error'], 500);
         }
     }
 }

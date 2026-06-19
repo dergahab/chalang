@@ -1,6 +1,6 @@
 <div class="d-flex mb-4">
     <div class="flex-shrink-0">
-        <img src="{{asset('admin/assets/images/users/avatar-7.jpg')}}"
+        <img src="{{asset('admin_assets/assets/images/users/avatar-7.jpg')}}"
             alt="" class="avatar-xs rounded-circle">
     </div>
     <div class="flex-grow-1 ms-3">

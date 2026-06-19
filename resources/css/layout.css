@@ -1,0 +1,522 @@
+/**
+ * MainLayout Styles
+ * Extracted from MainLayout.tsx inline styles
+ * 
+ * Design tokens: Use CSS variables from ThemeProvider
+ * - var(--bg-body), var(--bg-card), var(--text-main), var(--text-sub)
+ * - var(--brand-primary), var(--brand-secondary)
+ * - var(--radius-btn), var(--radius-card)
+ */
+
+:root {
+    /* Transitions */
+    --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --icon-size-md: 40px;
+    
+    /* Default Dark Mode (System Priority) */
+    --bg-primary: #0D0D14;
+    --bg-secondary: #12121E;
+    --bg-section-alt: #0A0A12;
+    --footer-bg: #0A0A12;
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: none;
+    --input-border: #3A3A54;
+    --glow-intensity: 0.25;
+}
+
+[data-theme='light'], .light {
+    --bg-primary: #FAFAFC;
+    --bg-secondary: #F4F4F8;
+    --bg-section-alt: #EEEDF5;
+    --footer-bg: #F0F0F5;
+    --text-primary: #111111;
+    --text-secondary: #4B5563;
+    --text-muted: #6B7280;
+    --card-border: #E2E0F0;
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --input-border: #C8C4E0;
+    --glow-intensity: 0.06;
+}
+
+[data-theme='dark'], .dark {
+    --bg-primary: #0D0D14;
+    --bg-secondary: #12121E;
+    --bg-section-alt: #0A0A12;
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: none;
+    --input-border: #3A3A54;
+    --glow-intensity: 0.25;
+}
+    /* ── Glass Card (Design System §4) ─────────────────────────────────── */
+    .glass-card,
+    .kinetic-card,
+    .project-card,
+    .team-card,
+    .faq-item {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .glass-card {
+        background: var(--btn-glass, rgba(255, 255, 255, 0.03));
+        border: 1px solid var(--border-color, rgba(255, 255, 255, 0.05));
+    }
+
+    /* ── Background Shapes ──────────────────────────────────────────────── */
+    .bg-shape {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .bg-shape.shape-1 {
+        background: radial-gradient(circle at 20% 30%, var(--brand-primary) 0%, transparent 50%);
+        opacity: 0.4;
+        filter: blur(100px);
+    }
+
+    .bg-shape.shape-2 {
+        background: radial-gradient(circle at 80% 60%, var(--brand-secondary) 0%, transparent 40%);
+        opacity: 0.3;
+        filter: blur(80px);
+    }
+
+    .bg-shape.shape-3 {
+        background: radial-gradient(circle at 50% 90%, var(--brand-tertiary, #00d4ff) 0%, transparent 30%);
+        opacity: 0.2;
+        filter: blur(60px);
+    }
+
+    /* ── Noise Overlay ───────────────────────────────────────────────────── */
+    .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Custom Cursor ──────────────────────────────────────────────── */
+    .cursor-dot,
+    .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 10000;
+        pointer-events: none;
+        mix-blend-mode: difference;
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #fff;
+    }
+
+    .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* ── Card Hover Effects ───────────────────────────────────────────── */
+    .kinetic-card,
+    .project-card,
+    .team-card,
+    .faq-item {
+        border-radius: var(--radius-card, 24px);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .kinetic-card:hover,
+    .project-card:hover,
+    .team-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .magnet-btn,
+    .subscribe-btn {
+        border-radius: var(--radius-btn, 12px);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .magnet-btn:hover,
+    .subscribe-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px var(--brand-glow, rgba(75, 0, 130, 0.35));
+    }
+
+    /* ── Process Line ──────────────────────────────────────────────────── */
+    .process-line {
+        background: linear-gradient(90deg, transparent, var(--brand-primary), transparent) !important;
+        opacity: 0.5;
+        height: 2px;
+    }
+
+    /* ── Form Inputs ──────────────────────────────────────────────────── */
+    .magnet-input {
+        height: 50px;
+        box-sizing: border-box;
+    }
+
+    /* ── Fade In Animation ─────────────────────────────────────────────── */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+/* ── Light Mode Overrides ──────────────────────────────────────────── */
+[data-theme="light"] .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .service-desc,
+[data-theme="light"] .step-desc {
+    color: rgba(0, 0, 0, 0.75) !important;
+}
+
+/* ── Mobile Glow Reduction (Phase 4.1) ─────────────────────────────      */
+@media (max-width: 768px) {
+    :root {
+        --glow-intensity: 0.08;
+    }
+}
+
+/* ── Mobile Responsive (320px iPhone SE) ─────────────────────────────── */
+@media (max-width: 359px) {
+    .hero h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.02em !important;
+    }
+    
+    .hero p {
+        font-size: 0.85rem !important;
+    }
+    
+    .section-title {
+        font-size: 1.4rem !important;
+    }
+    
+    .section-subtitle {
+        font-size: 0.8rem !important;
+    }
+    
+    .counter-card {
+        min-width: 130px !important;
+        max-width: 150px !important;
+        padding: 15px !important;
+    }
+    
+    .count-number {
+        font-size: 2rem !important;
+    }
+    
+    .kinetic-card {
+        padding: 16px !important;
+    }
+    
+    .team-card {
+        min-width: 250px !important;
+    }
+    
+    .faq-question {
+        font-size: 0.85rem !important;
+        padding: 12px !important;
+    }
+    
+    .blog-card .blog-content {
+        padding: 12px !important;
+    }
+    
+    .contact-form .form-input {
+        padding: 10px 12px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .footer-main {
+        padding: 30px 15px !important;
+    }
+    
+    .mobile-sticky-cta .btn {
+        font-size: 0.85rem !important;
+        padding: 10px 16px !important;
+    }
+}
+
+/* ── Landscape Mode (max-height: 500px) ──────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    
+    .hero .hero-decor,
+    .hero .bg-shape {
+        opacity: 0.3 !important;
+    }
+    
+    .section {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .sticky,
+    [class*="sticky"] {
+        position: relative !important;
+    }
+    
+    .mobile-sticky-cta {
+        display: none !important;
+    }
+    
+    .navbar,
+    #masthead {
+        position: relative !important;
+    }
+}
+
+/* ── Foldable Crease Safe ──────────────────────────────────────── */
+.crease-safe {
+    padding-left: env(viewport-segment-left, 0px);
+    padding-right: env(viewport-segment-right, 0px);
+}
+
+@media (min-width: 600px) and (max-width: 800px) and (min-aspect-ratio: 3/4) and (max-aspect-ratio: 5/4) {
+    .counter-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .blog-slider {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* ── 8K/UHD Cap ─────────────────────────────────────────────────── */
+@media (min-width: 1920px) {
+    .section,
+    .services-section,
+    .process-section,
+    .team-section,
+    .portfolio-section,
+    .blog-section,
+    .faq-section,
+    .contact-section,
+    .estimator-section {
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    html {
+        font-size: min(18px, 1.1vw);
+    }
+}
+
+/* ── Reduced Motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .infinite-text,
+    .tech-track,
+    .partners-track {
+        animation: none !important;
+    }
+    
+    .hero canvas {
+        display: none !important;
+    }
+    
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .bg-shape,
+    [class*="float"] {
+        animation: none !important;
+    }
+}
+
+/* ── Touch Devices (Hover → Active) ──────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+    .kinetic-btn:hover,
+    .magnet-btn:hover,
+    .kinetic-card:hover,
+    .project-card:hover,
+    .team-card:hover,
+    .blog-card:hover,
+    .btn-pricing:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+    }
+    
+    .kinetic-btn:active,
+    .magnet-btn:active,
+    .btn-pricing:active {
+        transform: scale(0.96) !important;
+        opacity: 0.9;
+    }
+    
+    .kinetic-card:active,
+    .project-card:active {
+        transform: scale(0.98) !important;
+    }
+}
+
+/* ── Safe Area (Notch/Dynamic Island) ─────────────────────────── */
+@supports (padding: env(safe-area-inset-top)) {
+    #masthead {
+        padding-top: env(safe-area-inset-top);
+    }
+    
+    .mobile-sticky-cta {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .footer-bottom {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+}
+
+/* ── Focus Visible (Keyboard Navigation) ──────────────────── */
+*:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.kinetic-btn:focus-visible,
+.magnet-btn:focus-visible {
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px var(--brand-glow, rgba(75, 0, 130, 0.25));
+}
+
+/* ── GPU Acceleration (Performance) ──────────────────────────────── */
+.gpu-accelerate {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ── Selection ─────────────────────────────────────────────────── */
+::selection {
+    background: var(--brand-secondary);
+    color: white;
+}
+/* ── Global Design System Tokens ───────────────────────────────────── */
+:root {
+    --section-padding: clamp(40px, 8vw, 80px);
+    --container-width: 1440px;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --transition-premium: 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Typography Scale (Phase 1.3) */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-body: 1rem;
+    --text-body-lg: clamp(0.95rem, 1vw + 0.25rem, 1.125rem);
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-h3: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+    --text-3xl: 1.875rem;
+    --text-4xl: clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
+    --text-h2: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+    --text-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+
+    /* Navbar (Phase 2.2) */
+    --navbar-height: 64px;
+    --currency-symbol: '€';
+}
+
+/* ── Navbar Scroll State ──────────────────────────────────────── */
+#masthead.scrolled .nav-island {
+    border-bottom: 1px solid var(--card-border);
+}
+#masthead.scrolled .nav-island > * {
+    opacity: 0.95;
+}
+
+/* ── Navbar Active Link (Phase 2.2) ────────────────────────────── */
+.nav-island li.active > a,
+.nav-island li.active > .nav-link {
+    border-bottom: 2px solid var(--brand-primary);
+    font-weight: 500;
+}
+
+/* ── Specific Overrides for MainLayout elements ────────────────────── */
+.noise-overlay {
+    z-index: 1 !important;
+    pointer-events: none;
+}
+
+.bg-shape {
+    z-index: 1 !important;
+    pointer-events: none;
+}
+
+main.animate-fade-in-up {
+    animation-duration: 0.6s;
+    position: relative;
+    z-index: 10;
+}
+
+.fixed-cookie-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.fixed-cookie-container > div {
+    pointer-events: auto;
+}
+
+/* ── Currency Symbol (Dynamic via CSS var) ────────────────────────── */
+.currency-sym::before {
+    content: var(--currency-symbol);
+}

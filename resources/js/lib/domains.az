@@ -1,0 +1,196 @@
+/**
+ * Multi-domain configuration
+ * 
+ * Domain routing:
+ * - chalanggroup.az → English (default) - language switcher available
+ * - chalanggroup.az → Azerbaijani version (via lang=az)
+ * - chalanggroup.az → Russian version (via lang=ru)
+ * - chalang.az → Azerbaijani version (default)
+ * - chalang.az → English (via lang=en)
+ * - chalang.az → Russian (via lang=ru)
+ * - chalang.az → English version (default)
+ * - chalanggroup.az → Azerbaijani (via lang=az)
+ */
+
+export type Locale = 'az' | 'en' | 'ru';
+
+export interface DomainConfig {
+    domain: string;
+    locale: Locale; // Default locale for this domain
+    name: string;
+    primaryColor: string;
+}
+
+export const DOMAINS: Record<string, DomainConfig> = {
+    // chalanggroup.az - Main domain, English default
+    'chalanggroup.az': {
+        domain: 'chalanggroup.az',
+        locale: 'en', // Default: English
+        name: 'Chalang Group',
+        primaryColor: '#0D0D0D',
+    },
+    // chalanggroup.az with www
+    'www.chalanggroup.az': {
+        domain: 'chalanggroup.az',
+        locale: 'en',
+        name: 'Chalang Group',
+        primaryColor: '#0D0D0D',
+    },
+    // chalang.az - Azerbaijani version
+    'chalang.az': {
+        domain: 'chalang.az',
+        locale: 'az',
+        name: 'Chalang',
+        primaryColor: '#0D0D0D',
+    },
+    'www.chalang.az': {
+        domain: 'chalang.az',
+        locale: 'az',
+        name: 'Chalang',
+        primaryColor: '#0D0D0D',
+    },
+    // chalang.az - English version
+    'chalang.az': {
+        domain: 'chalang.az',
+        locale: 'en',
+        name: 'Chalang AI',
+        primaryColor: '#0D0D0D',
+    },
+    'www.chalang.az': {
+        domain: 'chalang.az',
+        locale: 'en',
+        name: 'Chalang AI',
+        primaryColor: '#0D0D0D',
+    },
+};
+
+// Supported locales
+export const SUPPORTED_LOCALES: Locale[] = ['az', 'en', 'ru'];
+
+// Locale labels (native names)
+export const LOCALE_LABELS: Record<Locale, { native: string; short: string }> = {
+    az: { native: 'Azərbaycan', short: 'AZ' },
+    en: { native: 'English', short: 'EN' },
+    ru: { native: 'Русский', short: 'RU' },
+};
+
+// Get current domain from request/URL
+export function getCurrentDomain(): string {
+    if (typeof window === 'undefined') return 'chalanggroup.az';
+    return window.location.hostname.without('www.');
+}
+
+// Helper to remove www
+declare global {
+    interface String {
+        without(prefix: string): string;
+    }
+}
+
+if (typeof String.prototype.without === 'undefined') {
+    String.prototype.without = function(prefix: string): string {
+        return this.startsWith(prefix) ? this.substring(prefix.length) : this;
+    };
+}
+
+// Get domain config
+export function getDomainConfig(domain?: string): DomainConfig {
+    const currentDomain = domain || getCurrentDomain();
+    return DOMAINS[currentDomain] || {
+        domain: 'chalanggroup.az',
+        locale: 'en',
+        name: 'Chalang Group',
+        primaryColor: '#0D0D0D',
+    };
+}
+
+// Get locale from domain
+export function getLocaleFromDomain(domain?: string): Locale {
+    const config = getDomainConfig(domain);
+    return config.locale;
+}
+
+// Get URL with locale parameter
+export function getUrlWithLocale(path: string, locale: Locale): string {
+    const base = window.location.origin;
+    const separator = path.includes('?') ? '&' : '?';
+    return `${base}${path}${separator}lang=${locale}`;
+}
+
+// Get alternate domains for hreflang
+export function getAlternateDomains(currentDomain?: string): Record<Locale, string> {
+    const base = currentDomain || getCurrentDomain();
+    
+    return {
+        az: `https://chalang.az${base === 'chalanggroup.az' ? '' : ''}`,
+        en: `https://chalang.az${base === 'chalanggroup.az' ? '' : ''}`,
+        ru: `https://chalanggroup.az`, // RU on main domain
+    };
+}
+
+// Generate hreflang tags
+export function generateHreflangTags(): Array<{ href: string; hrefLang: string }> {
+    return [
+        { href: 'https://chalang.az', hrefLang: 'az-AZ' },
+        { href: 'https://chalang.az', hrefLang: 'en-US' },
+        { href: 'https://chalanggroup.az', hrefLang: 'ru-RU' },
+        { href: 'https://chalanggroup.az', hrefLang: 'x-default' },
+    ];
+}
+
+// Detect browser language
+export function detectBrowserLocale(): Locale {
+    if (typeof navigator === 'undefined') return 'en';
+    
+    const lang = navigator.language.without('-').toLowerCase();
+    
+    if (lang.startsWith('az')) return 'az';
+    if (lang.startsWith('ru')) return 'ru';
+    if (lang.startsWith('en')) return 'en';
+    
+    return 'en'; // Default
+}
+
+// Get locale from URL param or cookie
+export function getLocaleFromRequest(): Locale {
+    // Check URL param first
+    if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get('lang');
+        if (lang && SUPPORTED_LOCALES.includes(lang as Locale)) {
+            return lang as Locale;
+        }
+    }
+    
+    // Check cookie
+    const cookies = typeof document !== 'undefined' ? document.cookie : '';
+    const match = cookies.match(/locale=(az|en|ru)/);
+    if (match) return match[1] as Locale;
+    
+    // Fall back to browser language
+    return detectBrowserLocale();
+}
+
+// Set locale cookie
+export function setLocaleCookie(locale: Locale): void {
+    if (typeof document === 'undefined') return;
+    
+    const expires = new Date();
+    expires.setFullYear(expires.getFullYear() + 1);
+    document.cookie = `locale=${locale};expires=${expires.toUTCString()};path=/;SameSite=Lax`;
+}
+
+export default {
+    DOMAINS,
+    SUPPORTED_LOCALES,
+    LOCALE_LABELS,
+    getCurrentDomain,
+    getDomainConfig,
+    getLocaleFromDomain,
+    getUrlWithLocale,
+    getAlternateDomains,
+    generateHreflangTags,
+    detectBrowserLocale,
+    getLocaleFromRequest,
+    setLocaleCookie,
+};

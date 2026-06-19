@@ -1,5 +1,7 @@
 <section class="section section-padding-equal bg-color-dark">
     <div class="container">
+<section class="section section-padding-equal bg-color-dark">
+    <div class="container">
         <div class="section-heading heading-light-left">
             <span class="subtitle">{{ __('front.services.subtitle') }}</span>
             <h2 class="title">{{ __('front.services.title') }}</h2>
@@ -8,7 +10,7 @@
         <div class="row">
             @foreach ($main_services ?? [] as $service)
                 <div class="col-lg-4 col-md-6 sal-animate" data-sal="slide-up" data-sal-duration="800"
-                    data-sal-delay="100">
+                    data-sal-delay="{{ $loop->iteration * 100 }}">
                     <div class="services-grid">
                         <div class="thumbnail">
                             {{-- <img src="assets/media/icon/icon-1.png" alt="icon"> --}}

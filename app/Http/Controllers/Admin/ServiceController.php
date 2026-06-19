@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\ServiceTranslation;
 use App\Rules\NotNullIfLanguageIsEn;
 use App\Traits\FileUploader;
+use App\Http\Requests\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -20,8 +21,12 @@ class ServiceController extends Controller
 
     public function __construct()
     {
-        view()->share('services', Service::where('parent_id', 0)->get());
-        $this->langs = Lang::all();
+        if (!app()->runningInConsole()) {
+            view()->share('services', Service::where('parent_id', 0)->get());
+            $this->langs = Lang::all();
+        } else {
+            $this->langs = collect();
+        }
     }
 
     public function index()
@@ -40,9 +45,9 @@ class ServiceController extends Controller
     public function create()
     {
         $item = new Service();
+        $parents = Service::parents()->get();
 
-        return view('admin.pages.service.create', compact('item'));
-
+        return view('admin.pages.service.create', compact('item', 'parents'));
     }
 
     /**
@@ -50,61 +55,34 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
+        $data = $request->only(['parent_id', 'cta_link']);
 
-
-        $data = [];
-        $data['parent_id'] = $request->parent_id ?? 0;
-
-        if ($request->image) {
-            $image = $this->upload($request, name: 'image', dir: 'services');
-            $data['image'] = $image;
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->upload($request, 'image', 'services');
         }
 
-        if ($request->icon) {
-            $image = $this->upload($request, name: 'icon', dir: 'services');
-            $data['icon'] = $image;
+        if ($request->hasFile('icon')) {
+            $data['icon'] = $this->upload($request, 'icon', 'services');
         }
-        // $data['slug'] = Str::slug($request->post('name')['az']);
-        DB::beginTransaction();
-        try {
 
-            $service = Service::create($data);
-            foreach ($this->langs as $lang) {
-                if ($request->post('name')[$lang->lang]) {
-                    ServiceTranslation::insert([
-                        'name' => $request->post('name')[$lang->lang],
-                        'content' => $request->post('content')[$lang->lang],
-                        'description' => $request->post('description')[$lang->lang],
-                        'locale' => $lang->lang,
-                        'service_id' => $service->id,
-                        'slug' => Str::slug($request->post('name')['az'])
-                    ]);
-                }
+        foreach ($this->langs as $lang) {
+            $locale = $lang->lang;
+            if ($request->has("name.$locale")) {
+                $data[$locale] = [
+                    'name' => $request->input("name.$locale"),
+                    'content' => $request->input("content.$locale"),
+                    'description' => $request->input("description.$locale"),
+                    'cta_text' => $request->input("cta_text.$locale"),
+                    'slug' => Str::slug($request->input("name.$locale")),
+                ];
             }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
         }
 
-        return redirect()->route('admin.service.index');
-    }
+        Service::create($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect()->route('admin.service.index')->with('success', 'Service created successfully.');
     }
 
     /**
@@ -116,8 +94,9 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $item = Service::findOrFail($id);
+        $parents = Service::parents()->where('id', '!=', $id)->get(); // Prevent self-parenting
 
-        return view('admin.pages.service.edit', compact('item'));
+        return view('admin.pages.service.edit', compact('item', 'parents'));
     }
 
     /**
@@ -126,54 +105,103 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiceRequest $request, $id)
     {
-        // return $request->all();
-        $data = [];
-        $data['parent_id'] = $request->parent_id ?? 0;
+        $service = Service::findOrFail($id);
+        $data = $request->only(['parent_id', 'cta_link']);
 
-        if ($request->image) {
-            $image = $this->upload($request, name: 'image', dir: 'services');
-            $data['image'] = $image;
+        if ($request->hasFile('image')) {
+            $data['image'] = $this->upload($request, 'image', 'services');
         }
 
-        if ($request->icon) {
-            $image = $this->upload($request, name: 'icon', dir: 'services');
-            $data['icon'] = $image;
+        if ($request->hasFile('icon')) {
+            $data['icon'] = $this->upload($request, 'icon', 'services');
         }
-        $data['slug'] = Str::slug($request->post('name')['az']);
 
-        DB::beginTransaction();
-        try {
+        // Capture old attributes for activity log
+        $oldAttributes = [
+            'name' => $service->name,
+            'content' => $service->content, // Raw content
+            'description' => $service->description,
+            'cta_text' => $service->cta_text,
+            'slug' => $service->slug,
+            'status' => $service->status,
+            'parent_id' => $service->parent_id,
+            'cta_link' => $service->cta_link,
+            'icon' => $service->icon,
+            'image' => $service->image,
+        ];
 
-            $serive = Service::find($id);
-            $serive->update($data);
-            foreach ($this->langs as $lang) {
-                if ($request->post('name')[$lang->lang]) {
-                    $translation = ServiceTranslation::where('service_id', $id)->where('locale', $lang->lang)->first();
-                    if (!$translation) {
-                        $translation = new ServiceTranslation();
-                        $translation->service_id = $serive->id;
-                        $translation->locale = $lang->lang;
-                    }
-                    $translation->name = $request->post('name')[$lang->lang] ?? $translation->name;
-                    $translation->content = $request->post('content')[$lang->lang] ?? $translation->content;
-                    $translation->description = $request->post('description')[$lang->lang] ?? $translation->description;
-                    $translation->slug = Str::slug($request->post('name')[$lang->lang]) ?? $translation->slug;
-                    $translation->save();
-                }
+        // Capture old translations for all locales
+        foreach ($this->langs as $lang) {
+            $locale = $lang->lang;
+            $trans = $service->translate($locale);
+            if ($trans) {
+                $oldAttributes["name_{$locale}"] = $trans->name;
+                $oldAttributes["content_{$locale}"] = $trans->content;
+                $oldAttributes["description_{$locale}"] = $trans->description;
+                $oldAttributes["cta_text_{$locale}"] = $trans->cta_text;
             }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollback();
-
-            return response()->json([
-                'code' => 401,
-                'error' => $e->getMessage(),
-            ]);
         }
 
-        return redirect()->route('admin.service.index');
+        // Update main attributes
+        $service->fill($data);
+        $service->save();
+
+        // Update translations explicitly
+        foreach ($this->langs as $lang) {
+            $locale = $lang->lang;
+            if ($request->has("name.$locale")) {
+                $translation = $service->translateOrNew($locale);
+                $translation->name = $request->input("name.$locale");
+                $translation->content = $request->input("content.$locale");
+                $translation->description = $request->input("description.$locale");
+                $translation->cta_text = $request->input("cta_text.$locale");
+                $translation->slug = Str::slug($request->input("name.$locale"));
+                $translation->save();
+            }
+        }
+
+        $service->refresh();
+
+        // Prepare new attributes
+        $newAttributes = [
+            'name' => $service->name,
+            'content' => $service->content,
+            'description' => $service->description,
+            'cta_text' => $service->cta_text,
+            'slug' => $service->slug,
+            'status' => $service->status,
+            'parent_id' => $service->parent_id,
+            'cta_link' => $service->cta_link,
+            'icon' => $service->icon,
+            'image' => $service->image,
+        ];
+
+        // Capture new translations
+        foreach ($this->langs as $lang) {
+            $locale = $lang->lang;
+            $trans = $service->translate($locale);
+            if ($trans) {
+                $newAttributes["name_{$locale}"] = $trans->name;
+                $newAttributes["content_{$locale}"] = $trans->content;
+                $newAttributes["description_{$locale}"] = $trans->description;
+                $newAttributes["cta_text_{$locale}"] = $trans->cta_text;
+            }
+        }
+
+        // Manually log activity with full details
+        activity()
+           ->performedOn($service)
+           ->causedBy(auth()->user())
+           ->withProperties([
+               'attributes' => $newAttributes,
+               'old' => $oldAttributes
+           ])
+           ->tap(new \App\ActivityLog\IpAddressAndUserAgentTap())
+           ->log('updated');
+
+        return redirect()->route('admin.service.index')->with('success', 'Service updated successfully.');
     }
 
     /**

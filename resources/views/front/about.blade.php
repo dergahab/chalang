@@ -105,6 +105,72 @@
                 <li class="shape shape-3"><img src="assets/media/others/bubble-1.png" alt="Line"></li>
             </ul>
         </div>
+
+        @if(isset($teamMembers) && $teamMembers->count() > 0)
+        <section class="section section-padding bg-color-light">
+            <div class="container">
+                <div class="section-heading mb--90">
+                    <span class="subtitle">Komandamız</span>
+                    <h2 class="title">Yaradıcı Beyinlər</h2>
+                    <p>Bizim peşəkar komandamızla tanış olun.</p>
+                </div>
+                <div class="row">
+                    @foreach($teamMembers as $member)
+                        <div class="col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="800" data-sal-delay="100">
+                            <div class="team-card">
+                                @if($member->image)
+                                    <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}" class="team-img">
+                                @endif
+                                <div class="team-info">
+                                    <h3>{{ $member->name }}</h3>
+                                    <p style="color:var(--brand-primary); font-weight:600">{{ $member->position }}</p>
+                                    <p>{{ $member->bio }}</p>
+                                    @if($member->social_links)
+                                        <div class="social-links">
+                                            @foreach($member->social_links as $platform => $link)
+                                                <a href="{{ $link }}" class="social-link" target="_blank">
+                                                    <i class="fab fa-{{ strtolower($platform) }}"></i>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
+
+        <section class="section section-padding bg-color-light">
+            <div class="container">
+                <div class="section-heading heading-left">
+                    <span class="subtitle">Join the Force</span>
+                    <h2 class="title">Komandaya qosul</h2>
+                    <p>Biz her zaman istedad axtaririq. CV gonder, tanis olaq.</p>
+                    <a href="{{ route('contact') }}" class="axil-btn btn-fill-primary">CV gonder</a>
+                </div>
+            </div>
+        </section>
+
+        @if(isset($partners) && $partners->count() > 0)
+        <section class="section section-padding">
+            <div class="container">
+                <div class="section-heading mb--90">
+                    <span class="subtitle">Tərəfdaşlar</span>
+                    <h2 class="title">Bizə Güvənənlər</h2>
+                </div>
+                <div class="partner-grid">
+                    @foreach($partners as $partner)
+                        <a href="{{ $partner->link ?? '#' }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ asset('storage/' . $partner->logo) }}" alt="{{ $partner->name }}" class="partner-logo" title="{{ $partner->name }}">
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
         <!--=====================================-->
         <!--=        Footer Area Start       	=-->
         <!--=====================================-->

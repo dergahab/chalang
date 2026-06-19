@@ -9,5 +9,5 @@ class PortfolioTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'slug', 'locale', 'portfolio_id'];
+    protected $fillable = ['title', 'description', 'slug', 'short_description', 'problem', 'solution', 'result', 'locale', 'portfolio_id'];
 }

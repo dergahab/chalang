@@ -49,7 +49,7 @@ return [
         'file' => [
             'folder_name' => 'files',
             'startup_view' => 'list',
-            'max_size' => 50000, // size in KB
+            'max_size' => 5120, // size in KB (5MB)
             'thumb' => true,
             'thumb_width' => 80,
             'thumb_height' => 80,
@@ -59,13 +59,12 @@ return [
                 'image/png',
                 'image/gif',
                 'application/pdf',
-                'text/plain',
             ],
         ],
         'image' => [
             'folder_name' => 'photos',
             'startup_view' => 'grid',
-            'max_size' => 50000, // size in KB
+            'max_size' => 5120, // size in KB (5MB)
             'thumb' => true,
             'thumb_width' => 80,
             'thumb_height' => 80,
@@ -96,15 +95,15 @@ return [
 
     'disk' => 'public',
 
-    'rename_file' => false,
+    'rename_file' => true,
 
-    'rename_duplicates' => false,
+    'rename_duplicates' => true,
 
-    'alphanumeric_filename' => false,
+    'alphanumeric_filename' => true,
 
-    'alphanumeric_directory' => false,
+    'alphanumeric_directory' => true,
 
-    'should_validate_size' => false,
+    'should_validate_size' => true,
 
     'should_validate_mime' => true,
 

@@ -60,13 +60,14 @@ class CmsSidebar extends Singleton
                 'params' => array_key_exists('params', $item) ? $item['params'] : null,
                 'can' => array_key_exists('can', $item) ? $item['can'] : '*',
                 'inner' => array_key_exists('inner', $item) ? $item['inner'] : null,
+                'feature' => array_key_exists('feature', $item) ? $item['feature'] : null,
                 'is_active_route' => array_key_exists('route', $item) && request()->routeIs($item['route']),
             ]);
 
            $user = auth()->user();
             $menuItem->put('showFlag', $menuItem['can'] === '*' || ($user && $user->can($menuItem['can'])));
 
-            if ($isRoot and array_key_exists('inner', $item)) {
+            if ($isRoot && array_key_exists('inner', $item) && !is_null($item['inner']) && is_array($item['inner'])) {
                 $innerMenu = collect();
                 $innerRoutes = [];
                 foreach ($item['inner'] as $innerItem) {

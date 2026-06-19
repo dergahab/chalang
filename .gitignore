@@ -21,3 +21,60 @@ yarn-error.log
 /.vscode
 /demo/
 /project/
+.blackboxcli/
+.blackbox/
+
+# ===== Build artifacts =====
+/public/build/
+
+# ===== Debug, Test & Repro Scripts (root-level) =====
+/check_*.php
+/debug_*.php
+/fix_*.php
+/repro_*.php
+/test_db.php
+/test_seeder.php
+/trigger_*.php
+/fetch_*.php
+/list_services.php
+/stress_test_*.php
+/create_test_log.php
+/audit_css.js
+
+# ===== Temporary scripts =====
+/tmp_*.*
+
+# ===== Output / Log files =====
+/*_output.txt
+/error_log.txt
+/contenttext_missing_report.txt
+/tsc_output.txt
+
+# ===== Backup files =====
+*.bak
+/resources/views/**/*_backup.blade.php
+
+# ===== Database dumps =====
+*.sql
+/database/dumps/*
+!/database/dumps/.gitkeep
+
+# ===== Videos & Screen Recordings =====
+/videos/
+*.webm
+*.mp4
+*.mov
+
+# ===== Task fragmentation files =====
+/task.md.part*
+/task_deprecated.md
+
+# ===== IDE-specific =====
+*.swp
+*.swo
+.cursor/
+
+# ===== OS-specific =====
+Thumbs.db
+.DS_Store
+desktop.ini

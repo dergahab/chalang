@@ -24,9 +24,24 @@ class BlogController extends Controller
 
     public function single($slug)
     {
-        $item = Blog::where('slug', $slug)->first();
+        $item = Blog::whereTranslation('slug', $slug)->first();
         $categories = Bcategory::all();
 
         return view('front.blogs.single', compact('item', 'categories'));
+    }
+
+    public function newIndex()
+    {
+        $data = Blog::paginate(10);
+        $categories = Bcategory::all();
+       
+        return view('front.blogs.blog_new', compact('data', 'categories'));
+    }
+
+    public function newSingle(Blog $blog)
+    {
+        $categories = Bcategory::all();
+
+        return view('front.blogs.single_new', ['item' => $blog, 'categories' => $categories]);
     }
 }

@@ -2,22 +2,22 @@
     <!-- Dark Logo-->
     <a href="index.html" class="logo logo-dark">
         <span class="logo-sm">
-            <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt=""
+            <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt=""
                 height="22">
         </span>{{ asset('admin')}}3453534534545
         <span class="logo-lg">
-            <img src="{{ asset('admin/assets/images/logo-dark.png') }}" alt=""
+            <img src="{{ asset('admin_assets/assets/images/logo-dark.png') }}" alt=""
                 height="17">
         </span>
     </a>
     <!-- Light Logo-->
     <a href="index.html" class="logo logo-light">
         <span class="logo-sm">
-            <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt=""
+            <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt=""
                 height="22">
         </span>
         <span class="logo-lg">
-            <img src="{{ asset('admin/assets/images/logo-loght.png') }}" alt=""
+            <img src="{{ asset('admin_assets/assets/images/logo-loght.png') }}" alt=""
                 height="17">
         </span>
     </a>

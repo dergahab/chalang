@@ -4,21 +4,20 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Message;
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
+use App\Notifications\NewMessageNotification;
+use App\Services\NotificationRouter;
 
 class MessageController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(ContactRequest $request)
     {
-        $data = $request->validate([
-            'full_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'phone' => ['required', 'string', 'max:50'],
-            'message' => ['required', 'string'],
-            'type' => ['nullable', 'string', 'max:50'],
-        ]);
+        $data = $request->validated();
 
-        Message::create($data);
+        $message = Message::create($data);
+
+        $notification = new NewMessageNotification($message);
+        NotificationRouter::notify('contact', $notification);
 
         return response()->json([
             'status' => 201,

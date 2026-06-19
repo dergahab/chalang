@@ -81,5 +81,82 @@
            </div>
           @endforeach
         </div>
+        </div>
+
+        @if(isset($pricingPlans) && $pricingPlans->count() > 0)
+        <section class="section section-padding bg-color-light">
+            <div class="container">
+                <div class="section-heading mb--90">
+                    <span class="subtitle">Qiymət Planları</span>
+                    <h2 class="title">Sizə Uyğun Paketi Seçin</h2>
+                </div>
+                
+                <div class="pricing-toggle">
+                    <span>Aylıq</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricing-toggle-checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span>İllik</span>
+                </div>
+
+                <div class="grid">
+                    @foreach($pricingPlans as $plan)
+                        <div class="pricing-card {{ $plan->is_popular ? 'popular' : '' }}">
+                            @if($plan->is_popular)
+                                <div class="popular-badge">Populyar</div>
+                            @endif
+                            <h3>{{ $plan->name }}</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount-monthly">{{ $plan->price_monthly }}</span>
+                                <span class="amount-yearly" style="display:none">{{ $plan->price_yearly }}</span>
+                                <span class="period">/ay</span>
+                            </div>
+                            <ul class="features-list">
+                                @if($plan->features)
+                                    @foreach($plan->features as $feature)
+                                        <li><span class="check-icon">✔</span> {{ $feature }}</li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                            <a href="{{ $plan->cta_link ?? route('contact') }}" class="btn-primary" style="width:100%">{{ $plan->cta_text ?? 'Seçin' }}</a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
+
+        @if(isset($testimonials) && $testimonials->count() > 0)
+        <section class="section section-padding">
+            <div class="container">
+                <div class="section-heading mb--90">
+                    <span class="subtitle">Müştəri Rəyləri</span>
+                    <h2 class="title">Bizi Seçənlər Nə Deyir?</h2>
+                </div>
+                <div class="testimonial-grid">
+                    @foreach($testimonials as $testimonial)
+                        <div class="testimonial-card">
+                            <div class="rating">
+                                @for($i = 0; $i < $testimonial->rating; $i++) ★ @endfor
+                            </div>
+                            <p>"{{ $testimonial->content }}"</p>
+                            <div class="testimonial-author">
+                                @if($testimonial->image)
+                                    <img src="{{ asset('storage/' . $testimonial->image) }}" alt="{{ $testimonial->name }}" class="testimonial-avatar">
+                                @endif
+                                <div>
+                                    <strong>{{ $testimonial->name }}</strong><br>
+                                    <small>{{ $testimonial->position }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        @endif
+
 @include('front.inc.worck_togather')
 @endsection

@@ -11,5 +11,6 @@ class Subscribe extends Model
 
     protected $fillable = [
         'mail',
+        'website',
     ];
 }

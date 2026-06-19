@@ -5,26 +5,29 @@
   "portfolio": "Портфолио",
   "blog": "Блог",
   "contact": "Контакты",
-  "more": "Узнать больше",
+  "more": "Подробнее",
   "All": "Все",
   "PortfolioProject": "Проекты",
   "Support": "Поддержка",
-
-  "ServiceTitle" : "Цифровые услуги, которые приносят результат",
-  "ServiceDesctioption" : "Создаём сильный бренд с дизайном и идеей.",
-
-  "Let's Work Together": "Let's Work Together",
-    "Bring Your Project to Life With Us": "Bring Your Project to Life With Us",
-    "Estimate Project": "Estimate Project",
-    "Our Work": "Наши работы",
-    "Discover the projects we’ve crafted.": "Ознакомьтесь с реализованными проектами.",
-
-     "portfolio_title": "Наши успешные проекты",
-    "portfolio_subtitle": "Ознакомьтесь с тем, как мы создаём ценность для брендов.",
-    "contact_title": "Свяжитесь с нами",
-  "contact_subtitle": "Свяжитесь с нами прямо сейчас для вашего креативного проекта. Наша команда экспертов по дизайну, веб-разработке и брендингу готова помочь вам.",
-    "who_we_are": "Кто мы такие",
-      "design_strategy": "Стратегия дизайна"
-
-
+  "ServiceTitle": "Цифровые услуги, которые приносят реальную ценность",
+  "ServiceDesctioption": "Мы развиваем ваш бренд с помощью дизайна и стратегии.",
+  "Let's Work Together": "Давайте работать вместе",
+  "Bring Your Project to Life With Us": "Воплотим ваш проект вместе",
+  "Estimate Project": "Оценить проект",
+  "Our Work": "Наши работы",
+  "Discover the projects we've crafted.": "Ознакомьтесь с проектами, которые мы создали.",
+  "portfolio_title": "Наши успешные проекты",
+  "portfolio_subtitle": "Посмотрите, как мы создаем ценность для брендов.",
+  "contact_title": "Свяжитесь с нами",
+  "contact_subtitle": "Свяжитесь с нами по вашему творческому проекту. Наша команда экспертов по дизайну, веб-разработке и брендингу готова помочь.",
+  "who_we_are": "Кто мы",
+  "design_strategy": "Стратегия дизайна",
+  "preview.estimator.disclaimer": "* Эти цены являются приблизительными. Окончательная цена может меняться в зависимости от требований проекта и функциональности.",
+  "preview.estimator.urgency_hint": "Перетащите, чтобы изменить срок сдачи.",
+  "preview.estimator.urgency_slow": "Медленно",
+  "preview.estimator.urgency_normal": "Обычный",
+  "preview.estimator.urgency_urgent": "Срочно",
+  "Page Not Found": "Страница не найдена",
+  "The page you are looking for does not exist.": "Страница, которую вы ищете, не существует или была перенесена.",
+  "Back to Home": "Вернуться на главную"
 }

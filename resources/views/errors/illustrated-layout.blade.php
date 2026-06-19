@@ -455,6 +455,7 @@
                 }
             }
         </style>
+        <link rel="stylesheet" href="{{ asset('assets/css/chalang-preview.css?v=') . time() }}">
     </head>
     <body class="antialiased font-sans">
         <div class="md:flex min-h-screen">
@@ -482,5 +483,8 @@
                 @yield('image')
             </div>
         </div>
+        @include('front.layouts.partials.scroll_to_top')
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('assets/js/chalang-preview.js?v=') . time() }}"></script>
     </body>
 </html>

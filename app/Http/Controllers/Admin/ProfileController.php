@@ -3,42 +3,37 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function edit()
     {
-        $item = Auth::user();
-
-        return view('admin.pages.profil.edit', compact('item'));
+        $user = Auth::user();
+        return view('admin.pages.profile.edit', compact('user'));
     }
 
     public function update(Request $request)
     {
-        $data = [
-            'name' => $request->post('name'),
-            'surname' => $request->post('surname'),
-        ];
+        $user = Auth::user();
 
-        if ($request->file('image')) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
 
-            $dPath = 'profile/';
-            $img = $request->file('image');
-            $fName = $img->getClientOriginalName();
-            $exten = $img->getClientOriginalExtension();
-            $request->file('image')->storeAs($dPath, $fName);
-            $path = $dPath.''.$fName;
-            Storage::disk('public')->put($path, file_get_contents($request->file('image')));
+        $user->name = $request->name;
+        $user->email = $request->email;
 
-            $data['image'] = $path;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
         }
 
-        User::where('id', Auth::user()->id)->update($data);
+        $user->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Profil uğurla yeniləndi.');
     }
 }

@@ -8,15 +8,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 class Portfolio extends Model implements TranslatableContract
 {
-    use HasFactory,Translatable, SoftDeletes;
+    use HasFactory, Translatable, SoftDeletes, LogsActivity;
 
-    public $translatedAttributes = ['title', 'description'];
+    public $translatedAttributes = ['title', 'description', 'slug', 'short_description', 'problem', 'solution', 'result'];
 
-    protected $fillable = ['image', 'slug', 'in_main', 'company_id'];
+    protected $fillable = ['company_id', 'image', 'in_main', 'posotion', 'status'];
 
     protected $appends = ['category_ids'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['image', 'slug', 'in_main', 'company_id', 'title', 'description'])
+        ->logOnlyDirty()
+        ->dontSubmitEmptyLogs();
+    }
 
     public function pcategories()
     {
@@ -41,5 +52,14 @@ class Portfolio extends Model implements TranslatableContract
     public function images()
     {
         return $this->morphMany(Image::class, 'parentable')->orderBy('position', 'asc');
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        if ($field === 'slug') {
+            return $this->whereTranslation('slug', $value)->firstOrFail();
+        }
+
+        return parent::resolveRouteBinding($value, $field);
     }
 }

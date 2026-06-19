@@ -22,6 +22,26 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
+     * Get the maximum number of attempts to allow.
+     *
+     * @return int
+     */
+    public function maxAttempts()
+    {
+        return 5; // 5 attempts
+    }
+
+    /**
+     * Get the number of minutes to throttle for.
+     *
+     * @return int
+     */
+    public function decayMinutes()
+    {
+        return 5; // Block for 5 minutes after 5 failed attempts
+    }
+
+    /**
      * Where to redirect users after login.
      *
      * @var string

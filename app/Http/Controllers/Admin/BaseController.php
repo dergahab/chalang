@@ -1,8 +1,10 @@
 <?php
+ 
+namespace App\Http\Controllers\Admin;
+ 
 use App\Http\Controllers\Controller;
-
-class BaseController extends Controllers
+ 
+class BaseController extends Controller
 {
-
+ 
 }
-

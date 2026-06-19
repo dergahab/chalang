@@ -5,21 +5,21 @@
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="index.html" class="">
-                        <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt="" height="22">
+                        <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
                         {{-- <span class="logo-sm">
 
                         </span> --}}
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/assets/images/logo-dark.png') }}" alt="" height="17">
+                            <img src="{{ asset('admin_assets/assets/images/logo-dark.png') }}" alt="" height="17">
                         </span>
                     </a>
 
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset('admin/assets/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ asset('admin_assets/assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('admin/assets/images/logo-light.png1') }}" alt="" height="17">
+                            <img src="{{ asset('admin_assets/assets/images/logo-light.png') }}" alt="" height="17">
                         </span>
                     </a>
                 </div>
@@ -34,9 +34,10 @@
                 </button>
 
                 <!-- App Search-->
-                {{-- <form class="app-search d-none d-md-block">
+                <!-- App Search-->
+                <form class="app-search d-none d-md-block">
                     <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
+                        <input type="text" class="form-control" placeholder="Axtar... (Ctrl+K)" autocomplete="off"
                             id="search-options" value="">
                         <span class="mdi mdi-magnify search-widget-icon"></span>
                         <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
@@ -87,7 +88,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="{{ asset('admin/assets/images/users/avatar-2.jpg') }}"
+                                        <img src="{{ asset('admin_assets/assets/images/users/avatar-2.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="m-0">Angela Bernier</h6>
@@ -98,7 +99,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="{{ asset('admin/assets/images/users/avatar-3.jpg') }}"
+                                        <img src="{{ asset('admin_assets/assets/images/users/avatar-3.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="m-0">David Grasso</h6>
@@ -109,7 +110,7 @@
                                 <!-- item -->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item py-2">
                                     <div class="d-flex">
-                                        <img src="{{ asset('admin/assets/images/users/avatar-5.jpg') }}"
+                                        <img src="{{ asset('admin_assets/assets/images/users/avatar-5.jpg') }}"
                                             class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                         <div class="flex-1">
                                             <h6 class="m-0">Mike Bunch</h6>
@@ -125,7 +126,7 @@
                                 <i class="ri-arrow-right-line ms-1"></i></a>
                         </div>
                     </div>
-                </form> --}}
+                </form>
             </div>
 
             <div class="d-flex align-items-center">
@@ -175,7 +176,7 @@
 
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="{{ asset('admin/assets/images/brands/dribbble.png') }}"
+                                        <img src="{{ asset('admin_assets/assets/images/brands/dribbble.png') }}"
                                             alt="dribbble">
                                         <span>Dribbble</span>
                                     </a>
@@ -306,7 +307,7 @@
                                 <div data-simplebar style="max-height: 300px;" class="pe-2">
                                     <div class="text-reset notification-item d-block dropdown-item">
                                         <div class="d-flex">
-                                            <img src="{{ asset('admin/assets/images/users/avatar-3.jpg') }}"
+                                            <img src="{{ asset('admin_assets/assets/images/users/avatar-3.jpg') }}"
                                                 class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                             <div class="flex-1">
                                                 <a href="#!" class="stretched-link">
@@ -374,7 +375,7 @@
                                     </div>
                                 @else
                                     <div class="w-25 w-sm-50 pt-3 mx-auto">
-                                        <img src="{{ asset('admin/assets/images/svg/bell.svg') }}" class="img-fluid"
+                                        <img src="{{ asset('admin_assets/assets/images/svg/bell.svg') }}" class="img-fluid"
                                             alt="user-pic">
                                     </div>
                                     <div class="text-center pb-5 mt-2">
@@ -392,6 +393,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user" src="{{ asset(Auth::user()?->image) }}"
+                                onerror="this.onerror=null;this.src='{{ asset('admin_assets/assets/images/users/avatar-1.jpg') }}';"
                                 alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
@@ -403,7 +405,7 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">Welcome {{ Auth::user()?->name }} !</h6>
-                        <a class="dropdown-item" href="#"><i
+                        <a class="dropdown-item" href="{{ route('admin.profile.edit') }}"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Profile</span></a>
                         {{-- <a class="dropdown-item" href="apps-chat.html"><i
@@ -417,7 +419,7 @@
                                 class="align-middle" data-key="t-logout">Logout</span>
                         </a>
 
-                        <form id="logout-form" action="#" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                         <!-- Authentication Links -->

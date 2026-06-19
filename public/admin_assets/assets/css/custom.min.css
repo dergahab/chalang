@@ -1,0 +1,24 @@
+
+/*# sourceMappingURL=custom.min.css.map */
+.dt-buttons{
+    float: left !important;
+    padding-bottom: 2px;
+}
+
+
+.task-table td:first-child, .task-table th:first-child{
+    padding-left: 0px!important;
+}
+
+.btn-block{
+    width: 100%;
+}
+
+.to-do:checked + label {
+    text-decoration: line-through;
+    color: darkgrey;
+  }
+
+.show-deatil{
+    cursor: pointer;
+}
